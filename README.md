@@ -31,6 +31,8 @@ that explains Eventarc.
 * [BigQuery processing pipeline - GKE](docs/bigquery-processing-pipeline-gke.md)
 * [Eventarc AuditLog-Cloud Storage and Workflows Integration](docs/eventarc-auditlog-storage-workflows.md)
 * [Eventarc Pub/Sub and Workflows Integration](docs/eventarc-pubsub-workflows.md)
+* [Eventarc Terraform sample](docs/terraform.md)
+
 -------
 
 This is not an official Google product.

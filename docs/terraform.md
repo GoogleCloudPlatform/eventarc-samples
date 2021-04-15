@@ -27,6 +27,8 @@ gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
 
 ## Terraform
 
+Run the following commands inside [terraform](../terraform) folder.
+
 1. Initialize terraform:
 
     ```sh

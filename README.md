@@ -17,7 +17,11 @@ There's a
 [presentation](https://speakerdeck.com/meteatamel/eventarc-trigger-cloud-run-services-with-events-from-google-cloud)
 that explains Eventarc.
 
-[![Eventarc presentation](./docs/images/eventarc-trigger-cloud-run-services-with-events-from-google-cloud.png)](https://speakerdeck.com/meteatamel/eventarc-trigger-cloud-run-services-with-events-from-google-cloud)
+<!-- [![Eventarc presentation](./docs/images/eventarc-trigger-cloud-run-services-with-events-from-google-cloud.png)](https://speakerdeck.com/meteatamel/eventarc-trigger-cloud-run-services-with-events-from-google-cloud) -->
+
+<a href="https://speakerdeck.com/meteatamel/eventarc-trigger-cloud-run-services-with-events-from-google-cloud">
+    <img alt="Eventarc presentation" src="docs/images/eventarc-trigger-cloud-run-services-with-events-from-google-cloud.png" width="50%" height="50%">
+</a>
 
 ## Samples
 
@@ -25,7 +29,8 @@ that explains Eventarc.
 * [Image processing pipeline - GKE](docs/image-processing-pipeline-gke.md)
 * [BigQuery processing pipeline - Eventarc](docs/bigquery-processing-pipeline-eventarc.md)
 * [BigQuery processing pipeline - GKE](docs/bigquery-processing-pipeline-gke.md)
-
+* [Eventarc AuditLog-Cloud Storage and Workflows Integration](docs/eventarc-auditlog-storage-workflows.md)
+* [Eventarc Pub/Sub and Workflows Integration](docs/eventarc-pubsub-workflows.md)
 -------
 
 This is not an official Google product.

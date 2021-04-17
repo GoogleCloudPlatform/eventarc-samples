@@ -25,13 +25,12 @@ that explains Eventarc.
 
 ## Samples
 
-* [Image processing pipeline - Eventarc](docs/image-processing-pipeline-eventarc.md)
-* [Image processing pipeline - GKE](docs/image-processing-pipeline-gke.md)
-* [BigQuery processing pipeline - Eventarc](docs/bigquery-processing-pipeline-eventarc.md)
-* [BigQuery processing pipeline - GKE](docs/bigquery-processing-pipeline-gke.md)
-* [Eventarc AuditLog-Cloud Storage and Workflows Integration](docs/eventarc-auditlog-storage-workflows.md)
-* [Eventarc Pub/Sub and Workflows Integration](docs/eventarc-pubsub-workflows.md)
-* [Eventarc Terraform sample](docs/terraform.md)
+* [Image processing pipeline](docs/image-processing-pipeline-eventarc.md)
+* [BigQuery processing pipeline](docs/bigquery-processing-pipeline-eventarc.md)
+* [Terraform sample](docs/terraform.md)
+* Eventarc and Workflows Integration
+  * [AuditLog-Cloud Storage and Workflows](docs/eventarc-auditlog-storage-workflows.md)
+  * [Pub/Sub and Workflows](docs/eventarc-pubsub-workflows.md)
 
 -------
 

@@ -1,6 +1,6 @@
 # Eventarc Samples
 
-![Eventarc Logo](images/Eventarc-128-color.png)
+![Eventarc Logo](Eventarc-128-color.png)
 
 [Eventarc](https://cloud.google.com/eventarc/) lets you asynchronously deliver
 events from Google services, SaaS, and your own apps using loosely coupled
@@ -17,10 +17,10 @@ There's a
 [presentation](https://speakerdeck.com/meteatamel/eventarc-trigger-cloud-run-services-with-events-from-google-cloud)
 that explains Eventarc.
 
-<!-- [![Eventarc presentation](./images/eventarc-trigger-cloud-run-services-with-events-from-google-cloud.png)](https://speakerdeck.com/meteatamel/eventarc-trigger-cloud-run-services-with-events-from-google-cloud) -->
+<!-- [![Eventarc presentation](./eventarc-trigger-cloud-run-services-with-events-from-google-cloud.png)](https://speakerdeck.com/meteatamel/eventarc-trigger-cloud-run-services-with-events-from-google-cloud) -->
 
 <a href="https://speakerdeck.com/meteatamel/eventarc-trigger-cloud-run-services-with-events-from-google-cloud">
-    <img alt="Eventarc presentation" src="images/eventarc-trigger-cloud-run-services-with-events-from-google-cloud.png" width="50%" height="50%">
+    <img alt="Eventarc presentation" src="eventarc-trigger-cloud-run-services-with-events-from-google-cloud.png" width="50%" height="50%">
 </a>
 
 ## Samples

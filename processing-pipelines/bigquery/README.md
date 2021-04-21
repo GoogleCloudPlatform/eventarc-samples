@@ -4,7 +4,7 @@ In this sample, we'll build an BigQuery processing pipeline to query some public
 dataset on a schedule, create charts out of the data and then notify users about
 the new charts via SendGrid with **Eventarc**.
 
-![BigQuery Processing Pipeline](../../images/bigquery-processing-pipeline.png)
+![BigQuery Processing Pipeline](bigquery-processing-pipeline.png)
 
 1. Two `CloudScheduler` jobs are setup to call the `QueryRunner` service once
    a day for two countries via PubSub Topic `queryscheduled`.

@@ -3,7 +3,7 @@
 In this sample, we'll build an image processing pipeline to connect Google Cloud
 Storage events to various services with **Events with Cloud run on Anthos (GKE)**.
 
-![Image Processing Pipeline](./images/image-processing-pipeline-gke.png)
+![Image Processing Pipeline](../../images/image-processing-pipeline-gke.png)
 
 1. An image is saved to an input Cloud Storage bucket.
 2. Cloud Storage update event is read into Cloud Run via `CloudStorageSource`.

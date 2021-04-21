@@ -1,6 +1,6 @@
 # Eventarc Samples
 
-![Eventarc Logo](docs/images/Eventarc-128-color.png)
+![Eventarc Logo](images/Eventarc-128-color.png)
 
 [Eventarc](https://cloud.google.com/eventarc/) lets you asynchronously deliver
 events from Google services, SaaS, and your own apps using loosely coupled
@@ -17,20 +17,20 @@ There's a
 [presentation](https://speakerdeck.com/meteatamel/eventarc-trigger-cloud-run-services-with-events-from-google-cloud)
 that explains Eventarc.
 
-<!-- [![Eventarc presentation](./docs/images/eventarc-trigger-cloud-run-services-with-events-from-google-cloud.png)](https://speakerdeck.com/meteatamel/eventarc-trigger-cloud-run-services-with-events-from-google-cloud) -->
+<!-- [![Eventarc presentation](./images/eventarc-trigger-cloud-run-services-with-events-from-google-cloud.png)](https://speakerdeck.com/meteatamel/eventarc-trigger-cloud-run-services-with-events-from-google-cloud) -->
 
 <a href="https://speakerdeck.com/meteatamel/eventarc-trigger-cloud-run-services-with-events-from-google-cloud">
-    <img alt="Eventarc presentation" src="docs/images/eventarc-trigger-cloud-run-services-with-events-from-google-cloud.png" width="50%" height="50%">
+    <img alt="Eventarc presentation" src="images/eventarc-trigger-cloud-run-services-with-events-from-google-cloud.png" width="50%" height="50%">
 </a>
 
 ## Samples
 
-* [Image processing pipeline](docs/image-processing-pipeline-eventarc.md)
-* [BigQuery processing pipeline](docs/bigquery-processing-pipeline-eventarc.md)
-* [Terraform sample](docs/terraform.md)
+* [Image processing pipeline](processing-pipelines/image)
+* [BigQuery processing pipeline](processing-pipelines/bigquery)
+* [Terraform sample](terraform)
 * Eventarc and Workflows Integration
-  * [AuditLog-Cloud Storage and Workflows](docs/eventarc-auditlog-storage-workflows.md)
-  * [Pub/Sub and Workflows](docs/eventarc-pubsub-workflows.md)
+  * [AuditLog-Cloud Storage and Workflows](eventarc-workflows-integration/eventarc-auditlog-storage)
+  * [Pub/Sub and Workflows](eventarc-workflows-integration/eventarc-pubsub)
 
 -------
 

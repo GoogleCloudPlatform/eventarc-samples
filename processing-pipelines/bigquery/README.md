@@ -31,7 +31,7 @@ Admin Read, Data Read, and Data Write Log Types for Cloud Storage.
 Grant the `eventarc.eventReceiver` role to the default compute service account:
 
 ```sh
-export PROJECT_NUMBER="$(gcloud projects list --filter=$(gcloud config get-value project) --format='value(PROJECT_NUMBER)')"
+export PROJECT_NUMBER="$(gcloud projects describe $(gcloud config get-value project) --format='value(projectNumber)')"
 
 gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
     --member=serviceAccount:${PROJECT_NUMBER}-compute@developer.gserviceaccount.com \

@@ -11,7 +11,7 @@ event-driven solution.
 This repository contains a collection of samples for Eventarc for various use
 cases.
 
-## Eventarc Slides
+## Slides
 
 There's a
 [presentation](https://speakerdeck.com/meteatamel/eventarc-trigger-cloud-run-services-with-events-from-google-cloud)

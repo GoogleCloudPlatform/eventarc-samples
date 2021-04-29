@@ -19,16 +19,18 @@ the new charts via SendGrid with **Eventarc**.
 
 ## Before you begin
 
-Make sure `gcloud` is up to date:
+Before deploying services and triggers, go through some setup steps.
 
-```sh
-gcloud components update
-```
+### Enable Audit Logs
 
-[Enable Cloud Audit Logs](https://console.cloud.google.com/iam-admin/audit)
-Admin Read, Data Read, and Data Write Log Types for Cloud Storage.
+You will use [Audit Logs](https://console.cloud.google.com/iam-admin/audit)
+trigger for Cloud Storage. Make sure `Admin Read`, `Data Read`, and `Data Write`
+log types are enabled for Cloud Storage.
 
-Grant the `eventarc.eventReceiver` role to the default compute service account:
+### Default Compute service account
+
+Default compute service account will be used in Audit Log triggers. Grant the
+`eventarc.eventReceiver` role to the default compute service account:
 
 ```sh
 export PROJECT_NUMBER="$(gcloud projects describe $(gcloud config get-value project) --format='value(projectNumber)')"
@@ -38,7 +40,27 @@ gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
     --role='roles/eventarc.eventReceiver'
 ```
 
-Set region, location and platform:
+### Default Cloud Storage service account
+
+Cloud Storage service account needs to be able to publish events to Pub/Sub.
+
+Retrieve the Cloud Storage service account:
+
+```sh
+export GCS_SERVICE_ACCOUNT=$(curl -s -X GET -H "Authorization: Bearer $(gcloud auth print-access-token)" "https://storage.googleapis.com/storage/v1/projects/$(gcloud config get-value project)/serviceAccount" | jq --raw-output '.email_address')
+```
+
+Give it publish rights to Pub/Sub:
+
+```sh
+gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
+    --member=serviceAccount:${GCS_SERVICE_ACCOUNT} \
+    --role roles/pubsub.publisher
+```
+
+### Region, location, platform
+
+Set region, location and platform for Cloud Run and Eventarc:
 
 ```sh
 export REGION=europe-west1
@@ -48,7 +70,7 @@ gcloud config set run/platform managed
 gcloud config set eventarc/location ${REGION}
 ```
 
-## Create a storage bucket
+### Create a storage bucket
 
 Create a unique storage bucket to save the charts and make sure the bucket and
 the charts in the bucket are all public and in the same region as your Cloud Run
@@ -59,22 +81,6 @@ export BUCKET="$(gcloud config get-value core/project)-charts"
 gsutil mb -l $(gcloud config get-value run/region) gs://${BUCKET}
 gsutil uniformbucketlevelaccess set on gs://${BUCKET}
 gsutil iam ch allUsers:objectViewer gs://${BUCKET}
-```
-
-## Setup Cloud Storage for events
-
-Retrieve the Cloud Storage service account:
-
-```sh
-export GCS_SERVICE_ACCOUNT=$(curl -s -X GET -H "Authorization: Bearer $(gcloud auth print-access-token)" "https://storage.googleapis.com/storage/v1/projects/$(gcloud config get-value project)/serviceAccount" | jq --raw-output '.email_address')
-```
-
-Give the Cloud Storage service account publish rights to Pub/Sub:
-
-```sh
-gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
-    --member=serviceAccount:${GCS_SERVICE_ACCOUNT} \
-    --role roles/pubsub.publisher
 ```
 
 ## Notifier

@@ -48,7 +48,7 @@ gcloud beta container clusters create ${CLUSTER_NAME} \
   --addons=HttpLoadBalancing,HorizontalPodAutoscaling,CloudRun \
   --machine-type=n1-standard-4 \
   --enable-autoscaling --min-nodes=3 --max-nodes=10 \
-  --no-issue-client-certificate --num-nodes=3 --image-type=cos \
+  --no-issue-client-certificate --num-nodes=3 \
   --enable-stackdriver-kubernetes \
   --scopes=cloud-platform,logging-write,monitoring-write,pubsub \
   --zone ${CLUSTER_ZONE} \

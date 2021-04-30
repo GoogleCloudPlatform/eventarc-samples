@@ -44,24 +44,6 @@ gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
     --role='roles/eventarc.eventReceiver'
 ```
 
-### Default Cloud Storage service account
-
-Cloud Storage service account needs to be able to publish events to Pub/Sub.
-
-Retrieve the Cloud Storage service account:
-
-```sh
-export GCS_SERVICE_ACCOUNT=$(curl -s -X GET -H "Authorization: Bearer $(gcloud auth print-access-token)" "https://storage.googleapis.com/storage/v1/projects/$(gcloud config get-value project)/serviceAccount" | jq --raw-output '.email_address')
-```
-
-Give it publish rights to Pub/Sub:
-
-```sh
-gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
-    --member=serviceAccount:${GCS_SERVICE_ACCOUNT} \
-    --role roles/pubsub.publisher
-```
-
 ### Region, location, platform and Vision API
 
 Set region, location and platform for Cloud Run and Eventarc:

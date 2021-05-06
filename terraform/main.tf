@@ -18,10 +18,6 @@ provider "google" {
   project = var.project_id
 }
 
-provider "google-beta" {
-  project = var.project_id
-}
-
 # Used to retrieve project_number later
 data "google_project" "project" {
 }
@@ -34,7 +30,7 @@ resource "google_project_service" "run" {
 
 # Deploy Cloud Run service
 resource "google_cloud_run_service" "default" {
-  name     = "cloudrun-hello"
+  name     = "cloudrun-hello-tf"
   location = var.region
 
   template {
@@ -69,7 +65,6 @@ resource "google_project_service" "eventarc" {
 
 # Create a Pub/Sub trigger
 resource "google_eventarc_trigger" "trigger-pubsub-tf" {
-  provider = google-beta
   name     = "trigger-pubsub-tf"
   location = var.region
   matching_criteria {
@@ -88,7 +83,6 @@ resource "google_eventarc_trigger" "trigger-pubsub-tf" {
 
 # Create an AuditLog for Cloud Storage trigger
 resource "google_eventarc_trigger" "trigger-auditlog-tf" {
-  provider = google-beta
   name     = "trigger-auditlog-tf"
   location = var.region
   matching_criteria {

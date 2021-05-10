@@ -2,7 +2,7 @@
 
 This is a sample that shows how to use Terraform's
 [eventarc_trigger](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/eventarc_trigger)
-research to create Eventarc triggers.
+resource to create Eventarc triggers.
 
 More specifically, this sample:
 

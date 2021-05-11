@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+# [START eventarc_terraform_enableapis]
+
 provider "google" {
   project = var.project_id
 }
@@ -27,6 +29,16 @@ resource "google_project_service" "run" {
   service            = "run.googleapis.com"
   disable_on_destroy = false
 }
+
+# Enable Eventarc API
+resource "google_project_service" "eventarc" {
+  service            = "eventarc.googleapis.com"
+  disable_on_destroy = false
+}
+
+# [END eventarc_terraform_enableapis]
+
+# [START eventarc_terraform_cloudrun]
 
 # Deploy Cloud Run service
 resource "google_cloud_run_service" "default" {
@@ -57,11 +69,9 @@ resource "google_cloud_run_service_iam_member" "allUsers" {
   member   = "allUsers"
 }
 
-# Enable Eventarc API
-resource "google_project_service" "eventarc" {
-  service            = "eventarc.googleapis.com"
-  disable_on_destroy = false
-}
+# [END eventarc_terraform_cloudrun]
+
+# [START eventarc_terraform_pubsub]
 
 # Create a Pub/Sub trigger
 resource "google_eventarc_trigger" "trigger-pubsub-tf" {
@@ -80,6 +90,10 @@ resource "google_eventarc_trigger" "trigger-pubsub-tf" {
 
   depends_on = [google_project_service.eventarc]
 }
+
+# [END eventarc_terraform_pubsub]
+
+# [START eventarc_terraform_auditlog_storage]
 
 # Create an AuditLog for Cloud Storage trigger
 resource "google_eventarc_trigger" "trigger-auditlog-tf" {
@@ -107,3 +121,5 @@ resource "google_eventarc_trigger" "trigger-auditlog-tf" {
 
   depends_on = [google_project_service.eventarc]
 }
+
+# [END eventarc_terraform_auditlog_storage]

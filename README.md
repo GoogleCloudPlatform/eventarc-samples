@@ -31,8 +31,9 @@ that explains Eventarc.
 * [BigQuery processing pipeline](processing-pipelines/bigquery)
 * [Terraform sample](terraform)
 * Eventarc and Workflows Integration
-  * [AuditLog-Cloud Storage and Workflows](eventarc-workflows-integration/eventarc-auditlog-storage)
-  * [Pub/Sub and Workflows](eventarc-workflows-integration/eventarc-pubsub)
+  * [Eventarc AuditLog-Cloud Storage and Workflows](eventarc-workflows-integration/eventarc-auditlog-storage)
+  * [Eventarc Pub/Sub and Workflows](eventarc-workflows-integration/eventarc-pubsub)
+  * [Workflows and Eventarc Pub/Sub](https://github.com/GoogleCloudPlatform/workflows-demos/tree/master/workflows-eventarc-integration/workflows-pubsub)
 
 -------
 

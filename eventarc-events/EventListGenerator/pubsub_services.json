@@ -6,6 +6,11 @@
       "url": ""
     },
     {
+      "serviceName": "artifactregistry",
+      "displayName": "Artifact Registry",
+      "url": "https://cloud.google.com/artifact-registry/docs/configure-notifications"
+    },
+    {
       "serviceName": "bigquery.googleapis.com",
       "displayName": "BigQuery (scheduled queries)",
       "url": "https://cloud.google.com/bigquery/docs/scheduling-queries"

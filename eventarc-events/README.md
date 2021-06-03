@@ -10,6 +10,13 @@ The list of events supported by Eventarc.
 
 </p>
 </details>
+<details><summary>Artifact Registry</summary>
+<p>
+
+`artifactregistry` ([More info](https://cloud.google.com/artifact-registry/docs/configure-notifications))
+
+</p>
+</details>
 <details><summary>BigQuery (scheduled queries)</summary>
 <p>
 

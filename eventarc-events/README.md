@@ -10,6 +10,13 @@ The list of events supported by Eventarc.
 
 </p>
 </details>
+<details><summary>BigQuery (scheduled queries)</summary>
+<p>
+
+`bigquery.googleapis.com`` ([More info](https://cloud.google.com/bigquery/docs/scheduling-queries))
+
+</p>
+</details>
 <details><summary>Cloud Asset</summary>
 <p>
 

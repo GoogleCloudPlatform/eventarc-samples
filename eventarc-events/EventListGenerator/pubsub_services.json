@@ -6,6 +6,11 @@
       "url": ""
     },
     {
+      "serviceName": "bigquery.googleapis.com`",
+      "displayName": "BigQuery (scheduled queries)",
+      "url": "https://cloud.google.com/bigquery/docs/scheduling-queries"
+    },
+    {
       "serviceName": "cloudasset.googleapis.com",
       "displayName": "Cloud Asset",
       "url": "https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes"

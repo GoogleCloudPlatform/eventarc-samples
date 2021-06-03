@@ -6,7 +6,7 @@
       "url": ""
     },
     {
-      "serviceName": "bigquery.googleapis.com`",
+      "serviceName": "bigquery.googleapis.com",
       "displayName": "BigQuery (scheduled queries)",
       "url": "https://cloud.google.com/bigquery/docs/scheduling-queries"
     },

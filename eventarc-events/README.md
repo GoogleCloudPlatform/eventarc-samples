@@ -13,7 +13,7 @@ The list of events supported by Eventarc.
 <details><summary>BigQuery (scheduled queries)</summary>
 <p>
 
-`bigquery.googleapis.com`` ([More info](https://cloud.google.com/bigquery/docs/scheduling-queries))
+`bigquery.googleapis.com` ([More info](https://cloud.google.com/bigquery/docs/scheduling-queries))
 
 </p>
 </details>

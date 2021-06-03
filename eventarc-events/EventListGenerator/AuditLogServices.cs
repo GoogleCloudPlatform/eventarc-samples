@@ -24,7 +24,12 @@ namespace EventListGenerator
     {
         public string serviceName { get; set; }
 
-        public string displayName {get; set;}
+        private string _displayName;
+        public string displayName
+        {
+            get {return string.IsNullOrEmpty(_displayName) ? serviceName : _displayName;}
+            set {_displayName = value;}
+        }
 
         public List<Method> methods {get; set;}
     }

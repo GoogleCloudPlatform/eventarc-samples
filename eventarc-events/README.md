@@ -7,7 +7,6 @@ The list of events supported by Eventarc.
 <p>
 
 `Any custom application that can publish to a PubSub topic`
-
 </p>
 </details>
 <details><summary>Artifact Registry</summary>

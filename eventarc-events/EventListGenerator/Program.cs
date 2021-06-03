@@ -45,35 +45,18 @@ namespace EventListGenerator
             file.WriteLine("The list of events supported by Eventarc.");
         }
 
-        private static async Task AddAuditLogServicesAsync(StreamWriter file, bool devsite)
-        {
-            file.WriteLine("\n### via Cloud Audit Logs");
-
-            var stream = await client.GetStreamAsync(AUDITLOG_SERVICE_CATALOG_URL);
-            var services = await JsonSerializer.DeserializeAsync<AuditLogServices>(stream);
-            var orderedServices = services.services.OrderBy(service => service.displayName);
-
-            orderedServices.ToList().ForEach(service =>
-            {
-                if (devsite)
-                {
-                    // TODO
-                }
-                else
-                {
-                    file.WriteLine($"<details><summary>{service.displayName}</summary>");
-                    file.WriteLine("<p>\n");
-                    file.WriteLine($"`{service.serviceName}`\n");
-                    service.methods.ForEach(method => file.WriteLine($"* `{method.methodName}`"));
-                    file.WriteLine("\n</p>");
-                    file.WriteLine("</details>");
-                }
-            });
-        }
-
         private static void AddPubSubServices(StreamWriter file, bool devsite)
         {
-            file.WriteLine("\n### via Cloud Pub/Sub");
+            if (devsite)
+            {
+                file.WriteLine("\n## Using Pub/Sub\n");
+                file.WriteLine("Requests to your service are triggered by messages published to a Pub/Sub topic.");
+                file.WriteLine("For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.md).\n");
+            }
+            else
+            {
+                file.WriteLine("\n### via Cloud Pub/Sub");
+            }
 
             var jsonString = File.ReadAllText(PUBSUB_SERVICE_CATALOG_FILE);
             var services = JsonSerializer.Deserialize<PubSubServices>(jsonString);
@@ -83,14 +66,56 @@ namespace EventListGenerator
             {
                 if (devsite)
                 {
-                    // TODO
+                    file.WriteLine($"### {service.displayName}");
+                    file.Write($"`{service.serviceName}`");
+                    if (!string.IsNullOrEmpty(service.url)) file.Write($" ([more info]({service.url}))");
+                    file.WriteLine("\n");
                 }
                 else
                 {
                     file.WriteLine($"<details><summary>{service.displayName}</summary>");
                     file.WriteLine("<p>\n");
                     file.Write($"`{service.serviceName}`");
-                    if (!string.IsNullOrEmpty(service.url)) file.WriteLine($" ([More info]({service.url}))");
+                    if (!string.IsNullOrEmpty(service.url)) file.WriteLine($" ([more info]({service.url}))");
+                    file.WriteLine("\n</p>");
+                    file.WriteLine("</details>");
+                }
+            });
+        }
+
+        private static async Task AddAuditLogServicesAsync(StreamWriter file, bool devsite)
+        {
+            if (devsite)
+            {
+                file.WriteLine("## Using Cloud Audit Logs\n");
+                file.WriteLine("These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.md).\n");
+            }
+            else
+            {
+                file.WriteLine("\n### via Cloud Audit Logs");
+            }
+
+            var stream = await client.GetStreamAsync(AUDITLOG_SERVICE_CATALOG_URL);
+            var services = await JsonSerializer.DeserializeAsync<AuditLogServices>(stream);
+            var orderedServices = services.services.OrderBy(service => service.displayName);
+
+            orderedServices.ToList().ForEach(service =>
+            {
+                if (devsite)
+                {
+                    file.WriteLine($"### {service.displayName}\n");
+                    file.WriteLine("### `serviceName`\n");
+                    file.WriteLine($"- `{service.serviceName}`\n");
+                    file.WriteLine("### `methodName`\n");
+                    service.methods.ForEach(method => file.WriteLine($"- `{method.methodName}`"));
+                    file.WriteLine("");
+                }
+                else
+                {
+                    file.WriteLine($"<details><summary>{service.displayName}</summary>");
+                    file.WriteLine("<p>\n");
+                    file.WriteLine($"`{service.serviceName}`\n");
+                    service.methods.ForEach(method => file.WriteLine($"* `{method.methodName}`"));
                     file.WriteLine("\n</p>");
                     file.WriteLine("</details>");
                 }

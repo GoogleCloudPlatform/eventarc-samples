@@ -12,77 +12,77 @@ The list of events supported by Eventarc.
 <details><summary>Artifact Registry</summary>
 <p>
 
-`artifactregistry` ([More info](https://cloud.google.com/artifact-registry/docs/configure-notifications))
+`artifactregistry` ([more info](https://cloud.google.com/artifact-registry/docs/configure-notifications))
 
 </p>
 </details>
 <details><summary>BigQuery (scheduled queries)</summary>
 <p>
 
-`bigquery.googleapis.com` ([More info](https://cloud.google.com/bigquery/docs/scheduling-queries))
+`bigquery.googleapis.com` ([more info](https://cloud.google.com/bigquery/docs/scheduling-queries))
 
 </p>
 </details>
 <details><summary>Cloud Asset</summary>
 <p>
 
-`cloudasset.googleapis.com` ([More info](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes))
+`cloudasset.googleapis.com` ([more info](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes))
 
 </p>
 </details>
 <details><summary>Cloud Billing</summary>
 <p>
 
-`cloudbilling.googleapis.com` ([More info](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications))
+`cloudbilling.googleapis.com` ([more info](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications))
 
 </p>
 </details>
 <details><summary>Cloud Build</summary>
 <p>
 
-`cloudbuild.googleapis.com` ([More info](https://cloud.google.com/build/docs/subscribe-build-notifications))
+`cloudbuild.googleapis.com` ([more info](https://cloud.google.com/build/docs/subscribe-build-notifications))
 
 </p>
 </details>
 <details><summary>Cloud Healthcare</summary>
 <p>
 
-`healthcare.googleapis.com` ([More info](https://cloud.google.com/healthcare/docs/how-tos/pubsub))
+`healthcare.googleapis.com` ([more info](https://cloud.google.com/healthcare/docs/how-tos/pubsub))
 
 </p>
 </details>
 <details><summary>Cloud IoT</summary>
 <p>
 
-`cloudiot.googleapis.com` ([More info](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#publishing_telemetry_events_to_additional_cloud_pubsub_topics))
+`cloudiot.googleapis.com` ([more info](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#publishing_telemetry_events_to_additional_cloud_pubsub_topics))
 
 </p>
 </details>
 <details><summary>Cloud Scheduler</summary>
 <p>
 
-`cloudscheduler.googleapis.com` ([More info](https://cloud.google.com/scheduler/docs/creating))
+`cloudscheduler.googleapis.com` ([more info](https://cloud.google.com/scheduler/docs/creating))
 
 </p>
 </details>
 <details><summary>Cloud Source Repositories</summary>
 <p>
 
-`sourcerepo.googleapis.com` ([More info](https://cloud.google.com/source-repositories/docs/pubsub-notifications))
+`sourcerepo.googleapis.com` ([more info](https://cloud.google.com/source-repositories/docs/pubsub-notifications))
 
 </p>
 </details>
 <details><summary>Cloud Storage</summary>
 <p>
 
-`storage.googleapis.com` ([More info](https://cloud.google.com/storage/docs/pubsub-notifications))
+`storage.googleapis.com` ([more info](https://cloud.google.com/storage/docs/pubsub-notifications))
 
 </p>
 </details>
 <details><summary>Container Registry</summary>
 <p>
 
-`containerregistry` ([More info](https://cloud.google.com/container-registry/docs/configuring-notifications))
+`containerregistry` ([more info](https://cloud.google.com/container-registry/docs/configuring-notifications))
 
 </p>
 </details>

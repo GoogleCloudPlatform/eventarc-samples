@@ -3,12 +3,6 @@
 The list of events supported by Eventarc.
 
 ### via Cloud Pub/Sub
-<details><summary>Any custom application</summary>
-<p>
-
-`Any custom application that can publish to a PubSub topic`
-</p>
-</details>
 <details><summary>Artifact Registry</summary>
 <p>
 
@@ -84,6 +78,12 @@ The list of events supported by Eventarc.
 
 `containerregistry` ([more info](https://cloud.google.com/container-registry/docs/configuring-notifications))
 
+</p>
+</details>
+<details><summary>Custom applications</summary>
+<p>
+
+`Any custom application that can publish to a PubSub topic`
 </p>
 </details>
 

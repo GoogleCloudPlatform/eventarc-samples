@@ -67,7 +67,7 @@ namespace EventListGenerator
                 if (devsite)
                 {
                     file.WriteLine($"### {service.displayName}");
-                    file.Write($"`{service.serviceName}`");
+                    file.Write($"- `{service.serviceName}`");
                     if (!string.IsNullOrEmpty(service.url)) file.Write($" ([more info]({service.url}))");
                     file.WriteLine("\n");
                 }
@@ -104,9 +104,9 @@ namespace EventListGenerator
                 if (devsite)
                 {
                     file.WriteLine($"### {service.displayName}\n");
-                    file.WriteLine("### `serviceName`\n");
+                    file.WriteLine("#### `serviceName`\n");
                     file.WriteLine($"- `{service.serviceName}`\n");
-                    file.WriteLine("### `methodName`\n");
+                    file.WriteLine("#### `methodName`\n");
                     service.methods.ForEach(method => file.WriteLine($"- `{method.methodName}`"));
                     file.WriteLine("");
                 }

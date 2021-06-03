@@ -2,7 +2,7 @@
   "services": [
     {
       "serviceName": "Any custom application that can publish to a PubSub topic",
-      "displayName": "Any custom application",
+      "displayName": "Custom applications",
       "url": ""
     },
     {

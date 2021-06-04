@@ -22,10 +22,13 @@ namespace EventListGenerator
 
     public class PubSubService
     {
+        public string description {get; set;}
         public string serviceName { get; set; }
 
         public string displayName {get; set;}
 
         public string url {get; set;}
+
+        public int priority {get; set;}
     }
 }

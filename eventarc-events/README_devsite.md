@@ -7,41 +7,53 @@ The list of events supported by Eventarc.
 Requests to your service are triggered by messages published to a Pub/Sub topic.
 For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.md).
 
-### Artifact Registry
-- `artifactregistry` ([more info](https://cloud.google.com/artifact-registry/docs/configure-notifications))
-
-### BigQuery (scheduled queries)
-- `bigquery.googleapis.com` ([more info](https://cloud.google.com/bigquery/docs/scheduling-queries))
-
-### Cloud Asset
-- `cloudasset.googleapis.com` ([more info](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes))
-
-### Cloud Billing
-- `cloudbilling.googleapis.com` ([more info](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications))
-
-### Cloud Build
-- `cloudbuild.googleapis.com` ([more info](https://cloud.google.com/build/docs/subscribe-build-notifications))
-
-### Cloud Healthcare
-- `healthcare.googleapis.com` ([more info](https://cloud.google.com/healthcare/docs/how-tos/pubsub))
-
-### Cloud IoT
-- `cloudiot.googleapis.com` ([more info](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#publishing_telemetry_events_to_additional_cloud_pubsub_topics))
-
-### Cloud Scheduler
-- `cloudscheduler.googleapis.com` ([more info](https://cloud.google.com/scheduler/docs/creating))
-
-### Cloud Source Repositories
-- `sourcerepo.googleapis.com` ([more info](https://cloud.google.com/source-repositories/docs/pubsub-notifications))
-
-### Cloud Storage
-- `storage.googleapis.com` ([more info](https://cloud.google.com/storage/docs/pubsub-notifications))
-
-### Container Registry
-- `containerregistry` ([more info](https://cloud.google.com/container-registry/docs/configuring-notifications))
-
 ### Custom applications
-- `Any custom application that can publish to a PubSub topic`
+
+- Any custom application that can publish to a PubSub topic
+
+### [Artifact Registry](https://cloud.google.com/artifact-registry/docs/configure-notifications)
+
+- `artifactregistry`
+
+### [BigQuery (scheduled queries)](https://cloud.google.com/bigquery/docs/scheduling-queries)
+
+- `bigquery.googleapis.com`
+
+### [Cloud Asset](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes)
+
+- `cloudasset.googleapis.com`
+
+### [Cloud Billing](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications)
+
+- `cloudbilling.googleapis.com`
+
+### [Cloud Build](https://cloud.google.com/build/docs/subscribe-build-notifications)
+
+- `cloudbuild.googleapis.com`
+
+### [Cloud Healthcare](https://cloud.google.com/healthcare/docs/how-tos/pubsub)
+
+- `healthcare.googleapis.com`
+
+### [Cloud IoT](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#publishing_telemetry_events_to_additional_cloud_pubsub_topics)
+
+- `cloudiot.googleapis.com`
+
+### [Cloud Scheduler](https://cloud.google.com/scheduler/docs/creating)
+
+- `cloudscheduler.googleapis.com`
+
+### [Cloud Source Repositories](https://cloud.google.com/source-repositories/docs/pubsub-notifications)
+
+- `sourcerepo.googleapis.com`
+
+### [Cloud Storage](https://cloud.google.com/storage/docs/pubsub-notifications)
+
+- `storage.googleapis.com`
+
+### [Container Registry](https://cloud.google.com/container-registry/docs/configuring-notifications)
+
+- `containerregistry`
 
 ## Using Cloud Audit Logs
 

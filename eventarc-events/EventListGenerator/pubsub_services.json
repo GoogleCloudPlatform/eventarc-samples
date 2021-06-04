@@ -1,9 +1,11 @@
 {
   "services": [
     {
-      "serviceName": "Any custom application that can publish to a PubSub topic",
+      "serviceName": "",
       "displayName": "Custom applications",
-      "url": ""
+      "url": "",
+      "description": "Any custom application that can publish to a PubSub topic",
+      "priority": 10
     },
     {
       "serviceName": "artifactregistry",

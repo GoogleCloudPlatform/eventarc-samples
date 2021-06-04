@@ -24,19 +24,22 @@ namespace EventListGenerator
     {
         private const string PUBSUB_SERVICE_CATALOG_FILE = "pubsub_services.json";
         private const string AUDITLOG_SERVICE_CATALOG_URL = "https://raw.githubusercontent.com/googleapis/google-cloudevents/master/json/audit/service_catalog.json";
-        private const string DEFAULT_OUTPUT_FILE = "../README.md";
+        private const string OUTPUT_GITHUB = "../README.md";
+        private const string OUTPUT_DEVSITE = "../README_devsite.md";
         private static readonly HttpClient client = new HttpClient();
 
-        static async Task Main(string output = DEFAULT_OUTPUT_FILE, bool devsite = false)
+        static async Task Main(bool devsite = false)
         {
-            Console.WriteLine($"Output file: {output}");
             Console.WriteLine($"Devsite? {devsite}");
+            var output = devsite ? OUTPUT_DEVSITE : OUTPUT_GITHUB;
 
             using StreamWriter file = new(output);
 
             AddHeader(file);
             AddPubSubServices(file, devsite);
             await AddAuditLogServicesAsync(file, devsite);
+
+            Console.WriteLine($"File generated: {output}");
         }
 
         private static void AddHeader(StreamWriter file)
@@ -51,7 +54,7 @@ namespace EventListGenerator
             {
                 file.WriteLine("\n## Using Pub/Sub\n");
                 file.WriteLine("Requests to your service are triggered by messages published to a Pub/Sub topic.");
-                file.WriteLine("For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.md).\n");
+                file.WriteLine("For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.md).");
             }
             else
             {
@@ -60,22 +63,45 @@ namespace EventListGenerator
 
             var jsonString = File.ReadAllText(PUBSUB_SERVICE_CATALOG_FILE);
             var services = JsonSerializer.Deserialize<PubSubServices>(jsonString);
-            var orderedServices = services.services.OrderBy(service => service.displayName);
+            var orderedServices = services.services.OrderByDescending(service => service.priority)
+                .ThenBy(service => service.displayName);
 
             orderedServices.ToList().ForEach(service =>
             {
                 if (devsite)
                 {
-                    file.WriteLine($"### {service.displayName}");
-                    file.Write($"- `{service.serviceName}`");
-                    if (!string.IsNullOrEmpty(service.url)) file.Write($" ([more info]({service.url}))");
-                    file.WriteLine("\n");
+                    if (string.IsNullOrEmpty(service.url))
+                    {
+                        file.WriteLine($"\n### {service.displayName}");
+                    }
+                    else
+                    {
+                        file.WriteLine($"\n### [{service.displayName}]({service.url})");
+                    }
+
+                    // Assuming one or the other
+                    if (!string.IsNullOrEmpty(service.serviceName))
+                    {
+                        file.WriteLine($"\n- `{service.serviceName}`");
+                    }
+                    else if (!string.IsNullOrEmpty(service.description))
+                    {
+                        file.WriteLine($"\n- {service.description}");
+                    }
                 }
                 else
                 {
                     file.WriteLine($"<details><summary>{service.displayName}</summary>");
                     file.WriteLine("<p>\n");
-                    file.Write($"`{service.serviceName}`");
+                    // Assuming one or the other
+                    if (!string.IsNullOrEmpty(service.serviceName))
+                    {
+                        file.Write($"`{service.serviceName}`");
+                    }
+                    else if (!string.IsNullOrEmpty(service.description))
+                    {
+                        file.Write($"{service.description}");
+                    }
                     if (!string.IsNullOrEmpty(service.url)) file.WriteLine($" ([more info]({service.url}))");
                     file.WriteLine("\n</p>");
                     file.WriteLine("</details>");
@@ -87,7 +113,7 @@ namespace EventListGenerator
         {
             if (devsite)
             {
-                file.WriteLine("## Using Cloud Audit Logs\n");
+                file.WriteLine("\n## Using Cloud Audit Logs\n");
                 file.WriteLine("These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.md).\n");
             }
             else

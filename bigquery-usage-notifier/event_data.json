@@ -1,0 +1,79 @@
+{
+  "protoPayload": {
+    "status": {
+    },
+    "authenticationInfo": {
+      "principalEmail": "atameldev@gmail.com"
+    },
+    "requestMetadata": {
+      "callerIp": "178.148.16.119",
+      "callerSuppliedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36,gzip(gfe),gzip(gfe)"
+    },
+    "serviceName": "bigquery.googleapis.com",
+    "methodName": "jobservice.jobcompleted",
+    "resourceName": "projects/events-atamel/jobs/bquxjob_2b0b1636_179d67e62f1",
+    "serviceData": {
+      "@type": "type.googleapis.com/google.cloud.bigquery.logging.v1.AuditData",
+      "jobCompletedEvent": {
+        "job": {
+          "jobStatus": {
+            "state": "DONE",
+            "error": {
+            }
+          },
+          "jobConfiguration": {
+            "query": {
+              "queryPriority": "QUERY_INTERACTIVE",
+              "query": "SELECT * FROM `bigquery-samples.reddit.full`",
+              "destinationTable": {
+                "datasetId": "_f87b8ef2159c9de07fde5343d8b454f5badefee7",
+                "projectId": "events-atamel",
+                "tableId": "anona1b87ad14905f207fb105acc11a7564084610c95"
+              },
+              "statementType": "SELECT",
+              "defaultDataset": {
+              },
+              "writeDisposition": "WRITE_TRUNCATE",
+              "createDisposition": "CREATE_IF_NEEDED"
+            }
+          },
+          "jobName": {
+            "projectId": "events-atamel",
+            "jobId": "bquxjob_2b0b1636_179d67e62f1",
+            "location": "US"
+          },
+          "jobStatistics": {
+            "endTime": "2021-06-04T10:08:20.840Z",
+            "totalSlotMs": "223064",
+            "createTime": "2021-06-04T10:07:58.254Z",
+            "totalBilledBytes": "1450180608",
+            "referencedTables": [
+              {
+                "tableId": "full",
+                "datasetId": "reddit",
+                "projectId": "bigquery-samples"
+              }
+            ],
+            "queryOutputRowCount": "2267098",
+            "startTime": "2021-06-04T10:07:58.666Z",
+            "totalTablesProcessed": 1,
+            "billingTier": 1,
+            "totalProcessedBytes": "1449319174"
+          }
+        },
+        "eventName": "query_job_completed"
+      }
+    }
+  },
+  "insertId": "-a8zrp2e4blce",
+  "resource": {
+    "type": "bigquery_resource",
+    "labels": {
+      "project_id": "events-atamel"
+    }
+  },
+  "timestamp": "2021-06-04T10:08:20.845676Z",
+  "severity": "INFO",
+  "logName": "projects/events-atamel/logs/cloudaudit.googleapis.com%2Fdata_access",
+  "receiveTimestamp": "2021-06-04T10:08:21.170390325Z"
+}

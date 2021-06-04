@@ -60,10 +60,6 @@ export PROJECT_NUMBER="$(gcloud projects describe $(gcloud config get-value proj
 gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
     --member=serviceAccount:${PROJECT_NUMBER}-compute@developer.gserviceaccount.com \
     --role='roles/eventarc.eventReceiver'
-
-gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
-    --member="serviceAccount:service-${PROJECT_NUMBER}@gcp-sa-pubsub.iam.gserviceaccount.com" \
-    --role='roles/iam.serviceAccountTokenCreator'
 ```
 
 Create the trigger:

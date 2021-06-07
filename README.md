@@ -34,6 +34,7 @@ that explains Eventarc.
   * [Eventarc AuditLog-Cloud Storage and Workflows](eventarc-workflows-integration/eventarc-auditlog-storage)
   * [Eventarc Pub/Sub and Workflows](eventarc-workflows-integration/eventarc-pubsub)
   * [Workflows and Eventarc Pub/Sub](https://github.com/GoogleCloudPlatform/workflows-demos/tree/master/workflows-eventarc-integration/workflows-pubsub)
+* [Expensive BigQuery jobs notifier with Eventarc and SendGrid](bigquery-jobs-notifier)
 
 -------
 

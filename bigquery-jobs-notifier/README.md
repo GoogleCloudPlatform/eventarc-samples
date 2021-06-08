@@ -4,6 +4,8 @@ In this sample, you'll build a Cloud Run service that receives notifications of
 completed BigQuery jobs using Eventarc, determines if the BigQuery job was
 expensive to run and if so, sends a notification email using SendGrid.
 
+![BigQuery Jobs Notifier](bigquery-jobs-notifier.png)
+
 ## Determine completed & expensive BigQuery jobs
 
 You can check AuditLogs of BigQuery for all the information. Note that AuditLogs

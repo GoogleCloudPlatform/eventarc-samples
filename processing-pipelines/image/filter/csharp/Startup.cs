@@ -53,8 +53,7 @@ namespace Filter
             {
                 endpoints.MapPost("/", async context =>
                 {
-                    var cloudEvent = await eventReader.Read(context);
-                    var (bucket, name) = eventReader.ReadCloudStorageData(cloudEvent);
+                    var (bucket, name) = await eventReader.ReadCloudStorageData(context);
 
                     // This is only needed in Cloud Run (Managed) when the
                     // events are not filtered by bucket yet.

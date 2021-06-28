@@ -13,7 +13,8 @@
 // limitations under the License.
 using System.Threading.Tasks;
 using CloudNative.CloudEvents;
-using Google.Events;
+using CloudNative.CloudEvents.AspNetCore;
+using CloudNative.CloudEvents.NewtonsoftJson;
 using Google.Events.Protobuf.Cloud.Audit.V1;
 using Google.Events.Protobuf.Cloud.PubSub.V1;
 using Google.Events.Protobuf.Cloud.Scheduler.V1;
@@ -40,31 +41,35 @@ namespace Common
             _logger = logger;
         }
 
-        public async Task<CloudEvent> Read(HttpContext context)
-        {
-            var cloudEvent = await context.Request.ReadCloudEventAsync();
-            _logger.LogInformation($"Received CloudEvent\n{cloudEvent.GetLog()}");
-            return cloudEvent;
-        }
-
-        public (string, string) ReadCloudStorageData(CloudEvent cloudEvent)
+        public async Task<(string, string)> ReadCloudStorageData(HttpContext context)
         {
             _logger.LogInformation("Reading cloud storage data");
 
-            string bucket = null, name = null;
 
-            switch (cloudEvent.Type)
+            string bucket = null, name = null;
+            CloudEvent cloudEvent;
+            CloudEventFormatter formatter;
+            var ceType = context.Request.Headers["ce-type"];
+
+            switch (ceType)
             {
                 case EVENT_TYPE_AUDITLOG:
                     //"protoPayload" : {"resourceName":"projects/_/buckets/events-atamel-images-input/objects/atamel.jpg}";
+                    formatter = CloudEventFormatterAttribute.CreateFormatter(typeof(LogEntryData));
+                    cloudEvent = await context.Request.ToCloudEventAsync(formatter);
+                    _logger.LogInformation($"Received CloudEvent\n{cloudEvent.GetLog()}");
 
-                    var logEntryData = CloudEventConverters.ConvertCloudEventData<LogEntryData>(cloudEvent);
+                    var logEntryData = (LogEntryData)cloudEvent.Data;
                     var tokens = logEntryData.ProtoPayload.ResourceName.Split('/');
                     bucket = tokens[3];
                     name = tokens[5];
                     break;
                 case EVENT_TYPE_STORAGE:
-                    var storageObjectData = CloudEventConverters.ConvertCloudEventData<StorageObjectData>(cloudEvent);
+                    formatter = CloudEventFormatterAttribute.CreateFormatter(typeof(StorageObjectData));
+                    cloudEvent = await context.Request.ToCloudEventAsync(formatter);
+                    _logger.LogInformation($"Received CloudEvent\n{cloudEvent.GetLog()}");
+
+                    var storageObjectData = (StorageObjectData)cloudEvent.Data;
                     bucket = storageObjectData.Bucket;
                     name = storageObjectData.Name;
                     break;
@@ -72,8 +77,11 @@ namespace Common
                     // {"message": {
                     //     "data": "eyJidWNrZXQiOiJldmVudHMtYXRhbWVsLWltYWdlcy1pbnB1dCIsIm5hbWUiOiJiZWFjaC5qcGcifQ==",
                     // },"subscription": "projects/events-atamel/subscriptions/cre-europe-west1-trigger-resizer-sub-000"}
+                    formatter = CloudEventFormatterAttribute.CreateFormatter(typeof(MessagePublishedData));
+                    cloudEvent = await context.Request.ToCloudEventAsync(formatter);
+                    _logger.LogInformation($"Received CloudEvent\n{cloudEvent.GetLog()}");
 
-                    var messagePublishedData = CloudEventConverters.ConvertCloudEventData<MessagePublishedData>(cloudEvent);
+                    var messagePublishedData = (MessagePublishedData)cloudEvent.Data;
                     var pubSubMessage = messagePublishedData.Message;
                     _logger.LogInformation($"Type: {EVENT_TYPE_PUBSUB} data: {pubSubMessage.Data.ToBase64()}");
 
@@ -85,10 +93,13 @@ namespace Common
                     name = (string)parsed["name"];
                     break;
                 default:
-                    // Data: {"bucket":"knative-atamel-images-input","name":"beach.jpg"}
-                    _logger.LogInformation($"Type: {cloudEvent.Type} data: {cloudEvent.Data}");
+                    // Data:
+                    // {"bucket":"knative-atamel-images-input","name":"beach.jpg"}
+                    formatter = new JsonEventFormatter();
+                    cloudEvent = await context.Request.ToCloudEventAsync(formatter);
+                    _logger.LogInformation($"Received CloudEvent\n{cloudEvent.GetLog()}");
 
-                    var parsedCustom = JValue.Parse((string)cloudEvent.Data);
+                    var parsedCustom = (JObject)cloudEvent.Data;
                     bucket = (string)parsedCustom["bucket"];
                     name = (string)parsedCustom["name"];
                     break;
@@ -97,16 +108,23 @@ namespace Common
             return (bucket, name);
         }
 
-        public string ReadCloudSchedulerData(CloudEvent cloudEvent)
+        public async Task<string> ReadCloudSchedulerData(HttpContext context)
         {
             _logger.LogInformation("Reading cloud scheduler data");
 
             string country = null;
+            CloudEvent cloudEvent;
+            CloudEventFormatter formatter;
+            var ceType = context.Request.Headers["ce-type"];
 
-            switch (cloudEvent.Type)
+            switch (ceType)
             {
                 case EVENT_TYPE_PUBSUB:
-                    var messagePublishedData = CloudEventConverters.ConvertCloudEventData<MessagePublishedData>(cloudEvent);
+                    formatter = CloudEventFormatterAttribute.CreateFormatter(typeof(MessagePublishedData));
+                    cloudEvent = await context.Request.ToCloudEventAsync(formatter);
+                    _logger.LogInformation($"Received CloudEvent\n{cloudEvent.GetLog()}");
+
+                    var messagePublishedData = (MessagePublishedData)cloudEvent.Data;
                     var pubSubMessage = messagePublishedData.Message;
                     _logger.LogInformation($"Type: {EVENT_TYPE_PUBSUB} data: {pubSubMessage.Data.ToBase64()}");
 
@@ -114,7 +132,11 @@ namespace Common
                     break;
                 case EVENT_TYPE_SCHEDULER:
                     // Data: {"custom_data":"Q3lwcnVz"}
-                    var schedulerJobData = CloudEventConverters.ConvertCloudEventData<SchedulerJobData>(cloudEvent);
+                    formatter = CloudEventFormatterAttribute.CreateFormatter(typeof(SchedulerJobData));
+                    cloudEvent = await context.Request.ToCloudEventAsync(formatter);
+                    _logger.LogInformation($"Received CloudEvent\n{cloudEvent.GetLog()}");
+
+                    var schedulerJobData = (SchedulerJobData)cloudEvent.Data;
                     _logger.LogInformation($"Type: {EVENT_TYPE_SCHEDULER} data: {schedulerJobData.CustomData.ToBase64()}");
 
                     country = schedulerJobData.CustomData.ToStringUtf8();

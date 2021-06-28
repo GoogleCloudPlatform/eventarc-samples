@@ -9,9 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CloudNative.CloudEvents" Version="1.3.80" />
-    <PackageReference Include="CloudNative.CloudEvents.AspNetCore" Version="1.3.80" />
-    <PackageReference Include="Google.Cloud.BigQuery.V2" Version="2.0.0-beta04" />
+    <PackageReference Include="CloudNative.CloudEvents.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Google.Cloud.BigQuery.V2" Version="2.2.0" />
   </ItemGroup>
 
 </Project>

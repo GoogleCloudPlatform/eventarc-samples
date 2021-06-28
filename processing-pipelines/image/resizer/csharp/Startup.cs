@@ -61,8 +61,7 @@ namespace Resizer
                 {
                     try
                     {
-                        var cloudEvent = await eventReader.Read(context);
-                        var (bucket, name) = eventReader.ReadCloudStorageData(cloudEvent);
+                        var (bucket, name) = await eventReader.ReadCloudStorageData(context);
 
                         using (var inputStream = new MemoryStream())
                         {

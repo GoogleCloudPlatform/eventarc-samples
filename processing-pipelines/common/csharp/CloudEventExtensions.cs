@@ -26,7 +26,7 @@ namespace Common
                 + $"Subject: {cloudEvent.Subject}\n"
                 + $"DataSchema: {cloudEvent.DataSchema}\n"
                 + $"DataContentType: {cloudEvent.DataContentType}\n"
-                + $"Time: {cloudEvent.Time?.ToUniversalTime():yyyy-MM-dd'T'HH:mm:ss.fff'Z'}\n"
+                + $"Time: {cloudEvent.Time?.UtcDateTime:yyyy-MM-dd'T'HH:mm:ss.fff'Z'}\n"
                 + $"SpecVersion: {cloudEvent.SpecVersion}\n"
                 + $"Data: {cloudEvent.Data}";
         }

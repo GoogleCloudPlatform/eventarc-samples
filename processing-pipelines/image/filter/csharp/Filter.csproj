@@ -9,9 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CloudNative.CloudEvents" Version="1.3.80" />
-    <PackageReference Include="CloudNative.CloudEvents.AspNetCore" Version="1.3.80" />
-    <PackageReference Include="Google.Cloud.Vision.V1" Version="2.0.0" />
+    <PackageReference Include="CloudNative.CloudEvents.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Google.Cloud.Vision.V1" Version="2.3.0" />
   </ItemGroup>
 
 </Project>

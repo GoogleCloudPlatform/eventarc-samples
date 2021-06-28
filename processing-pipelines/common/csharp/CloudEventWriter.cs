@@ -12,16 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 using System;
-using System.Net.Mime;
 using System.Threading.Tasks;
 using CloudNative.CloudEvents;
+using CloudNative.CloudEvents.NewtonsoftJson;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using System.Text;
 
 namespace Common
 {
     public class CloudEventWriter : IEventWriter
     {
+        private static readonly CloudEventFormatter formatter = new JsonEventFormatter();
+
         private readonly string _eventSource;
         private readonly string _eventType;
         private readonly ILogger _logger;
@@ -35,9 +38,13 @@ namespace Common
 
         public async Task Write(string eventData, HttpContext context)
         {
-            var replyEvent = new CloudEvent(_eventType, new Uri($"urn:{_eventSource}"))
+            var replyEvent = new CloudEvent
             {
-                DataContentType = new ContentType("application/json"),
+                Type = _eventType,
+                Source = new Uri($"urn:{_eventSource}"),
+                Time = DateTimeOffset.Now,
+                DataContentType = "application/json",
+                Id = Guid.NewGuid().ToString(),
                 Data = eventData
             };
             _logger.LogInformation("Replying with CloudEvent\n" + replyEvent.GetLog());

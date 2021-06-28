@@ -59,8 +59,7 @@ namespace QueryRunner
                 {
                     var client = await BigQueryClient.CreateAsync(projectId);
 
-                    var cloudEvent = await eventReader.Read(context);
-                    var country = eventReader.ReadCloudSchedulerData(cloudEvent);
+                    var country = await eventReader.ReadCloudSchedulerData(context);
 
                     _tableId = country.Replace(" ", "").ToLowerInvariant();
 

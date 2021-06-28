@@ -56,8 +56,7 @@ namespace Labeler
                 {
                     try
                     {
-                        var cloudEvent = await eventReader.Read(context);
-                        var (bucket, name) = eventReader.ReadCloudStorageData(cloudEvent);
+                        var (bucket, name) = await eventReader.ReadCloudStorageData(context);
 
                         var storageUrl = $"gs://{bucket}/{name}";
                         logger.LogInformation($"Storage url: {storageUrl}");

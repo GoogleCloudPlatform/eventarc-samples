@@ -30,6 +30,7 @@ app.post('/', async (req, res) => {
   console.log({headers: req.headers, body: req.body});
 
   try {
+    // [START eventarc_workflows_execute]
     console.log(`Workflow path: ${GOOGLE_CLOUD_PROJECT}, ${WORKFLOW_REGION}, ${WORKFLOW_NAME}`);
     const execResponse = await client.createExecution({
       parent: client.workflowPath(GOOGLE_CLOUD_PROJECT, WORKFLOW_REGION, WORKFLOW_NAME),
@@ -43,7 +44,7 @@ app.post('/', async (req, res) => {
     console.log(`Created execution: ${execName}`);
 
     res.status(200).send(`Created execution: ${execName}`);
-
+    // [END eventarc_workflows_execute]
   } catch (e) {
     console.error(`Error executing workflow: ${e}`);
     res.status(500).send(`Error executing workflow: ${e}`);

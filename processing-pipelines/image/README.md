@@ -25,41 +25,53 @@ Storage events to various services with **Eventarc**.
 
 Before deploying services and triggers, go through some setup steps.
 
+### Enable APIs
+
+Make sure that the project id is setup:
+
+```sh
+gcloud config set project [YOUR-PROJECT-ID]
+PROJECT_ID=$PROJECT_ID
+```
+
+Enable all necessary services:
+
+```sh
+gcloud services enable run.googleapis.com
+gcloud services enable eventarc.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
+gcloud services enable vision.googleapis.com
+```
+
 ### Enable Audit Logs
 
 You will use [Audit Logs](https://console.cloud.google.com/iam-admin/audit)
 trigger for Cloud Storage. Make sure `Admin Read`, `Data Read`, and `Data Write`
 log types are enabled for Cloud Storage.
 
-### Default Compute service account
-
-Default compute service account will be used in Audit Log triggers. Grant the
-`eventarc.eventReceiver` role to the default compute service account:
-
-```sh
-export PROJECT_NUMBER="$(gcloud projects describe $(gcloud config get-value project) --format='value(projectNumber)')"
-
-gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
-    --member=serviceAccount:${PROJECT_NUMBER}-compute@developer.gserviceaccount.com \
-    --role='roles/eventarc.eventReceiver'
-```
-
 ### Region, location, platform and Vision API
 
 Set region, location and platform for Cloud Run and Eventarc:
 
 ```sh
-export REGION=europe-west1
+REGION=europe-west1
 
-gcloud config set run/region ${REGION}
+gcloud config set run/region $REGION
 gcloud config set run/platform managed
-gcloud config set eventarc/location ${REGION}
+gcloud config set eventarc/location $REGION
 ```
 
-Some services use Vision API. Make sure the Vision API is enabled:
+### Configure a service account
+
+Default compute service account will be used in Audit Log triggers. Grant the
+`eventarc.eventReceiver` role to the default compute service account:
 
 ```sh
-gcloud services enable vision.googleapis.com
+PROJECT_NUMBER="$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')"
+
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member=serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com \
+    --role='roles/eventarc.eventReceiver'
 ```
 
 ### Create storage buckets
@@ -68,10 +80,10 @@ Create 2 unique storage buckets to save pre and post processed images. Make sure
 the bucket is in the same region as your Cloud Run service:
 
 ```sh
-export BUCKET1="$(gcloud config get-value core/project)-images-input"
-export BUCKET2="$(gcloud config get-value core/project)-images-output"
-gsutil mb -l $(gcloud config get-value run/region) gs://${BUCKET1}
-gsutil mb -l $(gcloud config get-value run/region) gs://${BUCKET2}
+BUCKET1=$PROJECT_ID-images-input
+BUCKET2=$PROJECT_ID-images-output
+gsutil mb -l $REGION gs://$BUCKET1
+gsutil mb -l $REGION gs://$BUCKET2
 ```
 
 ## Watermark
@@ -90,17 +102,17 @@ Inside the top level
 folder, build and push the container image:
 
 ```sh
-export SERVICE_NAME=watermarker
-docker build -t gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1 -f image/${SERVICE_NAME}/csharp/Dockerfile .
-docker push gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1
+SERVICE_NAME=watermarker
+docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 -f image/$SERVICE_NAME/csharp/Dockerfile .
+docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:v1
 ```
 
 Deploy the service:
 
 ```sh
-gcloud run deploy ${SERVICE_NAME} \
-  --image gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1 \
-  --update-env-vars BUCKET=${BUCKET2} \
+gcloud run deploy $SERVICE_NAME \
+  --image gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 \
+  --update-env-vars BUCKET=$BUCKET2
   --allow-unauthenticated
 ```
 
@@ -109,16 +121,17 @@ gcloud run deploy ${SERVICE_NAME} \
 Create a Pub/Sub trigger:
 
 ```sh
-gcloud eventarc triggers create trigger-${SERVICE_NAME} \
-  --destination-run-service=${SERVICE_NAME} \
-  --destination-run-region=${REGION} \
+TRIGGER_NAME=trigger-$SERVICE_NAME
+gcloud eventarc triggers create $TRIGGER_NAME \
+  --destination-run-service=$SERVICE_NAME \
+  --destination-run-region=$REGION
   --event-filters="type=google.cloud.pubsub.topic.v1.messagePublished"
 ```
 
 Set the Pub/Sub topic in an env variable that we'll need later:
 
 ```sh
-export TOPIC_FILE_RESIZED=$(basename $(gcloud eventarc triggers describe trigger-${SERVICE_NAME} --format='value(transport.pubsub.topic)'))
+TOPIC_FILE_RESIZED=$(basename $(gcloud eventarc triggers describe $TRIGGER_NAME --format='value(transport.pubsub.topic)'))
 ```
 
 ## Resizer
@@ -137,17 +150,17 @@ Inside the top level
 folder, build and push the container image:
 
 ```sh
-export SERVICE_NAME=resizer
-docker build -t gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1 -f image/${SERVICE_NAME}/csharp/Dockerfile .
-docker push gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1
+SERVICE_NAME=resizer
+docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 -f image/$SERVICE_NAME/csharp/Dockerfile .
+docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:v1
 ```
 
 Deploy the service:
 
 ```sh
-gcloud run deploy ${SERVICE_NAME} \
-  --image gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1 \
-  --update-env-vars BUCKET=${BUCKET2},TOPIC_ID=${TOPIC_FILE_RESIZED},PROJECT_ID=$(gcloud config get-value project) \
+gcloud run deploy $SERVICE_NAME \
+  --image gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 \
+  --update-env-vars BUCKET=$BUCKET2,TOPIC_ID=$TOPIC_FILE_RESIZED,PROJECT_ID=$PROJECT_ID \
   --allow-unauthenticated
 ```
 
@@ -156,8 +169,8 @@ gcloud run deploy ${SERVICE_NAME} \
 Create a Pub/Sub topic for resizer and labeler services to share in their triggers.
 
 ```sh
-export TOPIC_FILE_UPLOADED=file-uploaded
-gcloud pubsub topics create ${TOPIC_FILE_UPLOADED}
+TOPIC_FILE_UPLOADED=file-uploaded
+gcloud pubsub topics create $TOPIC_FILE_UPLOADED
 ```
 
 ### Trigger
@@ -165,11 +178,12 @@ gcloud pubsub topics create ${TOPIC_FILE_UPLOADED}
 Create a Pub/Sub trigger with the `TOPIC_FILE_UPLOADED` as transport topic:
 
 ```sh
-gcloud eventarc triggers create trigger-${SERVICE_NAME} \
-  --destination-run-service=${SERVICE_NAME} \
-  --destination-run-region=${REGION} \
+TRIGGER_NAME=trigger-$SERVICE_NAME
+gcloud eventarc triggers create $TRIGGER_NAME \
+  --destination-run-service=$SERVICE_NAME \
+  --destination-run-region=$REGION
   --event-filters="type=google.cloud.pubsub.topic.v1.messagePublished" \
-  --transport-topic=projects/$(gcloud config get-value project)/topics/${TOPIC_FILE_UPLOADED}
+  --transport-topic=projects/$PROJECT_ID/topics/$TOPIC_FILE_UPLOADED
 ```
 
 ## Labeler
@@ -187,17 +201,17 @@ Inside the top level
 folder, build and push the container image:
 
 ```sh
-export SERVICE_NAME=labeler
-docker build -t gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1 -f image/${SERVICE_NAME}/csharp/Dockerfile .
-docker push gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1
+SERVICE_NAME=labeler
+docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 -f image/$SERVICE_NAME/csharp/Dockerfile .
+docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:v1
 ```
 
 Deploy the service:
 
 ```sh
-gcloud run deploy ${SERVICE_NAME} \
-  --image gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1 \
-  --update-env-vars BUCKET=${BUCKET2} \
+gcloud run deploy $SERVICE_NAME \
+  --image gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 \
+  --update-env-vars BUCKET=$BUCKET2
   --allow-unauthenticated
 ```
 
@@ -206,11 +220,12 @@ gcloud run deploy ${SERVICE_NAME} \
 Create a Pub/Sub trigger with the `TOPIC_FILE_UPLOADED` as transport topic:
 
 ```sh
-gcloud eventarc triggers create trigger-${SERVICE_NAME} \
-  --destination-run-service=${SERVICE_NAME} \
-  --destination-run-region=${REGION} \
+TRIGGER_NAME=trigger-$SERVICE_NAME
+gcloud eventarc triggers create $TRIGGER_NAME \
+  --destination-run-service=$SERVICE_NAME \
+  --destination-run-region=$REGION
   --event-filters="type=google.cloud.pubsub.topic.v1.messagePublished" \
-  --transport-topic=projects/$(gcloud config get-value project)/topics/${TOPIC_FILE_UPLOADED}
+  --transport-topic=projects/$PROJECT_ID/topics/$TOPIC_FILE_UPLOADED
 ```
 
 ## Filter
@@ -230,17 +245,17 @@ folder, build and push the container image:
 image:
 
 ```sh
-export SERVICE_NAME=filter
-docker build -t gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1 -f image/${SERVICE_NAME}/csharp/Dockerfile .
-docker push gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1
+SERVICE_NAME=filter
+docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 -f image/$SERVICE_NAME/csharp/Dockerfile .
+docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:v1
 ```
 
 Deploy the service:
 
 ```sh
-gcloud run deploy ${SERVICE_NAME} \
-  --image gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1 \
-  --update-env-vars BUCKET=${BUCKET1},TOPIC_ID=${TOPIC_FILE_UPLOADED},PROJECT_ID=$(gcloud config get-value project) \
+gcloud run deploy $SERVICE_NAME \
+  --image gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 \
+  --update-env-vars BUCKET=$BUCKET1,TOPIC_ID=$TOPIC_FILE_UPLOADED,PROJECT_ID=$PROJECT_ID \
   --allow-unauthenticated
 ```
 
@@ -252,13 +267,14 @@ The trigger of the service filters on Audit Logs for Cloud Storage events with
 Create the trigger:
 
 ```sh
-gcloud eventarc triggers create trigger-${SERVICE_NAME} \
-  --destination-run-service=${SERVICE_NAME} \
-  --destination-run-region=${REGION} \
+TRIGGER_NAME=trigger-$SERVICE_NAME
+gcloud eventarc triggers create $TRIGGER_NAME \
+  --destination-run-service=$SERVICE_NAME \
+  --destination-run-region=$REGION
   --event-filters="type=google.cloud.audit.log.v1.written" \
   --event-filters="serviceName=storage.googleapis.com" \
   --event-filters="methodName=storage.objects.create" \
-  --service-account=${PROJECT_NUMBER}-compute@developer.gserviceaccount.com
+  --service-account=$PROJECT_NUMBER-compute@developer.gserviceaccount.com
 ```
 
 ## Test the pipeline
@@ -268,24 +284,24 @@ Before testing the pipeline, make sure all the triggers are ready:
 ```sh
 gcloud eventarc triggers list
 
-NAME                 DESTINATION_RUN_SERVICE  DESTINATION_RUN_PATH
-trigger-filter       filter
-trigger-resizer      resizer
-trigger-watermarker  watermarker
-trigger-labeler      labeler
+NAME
+trigger-filter
+trigger-resizer
+trigger-watermarker
+trigger-labeler
 ```
 
 You can upload an image to the input storage bucket:
 
 ```sh
-gsutil cp ../pictures/beach.jpg gs://${BUCKET1}
+gsutil cp ../pictures/beach.jpg gs://$BUCKET1
 ```
 
 After a minute or so, you should see resized, watermarked and labelled image in
 the output bucket:
 
 ```sh
-gsutil ls gs://${BUCKET2}
+gsutil ls gs://$BUCKET2
 
 gs://events-atamel-images-output/beach-400x400-watermark.jpeg
 gs://events-atamel-images-output/beach-400x400.png

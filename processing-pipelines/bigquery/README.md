@@ -21,35 +21,52 @@ the new charts via SendGrid with **Eventarc**.
 
 Before deploying services and triggers, go through some setup steps.
 
+### Enable APIs
+
+Make sure that the project id is setup:
+
+```sh
+gcloud config set project [YOUR-PROJECT-ID]
+PROJECT_ID=$PROJECT_ID
+```
+
+Enable all necessary services:
+
+```sh
+gcloud services enable run.googleapis.com
+gcloud services enable eventarc.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
+```
+
 ### Enable Audit Logs
 
 You will use [Audit Logs](https://console.cloud.google.com/iam-admin/audit)
 trigger for Cloud Storage. Make sure `Admin Read`, `Data Read`, and `Data Write`
 log types are enabled for Cloud Storage.
 
-### Default Compute service account
-
-Default compute service account will be used in Audit Log triggers. Grant the
-`eventarc.eventReceiver` role to the default compute service account:
-
-```sh
-export PROJECT_NUMBER="$(gcloud projects describe $(gcloud config get-value project) --format='value(projectNumber)')"
-
-gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
-    --member=serviceAccount:${PROJECT_NUMBER}-compute@developer.gserviceaccount.com \
-    --role='roles/eventarc.eventReceiver'
-```
-
 ### Region, location, platform
 
 Set region, location and platform for Cloud Run and Eventarc:
 
 ```sh
-export REGION=europe-west1
+REGION=europe-west1
 
-gcloud config set run/region ${REGION}
+gcloud config set run/region $REGION
 gcloud config set run/platform managed
-gcloud config set eventarc/location ${REGION}
+gcloud config set eventarc/location $REGION
+```
+
+### Configure a service account
+
+Default compute service account will be used in Audit Log triggers. Grant the
+`eventarc.eventReceiver` role to the default compute service account:
+
+```sh
+PROJECT_NUMBER="$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')"
+
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member=serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com \
+    --role='roles/eventarc.eventReceiver'
 ```
 
 ### Create a storage bucket
@@ -59,10 +76,10 @@ the charts in the bucket are all public and in the same region as your Cloud Run
 service:
 
 ```sh
-export BUCKET="$(gcloud config get-value core/project)-charts"
-gsutil mb -l $(gcloud config get-value run/region) gs://${BUCKET}
-gsutil uniformbucketlevelaccess set on gs://${BUCKET}
-gsutil iam ch allUsers:objectViewer gs://${BUCKET}
+BUCKET=$PROJECT_ID-charts
+gsutil mb -l $REGION gs://$BUCKET
+gsutil uniformbucketlevelaccess set on gs://$BUCKET
+gsutil iam ch allUsers:objectViewer gs://$BUCKET
 ```
 
 ## Notifier
@@ -84,20 +101,20 @@ Inside the
 folder, build and push the container image:
 
 ```sh
-export SERVICE_NAME=notifier
-docker build -t gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1 .
-docker push gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1
+SERVICE_NAME=notifier
+docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 .
+docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:v1
 ```
 
 Deploy the service while passing in `TO_EMAILS` to email address where you want
 to send the notification and `SENDGRID_API_KEY` with your send SendGrid API Key.
 
 ```sh
-export TO_EMAILS=youremail@gmail.com
-export SENDGRID_API_KEY=yoursendgridapikey
-gcloud run deploy ${SERVICE_NAME} \
-  --image gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1 \
-  --update-env-vars TO_EMAILS=${TO_EMAILS},SENDGRID_API_KEY=${SENDGRID_API_KEY},BUCKET=${BUCKET} \
+TO_EMAILS=youremail@gmail.com
+SENDGRID_API_KEY=yoursendgridapikey
+gcloud run deploy $SERVICE_NAME \
+  --image gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 \
+  --update-env-vars TO_EMAILS=$TO_EMAILS,SENDGRID_API_KEY=$SENDGRID_API_KEY,BUCKET=$BUCKET \
   --allow-unauthenticated
 ```
 
@@ -109,13 +126,14 @@ The trigger of the service filters on Audit Logs for Cloud Storage events with
 Create the trigger:
 
 ```sh
-gcloud eventarc triggers create trigger-${SERVICE_NAME} \
-  --destination-run-service=${SERVICE_NAME} \
-  --destination-run-region=${REGION} \
+TRIGGER_NAME=trigger-$SERVICE_NAME
+gcloud eventarc triggers create $TRIGGER_NAME \
+  --destination-run-service=$SERVICE_NAME \
+  --destination-run-region=$REGION \
   --event-filters="type=google.cloud.audit.log.v1.written" \
   --event-filters="serviceName=storage.googleapis.com" \
   --event-filters="methodName=storage.objects.create" \
-  --service-account=${PROJECT_NUMBER}-compute@developer.gserviceaccount.com
+  --service-account=$PROJECT_NUMBER-compute@developer.gserviceaccount.com
 ```
 
 ## Chart Creator
@@ -135,17 +153,17 @@ Inside the
 folder, build and push the container image:
 
 ```sh
-export SERVICE_NAME=chart-creator
-docker build -t gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1 .
-docker push gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1
+SERVICE_NAME=chart-creator
+docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 .
+docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:v1
 ```
 
 Deploy the service while passing in `BUCKET` with the bucket you created earlier.
 
 ```sh
-gcloud run deploy ${SERVICE_NAME} \
-  --image gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1 \
-  --update-env-vars BUCKET=${BUCKET} \
+gcloud run deploy $SERVICE_NAME \
+  --image gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 \
+  --update-env-vars BUCKET=$BUCKET
   --allow-unauthenticated
 ```
 
@@ -154,16 +172,17 @@ gcloud run deploy ${SERVICE_NAME} \
 Create a Pub/Sub trigger:
 
 ```sh
-gcloud eventarc triggers create trigger-${SERVICE_NAME} \
-  --destination-run-service=${SERVICE_NAME} \
-  --destination-run-region=${REGION} \
+TRIGGER_NAME=trigger-$SERVICE_NAME
+gcloud eventarc triggers create $TRIGGER_NAME \
+  --destination-run-service=$SERVICE_NAME \
+  --destination-run-region=$REGION \
   --event-filters="type=google.cloud.pubsub.topic.v1.messagePublished"
 ```
 
 Set the Pub/Sub topic in an env variable that we'll need later:
 
 ```sh
-export TOPIC_QUERY_COMPLETED=$(basename $(gcloud eventarc triggers describe trigger-${SERVICE_NAME} --format='value(transport.pubsub.topic)'))
+TOPIC_QUERY_COMPLETED=$(basename $(gcloud eventarc triggers describe $TRIGGER_NAME --format='value(transport.pubsub.topic)'))
 ```
 
 ## Query Runner
@@ -182,18 +201,18 @@ Inside the top level
 folder, build and push the container image:
 
 ```sh
-export SERVICE_NAME=query-runner
-docker build -t gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1 -f bigquery/${SERVICE_NAME}/csharp/Dockerfile .
-docker push gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1
+SERVICE_NAME=query-runner
+docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 -f bigquery/$SERVICE_NAME/csharp/Dockerfile .
+docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:v1
 ```
 
 Deploy the service while passing in `PROJECT_ID` with your actual project id.
 This is needed for the BigQuery client and `TOPIC_ID`:
 
 ```sh
-gcloud run deploy ${SERVICE_NAME} \
-  --image gcr.io/$(gcloud config get-value project)/${SERVICE_NAME}:v1 \
-  --update-env-vars PROJECT_ID=$(gcloud config get-value project),TOPIC_ID=${TOPIC_QUERY_COMPLETED} \
+gcloud run deploy $SERVICE_NAME \
+  --image gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 \
+  --update-env-vars PROJECT_ID=$PROJECT_ID,TOPIC_ID=$TOPIC_QUERY_COMPLETED \
   --allow-unauthenticated
 ```
 
@@ -202,16 +221,17 @@ gcloud run deploy ${SERVICE_NAME} \
 Create a Pub/Sub trigger:
 
 ```sh
-gcloud eventarc triggers create trigger-${SERVICE_NAME} \
-  --destination-run-service=${SERVICE_NAME} \
-  --destination-run-region=${REGION} \
+TRIGGER_NAME=trigger-$SERVICE_NAME
+gcloud eventarc triggers create $TRIGGER_NAME \
+  --destination-run-service=$SERVICE_NAME \
+  --destination-run-region=$REGION \
   --event-filters="type=google.cloud.pubsub.topic.v1.messagePublished"
 ```
 
 Set the Pub/Sub topic in an env variable that we'll need later:
 
 ```sh
-export TOPIC_QUERY_SCHEDULED=$(gcloud eventarc triggers describe trigger-${SERVICE_NAME} --format='value(transport.pubsub.topic)')
+TOPIC_QUERY_SCHEDULED=$(gcloud eventarc triggers describe $TRIGGER_NAME --format='value(transport.pubsub.topic)')
 ```
 
 ### Scheduler job
@@ -225,8 +245,8 @@ Cloud Scheduler currently needs users to create an App Engine application.
 Pick an App Engine Location and create the app:
 
 ```sh
-export APP_ENGINE_LOCATION=europe-west
-gcloud app create --region=${APP_ENGINE_LOCATION}
+APP_ENGINE_LOCATION=europe-west
+gcloud app create --region=$APP_ENGINE_LOCATION
 ```
 
 Create the scheduler job for UK:
@@ -234,7 +254,7 @@ Create the scheduler job for UK:
 ```sh
 gcloud scheduler jobs create pubsub cre-scheduler-uk \
   --schedule="0 16 * * *" \
-  --topic=${TOPIC_QUERY_SCHEDULED} \
+  --topic=$TOPIC_QUERY_SCHEDULED \
   --message-body="United Kingdom"
 ```
 
@@ -243,7 +263,7 @@ Create the scheduler job for Cyprus:
 ```sh
 gcloud scheduler jobs create pubsub cre-scheduler-cy \
   --schedule="0 17 * * *" \
-  --topic=${TOPIC_QUERY_SCHEDULED} \
+  --topic=$TOPIC_QUERY_SCHEDULED \
   --message-body="Cyprus"
 ```
 
@@ -254,10 +274,10 @@ Before testing the pipeline, make sure all the triggers are ready:
 ```sh
 gcloud eventarc triggers list
 
-NAME                   DESTINATION_RUN_SERVICE  DESTINATION_RUN_PATH
-trigger-chart-creator  chart-creator
-trigger-notifier       notifier
-trigger-query-runner   query-runner
+NAME
+trigger-chart-creator
+trigger-notifier
+trigger-query-runner
 ```
 
 You can wait for Cloud Scheduler to trigger the services or you can manually
@@ -283,7 +303,7 @@ gcloud scheduler jobs run cre-scheduler-uk
 After a minute or so, you should see 2 charts in the bucket:
 
 ```sh
-gsutil ls gs://${BUCKET}
+gsutil ls gs://$BUCKET
 
 gs://events-atamel-charts/chart-cyprus.png
 gs://events-atamel-charts/chart-unitedkingdom.png

@@ -88,6 +88,35 @@ gcloud beta container clusters create $CLUSTER_NAME \
   --workload-pool=$PROJECT_ID.svc.id.goog
 ```
 
+### Authenticate to Google Cloud
+
+Make sure apps we'll deploy can authenticate to Google Cloud using Workload
+Identity. To do this, configure a Kubernetes service account (eg. default
+Kubernetes service account) to act as a Google service account (eg. default
+compute service account).
+
+Allow the default Kubernetes service account to impersonate the default Google
+compute service account by creating an IAM policy binding between the two:
+
+```sh
+PROJECT_NUMBER="$(gcloud projects describe $(gcloud config get-value project) --format='value(projectNumber)')"
+
+gcloud iam service-accounts add-iam-policy-binding \
+  --role roles/iam.workloadIdentityUser \
+  --member "serviceAccount:$PROJECT_ID.svc.id.goog[default/default]" \
+  $PROJECT_NUMBER-compute@developer.gserviceaccount.com
+```
+
+Add the `iam.gke.io/gcp-service-account` annotation to the Kubernetes service
+account, using the email address of the Google service account:
+
+```sh
+kubectl annotate serviceaccount \
+  --namespace default \
+  default \
+  iam.gke.io/gcp-service-account=$PROJECT_NUMBER-compute@developer.gserviceaccount.com
+```
+
 ### Enable GKE destinations in Eventarc
 
 Enable GKE destinations in Eventarc but creating a service account and binding the required roles with this command:

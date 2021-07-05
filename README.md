@@ -28,8 +28,9 @@ that explains Eventarc.
 ## Samples
 
 * [Image processing pipeline](processing-pipelines/image)
+* [Image processing pipeline - Cloud Run for Anthos](processing-pipelines/image/image-processing-pipeline-eventarc-crfa.md)
 * [BigQuery processing pipeline](processing-pipelines/bigquery)
-* [BigQuery processing pipeline - Cloud Run for Anthos](processing-pipelines/bigquery/bigquery-processing-pipeline-eventarc-crfa)
+* [BigQuery processing pipeline - Cloud Run for Anthos](processing-pipelines/bigquery/bigquery-processing-pipeline-eventarc-crfa.md)
 * [Terraform sample](terraform)
 * Eventarc and Workflows Integration
   * [Eventarc AuditLog-Cloud Storage and Workflows](eventarc-workflows-integration/eventarc-auditlog-storage)

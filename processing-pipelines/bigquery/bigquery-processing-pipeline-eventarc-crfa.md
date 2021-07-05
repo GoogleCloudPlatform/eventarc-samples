@@ -39,7 +39,6 @@ Enable all necessary services:
 ```sh
 gcloud services enable run.googleapis.com
 gcloud services enable eventarc.googleapis.com
-gcloud services enable logging.googleapis.com
 gcloud services enable cloudbuild.googleapis.com
 ```
 
@@ -63,9 +62,13 @@ gcloud config set run/platform gke
 gcloud config set eventarc/location $CLUSTER_LOCATION
 ```
 
-### Create a GKE cluster with Cloud Run for Anthos add-on
+### Create a GKE cluster
 
-Create a GKE cluster with Cloud Run for Anthos add-on:
+Create a GKE cluster with Cloud Run for Anthos add-on and also Workload
+Identity (WI). The cluster needs to have WI enabled. WI is the recommended way
+to access Google Cloud services from applications running within GKE due to its
+improved security properties and manageability. It is needed to properly set up
+the Event Forwarder of Eventarc. See [Using Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity#enable_on_cluster) for more details.
 
 ```sh
 gcloud beta container clusters create $CLUSTER_NAME \

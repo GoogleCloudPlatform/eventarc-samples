@@ -40,6 +40,7 @@ Enable all necessary services:
 gcloud services enable run.googleapis.com
 gcloud services enable eventarc.googleapis.com
 gcloud services enable cloudbuild.googleapis.com
+gcloud services enable container.googleapis.com
 ```
 
 ### Enable Audit Logs

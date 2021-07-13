@@ -1,4 +1,4 @@
-# Compute Engine VM Labeler
+# Compute Engine VM Labeler - Cloud Run
 
 In this sample, you'll build a Cloud Run service that receives a notification
 when a Compute Engine VM instance is created with Eventarc. In response, it adds
@@ -24,30 +24,52 @@ therefore we will use `last:true` flag to detect it in Cloud Run.
 
 Before deploying the service and trigger, go through some setup steps.
 
-### Default Compute service account
+### Enable APIs
 
-Default compute service account will be used in the Audit Log trigger of Eventarc. Grant the
-`eventarc.eventReceiver` role to the default compute service account:
+Make sure that the project id is setup:
 
 ```sh
-export PROJECT_NUMBER="$(gcloud projects describe $(gcloud config get-value project) --format='value(projectNumber)')"
-
-gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
-    --member=serviceAccount:${PROJECT_NUMBER}-compute@developer.gserviceaccount.com \
-    --role='roles/eventarc.eventReceiver'
+gcloud config set project [YOUR-PROJECT-ID]
+PROJECT_ID=$(gcloud config get-value project)
 ```
+
+Enable all necessary services:
+
+```sh
+gcloud services enable run.googleapis.com
+gcloud services enable eventarc.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
+```
+
+### Enable Audit Logs
+
+You will use [Audit Logs](https://console.cloud.google.com/iam-admin/audit)
+trigger for Compute Engine. Make sure `Admin Read`, `Data Read`, and `Data Write`
+log types are enabled for Compute Engine.
 
 ### Region, location, platform
 
 Set region, location and platform for Cloud Run and Eventarc:
 
 ```sh
-export REGION=us-central1
-export PROJECT_ID=$(gcloud config get-value project)
+REGION=us-central1
 
 gcloud config set run/platform managed
-gcloud config set run/region ${REGION}
-gcloud config set eventarc/location ${REGION}
+gcloud config set run/region $REGION
+gcloud config set eventarc/location $REGION
+```
+
+### Configure a service account
+
+Default compute service account will be used in the Audit Log trigger of Eventarc. Grant the
+`eventarc.eventReceiver` role to the default compute service account:
+
+```sh
+PROJECT_NUMBER="$(gcloud projects describe $(gcloud config get-value project) --format='value(projectNumber)')"
+
+gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
+    --member=serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com \
+    --role='roles/eventarc.eventReceiver'
 ```
 
 ## GCE VM Labeler
@@ -87,7 +109,7 @@ gcloud eventarc triggers create $SERVICE_NAME-trigger \
   --event-filters="type=google.cloud.audit.log.v1.written" \
   --event-filters="serviceName=compute.googleapis.com" \
   --event-filters="methodName=beta.compute.instances.insert" \
-  --service-account=${PROJECT_NUMBER}-compute@developer.gserviceaccount.com
+  --service-account=$PROJECT_NUMBER-compute@developer.gserviceaccount.com
 ```
 
 Before testing, make sure the trigger is ready:

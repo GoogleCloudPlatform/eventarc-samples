@@ -27,17 +27,23 @@ that explains Eventarc.
 
 ## Samples
 
-* [Image processing pipeline](processing-pipelines/image)
-* [Image processing pipeline - Cloud Run for Anthos](processing-pipelines/image/image-processing-pipeline-eventarc-crfa.md)
-* [BigQuery processing pipeline](processing-pipelines/bigquery)
-* [BigQuery processing pipeline - Cloud Run for Anthos](processing-pipelines/bigquery/bigquery-processing-pipeline-eventarc-crfa.md)
-* [Terraform sample](terraform)
-* Eventarc and Workflows Integration
+* Eventarc and Cloud Run
+  * [BigQuery processing pipeline](processing-pipelines/bigquery)
+  * [Image processing pipeline](processing-pipelines/image)
+  * [Expensive BigQuery jobs notifier with Eventarc and SendGrid](bigquery-jobs-notifier)
+  * [Terraform sample](terraform)
+  * [Compute Engine VM Labeler - Cloud Run](gce-vm-labeler/run)
+* Eventarc and Cloud Run for Anthos
+  * [BigQuery processing pipeline - Cloud Run for Anthos](processing-pipelines/bigquery/bigquery-processing-pipeline-eventarc-crfa.md)
+  * [Image processing pipeline - Cloud Run for Anthos](processing-pipelines/image/image-processing-pipeline-eventarc-crfa.md)
+* Eventarc and Cloud Functions
+  * [Compute Engine VM Labeler - Cloud Functions v2](gce-vm-labeler/gcf)
+* Eventarc and Workflows
   * [Eventarc AuditLog-Cloud Storage and Workflows](eventarc-workflows-integration/eventarc-auditlog-storage)
   * [Eventarc Pub/Sub and Workflows](eventarc-workflows-integration/eventarc-pubsub)
   * [Workflows and Eventarc Pub/Sub](https://github.com/GoogleCloudPlatform/workflows-demos/tree/master/workflows-eventarc-integration/workflows-pubsub)
-* [Expensive BigQuery jobs notifier with Eventarc and SendGrid](bigquery-jobs-notifier)
-* [Compute Engine VM Labeler](gce-vm-labeler)
+
+
 
 -------
 

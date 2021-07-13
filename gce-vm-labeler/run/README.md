@@ -10,11 +10,11 @@ Compute Engine emits 2 AuditLogs when a VM is created.
 
 The first one is emitted at the beginning of VM creation as looks like this:
 
-![GCE AuditLog](gce-auditlog1.png)
+![GCE AuditLog](../gce-auditlog1.png)
 
 The second one is emitted after the VM creation and looks like this:
 
-![GCE AuditLog](gce-auditlog2.png)
+![GCE AuditLog](../gce-auditlog2.png)
 
 Notice the `operation` field with `first:true` and `last:true` values. The
 second AuditLog contains all the information we need to label an instance,

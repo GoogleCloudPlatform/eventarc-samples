@@ -1,0 +1,38 @@
+{
+  "protoPayload": {
+    "authenticationInfo": {
+      "principalEmail": "atameldev@gmail.com"
+    },
+    "requestMetadata": {
+      "callerIp": "93.186.144.247",
+      "callerSuppliedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36,gzip(gfe),gzip(gfe)"
+    },
+    "serviceName": "compute.googleapis.com",
+    "methodName": "beta.compute.instances.insert",
+    "resourceName": "projects/events-atamel/zones/us-central1-a/instances/instance-1",
+    "serviceData": {
+
+    },
+    "request": {
+      "@type": "type.googleapis.com/compute.instances.insert"
+    }
+  },
+  "insertId": "-636tbld2li0",
+  "resource": {
+    "type": "gce_instance",
+    "labels": {
+      "instance_id": "4803188210937210115",
+      "project_id": "events-atamel",
+      "zone": "us-central1-a"
+    }
+  },
+  "timestamp": "2021-07-12T10:39:50.422795Z",
+  "severity": "NOTICE",
+  "logName": "projects/events-atamel/logs/cloudaudit.googleapis.com%2Factivity",
+  "operation": {
+    "id": "operation-1626086380006-5c6eabd0dedd8-f0c1fff2-3b3d49cc",
+    "producer": "compute.googleapis.com",
+    "last": true
+  },
+  "receiveTimestamp": "2021-07-12T10:39:51.402157556Z"
+}

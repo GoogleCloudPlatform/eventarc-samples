@@ -83,7 +83,8 @@ to label the instance with the username of the creator.
 
 The source code of the service is in [csharp](csharp) folder.
 
-Inside the source folder, build and push the container image:
+Inside the source folder, build and push the container image by running the
+following command:
 
 ```sh
 SERVICE_NAME=gce-vm-labeler
@@ -112,7 +113,7 @@ gcloud eventarc triggers create $SERVICE_NAME-trigger \
   --service-account=$PROJECT_NUMBER-compute@developer.gserviceaccount.com
 ```
 
-Before testing, make sure the trigger is ready:
+Before testing, make sure the trigger is ready by checking `ACTIVE` flag:
 
 ```sh
 gcloud eventarc triggers list

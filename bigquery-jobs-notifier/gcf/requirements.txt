@@ -1,0 +1,2 @@
+sendgrid==6.3.1
+cloudevents==1.2.0

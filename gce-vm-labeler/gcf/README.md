@@ -122,10 +122,20 @@ See that the service is deployed:
 gcloud alpha functions list --v2
 ```
 
-## Test
+## Trigger
 
 > **Note:** Although your Audit Log function trigger will be created
-> immediately, it can take up to 10 minutes for trigger to be fully functional.
+> immediately, it can take up to 10 minutes for trigger to be active.
+
+Once the service is deployed, a trigger is created under the covers.
+
+Make sure the trigger is ready by checking `ACTIVE` flag:
+
+```sh
+gcloud eventarc triggers list
+```
+
+## Test
 
 To test, you need to create a Compute Engine VM in Cloud Console (You can also
 create VMs with `gcloud` but it does not seem to generate AuditLogs).

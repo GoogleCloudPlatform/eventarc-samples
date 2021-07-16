@@ -38,6 +38,7 @@ that explains Eventarc.
   * [Image processing pipeline](processing-pipelines/image/image-processing-pipeline-eventarc-crfa.md)
 * Eventarc and Cloud Functions v2
   * [Compute Engine VM Labeler](gce-vm-labeler/gcf)
+  * [Expensive BigQuery jobs notifier](bigquery-jobs-notifier/gcf)
 * Eventarc and Workflows
   * [Eventarc AuditLog-Cloud Storage and Workflows](eventarc-workflows-integration/eventarc-auditlog-storage)
   * [Eventarc Pub/Sub and Workflows](eventarc-workflows-integration/eventarc-pubsub)

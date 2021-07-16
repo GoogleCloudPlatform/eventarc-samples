@@ -30,7 +30,7 @@ that explains Eventarc.
 * Eventarc and Cloud Run
   * [BigQuery processing pipeline](processing-pipelines/bigquery)
   * [Image processing pipeline](processing-pipelines/image)
-  * [Expensive BigQuery jobs notifier with Eventarc and SendGrid](bigquery-jobs-notifier)
+  * [Expensive BigQuery jobs notifier](bigquery-jobs-notifier/run)
   * [Terraform sample](terraform)
   * [Compute Engine VM Labeler](gce-vm-labeler/run)
 * Eventarc and Cloud Run for Anthos

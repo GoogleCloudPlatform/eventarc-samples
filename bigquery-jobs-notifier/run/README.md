@@ -1,10 +1,10 @@
-# Expensive BigQuery jobs notifier with Eventarc and SendGrid
+# Expensive BigQuery jobs notifier - Cloud Run
 
 In this sample, you'll build a Cloud Run service that receives notifications of
 completed BigQuery jobs using Eventarc, determines if the BigQuery job was
 expensive to run and if so, sends a notification email using SendGrid.
 
-![BigQuery Jobs Notifier](bigquery-jobs-notifier.png)
+![BigQuery Jobs Notifier](../bigquery-jobs-notifier.png)
 
 ## Determine completed & expensive BigQuery jobs
 
@@ -14,13 +14,13 @@ are enabled by default in BigQuery.
 To see completed BigQuery jobs, you can see AuditLogs logged under
 `serviceName` of `bigquery.googleapis.com` and `methodName` of `jobservice.jobcompleted`:
 
-![BigQuery AuditLog](bigquery-auditlog1.png)
+![BigQuery AuditLog](../bigquery-auditlog1.png)
 
 To get more job details, you can check under `jobsCompletedEvent` where you have
 access to what query was executed and more importantly how much it cost under
 `totalBilledBytes`:
 
-![BigQuery AuditLog](bigquery-auditlog2.png)
+![BigQuery AuditLog](../bigquery-auditlog2.png)
 
 `totalBilledBytes` gives you an idea how expensive the query was. For example,
 if the query was cached, this will be zero and cost nothing but for expensive

@@ -97,14 +97,20 @@ Deploy the service:
 
 ```sh
 SERVICE_NAME=gce-vm-labeler
+TRIGGER_LOCATION=us-central1
 gcloud alpha functions deploy $SERVICE_NAME \
 --v2 \
 --runtime dotnet3 \
 --trigger-event-filters="type=google.cloud.audit.log.v1.written,serviceName=compute.googleapis.com,methodName=beta.compute.instances.insert" \
 --entry-point GceVmLabeler.Function \
 --source $BUCKET/source.zip \
---region $REGION
+--region $REGION \
+--trigger-location $TRIGGER_LOCATION
 ```
+
+> **Note:** For some reason, the trigger has to be in `us-central1` in order to
+> receive Compute Engine Audit Logs and GCF v2 functions are currently only
+> available in `us-west1`, hence the discrepency between the two.
 
 See that the service is deployed:
 

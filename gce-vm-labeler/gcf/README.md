@@ -6,6 +6,10 @@
 > to get your project allowlisted before attempting this sample.
 > Cloud Functions v2 is only available in us-west1. More regions are coming soon.
 
+In this sample, you'll build a Cloud Functions v2 service that receives a notification
+when a Compute Engine VM instance is created with Eventarc. In response, it adds
+a label to the newly created VM, specifying the creator of the VM.
+
 ## Determine newly created Compute Engine VMs
 
 Compute Engine emits 2 AuditLogs when a VM is created.

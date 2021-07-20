@@ -18,6 +18,7 @@ using CloudNative.CloudEvents.NewtonsoftJson;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Text;
+using CloudNative.CloudEvents.AspNetCore;
 
 namespace Common
 {
@@ -49,14 +50,7 @@ namespace Common
             };
             _logger.LogInformation("Replying with CloudEvent\n" + replyEvent.GetLog());
 
-            // Binary format
-            //TODO: There must be a better way to convert CloudEvent to HTTP response
-            context.Response.Headers.Add("Ce-Id", replyEvent.Id);
-            context.Response.Headers.Add("Ce-Specversion", "1.0");
-            context.Response.Headers.Add("Ce-Type", replyEvent.Type);
-            context.Response.Headers.Add("Ce-Source", replyEvent.Source.ToString());
-            context.Response.ContentType = "application/json;charset=utf-8";
-            await context.Response.WriteAsync(replyEvent.Data.ToString());
+            await replyEvent.CopyToHttpResponseAsync(context.Response, ContentMode.Binary, formatter);
         }
     }
 }

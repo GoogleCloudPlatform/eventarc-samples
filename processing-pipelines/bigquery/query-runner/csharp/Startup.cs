@@ -20,7 +20,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace QueryRunner
 {
@@ -66,7 +65,7 @@ namespace QueryRunner
                     var results = await RunQuery(client, country, logger);
                     logger.LogInformation("Executed query");
 
-                    var replyData = JsonConvert.SerializeObject(new {datasetId = DatasetId, tableId = _tableId, country = country});
+                    var replyData = new {datasetId = DatasetId, tableId = _tableId, country = country};
                     await eventWriter.Write(replyData, context);
                 });
             });

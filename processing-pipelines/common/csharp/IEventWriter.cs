@@ -18,6 +18,6 @@ namespace Common
 {
     public interface IEventWriter
     {
-        Task Write(string eventData, HttpContext context);
+        Task Write(object eventData, HttpContext context);
     }
 }

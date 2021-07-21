@@ -19,7 +19,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace Filter
 {
@@ -74,7 +73,7 @@ namespace Filter
                         return;
                     }
 
-                    var replyData = JsonConvert.SerializeObject(new {bucket = bucket, name = name});
+                    var replyData = new {bucket = bucket, name = name};
                     await eventWriter.Write(replyData, context);
                 });
             });

@@ -99,12 +99,12 @@ namespace Common
                     cloudEvent = await context.Request.ToCloudEventAsync(formatter);
                     _logger.LogInformation($"Received CloudEvent\n{cloudEvent.GetLog()}");
 
-                    var parsedCustom = (JObject)cloudEvent.Data;
-                    bucket = (string)parsedCustom["bucket"];
-                    name = (string)parsedCustom["name"];
+                    dynamic data = cloudEvent.Data;
+                    bucket = data.bucket;
+                    name = data.name;
                     break;
             }
-            _logger.LogInformation($"Extracted bucket: {bucket}, name: {name}");
+            _logger.LogInformation($"Extracted bucket: {bucket} and name: {name}");
             return (bucket, name);
         }
 

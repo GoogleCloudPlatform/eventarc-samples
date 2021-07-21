@@ -37,7 +37,7 @@ namespace Common
             _logger = logger;
         }
 
-        public async Task Write(string eventData, HttpContext context)
+        public async Task Write(object eventData, HttpContext context)
         {
             var replyEvent = new CloudEvent
             {

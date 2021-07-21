@@ -32,7 +32,7 @@ namespace Common
             _logger = logger;
         }
 
-        public async Task Write(string eventData, HttpContext context)
+        public async Task Write(object eventData, HttpContext context)
         {
             PublisherClient publisher = null;
 
@@ -41,7 +41,7 @@ namespace Common
                 var topicName = new TopicName(_projectId, topicId);
                 _logger.LogInformation($"Publishing to topic '{topicId}' with data '{eventData}");
                 publisher = await PublisherClient.CreateAsync(topicName);
-                await publisher.PublishAsync(eventData);
+                await publisher.PublishAsync((string)eventData);
             }
 
             if (publisher != null)

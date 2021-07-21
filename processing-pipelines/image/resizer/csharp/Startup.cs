@@ -21,7 +21,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SixLabors.ImageSharp.Processing;
-using Newtonsoft.Json;
 using Common;
 
 namespace Resizer
@@ -86,7 +85,7 @@ namespace Resizer
                                 await client.UploadObjectAsync(outputBucket, outputObjectName, "image/png", outputStream);
                                 logger.LogInformation($"Uploaded '{outputObjectName}' to bucket '{outputBucket}'");
 
-                                var replyData = JsonConvert.SerializeObject(new {bucket = outputBucket, name = outputObjectName});
+                                var replyData = new {bucket = outputBucket, name = outputObjectName};
                                 await eventWriter.Write(replyData, context);
                             }
                         }

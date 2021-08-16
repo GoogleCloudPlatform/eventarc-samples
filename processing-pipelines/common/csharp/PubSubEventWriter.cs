@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using Google.Cloud.PubSub.V1;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace Common
 {
@@ -39,9 +40,10 @@ namespace Common
             foreach (var topicId in _topicIds)
             {
                 var topicName = new TopicName(_projectId, topicId);
-                _logger.LogInformation($"Publishing to topic '{topicId}' with data '{eventData}");
                 publisher = await PublisherClient.CreateAsync(topicName);
-                await publisher.PublishAsync((string)eventData);
+                var message = JsonConvert.SerializeObject(eventData);
+                _logger.LogInformation($"Publishing to topic '{topicId}' with message '{message}'");
+                await publisher.PublishAsync(message);
             }
 
             if (publisher != null)

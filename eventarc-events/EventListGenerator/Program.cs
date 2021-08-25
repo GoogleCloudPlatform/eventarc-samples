@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -24,6 +25,11 @@ namespace EventListGenerator
     {
         private const string PUBSUB_SERVICE_CATALOG_FILE = "pubsub_services.json";
         private const string AUDITLOG_SERVICE_CATALOG_URL = "https://raw.githubusercontent.com/googleapis/google-cloudevents/master/json/audit/service_catalog.json";
+
+        // TODO: Externalize to a file if the list gets long at some point.
+        private static HashSet<string> AUDITLOG_METHOD_NAMES_BLOCK_LIST = new HashSet<string> {
+            "google.monitoring.v3.TimeSeriesFilterService.ParseTimeSeriesFilter"
+        };
         private const string OUTPUT_GITHUB = "../README.md";
         private const string OUTPUT_DEVSITE = "../README_devsite.md";
         private static readonly HttpClient client = new HttpClient();
@@ -133,7 +139,9 @@ namespace EventListGenerator
                     file.WriteLine("#### `serviceName`\n");
                     file.WriteLine($"- `{service.serviceName}`\n");
                     file.WriteLine("#### `methodName`\n");
-                    service.methods.ForEach(method => file.WriteLine($"- `{method.methodName}`"));
+
+                    var allowedMethods = service.methods.Where(method => !AUDITLOG_METHOD_NAMES_BLOCK_LIST.Contains(method.methodName)).ToList();
+                    allowedMethods.ForEach(method => file.WriteLine($"- `{method.methodName}`"));
                     file.WriteLine("");
                 }
                 else
@@ -141,7 +149,9 @@ namespace EventListGenerator
                     file.WriteLine($"<details><summary>{service.displayName}</summary>");
                     file.WriteLine("<p>\n");
                     file.WriteLine($"`{service.serviceName}`\n");
-                    service.methods.ForEach(method => file.WriteLine($"* `{method.methodName}`"));
+
+                    var allowedMethods = service.methods.Where(method => !AUDITLOG_METHOD_NAMES_BLOCK_LIST.Contains(method.methodName)).ToList();
+                    allowedMethods.ForEach(method => file.WriteLine($"* `{method.methodName}`"));
                     file.WriteLine("\n</p>");
                     file.WriteLine("</details>");
                 }

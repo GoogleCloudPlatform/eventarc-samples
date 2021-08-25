@@ -4,7 +4,7 @@
 > Only allowlisted projects can currently take advantage of it. Please fill out
 > [this form](https://docs.google.com/forms/d/e/1FAIpQLSeaZYta3UR-QCYUEByvIyNbQab63lQBIYhCQfrItp7zYrnATw/viewform)
 > to get your project allowlisted before attempting this sample.
-> Cloud Functions v2 is only available in us-west1. More regions are coming soon.
+> Cloud Functions v2 is only available in `us-west1`. More regions are coming soon.
 
 In this sample, you'll build a Cloud Functions v2 service that receives a notification
 when a Compute Engine VM instance is created with Eventarc. In response, it adds
@@ -68,17 +68,6 @@ gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
     --role='roles/eventarc.eventReceiver'
 ```
 
-## Create a bucket for deployments
-
-Currently, Cloud Functions v2 only supports deployments from a Cloud Storage
-bucket. Create a regional bucket that you will use for your function code later:
-
-```sh
-REGION=us-west1
-BUCKET=gs://$PROJECT_ID-functions-src
-gsutil mb -l $REGION $BUCKET
-```
-
 ## GCE VM Labeler
 
 This service receives AuditLogs for service `compute.googleapis.com` and
@@ -90,16 +79,10 @@ to label the instance with the username of the creator.
 
 The source code of the service is in [csharp](csharp) folder.
 
-Inside the source folder, zip the source and upload to the bucket:
-
-```sh
-zip -r source.zip *
-gsutil cp source.zip $BUCKET
-```
-
 Deploy the service:
 
 ```sh
+REGION=us-west1
 SERVICE_NAME=gce-vm-labeler
 TRIGGER_LOCATION=us-central1
 gcloud alpha functions deploy $SERVICE_NAME \
@@ -107,7 +90,7 @@ gcloud alpha functions deploy $SERVICE_NAME \
 --runtime dotnet3 \
 --trigger-event-filters="type=google.cloud.audit.log.v1.written,serviceName=compute.googleapis.com,methodName=beta.compute.instances.insert" \
 --entry-point GceVmLabeler.Function \
---source $BUCKET/source.zip \
+--source . \
 --region $REGION \
 --trigger-location $TRIGGER_LOCATION
 ```

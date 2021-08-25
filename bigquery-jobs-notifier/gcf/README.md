@@ -4,7 +4,7 @@
 > Only allowlisted projects can currently take advantage of it. Please fill out
 > [this form](https://docs.google.com/forms/d/e/1FAIpQLSeaZYta3UR-QCYUEByvIyNbQab63lQBIYhCQfrItp7zYrnATw/viewform)
 > to get your project allowlisted before attempting this sample.
-> Cloud Functions v2 is only available in us-west1. More regions are coming
+> Cloud Functions v2 is only available in `us-west1`. More regions are coming
 > soon.
 
 In this sample, you'll build a Cloud Functions v2 service that receives
@@ -76,17 +76,6 @@ gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
     --role='roles/eventarc.eventReceiver'
 ```
 
-### Create a bucket for deployments
-
-Currently, Cloud Functions v2 only supports deployments from a Cloud Storage
-bucket. Create a regional bucket that you will use for your function code later:
-
-```sh
-REGION=us-west1
-BUCKET=gs://$PROJECT_ID-functions-src
-gsutil mb -l $REGION $BUCKET
-```
-
 ## Notifier
 
 This service will receive the BigQuery `jobcompleted` events, log the received
@@ -101,17 +90,11 @@ The code of the service is in [main.py](main.py). You can take a look how to par
 the received CloudEvent, how to parse the AuditLog with the relevant info and
 finally how to send an email for expensive queries.
 
-Inside the source folder, zip the source and upload to the bucket:
-
-```sh
-zip -r source.zip *
-gsutil cp source.zip $BUCKET
-```
-
 Deploy the service while passing in `TO_EMAILS` to email address where you want
 to send the notification and `SENDGRID_API_KEY` with your send SendGrid API Key.
 
 ```sh
+REGION=us-west1
 TO_EMAILS=youremail@gmail.com
 SENDGRID_API_KEY=yoursendgridapikey
 SERVICE_NAME=bigquery-usage-notifier
@@ -121,7 +104,7 @@ gcloud alpha functions deploy $SERVICE_NAME \
   --v2 \
   --runtime python38 \
   --entry-point handle_audit_log \
-  --source $BUCKET/source.zip \
+  --source . \
   --region $REGION \
   --trigger-location $TRIGGER_LOCATION \
   --trigger-event-filters="type=google.cloud.audit.log.v1.written,serviceName=bigquery.googleapis.com,methodName=jobservice.jobcompleted" \

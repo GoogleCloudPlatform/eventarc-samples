@@ -100,7 +100,321 @@ Any custom application that can publish to a PubSub topic
 
 </p>
 </details>
-<details><summary>AI Platform (Unified)</summary>
+<details><summary>Access Context Manager</summary>
+<p>
+
+`accesscontextmanager.googleapis.com`
+
+* `google.identity.accesscontextmanager.v1.AccessContextManager.CreateAccessLevel`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.CreateAccessPolicy`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.CreateGcpUserAccessBinding`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.CreateServicePerimeter`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.DeleteAccessLevel`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.DeleteAccessPolicy`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.DeleteGcpUserAccessBinding`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.DeleteServicePerimeter`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.GetAccessLevel`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.GetAccessPolicy`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.GetServicePerimeter`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.ListAccessLevels`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.ListAccessPolicies`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.ListGcpUserAccessBindings`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.ListServicePerimeters`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.ReplaceAccessLevels`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.ReplaceServicePerimeters`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.UpdateAccessLevel`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.UpdateAccessPolicy`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.UpdateGcpUserAccessBinding`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.UpdateServicePerimeter`
+* `google.identity.accesscontextmanager.v1beta.AccessContextManager.CreateAccessLevel`
+* `google.identity.accesscontextmanager.v1beta.AccessContextManager.CreateAccessPolicy`
+* `google.identity.accesscontextmanager.v1beta.AccessContextManager.CreateServicePerimeter`
+* `google.identity.accesscontextmanager.v1beta.AccessContextManager.DeleteAccessLevel`
+* `google.identity.accesscontextmanager.v1beta.AccessContextManager.DeleteAccessPolicy`
+* `google.identity.accesscontextmanager.v1beta.AccessContextManager.DeleteServicePerimeter`
+* `google.identity.accesscontextmanager.v1beta.AccessContextManager.ReplaceAccessLevels`
+* `google.identity.accesscontextmanager.v1beta.AccessContextManager.ReplaceServicePerimeters`
+* `google.identity.accesscontextmanager.v1beta.AccessContextManager.UpdateAccessLevel`
+* `google.identity.accesscontextmanager.v1beta.AccessContextManager.UpdateAccessPolicy`
+* `google.identity.accesscontextmanager.v1beta.AccessContextManager.UpdateServicePerimeter`
+
+</p>
+</details>
+<details><summary>admin.googleapis.com</summary>
+<p>
+
+`admin.googleapis.com`
+
+* `google.admin.AdminService.actionCancelled`
+* `google.admin.AdminService.actionRequested`
+* `google.admin.AdminService.addApplication`
+* `google.admin.AdminService.addDomainAlias`
+* `google.admin.AdminService.addGroupMember`
+* `google.admin.AdminService.addLdapApplicationCertificate`
+* `google.admin.AdminService.addMobileApplicationToWhitelist`
+* `google.admin.AdminService.addNickname`
+* `google.admin.AdminService.addPrivilege`
+* `google.admin.AdminService.addRecoveryEmail`
+* `google.admin.AdminService.addRecoveryPhone`
+* `google.admin.AdminService.addSecondaryDomain`
+* `google.admin.AdminService.addToBlockedOauth2Apps`
+* `google.admin.AdminService.addToTrustedOauth2Apps`
+* `google.admin.AdminService.addTrustedDomains`
+* `google.admin.AdminService.alertCenterBatchDeleteAlerts`
+* `google.admin.AdminService.alertCenterCreateFeedback`
+* `google.admin.AdminService.alertCenterDeleteAlert`
+* `google.admin.AdminService.alertCenterGetCustomerSettings`
+* `google.admin.AdminService.alertCenterGetSitLink`
+* `google.admin.AdminService.alertCenterListChange`
+* `google.admin.AdminService.alertCenterListFeedback`
+* `google.admin.AdminService.alertCenterListRelatedAlerts`
+* `google.admin.AdminService.alertCenterUndeleteAlert`
+* `google.admin.AdminService.alertCenterUpdateAlertMetadata`
+* `google.admin.AdminService.alertCenterView`
+* `google.admin.AdminService.alertHangoutsDevice`
+* `google.admin.AdminService.allowServiceForOauth2Access`
+* `google.admin.AdminService.allowStrongAuthentication`
+* `google.admin.AdminService.archiveUser`
+* `google.admin.AdminService.assignCustomLogo`
+* `google.admin.AdminService.assignRole`
+* `google.admin.AdminService.authorizeApiClientAccess`
+* `google.admin.AdminService.cancelAlertHangoutsDevice`
+* `google.admin.AdminService.cancelCalendarEvents`
+* `google.admin.AdminService.changeAllowedTwoStepVerificationMethods`
+* `google.admin.AdminService.changeApplicationSetting`
+* `google.admin.AdminService.changeCaaAppAssignments`
+* `google.admin.AdminService.changeCalendarSetting`
+* `google.admin.AdminService.changeChromeOsAndroidApplicationSetting`
+* `google.admin.AdminService.changeChromeOsApplicationSetting`
+* `google.admin.AdminService.changeChromeOsDeviceSetting`
+* `google.admin.AdminService.changeChromeOsPublicSessionSetting`
+* `google.admin.AdminService.changeChromeOsUserSetting`
+* `google.admin.AdminService.changeCustomUserSchemaDisplayName`
+* `google.admin.AdminService.changeDataLocalizationForRussia`
+* `google.admin.AdminService.changeDeviceState`
+* `google.admin.AdminService.changeDocsSetting`
+* `google.admin.AdminService.changeDomainDefaultLocale`
+* `google.admin.AdminService.changeDomainDefaultTimezone`
+* `google.admin.AdminService.changeDomainSupportMessage`
+* `google.admin.AdminService.changeEmailSetting`
+* `google.admin.AdminService.changeFirstName`
+* `google.admin.AdminService.changeGmailSetting`
+* `google.admin.AdminService.changeGroupDescription`
+* `google.admin.AdminService.changeGroupName`
+* `google.admin.AdminService.changeGroupSetting`
+* `google.admin.AdminService.changeGroupsForBusinessSetting`
+* `google.admin.AdminService.changeHangoutsDeviceAnnotation`
+* `google.admin.AdminService.changeHangoutsDeviceCalendarAssignment`
+* `google.admin.AdminService.changeHangoutsDeviceSetting`
+* `google.admin.AdminService.changeHangoutsDeviceState`
+* `google.admin.AdminService.changeLastName`
+* `google.admin.AdminService.changeLdapApplicationAuthenticationSettings`
+* `google.admin.AdminService.changeLdapApplicationGroupSearchSettings`
+* `google.admin.AdminService.changeMobileApplicationPermissionGrant`
+* `google.admin.AdminService.changeMobileApplicationSettings`
+* `google.admin.AdminService.changeMobileSetting`
+* `google.admin.AdminService.changeOrganizationName`
+* `google.admin.AdminService.changePassword`
+* `google.admin.AdminService.changePasswordOnNextLogin`
+* `google.admin.AdminService.changePrimaryDomain`
+* `google.admin.AdminService.changeRecoveryEmail`
+* `google.admin.AdminService.changeRecoveryPhone`
+* `google.admin.AdminService.changeSaml2ServiceProviderConfigAcsEndpoint`
+* `google.admin.AdminService.changeSaml2ServiceProviderConfigEntityId`
+* `google.admin.AdminService.changeSaml2ServiceProviderConfigNameidFormat`
+* `google.admin.AdminService.changeSaml2ServiceProviderConfigStartUrl`
+* `google.admin.AdminService.changeSaml2ServiceProviderConfigVersionId`
+* `google.admin.AdminService.changeSitesSetting`
+* `google.admin.AdminService.changeSsoSettings`
+* `google.admin.AdminService.changeTwoStepVerificationEnrollmentPeriodDuration`
+* `google.admin.AdminService.changeTwoStepVerificationFrequency`
+* `google.admin.AdminService.changeTwoStepVerificationGracePeriodDuration`
+* `google.admin.AdminService.changeTwoStepVerificationStartDate`
+* `google.admin.AdminService.changeUserAddress`
+* `google.admin.AdminService.changeUserCustomField`
+* `google.admin.AdminService.changeUserExternalId`
+* `google.admin.AdminService.changeUserGender`
+* `google.admin.AdminService.changeUserIm`
+* `google.admin.AdminService.changeUserLanguage`
+* `google.admin.AdminService.changeUserLocation`
+* `google.admin.AdminService.changeUserOrganization`
+* `google.admin.AdminService.changeUserPhoneNumber`
+* `google.admin.AdminService.changeUserRelation`
+* `google.admin.AdminService.cleanCalendarResourceCalendarEvents`
+* `google.admin.AdminService.communicationPreferencesSettingChange`
+* `google.admin.AdminService.companyDeviceDeletion`
+* `google.admin.AdminService.companyDevicesBulkCreation`
+* `google.admin.AdminService.createAccessLevelV2`
+* `google.admin.AdminService.createAddressbook`
+* `google.admin.AdminService.createAlert`
+* `google.admin.AdminService.createApplicationSetting`
+* `google.admin.AdminService.createBuilding`
+* `google.admin.AdminService.createCalendarResource`
+* `google.admin.AdminService.createCalendarResourceFeature`
+* `google.admin.AdminService.createCalendarResourceMaintenanceEvent`
+* `google.admin.AdminService.createCustomUserField`
+* `google.admin.AdminService.createCustomUserSchema`
+* `google.admin.AdminService.createDataTransferRequest`
+* `google.admin.AdminService.createDeviceEnrollmentToken`
+* `google.admin.AdminService.createDlpDetector`
+* `google.admin.AdminService.createEmailMonitor`
+* `google.admin.AdminService.createGmailSetting`
+* `google.admin.AdminService.createGroup`
+* `google.admin.AdminService.createLdapApplication`
+* `google.admin.AdminService.createNetwork`
+* `google.admin.AdminService.createOrgUnit`
+* `google.admin.AdminService.createRole`
+* `google.admin.AdminService.createRule`
+* `google.admin.AdminService.createSaml2ServiceProviderConfig`
+* `google.admin.AdminService.createSaml2ServiceProviderConfigAttribute`
+* `google.admin.AdminService.createUser`
+* `google.admin.AdminService.createUserWithAutoProv`
+* `google.admin.AdminService.customerTakeoutSucceeded`
+* `google.admin.AdminService.delete2svScratchCodes`
+* `google.admin.AdminService.deleteAccessLevelV2`
+* `google.admin.AdminService.deleteApplicationSetting`
+* `google.admin.AdminService.deleteCalendarResource`
+* `google.admin.AdminService.deleteCalendarResourceMaintenanceEvent`
+* `google.admin.AdminService.deleteCertificate`
+* `google.admin.AdminService.deleteChromeBrowser`
+* `google.admin.AdminService.deleteEmailMonitor`
+* `google.admin.AdminService.deleteGmailSetting`
+* `google.admin.AdminService.deleteGroup`
+* `google.admin.AdminService.deleteLdapApplication`
+* `google.admin.AdminService.deleteProfilePhoto`
+* `google.admin.AdminService.deleteRule`
+* `google.admin.AdminService.deleteSaml2ServiceProviderConfig`
+* `google.admin.AdminService.deleteUser`
+* `google.admin.AdminService.deviceListDownload`
+* `google.admin.AdminService.disallowServiceForOauth2Access`
+* `google.admin.AdminService.downloadLdapApplicationCertificate`
+* `google.admin.AdminService.downloadUnmanagedUsersList`
+* `google.admin.AdminService.downloadUserlistCsv`
+* `google.admin.AdminService.driveDataRestore`
+* `google.admin.AdminService.dropFromQuarantine`
+* `google.admin.AdminService.editOrgUnitDescription`
+* `google.admin.AdminService.editOrgUnitName`
+* `google.admin.AdminService.emailLogSearch`
+* `google.admin.AdminService.emailUndelete`
+* `google.admin.AdminService.enableUserIpWhitelist`
+* `google.admin.AdminService.enforceStrongAuthentication`
+* `google.admin.AdminService.exitMigration`
+* `google.admin.AdminService.generate2svScratchCodes`
+* `google.admin.AdminService.generateCertificate`
+* `google.admin.AdminService.grantAdminPrivilege`
+* `google.admin.AdminService.groupMemberBulkUpload`
+* `google.admin.AdminService.groupMembersDownload`
+* `google.admin.AdminService.insertChromeOsPrinter`
+* `google.admin.AdminService.issueDeviceCommand`
+* `google.admin.AdminService.licenseUsageUpdate`
+* `google.admin.AdminService.meetInteropDeleteGateway`
+* `google.admin.AdminService.migrationSetup`
+* `google.admin.AdminService.mobileDeviceDelete`
+* `google.admin.AdminService.moveChromeBrowserToOrgUnitDetailed`
+* `google.admin.AdminService.moveDeviceToOrgUnitDetailed`
+* `google.admin.AdminService.moveEntityToOrg`
+* `google.admin.AdminService.moveOrgUnit`
+* `google.admin.AdminService.moveUserToOrgUnit`
+* `google.admin.AdminService.rejectFromQuarantine`
+* `google.admin.AdminService.releaseFromQuarantine`
+* `google.admin.AdminService.removeApiClientAccess`
+* `google.admin.AdminService.removeApplication`
+* `google.admin.AdminService.removeDomainAlias`
+* `google.admin.AdminService.removeFromTrustedOauth2Apps`
+* `google.admin.AdminService.removeGroupMember`
+* `google.admin.AdminService.removeNetwork`
+* `google.admin.AdminService.removeNickname`
+* `google.admin.AdminService.removeOrgUnit`
+* `google.admin.AdminService.removePrivilege`
+* `google.admin.AdminService.removeRecoveryEmail`
+* `google.admin.AdminService.removeRecoveryPhone`
+* `google.admin.AdminService.removeSecondaryDomain`
+* `google.admin.AdminService.renameRole`
+* `google.admin.AdminService.renameRule`
+* `google.admin.AdminService.renameUser`
+* `google.admin.AdminService.reorderGroupBasedPoliciesEvent`
+* `google.admin.AdminService.requestMailboxDump`
+* `google.admin.AdminService.resendUserInvite`
+* `google.admin.AdminService.resetSigninCookies`
+* `google.admin.AdminService.revoke3loToken`
+* `google.admin.AdminService.revokeAdminPrivilege`
+* `google.admin.AdminService.revokeAsp`
+* `google.admin.AdminService.revokeDeviceEnrollmentToken`
+* `google.admin.AdminService.revokeSecurityKey`
+* `google.admin.AdminService.ruleStatusChanged`
+* `google.admin.AdminService.securityCenterRuleActionCompletion`
+* `google.admin.AdminService.securityCenterRuleCreation`
+* `google.admin.AdminService.securityCenterRuleModification`
+* `google.admin.AdminService.securityCenterRuleThresholdTrigger`
+* `google.admin.AdminService.securityChartDrilldown`
+* `google.admin.AdminService.securityChartDrilldownExport`
+* `google.admin.AdminService.securityInvestigationAction`
+* `google.admin.AdminService.securityInvestigationActionCompletion`
+* `google.admin.AdminService.securityInvestigationContentAccess`
+* `google.admin.AdminService.securityInvestigationDownloadAttachment`
+* `google.admin.AdminService.securityInvestigationExportActionResults`
+* `google.admin.AdminService.securityInvestigationExportQuery`
+* `google.admin.AdminService.securityInvestigationObjectCreateDraftInvestigation`
+* `google.admin.AdminService.securityInvestigationObjectSaveInvestigation`
+* `google.admin.AdminService.securityInvestigationObjectUpdateDirectSharing`
+* `google.admin.AdminService.securityInvestigationObjectUpdateLinkSharing`
+* `google.admin.AdminService.securityInvestigationQuery`
+* `google.admin.AdminService.securityInvestigationSettingUpdate`
+* `google.admin.AdminService.securityKeyRegisteredForUser`
+* `google.admin.AdminService.sendHangoutsDeviceCommand`
+* `google.admin.AdminService.sessionControlSettingsChange`
+* `google.admin.AdminService.suspendAutoProvisionedUser`
+* `google.admin.AdminService.suspendUser`
+* `google.admin.AdminService.systemDefinedRuleUpdated`
+* `google.admin.AdminService.toggleAutomaticContactSharing`
+* `google.admin.AdminService.toggleCaaEnablement`
+* `google.admin.AdminService.toggleNewAppFeatures`
+* `google.admin.AdminService.toggleServiceEnabled`
+* `google.admin.AdminService.toggleSsoEnabled`
+* `google.admin.AdminService.trustDomainOwnedOauth2Apps`
+* `google.admin.AdminService.unarchiveUser`
+* `google.admin.AdminService.unassignCustomLogo`
+* `google.admin.AdminService.unassignRole`
+* `google.admin.AdminService.unblockUserSession`
+* `google.admin.AdminService.undeleteUser`
+* `google.admin.AdminService.unenrollUserFromStrongAuth`
+* `google.admin.AdminService.unenrollUserFromTitanium`
+* `google.admin.AdminService.unsuspendAutoProvisionedUser`
+* `google.admin.AdminService.unsuspendUser`
+* `google.admin.AdminService.updateAccessLevelV2`
+* `google.admin.AdminService.updateAutoProvisionedUser`
+* `google.admin.AdminService.updateBuilding`
+* `google.admin.AdminService.updateCalendarResource`
+* `google.admin.AdminService.updateCalendarResourceCalendarAcl`
+* `google.admin.AdminService.updateCertificate`
+* `google.admin.AdminService.updateChromeOsPrinter`
+* `google.admin.AdminService.updateCustomUserField`
+* `google.admin.AdminService.updateDevice`
+* `google.admin.AdminService.updateDomainPrimaryAdminEmail`
+* `google.admin.AdminService.updateDomainSecondaryEmail`
+* `google.admin.AdminService.updateGroupMember`
+* `google.admin.AdminService.updateGroupMemberDeliverySettings`
+* `google.admin.AdminService.updateNetwork`
+* `google.admin.AdminService.updateProfilePhoto`
+* `google.admin.AdminService.updateRule`
+* `google.admin.AdminService.updateSmartFeatures`
+* `google.admin.AdminService.userEnrolledInTwoStepVerification`
+* `google.admin.AdminService.userInvite`
+* `google.admin.AdminService.userLicenseAssignment`
+* `google.admin.AdminService.userLicenseRevoke`
+* `google.admin.AdminService.userPutInTwoStepVerificationGracePeriod`
+* `google.admin.AdminService.usersBulkUpload`
+* `google.admin.AdminService.usersBulkUploadNotificationSent`
+* `google.admin.AdminService.verifyDomainAlias`
+* `google.admin.AdminService.verifySecondaryDomain`
+* `google.admin.AdminService.viewDnsLoginDetails`
+* `google.admin.AdminService.viewSiteDetails`
+* `google.admin.AdminService.weakProgrammaticLoginSettingsChanged`
+* `google.admin.AdminService.whitelistedGroupsUpdated`
+
+</p>
+</details>
+<details><summary>AI Platform (under Vertex AI)</summary>
 <p>
 
 `aiplatform.googleapis.com`
@@ -137,10 +451,15 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.aiplatform.ui.EndpointService.ListEndpoints`
 * `google.cloud.aiplatform.ui.EndpointService.UndeployModel`
 * `google.cloud.aiplatform.ui.EndpointService.UpdateEndpoint`
+* `google.cloud.aiplatform.ui.FeaturestoreService.BatchCreateFeatures`
+* `google.cloud.aiplatform.ui.FeaturestoreService.CreateEntityType`
+* `google.cloud.aiplatform.ui.FeaturestoreService.DeleteEntityType`
 * `google.cloud.aiplatform.ui.FeaturestoreService.DeleteFeature`
 * `google.cloud.aiplatform.ui.FeaturestoreService.GetEntityType`
 * `google.cloud.aiplatform.ui.FeaturestoreService.GetFeature`
+* `google.cloud.aiplatform.ui.FeaturestoreService.GetFeaturestore`
 * `google.cloud.aiplatform.ui.FeaturestoreService.ListFeatures`
+* `google.cloud.aiplatform.ui.FeaturestoreService.ListFeaturestores`
 * `google.cloud.aiplatform.ui.FeaturestoreService.SearchFeatures`
 * `google.cloud.aiplatform.ui.FeaturestoreService.UpdateEntityType`
 * `google.cloud.aiplatform.ui.FeaturestoreService.UpdateFeature`
@@ -149,17 +468,22 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.aiplatform.ui.JobService.CancelHyperparameterTuningJob`
 * `google.cloud.aiplatform.ui.JobService.CreateBatchPredictionJob`
 * `google.cloud.aiplatform.ui.JobService.CreateDataLabelingJob`
+* `google.cloud.aiplatform.ui.JobService.CreateModelDeploymentMonitoringJob`
 * `google.cloud.aiplatform.ui.JobService.DeleteBatchPredictionJob`
 * `google.cloud.aiplatform.ui.JobService.DeleteCustomJob`
 * `google.cloud.aiplatform.ui.JobService.DeleteDataLabelingJob`
 * `google.cloud.aiplatform.ui.JobService.DeleteHyperparameterTuningJob`
+* `google.cloud.aiplatform.ui.JobService.DeleteModelDeploymentMonitoringJob`
 * `google.cloud.aiplatform.ui.JobService.GetBatchPredictionJob`
 * `google.cloud.aiplatform.ui.JobService.GetDataLabelingJob`
 * `google.cloud.aiplatform.ui.JobService.GetUiJob`
 * `google.cloud.aiplatform.ui.JobService.ListBatchPredictionJobs`
 * `google.cloud.aiplatform.ui.JobService.ListCustomJobs`
 * `google.cloud.aiplatform.ui.JobService.ListDataLabelingJobs`
+* `google.cloud.aiplatform.ui.JobService.ListFeedbackThreads`
 * `google.cloud.aiplatform.ui.JobService.ListHyperparameterTuningJobs`
+* `google.cloud.aiplatform.ui.JobService.PauseModelDeploymentMonitoringJob`
+* `google.cloud.aiplatform.ui.JobService.SearchModelDeploymentMonitoringStatsAnomalies`
 * `google.cloud.aiplatform.ui.MigrationService.BatchMigrateResources`
 * `google.cloud.aiplatform.ui.MigrationService.SearchMigratableResources`
 * `google.cloud.aiplatform.ui.ModelService.DeleteModel`
@@ -180,11 +504,15 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.aiplatform.ui.PipelineService.ListTrainingPipelines`
 * `google.cloud.aiplatform.ui.PredictionService.Explain`
 * `google.cloud.aiplatform.ui.PredictionService.Predict`
+* `google.cloud.aiplatform.ui.PredictionService.RawPredict`
 * `google.cloud.aiplatform.ui.SpecialistPoolService.CreateSpecialistPool`
 * `google.cloud.aiplatform.ui.SpecialistPoolService.DeleteSpecialistPool`
 * `google.cloud.aiplatform.ui.SpecialistPoolService.ListSpecialistPools`
 * `google.cloud.aiplatform.ui.SpecialistPoolService.UpdateSpecialistPool`
 * `google.cloud.aiplatform.ui.TensorboardService.CreateTensorboard`
+* `google.cloud.aiplatform.ui.TensorboardService.DeleteTensorboard`
+* `google.cloud.aiplatform.ui.TensorboardService.ListTensorboards`
+* `google.cloud.aiplatform.ui.TensorboardService.UpdateTensorboard`
 * `google.cloud.aiplatform.ui.VizierService.GetStudy`
 * `google.cloud.aiplatform.ui.VizierService.ListStudies`
 * `google.cloud.aiplatform.ui.VizierService.ListTrials`
@@ -200,6 +528,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.aiplatform.v1.EndpointService.GetEndpoint`
 * `google.cloud.aiplatform.v1.EndpointService.ListEndpoints`
 * `google.cloud.aiplatform.v1.EndpointService.UndeployModel`
+* `google.cloud.aiplatform.v1.EndpointService.UpdateEndpoint`
 * `google.cloud.aiplatform.v1.JobService.CancelBatchPredictionJob`
 * `google.cloud.aiplatform.v1.JobService.CancelCustomJob`
 * `google.cloud.aiplatform.v1.JobService.CancelDataLabelingJob`
@@ -212,12 +541,19 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.aiplatform.v1.JobService.DeleteCustomJob`
 * `google.cloud.aiplatform.v1.JobService.DeleteDataLabelingJob`
 * `google.cloud.aiplatform.v1.JobService.DeleteHyperparameterTuningJob`
+* `google.cloud.aiplatform.v1.JobService.GetBatchPredictionJob`
 * `google.cloud.aiplatform.v1.JobService.GetCustomJob`
+* `google.cloud.aiplatform.v1.JobService.GetDataLabelingJob`
 * `google.cloud.aiplatform.v1.JobService.GetHyperparameterTuningJob`
 * `google.cloud.aiplatform.v1.JobService.ListBatchPredictionJobs`
+* `google.cloud.aiplatform.v1.JobService.ListCustomJobs`
+* `google.cloud.aiplatform.v1.JobService.ListDataLabelingJobs`
 * `google.cloud.aiplatform.v1.ModelService.DeleteModel`
 * `google.cloud.aiplatform.v1.ModelService.ExportModel`
 * `google.cloud.aiplatform.v1.ModelService.GetModel`
+* `google.cloud.aiplatform.v1.ModelService.GetModelEvaluation`
+* `google.cloud.aiplatform.v1.ModelService.ListModelEvaluationSlices`
+* `google.cloud.aiplatform.v1.ModelService.ListModelEvaluations`
 * `google.cloud.aiplatform.v1.ModelService.ListModels`
 * `google.cloud.aiplatform.v1.ModelService.UpdateModel`
 * `google.cloud.aiplatform.v1.ModelService.UploadModel`
@@ -237,6 +573,9 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.aiplatform.v1beta1.DatasetService.ListAnnotations`
 * `google.cloud.aiplatform.v1beta1.DatasetService.ListDataItems`
 * `google.cloud.aiplatform.v1beta1.DatasetService.ListDatasets`
+* `google.cloud.aiplatform.v1beta1.EdgeDeviceService.CreateEdgeDevice`
+* `google.cloud.aiplatform.v1beta1.EdgeDeviceService.DeleteEdgeDevice`
+* `google.cloud.aiplatform.v1beta1.EdgeDeviceService.UpdateEdgeDevice`
 * `google.cloud.aiplatform.v1beta1.EndpointService.CreateEndpoint`
 * `google.cloud.aiplatform.v1beta1.EndpointService.DeleteEndpoint`
 * `google.cloud.aiplatform.v1beta1.EndpointService.DeployModel`
@@ -254,6 +593,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteEntityType`
 * `google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeature`
 * `google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeaturestore`
+* `google.cloud.aiplatform.v1beta1.FeaturestoreService.ExportFeatureValues`
 * `google.cloud.aiplatform.v1beta1.FeaturestoreService.GetEntityType`
 * `google.cloud.aiplatform.v1beta1.FeaturestoreService.GetFeature`
 * `google.cloud.aiplatform.v1beta1.FeaturestoreService.GetFeaturestore`
@@ -275,24 +615,31 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.aiplatform.v1beta1.IndexService.DeleteIndex`
 * `google.cloud.aiplatform.v1beta1.IndexService.GetIndex`
 * `google.cloud.aiplatform.v1beta1.IndexService.ListIndexes`
+* `google.cloud.aiplatform.v1beta1.IndexService.UpdateIndex`
 * `google.cloud.aiplatform.v1beta1.JobService.CancelBatchPredictionJob`
 * `google.cloud.aiplatform.v1beta1.JobService.CancelCustomJob`
 * `google.cloud.aiplatform.v1beta1.JobService.CancelHyperparameterTuningJob`
 * `google.cloud.aiplatform.v1beta1.JobService.CreateBatchPredictionJob`
 * `google.cloud.aiplatform.v1beta1.JobService.CreateCustomJob`
+* `google.cloud.aiplatform.v1beta1.JobService.CreateEdgeDeploymentJob`
 * `google.cloud.aiplatform.v1beta1.JobService.CreateHyperparameterTuningJob`
 * `google.cloud.aiplatform.v1beta1.JobService.CreateModelDeploymentMonitoringJob`
 * `google.cloud.aiplatform.v1beta1.JobService.DeleteBatchPredictionJob`
 * `google.cloud.aiplatform.v1beta1.JobService.DeleteCustomJob`
+* `google.cloud.aiplatform.v1beta1.JobService.DeleteEdgeDeploymentJob`
 * `google.cloud.aiplatform.v1beta1.JobService.DeleteHyperparameterTuningJob`
 * `google.cloud.aiplatform.v1beta1.JobService.DeleteModelDeploymentMonitoringJob`
 * `google.cloud.aiplatform.v1beta1.JobService.GetBatchPredictionJob`
 * `google.cloud.aiplatform.v1beta1.JobService.GetCustomJob`
 * `google.cloud.aiplatform.v1beta1.JobService.GetHyperparameterTuningJob`
+* `google.cloud.aiplatform.v1beta1.JobService.GetModelDeploymentMonitoringJob`
 * `google.cloud.aiplatform.v1beta1.JobService.ListBatchPredictionJobs`
 * `google.cloud.aiplatform.v1beta1.JobService.ListCustomJobs`
 * `google.cloud.aiplatform.v1beta1.JobService.ListHyperparameterTuningJobs`
+* `google.cloud.aiplatform.v1beta1.JobService.ListModelDeploymentMonitoringJobs`
 * `google.cloud.aiplatform.v1beta1.JobService.PauseModelDeploymentMonitoringJob`
+* `google.cloud.aiplatform.v1beta1.JobService.ResumeModelDeploymentMonitoringJob`
+* `google.cloud.aiplatform.v1beta1.JobService.UpdateModelDeploymentMonitoringJob`
 * `google.cloud.aiplatform.v1beta1.MetadataService.DeleteMetadataStore`
 * `google.cloud.aiplatform.v1beta1.ModelService.DeleteModel`
 * `google.cloud.aiplatform.v1beta1.ModelService.ExportModel`
@@ -309,11 +656,20 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.aiplatform.v1beta1.PipelineService.ListTrainingPipelines`
 * `google.cloud.aiplatform.v1beta1.PredictionService.Explain`
 * `google.cloud.aiplatform.v1beta1.PredictionService.Predict`
+* `google.cloud.aiplatform.v1beta1.PredictionService.RawPredict`
 * `google.cloud.aiplatform.v1beta1.TensorboardService.CreateTensorboard`
 * `google.cloud.aiplatform.v1beta1.TensorboardService.CreateTensorboardExperiment`
 * `google.cloud.aiplatform.v1beta1.TensorboardService.CreateTensorboardRun`
 * `google.cloud.aiplatform.v1beta1.TensorboardService.CreateTensorboardTimeSeries`
 * `google.cloud.aiplatform.v1beta1.TensorboardService.DeleteTensorboard`
+* `google.cloud.aiplatform.v1beta1.TensorboardService.DeleteTensorboardExperiment`
+* `google.cloud.aiplatform.v1beta1.TensorboardService.GetTensorboard`
+* `google.cloud.aiplatform.v1beta1.TensorboardService.GetTensorboardExperiment`
+* `google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboardRuns`
+* `google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboardTimeSeries`
+* `google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboards`
+* `google.cloud.aiplatform.v1beta1.TensorboardService.ReadTensorboardBlobData`
+* `google.cloud.aiplatform.v1beta1.TensorboardService.ReadTensorboardTimeSeriesData`
 * `google.cloud.aiplatform.v1beta1.TensorboardService.WriteTensorboardRunData`
 * `google.cloud.aiplatform.v1beta1.VizierService.AddTrialMeasurement`
 * `google.cloud.aiplatform.v1beta1.VizierService.CheckTrialEarlyStoppingState`
@@ -340,6 +696,8 @@ Any custom application that can publish to a PubSub topic
 * `SetIamPolicy`
 * `google.cloud.notebooks.v1.ManagedNotebookService.CreateRuntime`
 * `google.cloud.notebooks.v1.ManagedNotebookService.DeleteRuntime`
+* `google.cloud.notebooks.v1.ManagedNotebookService.GetRuntime`
+* `google.cloud.notebooks.v1.ManagedNotebookService.ListRuntimes`
 * `google.cloud.notebooks.v1.ManagedNotebookService.ResetRuntime`
 * `google.cloud.notebooks.v1.ManagedNotebookService.StartRuntime`
 * `google.cloud.notebooks.v1.ManagedNotebookService.StopRuntime`
@@ -353,7 +711,9 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.notebooks.v1.NotebookService.DeleteInstance`
 * `google.cloud.notebooks.v1.NotebookService.DeleteSchedule`
 * `google.cloud.notebooks.v1.NotebookService.GetEnvironment`
+* `google.cloud.notebooks.v1.NotebookService.GetExecution`
 * `google.cloud.notebooks.v1.NotebookService.GetInstance`
+* `google.cloud.notebooks.v1.NotebookService.GetInstanceHealth`
 * `google.cloud.notebooks.v1.NotebookService.GetSchedule`
 * `google.cloud.notebooks.v1.NotebookService.IsInstanceUpgradeable`
 * `google.cloud.notebooks.v1.NotebookService.ListEnvironments`
@@ -362,11 +722,13 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.notebooks.v1.NotebookService.ListSchedules`
 * `google.cloud.notebooks.v1.NotebookService.RegisterInstance`
 * `google.cloud.notebooks.v1.NotebookService.ResetInstance`
+* `google.cloud.notebooks.v1.NotebookService.RollbackInstance`
 * `google.cloud.notebooks.v1.NotebookService.SetInstanceAccelerator`
 * `google.cloud.notebooks.v1.NotebookService.SetInstanceLabels`
 * `google.cloud.notebooks.v1.NotebookService.SetInstanceMachineType`
 * `google.cloud.notebooks.v1.NotebookService.StartInstance`
 * `google.cloud.notebooks.v1.NotebookService.StopInstance`
+* `google.cloud.notebooks.v1.NotebookService.UpdateInstanceConfig`
 * `google.cloud.notebooks.v1.NotebookService.UpdateShieldedInstanceConfig`
 * `google.cloud.notebooks.v1.NotebookService.UpgradeInstance`
 * `google.cloud.notebooks.v1beta1.NotebookService.CreateEnvironment`
@@ -403,6 +765,7 @@ Any custom application that can publish to a PubSub topic
 * `google.api.apikeys.v1.ApiKeys.PatchApiKey`
 * `google.api.apikeys.v1.ApiKeys.RegenerateApiKey`
 * `google.api.apikeys.v1.ApiKeys.RevertApiKey`
+* `google.api.apikeys.v2.ApiKeys.CloneKey`
 * `google.api.apikeys.v2.ApiKeys.CreateKey`
 * `google.api.apikeys.v2.ApiKeys.DeleteKey`
 * `google.api.apikeys.v2.ApiKeys.GetKeyString`
@@ -429,6 +792,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.apigee.v1.AnalyticsCustomReport.UpdateCustomReport`
 * `google.cloud.apigee.v1.AnalyticsDatastore.CreateDatastore`
 * `google.cloud.apigee.v1.AnalyticsDatastore.DeleteDatastore`
+* `google.cloud.apigee.v1.AnalyticsDatastore.ListDatastores`
 * `google.cloud.apigee.v1.AnalyticsDatastore.TestDatastore`
 * `google.cloud.apigee.v1.AnalyticsDatastore.UpdateDatastore`
 * `google.cloud.apigee.v1.AnalyticsInteractiveQuery.GetOptimizedHostStats`
@@ -478,6 +842,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.apigee.v1.AsyncQueryService.GetAsyncQueryResult`
 * `google.cloud.apigee.v1.AsyncQueryService.GetAsyncQueryResultView`
 * `google.cloud.apigee.v1.AsyncQueryService.ListAsyncQueries`
+* `google.cloud.apigee.v1.AsyncQueryService.ListHostAsyncQueries`
 * `google.cloud.apigee.v1.CacheService.DeleteCache`
 * `google.cloud.apigee.v1.CacheService.ListCaches`
 * `google.cloud.apigee.v1.CollectionService.GetDataLocation`
@@ -503,6 +868,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.apigee.v1.DataCollectorService.ListDataCollectors`
 * `google.cloud.apigee.v1.DataCollectorService.UpdateDataCollector`
 * `google.cloud.apigee.v1.DataExport.CreateExport`
+* `google.cloud.apigee.v1.DataExport.ListExports`
 * `google.cloud.apigee.v1.DataMaskService.GetEnvironmentDebugMask`
 * `google.cloud.apigee.v1.DataMaskService.UpdateEnvironmentDebugMask`
 * `google.cloud.apigee.v1.DebugSessionService.CreateDebugSession`
@@ -524,6 +890,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.apigee.v1.DeploymentService.ListApiDeploymentsInEnvironment`
 * `google.cloud.apigee.v1.DeploymentService.ListApiRevisionDeployments`
 * `google.cloud.apigee.v1.DeploymentService.ListEnvironmentDeployments`
+* `google.cloud.apigee.v1.DeploymentService.ListFlowHooks`
 * `google.cloud.apigee.v1.DeploymentService.ListOrganizationDeployments`
 * `google.cloud.apigee.v1.DeploymentService.ListSharedFlowDeployments`
 * `google.cloud.apigee.v1.DeploymentService.ListSharedFlowDeploymentsInEnvironment`
@@ -542,6 +909,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.apigee.v1.DeveloperApps.DeleteDeveloperAppAttribute`
 * `google.cloud.apigee.v1.DeveloperApps.GenerateKeyPairOrUpdateDeveloperAppStatus`
 * `google.cloud.apigee.v1.DeveloperApps.GetDeveloperApp`
+* `google.cloud.apigee.v1.DeveloperApps.ListDeveloperAppAttributes`
 * `google.cloud.apigee.v1.DeveloperApps.ListDeveloperApps`
 * `google.cloud.apigee.v1.DeveloperApps.UpdateDeveloperApp`
 * `google.cloud.apigee.v1.DeveloperApps.UpdateDeveloperAppAttribute`
@@ -549,6 +917,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.apigee.v1.DeveloperSubscriptions.CreateDeveloperSubscription`
 * `google.cloud.apigee.v1.DeveloperSubscriptions.ExpireDeveloperSubscription`
 * `google.cloud.apigee.v1.Developers.CreateDeveloper`
+* `google.cloud.apigee.v1.Developers.CreditDeveloperBalance`
 * `google.cloud.apigee.v1.Developers.DeleteDeveloper`
 * `google.cloud.apigee.v1.Developers.DeleteDeveloperAttribute`
 * `google.cloud.apigee.v1.Developers.GetDeveloper`
@@ -557,6 +926,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.apigee.v1.Developers.UpdateDeveloper`
 * `google.cloud.apigee.v1.Developers.UpdateDeveloperAttribute`
 * `google.cloud.apigee.v1.Developers.UpdateDeveloperAttributes`
+* `google.cloud.apigee.v1.Developers.UpdateDeveloperMonetizationConfig`
 * `google.cloud.apigee.v1.EnvironmentGroupAttachmentService.CreateEnvironmentGroupAttachment`
 * `google.cloud.apigee.v1.EnvironmentGroupAttachmentService.DeleteEnvironmentGroupAttachment`
 * `google.cloud.apigee.v1.EnvironmentGroupAttachmentService.GetEnvironmentGroupAttachment`
@@ -581,6 +951,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.apigee.v1.InstanceAttachmentService.GetInstanceAttachment`
 * `google.cloud.apigee.v1.InstanceAttachmentService.ListInstanceAttachments`
 * `google.cloud.apigee.v1.InstanceService.CreateInstance`
+* `google.cloud.apigee.v1.InstanceService.CreateInstanceAndAttachments`
 * `google.cloud.apigee.v1.InstanceService.DeleteInstance`
 * `google.cloud.apigee.v1.InstanceService.GetInstance`
 * `google.cloud.apigee.v1.InstanceService.ListInstances`
@@ -601,6 +972,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.apigee.v1.KeystoreService.GenerateCsr`
 * `google.cloud.apigee.v1.KeystoreService.GetAlias`
 * `google.cloud.apigee.v1.KeystoreService.GetCertificateFromAlias`
+* `google.cloud.apigee.v1.KeystoreService.GetKeystore`
 * `google.cloud.apigee.v1.KeystoreService.ListAliases`
 * `google.cloud.apigee.v1.KeystoreService.ListKeystores`
 * `google.cloud.apigee.v1.KeystoreService.UpdateAlias`
@@ -700,6 +1072,8 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.apigee.v1.TargetServerService.UpdateTargetServer`
 * `google.cloud.apigee.v1.TraceConfigOverrideService.CreateTraceConfigOverride`
 * `google.cloud.apigee.v1.TraceConfigOverrideService.DeleteTraceConfigOverride`
+* `google.cloud.apigee.v1.TraceConfigOverrideService.GetTraceConfigOverride`
+* `google.cloud.apigee.v1.TraceConfigOverrideService.ListTraceConfigOverrides`
 * `google.cloud.apigee.v1.TraceConfigOverrideService.UpdateTraceConfigOverride`
 * `google.cloud.apigee.v1.TraceConfigService.GetTraceConfig`
 * `google.cloud.apigee.v1.TraceConfigService.UpdateTraceConfig`
@@ -797,6 +1171,83 @@ Any custom application that can publish to a PubSub topic
 * `google.appengine.v1beta.Versions.CreateVersion`
 * `google.appengine.v1beta.Versions.DeleteVersion`
 * `google.appengine.v1beta.Versions.UpdateVersion`
+
+</p>
+</details>
+<details><summary>Artifact Registry</summary>
+<p>
+
+`artifactregistry.googleapis.com`
+
+* `Docker-Catalog`
+* `Docker-DeleteManifest`
+* `Docker-DeleteTag`
+* `Docker-FinishUpload`
+* `Docker-GetManifest`
+* `Docker-GetTags`
+* `Docker-PutManifest`
+* `Docker-ServeBlob`
+* `Docker-StartUpload`
+* `google.devtools.artifactregistry.v1.ArtifactRegistry.GetRepository`
+* `google.devtools.artifactregistry.v1.ArtifactRegistry.ListRepositories`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.CreateRepository`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.CreateTag`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.DeletePackage`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.DeleteRepository`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.DeleteTag`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.DeleteVersion`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.GetFile`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.GetIamPolicy`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.GetPackage`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.GetRepository`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.GetTag`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.GetVersion`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.ListFiles`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.ListPackages`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.ListRepositories`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.ListTags`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.ListVersions`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.SetIamPolicy`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.UpdateRepository`
+* `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.UpdateTag`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.CreateRepository`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.CreateTag`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.DeletePackage`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.DeleteRepository`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.DeleteTag`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.DeleteVersion`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.GetFile`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.GetIamPolicy`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.GetPackage`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.GetRepository`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.GetTag`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.GetVersion`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.ListFiles`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.ListPackages`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.ListRepositories`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.ListTags`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.ListVersions`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.SetIamPolicy`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.UpdateRepository`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.UpdateTag`
+
+</p>
+</details>
+<details><summary>Assured Workloads</summary>
+<p>
+
+`assuredworkloads.googleapis.com`
+
+* `google.cloud.assuredworkloads.v1.AssuredWorkloadsService.CreateWorkload`
+* `google.cloud.assuredworkloads.v1.AssuredWorkloadsService.DeleteWorkload`
+* `google.cloud.assuredworkloads.v1.AssuredWorkloadsService.GetWorkload`
+* `google.cloud.assuredworkloads.v1.AssuredWorkloadsService.ListWorkloads`
+* `google.cloud.assuredworkloads.v1.AssuredWorkloadsService.UpdateWorkload`
+* `google.cloud.assuredworkloads.v1beta1.AssuredWorkloadsService.CreateWorkload`
+* `google.cloud.assuredworkloads.v1beta1.AssuredWorkloadsService.DeleteWorkload`
+* `google.cloud.assuredworkloads.v1beta1.AssuredWorkloadsService.GetWorkload`
+* `google.cloud.assuredworkloads.v1beta1.AssuredWorkloadsService.ListWorkloads`
+* `google.cloud.assuredworkloads.v1beta1.AssuredWorkloadsService.UpdateWorkload`
 
 </p>
 </details>
@@ -915,6 +1366,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.bigquery.reservation.v1beta1.ReservationService.MergeCapacityCommitments`
 * `google.cloud.bigquery.reservation.v1beta1.ReservationService.MoveAssignment`
 * `google.cloud.bigquery.reservation.v1beta1.ReservationService.SplitCapacityCommitment`
+* `google.cloud.bigquery.reservation.v1beta1.ReservationService.UpdateAssignment`
 * `google.cloud.bigquery.reservation.v1beta1.ReservationService.UpdateBiReservation`
 * `google.cloud.bigquery.reservation.v1beta1.ReservationService.UpdateCapacityCommitment`
 * `google.cloud.bigquery.reservation.v1beta1.ReservationService.UpdateReservation`
@@ -954,6 +1406,35 @@ Any custom application that can publish to a PubSub topic
 
 * `GetIamPolicy`
 * `SetIamPolicy`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.ActivateCertificateAuthority`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.CreateCaPool`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.CreateCertificate`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.CreateCertificateAuthority`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.CreateCertificateTemplate`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.DeleteCaPool`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.DeleteCertificateAuthority`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.DeleteCertificateTemplate`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.DisableCertificateAuthority`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.EnableCertificateAuthority`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.FetchCaCerts`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.FetchCertificateAuthorityCsr`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.GetCaPool`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.GetCertificate`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.GetCertificateAuthority`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.GetCertificateRevocationList`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.GetCertificateTemplate`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.ListCaPools`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.ListCertificateAuthorities`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.ListCertificateRevocationLists`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.ListCertificateTemplates`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.ListCertificates`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.RevokeCertificate`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.UndeleteCertificateAuthority`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.UpdateCaPool`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.UpdateCertificate`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.UpdateCertificateAuthority`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.UpdateCertificateRevocationList`
+* `google.cloud.security.privateca.v1.CertificateAuthorityService.UpdateCertificateTemplate`
 * `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.ActivateCertificateAuthority`
 * `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.CreateCertificate`
 * `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.CreateCertificateAuthority`
@@ -963,10 +1444,14 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.FetchCertificateAuthorityCsr`
 * `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.GetCertificate`
 * `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.GetCertificateAuthority`
+* `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.GetCertificateRevocationList`
+* `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.GetReusableConfig`
 * `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.ListCertificateAuthorities`
+* `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.ListCertificateRevocationLists`
 * `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.ListCertificates`
 * `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.RestoreCertificateAuthority`
 * `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.RevokeCertificate`
+* `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.ScheduleDeleteCertificateAuthority`
 * `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.UpdateCertificate`
 * `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.UpdateCertificateAuthority`
 * `google.cloud.security.privateca.v1beta1.CertificateAuthorityService.UpdateCertificateRevocationList`
@@ -994,6 +1479,7 @@ Any custom application that can publish to a PubSub topic
 
 `cloudasset.googleapis.com`
 
+* `AnalyzeMove`
 * `google.cloud.asset.v1.AssetService.AnalyzeIamPolicy`
 * `google.cloud.asset.v1.AssetService.AnalyzeIamPolicyLongrunning`
 * `google.cloud.asset.v1.AssetService.BatchGetAssetsHistory`
@@ -1022,7 +1508,16 @@ Any custom application that can publish to a PubSub topic
 
 </p>
 </details>
-<details><summary>Cloud AutoML</summary>
+<details><summary>Cloud Asset</summary>
+<p>
+
+`mediaasset.googleapis.com`
+
+* `google.longrunning.Operations.GetOperation`
+
+</p>
+</details>
+<details><summary>Cloud AutoML (under Vertex AI)</summary>
 <p>
 
 `automl.googleapis.com`
@@ -1062,6 +1557,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.automl.v1beta1.AutoMl.ExportData`
 * `google.cloud.automl.v1beta1.AutoMl.ExportEvaluatedExamples`
 * `google.cloud.automl.v1beta1.AutoMl.ExportModel`
+* `google.cloud.automl.v1beta1.AutoMl.GetAnnotationSpec`
 * `google.cloud.automl.v1beta1.AutoMl.GetColumnSpec`
 * `google.cloud.automl.v1beta1.AutoMl.GetDataset`
 * `google.cloud.automl.v1beta1.AutoMl.GetExample`
@@ -1105,6 +1601,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.automl.v1p1beta.PredictionService.Predict`
 * `google.cloud.location.Locations.GetLocation`
 * `google.cloud.location.Locations.ListLocations`
+* `google.iam.v1.IAMPolicy.GetIamPolicy`
 * `google.iam.v1.IAMPolicy.SetIamPolicy`
 * `google.longrunning.Operations.CancelOperation`
 * `google.longrunning.Operations.GetOperation`
@@ -1131,6 +1628,7 @@ Any custom application that can publish to a PubSub topic
 * `google.bigtable.admin.v2.BigtableInstanceAdmin.ListAppProfiles`
 * `google.bigtable.admin.v2.BigtableInstanceAdmin.ListClusters`
 * `google.bigtable.admin.v2.BigtableInstanceAdmin.ListInstances`
+* `google.bigtable.admin.v2.BigtableInstanceAdmin.PartialUpdateCluster`
 * `google.bigtable.admin.v2.BigtableInstanceAdmin.PartialUpdateInstance`
 * `google.bigtable.admin.v2.BigtableInstanceAdmin.SetIamPolicy`
 * `google.bigtable.admin.v2.BigtableInstanceAdmin.UpdateAppProfile`
@@ -1184,14 +1682,29 @@ Any custom application that can publish to a PubSub topic
 
 `cloudbilling.googleapis.com`
 
+* `ActivateInstrumentlessBillingAccount`
 * `AssignProjectToBillingAccount`
 * `AssignResourceToBillingAccount`
+* `CheckReopenability`
+* `CloseBillingAccount`
+* `CreateBillingAccount`
 * `DisableResourceBilling`
+* `GetBillingAccount`
+* `GetIamPolicy`
 * `GetProjectBillingInfo`
 * `GetResourceBillingInfo`
 * `GetResourceBillingInfoBatch`
+* `ListBillingAccountResources`
+* `ListBillingAccounts`
+* `ListProjectIdentifiers`
+* `ReopenBillingAccount`
 * `SetIamPolicy`
+* `UpdateBillingAccountCurrency`
+* `UpdateBillingAccountDisplayName`
+* `UpdateBillingAccountPurchaseOrderNumber`
+* `UpdateParentOrganization`
 * `UpdateResourceBillingProtection`
+* `UpgradeFreeTrial`
 
 </p>
 </details>
@@ -1200,20 +1713,33 @@ Any custom application that can publish to a PubSub topic
 
 `cloudbuild.googleapis.com`
 
+* `CloudBuildClusterProxy.CancelBuild`
 * `CloudBuildClusterProxy.CreateBuild`
 * `google.devtools.cloudbuild.v1.ArgoAdminV1.CreateBuild`
 * `google.devtools.cloudbuild.v1.ArgoAdminV1.GetBuild`
 * `google.devtools.cloudbuild.v1.ArgoAdminV1.ListBuilds`
+* `google.devtools.cloudbuild.v1.CloudBuild.AddBitbucketServerConnectedRepository`
 * `google.devtools.cloudbuild.v1.CloudBuild.CancelBuild`
+* `google.devtools.cloudbuild.v1.CloudBuild.CreateBitbucketServerConfig`
 * `google.devtools.cloudbuild.v1.CloudBuild.CreateBuild`
 * `google.devtools.cloudbuild.v1.CloudBuild.CreateBuildTrigger`
+* `google.devtools.cloudbuild.v1.CloudBuild.CreateWorkerPool`
+* `google.devtools.cloudbuild.v1.CloudBuild.DeleteBitbucketServerConfig`
 * `google.devtools.cloudbuild.v1.CloudBuild.DeleteBuildTrigger`
+* `google.devtools.cloudbuild.v1.CloudBuild.DeleteWorkerPool`
+* `google.devtools.cloudbuild.v1.CloudBuild.GetBitbucketServerConfig`
 * `google.devtools.cloudbuild.v1.CloudBuild.GetBuild`
 * `google.devtools.cloudbuild.v1.CloudBuild.GetBuildTrigger`
+* `google.devtools.cloudbuild.v1.CloudBuild.ListBitbucketServerConfigs`
+* `google.devtools.cloudbuild.v1.CloudBuild.ListBitbucketServerRepositories`
+* `google.devtools.cloudbuild.v1.CloudBuild.ListBranches`
 * `google.devtools.cloudbuild.v1.CloudBuild.ListBuildTriggers`
 * `google.devtools.cloudbuild.v1.CloudBuild.ListBuilds`
+* `google.devtools.cloudbuild.v1.CloudBuild.ListTags`
+* `google.devtools.cloudbuild.v1.CloudBuild.ListWorkerPools`
 * `google.devtools.cloudbuild.v1.CloudBuild.RetryBuild`
 * `google.devtools.cloudbuild.v1.CloudBuild.RunBuildTrigger`
+* `google.devtools.cloudbuild.v1.CloudBuild.UpdateBitbucketServerConfig`
 * `google.devtools.cloudbuild.v1.CloudBuild.UpdateBuildTrigger`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.ConstructAppManifest`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.CreateBitbucketServerConfig`
@@ -1224,19 +1750,24 @@ Any custom application that can publish to a PubSub topic
 * `google.devtools.cloudbuild.v1.ProctorAdminService.DeleteBuildTrigger`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.DeleteGitHubEnterpriseConfig`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.DeleteGitHubInstallation`
+* `google.devtools.cloudbuild.v1.ProctorAdminService.GetBitbucketServerConfig`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.GetBuildTrigger`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.GetGitHubEnterpriseApp`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.GetGitHubEnterpriseConfig`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.GetGlobalTriggerSettings`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.ListBitbucketServerConfigs`
+* `google.devtools.cloudbuild.v1.ProctorAdminService.ListBitbucketServerRepositories`
+* `google.devtools.cloudbuild.v1.ProctorAdminService.ListBranches`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.ListBuildTriggers`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.ListGitHubEnterpriseConfigs`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.ListGitHubInstallationsForProject`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.ListGitHubRefs`
+* `google.devtools.cloudbuild.v1.ProctorAdminService.ListTags`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.ProcessAppManifestCallback`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.RunBuildTrigger`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.UpdateBitbucketServerConfig`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.UpdateBuildTrigger`
+* `google.devtools.cloudbuild.v1.ProctorAdminService.UpdateGitHubEnterpriseConfig`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.UpdateGitHubInstallation`
 * `google.devtools.cloudbuild.v1.ProctorAdminService.UpdateGlobalTriggerSettings`
 * `google.devtools.cloudbuild.v1beta1.CloudBuild.CreateWorkerPool`
@@ -1258,6 +1789,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.orchestration.airflow.service.v1.Environments.ListEnvironments`
 * `google.cloud.orchestration.airflow.service.v1.Environments.UpdateEnvironment`
 * `google.cloud.orchestration.airflow.service.v1.ImageVersions.ListImageVersions`
+* `google.cloud.orchestration.airflow.service.v1beta1.Environments.CheckUpgrade`
 * `google.cloud.orchestration.airflow.service.v1beta1.Environments.CreateEnvironment`
 * `google.cloud.orchestration.airflow.service.v1beta1.Environments.DeleteEnvironment`
 * `google.cloud.orchestration.airflow.service.v1beta1.Environments.GetEnvironment`
@@ -1313,6 +1845,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.datacatalog.v1beta1.PolicyTagManager.GetIamPolicy`
 * `google.cloud.datacatalog.v1beta1.PolicyTagManager.GetPolicyTag`
 * `google.cloud.datacatalog.v1beta1.PolicyTagManager.GetTaxonomy`
+* `google.cloud.datacatalog.v1beta1.PolicyTagManager.ListOrgTaxonomies`
 * `google.cloud.datacatalog.v1beta1.PolicyTagManager.ListPolicyTags`
 * `google.cloud.datacatalog.v1beta1.PolicyTagManager.ListTaxonomies`
 * `google.cloud.datacatalog.v1beta1.PolicyTagManager.SetIamPolicy`
@@ -1408,6 +1941,10 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dataproc.v1.AutoscalingPolicyService.GetAutoscalingPolicy`
 * `google.cloud.dataproc.v1.AutoscalingPolicyService.ListAutoscalingPolicies`
 * `google.cloud.dataproc.v1.AutoscalingPolicyService.UpdateAutoscalingPolicy`
+* `google.cloud.dataproc.v1.BatchController.CreateBatch`
+* `google.cloud.dataproc.v1.BatchController.DeleteBatch`
+* `google.cloud.dataproc.v1.BatchController.GetBatch`
+* `google.cloud.dataproc.v1.BatchController.ListBatches`
 * `google.cloud.dataproc.v1.ClusterController.CreateCluster`
 * `google.cloud.dataproc.v1.ClusterController.DeleteCluster`
 * `google.cloud.dataproc.v1.ClusterController.DiagnoseCluster`
@@ -1480,8 +2017,11 @@ Any custom application that can publish to a PubSub topic
 * `google.datastore.admin.v1.DatastoreAdmin.ListIndexes`
 * `google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities`
 * `google.datastore.admin.v1beta1.DatastoreAdmin.ImportEntities`
+* `google.datastore.v1.Datastore.AllocateIds`
+* `google.datastore.v1.Datastore.BeginTransaction`
 * `google.datastore.v1.Datastore.Commit`
 * `google.datastore.v1.Datastore.Lookup`
+* `google.datastore.v1.Datastore.Rollback`
 * `google.datastore.v1.Datastore.RunQuery`
 * `google.longrunning.Operations.CancelOperation`
 * `google.longrunning.Operations.DeleteOperation`
@@ -1500,6 +2040,28 @@ Any custom application that can publish to a PubSub topic
 * `ListBreakpoints`
 * `ListDebuggees`
 * `SetBreakpoint`
+
+</p>
+</details>
+<details><summary>Cloud Deployment Manager</summary>
+<p>
+
+`clouddeploy.googleapis.com`
+
+* `cloud.hosted.deploy.api.v1.CloudDeploy.ApproveRollout`
+* `cloud.hosted.deploy.api.v1.CloudDeploy.CreateDeliveryPipeline`
+* `cloud.hosted.deploy.api.v1.CloudDeploy.CreateRelease`
+* `cloud.hosted.deploy.api.v1.CloudDeploy.CreateRollout`
+* `cloud.hosted.deploy.api.v1.CloudDeploy.CreateTarget`
+* `cloud.hosted.deploy.api.v1.CloudDeploy.DeleteDeliveryPipeline`
+* `cloud.hosted.deploy.api.v1.CloudDeploy.DeleteRelease`
+* `cloud.hosted.deploy.api.v1.CloudDeploy.DeleteSharedTarget`
+* `cloud.hosted.deploy.api.v1.CloudDeploy.DeleteTarget`
+* `cloud.hosted.deploy.api.v1.CloudDeploy.ListDeliveryPipelines`
+* `cloud.hosted.deploy.api.v1.CloudDeploy.PromoteRelease`
+* `cloud.hosted.deploy.api.v1.CloudDeploy.UpdateDeliveryPipeline`
+* `cloud.hosted.deploy.api.v1.CloudDeploy.UpdateSharedTarget`
+* `cloud.hosted.deploy.api.v1.CloudDeploy.UpdateTarget`
 
 </p>
 </details>
@@ -1538,6 +2100,7 @@ Any custom application that can publish to a PubSub topic
 * `v2beta.deploymentmanager.manifests.get`
 * `v2beta.deploymentmanager.operations.get`
 * `v2beta.deploymentmanager.operations.list`
+* `v2beta.deploymentmanager.resources.get`
 * `v2beta.deploymentmanager.resources.list`
 * `v2beta.deploymentmanager.types.list`
 
@@ -1554,11 +2117,14 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.cx.v3.Agents.DeleteAgent`
 * `google.cloud.dialogflow.cx.v3.Agents.ExportAgent`
 * `google.cloud.dialogflow.cx.v3.Agents.GetAgent`
+* `google.cloud.dialogflow.cx.v3.Agents.GetAgentValidationResult`
 * `google.cloud.dialogflow.cx.v3.Agents.ListAgents`
 * `google.cloud.dialogflow.cx.v3.Agents.RestoreAgent`
 * `google.cloud.dialogflow.cx.v3.Agents.UpdateAgent`
 * `google.cloud.dialogflow.cx.v3.Agents.ValidateAgent`
 * `google.cloud.dialogflow.cx.v3.EntityTypes.CreateEntityType`
+* `google.cloud.dialogflow.cx.v3.EntityTypes.DeleteEntityType`
+* `google.cloud.dialogflow.cx.v3.EntityTypes.GetEntityType`
 * `google.cloud.dialogflow.cx.v3.EntityTypes.ListEntityTypes`
 * `google.cloud.dialogflow.cx.v3.EntityTypes.UpdateEntityType`
 * `google.cloud.dialogflow.cx.v3.Environments.CreateEnvironment`
@@ -1596,13 +2162,21 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.cx.v3.Sessions.DetectIntent`
 * `google.cloud.dialogflow.cx.v3.Sessions.MatchIntent`
 * `google.cloud.dialogflow.cx.v3.TestCases.BatchRunTestCases`
+* `google.cloud.dialogflow.cx.v3.TestCases.CalculateCoverage`
 * `google.cloud.dialogflow.cx.v3.TestCases.CreateTestCase`
 * `google.cloud.dialogflow.cx.v3.TestCases.GetTestCase`
 * `google.cloud.dialogflow.cx.v3.TestCases.ListTestCases`
 * `google.cloud.dialogflow.cx.v3.TestCases.RunTestCase`
+* `google.cloud.dialogflow.cx.v3.TransitionRouteGroups.CreateTransitionRouteGroup`
+* `google.cloud.dialogflow.cx.v3.TransitionRouteGroups.DeleteTransitionRouteGroup`
+* `google.cloud.dialogflow.cx.v3.TransitionRouteGroups.GetTransitionRouteGroup`
+* `google.cloud.dialogflow.cx.v3.TransitionRouteGroups.ListTransitionRouteGroups`
+* `google.cloud.dialogflow.cx.v3.TransitionRouteGroups.UpdateTransitionRouteGroup`
 * `google.cloud.dialogflow.cx.v3.Versions.CreateVersion`
 * `google.cloud.dialogflow.cx.v3.Versions.ListVersions`
 * `google.cloud.dialogflow.cx.v3.Versions.LoadVersion`
+* `google.cloud.dialogflow.cx.v3.Webhooks.CreateWebhook`
+* `google.cloud.dialogflow.cx.v3.Webhooks.DeleteWebhook`
 * `google.cloud.dialogflow.cx.v3.Webhooks.GetWebhook`
 * `google.cloud.dialogflow.cx.v3.Webhooks.ListWebhooks`
 * `google.cloud.dialogflow.cx.v3.Webhooks.UpdateWebhook`
@@ -1615,13 +2189,16 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.cx.v3beta1.Agents.UpdateAgent`
 * `google.cloud.dialogflow.cx.v3beta1.Agents.ValidateAgent`
 * `google.cloud.dialogflow.cx.v3beta1.EntityTypes.CreateEntityType`
+* `google.cloud.dialogflow.cx.v3beta1.EntityTypes.DeleteEntityType`
 * `google.cloud.dialogflow.cx.v3beta1.EntityTypes.GetEntityType`
 * `google.cloud.dialogflow.cx.v3beta1.EntityTypes.ListEntityTypes`
 * `google.cloud.dialogflow.cx.v3beta1.EntityTypes.UpdateEntityType`
 * `google.cloud.dialogflow.cx.v3beta1.Environments.CreateEnvironment`
 * `google.cloud.dialogflow.cx.v3beta1.Environments.GetEnvironment`
 * `google.cloud.dialogflow.cx.v3beta1.Environments.ListEnvironments`
+* `google.cloud.dialogflow.cx.v3beta1.Environments.UpdateEnvironment`
 * `google.cloud.dialogflow.cx.v3beta1.Flows.CreateFlow`
+* `google.cloud.dialogflow.cx.v3beta1.Flows.DeleteFlow`
 * `google.cloud.dialogflow.cx.v3beta1.Flows.GetFlow`
 * `google.cloud.dialogflow.cx.v3beta1.Flows.ListFlows`
 * `google.cloud.dialogflow.cx.v3beta1.Flows.TrainFlow`
@@ -1632,6 +2209,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.cx.v3beta1.Intents.ListIntents`
 * `google.cloud.dialogflow.cx.v3beta1.Intents.UpdateIntent`
 * `google.cloud.dialogflow.cx.v3beta1.Pages.CreatePage`
+* `google.cloud.dialogflow.cx.v3beta1.Pages.DeletePage`
 * `google.cloud.dialogflow.cx.v3beta1.Pages.GetPage`
 * `google.cloud.dialogflow.cx.v3beta1.Pages.ListPages`
 * `google.cloud.dialogflow.cx.v3beta1.Pages.UpdatePage`
@@ -1643,8 +2221,10 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.cx.v3beta1.Sessions.FulfillIntent`
 * `google.cloud.dialogflow.cx.v3beta1.Sessions.MatchIntent`
 * `google.cloud.dialogflow.cx.v3beta1.Sessions.StreamingDetectIntent`
+* `google.cloud.dialogflow.cx.v3beta1.TestCases.BatchDeleteTestCases`
 * `google.cloud.dialogflow.cx.v3beta1.TransitionRouteGroups.ListTransitionRouteGroups`
 * `google.cloud.dialogflow.cx.v3beta1.Versions.CreateVersion`
+* `google.cloud.dialogflow.cx.v3beta1.Versions.DeleteVersion`
 * `google.cloud.dialogflow.cx.v3beta1.Versions.ListVersions`
 * `google.cloud.dialogflow.cx.v3beta1.Webhooks.CreateWebhook`
 * `google.cloud.dialogflow.cx.v3beta1.Webhooks.ListWebhooks`
@@ -1658,6 +2238,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.v2.Agents.SearchAgents`
 * `google.cloud.dialogflow.v2.Agents.SetAgent`
 * `google.cloud.dialogflow.v2.Agents.TrainAgent`
+* `google.cloud.dialogflow.v2.AnswerRecords.ListAnswerRecords`
 * `google.cloud.dialogflow.v2.AnswerRecords.UpdateAnswerRecord`
 * `google.cloud.dialogflow.v2.Contexts.CreateContext`
 * `google.cloud.dialogflow.v2.Contexts.DeleteAllContexts`
@@ -1678,7 +2259,11 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.v2.Conversations.ListMessages`
 * `google.cloud.dialogflow.v2.Documents.CreateDocument`
 * `google.cloud.dialogflow.v2.Documents.DeleteDocument`
+* `google.cloud.dialogflow.v2.Documents.GetDocument`
 * `google.cloud.dialogflow.v2.Documents.ImportDocuments`
+* `google.cloud.dialogflow.v2.Documents.ListDocuments`
+* `google.cloud.dialogflow.v2.Documents.ReloadDocument`
+* `google.cloud.dialogflow.v2.Documents.UpdateDocument`
 * `google.cloud.dialogflow.v2.EntityTypes.BatchCreateEntities`
 * `google.cloud.dialogflow.v2.EntityTypes.BatchDeleteEntities`
 * `google.cloud.dialogflow.v2.EntityTypes.BatchDeleteEntityTypes`
@@ -1689,8 +2274,12 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.v2.EntityTypes.GetEntityType`
 * `google.cloud.dialogflow.v2.EntityTypes.ListEntityTypes`
 * `google.cloud.dialogflow.v2.EntityTypes.UpdateEntityType`
+* `google.cloud.dialogflow.v2.Environments.CreateEnvironment`
+* `google.cloud.dialogflow.v2.Environments.DeleteEnvironment`
 * `google.cloud.dialogflow.v2.Environments.GetEnvironment`
+* `google.cloud.dialogflow.v2.Environments.GetEnvironmentHistory`
 * `google.cloud.dialogflow.v2.Environments.ListEnvironments`
+* `google.cloud.dialogflow.v2.Environments.UpdateEnvironment`
 * `google.cloud.dialogflow.v2.Fulfillments.GetFulfillment`
 * `google.cloud.dialogflow.v2.Fulfillments.UpdateFulfillment`
 * `google.cloud.dialogflow.v2.Intents.BatchDeleteIntents`
@@ -1707,15 +2296,26 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.v2.KnowledgeBases.UpdateKnowledgeBase`
 * `google.cloud.dialogflow.v2.Participants.AnalyzeContent`
 * `google.cloud.dialogflow.v2.Participants.CreateParticipant`
+* `google.cloud.dialogflow.v2.Participants.GetParticipant`
+* `google.cloud.dialogflow.v2.Participants.ListParticipants`
 * `google.cloud.dialogflow.v2.Participants.StreamingAnalyzeContent`
+* `google.cloud.dialogflow.v2.Participants.SuggestArticles`
+* `google.cloud.dialogflow.v2.Participants.SuggestFaqAnswers`
+* `google.cloud.dialogflow.v2.Participants.UpdateParticipant`
 * `google.cloud.dialogflow.v2.PhoneNumberOrders.CreatePhoneNumberOrder`
 * `google.cloud.dialogflow.v2.PhoneNumbers.ListPhoneNumbers`
 * `google.cloud.dialogflow.v2.SessionEntityTypes.CreateSessionEntityType`
+* `google.cloud.dialogflow.v2.SessionEntityTypes.DeleteSessionEntityType`
 * `google.cloud.dialogflow.v2.SessionEntityTypes.GetSessionEntityType`
 * `google.cloud.dialogflow.v2.SessionEntityTypes.ListSessionEntityTypes`
+* `google.cloud.dialogflow.v2.SessionEntityTypes.UpdateSessionEntityType`
 * `google.cloud.dialogflow.v2.Sessions.DetectIntent`
 * `google.cloud.dialogflow.v2.Sessions.StreamingDetectIntent`
+* `google.cloud.dialogflow.v2.Versions.CreateVersion`
+* `google.cloud.dialogflow.v2.Versions.DeleteVersion`
 * `google.cloud.dialogflow.v2.Versions.GetVersion`
+* `google.cloud.dialogflow.v2.Versions.ListVersions`
+* `google.cloud.dialogflow.v2.Versions.UpdateVersion`
 * `google.cloud.dialogflow.v2beta1.Agents.DeleteAgent`
 * `google.cloud.dialogflow.v2beta1.Agents.ExportAgent`
 * `google.cloud.dialogflow.v2beta1.Agents.GetAgent`
@@ -1729,6 +2329,8 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.v2beta1.Agents.UpdateAgent`
 * `google.cloud.dialogflow.v2beta1.Agents.UpdateAgentSettings`
 * `google.cloud.dialogflow.v2beta1.Analytics.ListAnalytics`
+* `google.cloud.dialogflow.v2beta1.AnswerRecords.GetAnswerRecord`
+* `google.cloud.dialogflow.v2beta1.AnswerRecords.ListAnswerRecords`
 * `google.cloud.dialogflow.v2beta1.AnswerRecords.UpdateAnswerRecord`
 * `google.cloud.dialogflow.v2beta1.AogService.DetermineAogCompatibility`
 * `google.cloud.dialogflow.v2beta1.AogService.ListAogIntentDefinitions`
@@ -1749,6 +2351,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.v2beta1.ConversationProfiles.ListConversationProfiles`
 * `google.cloud.dialogflow.v2beta1.ConversationProfiles.SetSuggestionFeatureConfig`
 * `google.cloud.dialogflow.v2beta1.ConversationProfiles.UpdateConversationProfile`
+* `google.cloud.dialogflow.v2beta1.Conversations.AddConversationPhoneNumber`
 * `google.cloud.dialogflow.v2beta1.Conversations.BatchCreateMessages`
 * `google.cloud.dialogflow.v2beta1.Conversations.CompleteConversation`
 * `google.cloud.dialogflow.v2beta1.Conversations.CreateCallMatcher`
@@ -1757,6 +2360,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.v2beta1.Conversations.GetConversation`
 * `google.cloud.dialogflow.v2beta1.Conversations.ListConversations`
 * `google.cloud.dialogflow.v2beta1.Conversations.ListMessages`
+* `google.cloud.dialogflow.v2beta1.Conversations.UpdateConversation`
 * `google.cloud.dialogflow.v2beta1.Documents.AutoApproveSmartMessagingEntries`
 * `google.cloud.dialogflow.v2beta1.Documents.BatchUpdateQuestionAnswerEntries`
 * `google.cloud.dialogflow.v2beta1.Documents.BatchUpdateSmartMessagingEntries`
@@ -1779,6 +2383,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.v2beta1.EntityTypes.BatchCreateEntities`
 * `google.cloud.dialogflow.v2beta1.EntityTypes.BatchDeleteEntities`
 * `google.cloud.dialogflow.v2beta1.EntityTypes.BatchDeleteEntityTypes`
+* `google.cloud.dialogflow.v2beta1.EntityTypes.BatchMoveEntityTypes`
 * `google.cloud.dialogflow.v2beta1.EntityTypes.BatchUpdateEntities`
 * `google.cloud.dialogflow.v2beta1.EntityTypes.BatchUpdateEntityTypes`
 * `google.cloud.dialogflow.v2beta1.EntityTypes.CreateEntityType`
@@ -1823,6 +2428,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.v2beta1.KnowledgeBases.UpdateKnowledgeBase`
 * `google.cloud.dialogflow.v2beta1.ModelEvaluations.GetModelEvaluationResult`
 * `google.cloud.dialogflow.v2beta1.Participants.AnalyzeContent`
+* `google.cloud.dialogflow.v2beta1.Participants.CompileSuggestion`
 * `google.cloud.dialogflow.v2beta1.Participants.CreateParticipant`
 * `google.cloud.dialogflow.v2beta1.Participants.GetParticipant`
 * `google.cloud.dialogflow.v2beta1.Participants.ListParticipants`
@@ -1834,9 +2440,12 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.v2beta1.Participants.SuggestSmartComposeAnswers`
 * `google.cloud.dialogflow.v2beta1.Participants.SuggestSmartReplies`
 * `google.cloud.dialogflow.v2beta1.Participants.SuggestSpellGrammarCorrectionAnswers`
+* `google.cloud.dialogflow.v2beta1.Participants.UpdateParticipant`
+* `google.cloud.dialogflow.v2beta1.PhoneNumberOrders.CancelPhoneNumberOrder`
 * `google.cloud.dialogflow.v2beta1.PhoneNumberOrders.CreatePhoneNumberLease`
 * `google.cloud.dialogflow.v2beta1.PhoneNumberOrders.CreatePhoneNumberOrder`
 * `google.cloud.dialogflow.v2beta1.PhoneNumberOrders.ListPhoneNumberOrders`
+* `google.cloud.dialogflow.v2beta1.PhoneNumberOrders.UpdatePhoneNumberOrder`
 * `google.cloud.dialogflow.v2beta1.PhoneNumberOrders.UpgradePhoneNumberLease`
 * `google.cloud.dialogflow.v2beta1.PhoneNumbers.DeletePhoneNumber`
 * `google.cloud.dialogflow.v2beta1.PhoneNumbers.ListPhoneNumbers`
@@ -1844,6 +2453,11 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.v2beta1.SecuritySettingsService.GetSecuritySettings`
 * `google.cloud.dialogflow.v2beta1.SecuritySettingsService.UpdateSecuritySettings`
 * `google.cloud.dialogflow.v2beta1.SessionEntityTypes.CreateSessionEntityType`
+* `google.cloud.dialogflow.v2beta1.SessionEntityTypes.DeleteSessionEntityType`
+* `google.cloud.dialogflow.v2beta1.SessionEntityTypes.GetSessionEntityType`
+* `google.cloud.dialogflow.v2beta1.SessionEntityTypes.ListSessionEntityTypes`
+* `google.cloud.dialogflow.v2beta1.SessionEntityTypes.UpdateSessionEntityType`
+* `google.cloud.dialogflow.v2beta1.SessionHistory.CreateSessionConversation`
 * `google.cloud.dialogflow.v2beta1.SessionHistory.DeleteSessionConversation`
 * `google.cloud.dialogflow.v2beta1.SessionHistory.ListInteractions`
 * `google.cloud.dialogflow.v2beta1.SessionHistory.SearchSessionConversations`
@@ -1858,6 +2472,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.dialogflow.v2beta1.Versions.DeleteVersion`
 * `google.cloud.dialogflow.v2beta1.Versions.GetVersion`
 * `google.cloud.dialogflow.v2beta1.Versions.ListVersions`
+* `google.cloud.dialogflow.v2beta1.Versions.UpdateVersion`
 * `google.longrunning.Operations.GetOperation`
 
 </p>
@@ -1912,6 +2527,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.filestore.v1.CloudFilestoreManager.CreateInstance`
 * `google.cloud.filestore.v1.CloudFilestoreManager.DeleteBackup`
 * `google.cloud.filestore.v1.CloudFilestoreManager.DeleteInstance`
+* `google.cloud.filestore.v1.CloudFilestoreManager.GetBackup`
 * `google.cloud.filestore.v1.CloudFilestoreManager.GetInstance`
 * `google.cloud.filestore.v1.CloudFilestoreManager.ListBackups`
 * `google.cloud.filestore.v1.CloudFilestoreManager.ListInstances`
@@ -1984,6 +2600,7 @@ Any custom application that can publish to a PubSub topic
 * `google.firestore.admin.v1.FirestoreAdmin.ImportDocuments`
 * `google.firestore.admin.v1.FirestoreAdmin.ListFields`
 * `google.firestore.admin.v1.FirestoreAdmin.ListIndexes`
+* `google.firestore.admin.v1.FirestoreAdmin.UpdateDatabase`
 * `google.firestore.admin.v1beta1.FirestoreAdmin.CreateIndex`
 * `google.firestore.admin.v1beta1.FirestoreAdmin.DeleteIndex`
 * `google.firestore.admin.v1beta1.FirestoreAdmin.ExportDocuments`
@@ -2033,6 +2650,9 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.gaming.v1.GameServerClustersService.DeleteGameServerCluster`
 * `google.cloud.gaming.v1.GameServerClustersService.GetGameServerCluster`
 * `google.cloud.gaming.v1.GameServerClustersService.ListGameServerClusters`
+* `google.cloud.gaming.v1.GameServerClustersService.PreviewCreateGameServerCluster`
+* `google.cloud.gaming.v1.GameServerClustersService.PreviewDeleteGameServerCluster`
+* `google.cloud.gaming.v1.GameServerClustersService.PreviewUpdateGameServerCluster`
 * `google.cloud.gaming.v1.GameServerClustersService.UpdateGameServerCluster`
 * `google.cloud.gaming.v1.GameServerConfigsService.CreateGameServerConfig`
 * `google.cloud.gaming.v1.GameServerConfigsService.DeleteGameServerConfig`
@@ -2059,6 +2679,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.gaming.v1beta.GameServerClustersService.ListGameServerClusters`
 * `google.cloud.gaming.v1beta.GameServerClustersService.PreviewCreateGameServerCluster`
 * `google.cloud.gaming.v1beta.GameServerClustersService.PreviewDeleteGameServerCluster`
+* `google.cloud.gaming.v1beta.GameServerClustersService.PreviewUpdateGameServerCluster`
 * `google.cloud.gaming.v1beta.GameServerClustersService.UpdateGameServerCluster`
 * `google.cloud.gaming.v1beta.GameServerConfigsService.CreateGameServerConfig`
 * `google.cloud.gaming.v1beta.GameServerConfigsService.DeleteGameServerConfig`
@@ -2124,6 +2745,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.healthcare.v1.consent.ConsentService.UpdateConsent`
 * `google.cloud.healthcare.v1.consent.ConsentService.UpdateConsentStore`
 * `google.cloud.healthcare.v1.consent.ConsentService.UpdateUserDataMapping`
+* `google.cloud.healthcare.v1.dataset.DatasetService.AccessEhrSearch`
 * `google.cloud.healthcare.v1.dataset.DatasetService.CreateDataset`
 * `google.cloud.healthcare.v1.dataset.DatasetService.DeidentifyDataset`
 * `google.cloud.healthcare.v1.dataset.DatasetService.DeleteDataset`
@@ -2199,6 +2821,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.healthcare.v1.hl7v2.Hl7V2Service.ListMessages`
 * `google.cloud.healthcare.v1.hl7v2.Hl7V2Service.UpdateHl7V2Store`
 * `google.cloud.healthcare.v1.hl7v2.Hl7V2Service.UpdateMessage`
+* `google.cloud.healthcare.v1.nlp.NlpService.AnalyzeEntities`
 * `google.cloud.healthcare.v1beta1.annotation.AnnotationService.CreateAnnotation`
 * `google.cloud.healthcare.v1beta1.annotation.AnnotationService.CreateAnnotationStore`
 * `google.cloud.healthcare.v1beta1.annotation.AnnotationService.DeleteAnnotation`
@@ -2280,6 +2903,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.healthcare.v1beta1.dicomweb.DicomWebService.StoreInstances`
 * `google.cloud.healthcare.v1beta1.fhir.FhirService.ExportResources`
 * `google.cloud.healthcare.v1beta1.fhir.FhirService.ImportResources`
+* `google.cloud.healthcare.v1beta1.fhir.FhirStoreService.ConfigureSearch`
 * `google.cloud.healthcare.v1beta1.fhir.FhirStoreService.CreateFhirStore`
 * `google.cloud.healthcare.v1beta1.fhir.FhirStoreService.DeleteFhirStore`
 * `google.cloud.healthcare.v1beta1.fhir.FhirStoreService.ExportResources`
@@ -2332,6 +2956,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.healthcare.v1beta1.fhir.stu3.grpc.FhirService.ValidateResource`
 * `google.cloud.healthcare.v1beta1.fhirgrpc.FhirGRPCService.ExportResources`
 * `google.cloud.healthcare.v1beta1.fhirgrpc.FhirGRPCService.ImportResources`
+* `google.cloud.healthcare.v1beta1.fhirstore.FhirStoreService.ConfigureSearch`
 * `google.cloud.healthcare.v1beta1.fhirstore.FhirStoreService.ExportResources`
 * `google.cloud.healthcare.v1beta1.fhirstore.FhirStoreService.ImportResources`
 * `google.cloud.healthcare.v1beta1.hl7v2.Hl7V2Service.BatchGetMessages`
@@ -2428,6 +3053,16 @@ Any custom application that can publish to a PubSub topic
 
 </p>
 </details>
+<details><summary>Cloud Identity</summary>
+<p>
+
+`cloudidentity.googleapis.com`
+
+* `google.apps.cloudidentity.groups.v1.GroupsService.UpdateGroup`
+* `google.apps.cloudidentity.groups.v1.MembershipsService.UpdateMembership`
+
+</p>
+</details>
 <details><summary>Cloud IoT</summary>
 <p>
 
@@ -2487,6 +3122,10 @@ Any custom application that can publish to a PubSub topic
 * `ListCryptoKeys`
 * `ListImportJobs`
 * `ListKeyRings`
+* `MacSign`
+* `MacVerify`
+* `RawDecrypt`
+* `RawEncrypt`
 * `RestoreCryptoKeyVersion`
 * `SetIamPolicy`
 * `UpdateCryptoKey`
@@ -2511,6 +3150,7 @@ Any custom application that can publish to a PubSub topic
 `logging.googleapis.com`
 
 * `google.logging.v2.BillingService.GetUsageByResourceType`
+* `google.logging.v2.ConfigServiceV2.CopyLogEntries`
 * `google.logging.v2.ConfigServiceV2.CreateBucket`
 * `google.logging.v2.ConfigServiceV2.CreateBucketAsync`
 * `google.logging.v2.ConfigServiceV2.CreateExclusion`
@@ -2538,6 +3178,7 @@ Any custom application that can publish to a PubSub topic
 * `google.logging.v2.LoggingServiceV2.AggregateLogs`
 * `google.logging.v2.LoggingServiceV2.DeleteLog`
 * `google.logging.v2.LoggingServiceV2.ListLogEntries`
+* `google.logging.v2.LoggingServiceV2.ListLogViews`
 * `google.logging.v2.LoggingServiceV2.ListLogs`
 * `google.logging.v2.LoggingServiceV2.ListResourceKeys`
 * `google.logging.v2.LoggingServiceV2.ListResourceValues`
@@ -2548,6 +3189,7 @@ Any custom application that can publish to a PubSub topic
 * `google.logging.v2.MetricsServiceV2.GetLogMetric`
 * `google.logging.v2.MetricsServiceV2.ListLogMetrics`
 * `google.logging.v2.MetricsServiceV2.UpdateLogMetric`
+* `google.logging.v2.Operations.CancelOperation`
 
 </p>
 </details>
@@ -2606,22 +3248,34 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.managedidentities.v1.ManagedIdentitiesService.DeleteDomain`
 * `google.cloud.managedidentities.v1.ManagedIdentitiesService.DetachTrust`
 * `google.cloud.managedidentities.v1.ManagedIdentitiesService.GetDomain`
+* `google.cloud.managedidentities.v1.ManagedIdentitiesService.GetLDAPSSettings`
+* `google.cloud.managedidentities.v1.ManagedIdentitiesService.GetSqlIntegration`
 * `google.cloud.managedidentities.v1.ManagedIdentitiesService.ListDomains`
+* `google.cloud.managedidentities.v1.ManagedIdentitiesService.ListSqlIntegrations`
 * `google.cloud.managedidentities.v1.ManagedIdentitiesService.ReconfigureTrust`
 * `google.cloud.managedidentities.v1.ManagedIdentitiesService.ResetAdminPassword`
 * `google.cloud.managedidentities.v1.ManagedIdentitiesService.UpdateDomain`
 * `google.cloud.managedidentities.v1.ManagedIdentitiesService.ValidateTrust`
 * `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.AttachTrust`
 * `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.CreateMicrosoftAdDomain`
+* `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.CreatePeering`
 * `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.DeleteDomain`
+* `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.DeletePeering`
 * `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.DetachTrust`
 * `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.GetDomain`
+* `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.GetLDAPSSettings`
+* `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.GetPeering`
+* `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.GetSqlIntegration`
 * `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.ListDomains`
+* `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.ListPeerings`
 * `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.ListSQLIntegrations`
 * `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.ListSqlIntegrations`
 * `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.ReconfigureTrust`
 * `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.ResetAdminPassword`
 * `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.UpdateDomain`
+* `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.UpdateLDAPSSettings`
+* `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.UpdatePeering`
+* `google.cloud.managedidentities.v1beta1.ManagedIdentitiesService.ValidateTrust`
 * `google.longrunning.Operations.CancelOperation`
 * `google.longrunning.Operations.DeleteOperation`
 * `google.longrunning.Operations.GetOperation`
@@ -2669,6 +3323,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.redis.v1.CloudRedis.GetInstanceAuthString`
 * `google.cloud.redis.v1.CloudRedis.ImportInstance`
 * `google.cloud.redis.v1.CloudRedis.ListInstances`
+* `google.cloud.redis.v1.CloudRedis.RescheduleMaintenance`
 * `google.cloud.redis.v1.CloudRedis.UpdateInstance`
 * `google.cloud.redis.v1.CloudRedis.UpgradeInstance`
 * `google.cloud.redis.v1beta1.CloudRedis.CreateInstance`
@@ -2679,6 +3334,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.redis.v1beta1.CloudRedis.GetInstanceAuthString`
 * `google.cloud.redis.v1beta1.CloudRedis.ImportInstance`
 * `google.cloud.redis.v1beta1.CloudRedis.ListInstances`
+* `google.cloud.redis.v1beta1.CloudRedis.RescheduleMaintenance`
 * `google.cloud.redis.v1beta1.CloudRedis.UpdateInstance`
 * `google.cloud.redis.v1beta1.CloudRedis.UpgradeInstance`
 * `google.longrunning.Operations.CancelOperation`
@@ -2698,6 +3354,9 @@ Any custom application that can publish to a PubSub topic
 * `google.monitoring.dashboard.v1.DashboardsService.HighAvailabilityListDashboards`
 * `google.monitoring.dashboard.v1.DashboardsService.ListDashboards`
 * `google.monitoring.dashboard.v1.DashboardsService.UpdateDashboard`
+* `google.monitoring.metricsscope.v1.MetricsScopes.AddMonitoredProject`
+* `google.monitoring.metricsscope.v1.MetricsScopes.DeleteMonitoredProject`
+* `google.monitoring.metricsscope.v1.MetricsScopes.GetMetricsScope`
 * `google.monitoring.v3.AgentTranslationService.CreateCollectdTimeSeries`
 * `google.monitoring.v3.AlertPolicyService.CreateAlertPolicy`
 * `google.monitoring.v3.AlertPolicyService.DeleteAlertPolicy`
@@ -2744,6 +3403,7 @@ Any custom application that can publish to a PubSub topic
 * `google.monitoring.v3.ServiceMonitoringService.ListServices`
 * `google.monitoring.v3.ServiceMonitoringService.UpdateService`
 * `google.monitoring.v3.ServiceMonitoringService.UpdateServiceLevelObjective`
+* `google.monitoring.v3.TimeSeriesFilterService.FormatTimeSeriesFilter`
 * `google.monitoring.v3.TimeSeriesFilterService.ParseTimeSeriesFilter`
 * `google.monitoring.v3.UptimeCheckService.CreateUptimeCheckConfig`
 * `google.monitoring.v3.UptimeCheckService.DeleteUptimeCheckConfig`
@@ -2793,8 +3453,10 @@ Any custom application that can publish to a PubSub topic
 `oslogin.googleapis.com`
 
 * `google.cloud.oslogin.v1.OsLoginService.ContinueSession`
+* `google.cloud.oslogin.v1.OsLoginService.ImportSshPublicKey`
 * `google.cloud.oslogin.v1.OsLoginService.StartSession`
 * `google.cloud.oslogin.v1beta.OsLoginService.ContinueSession`
+* `google.cloud.oslogin.v1beta.OsLoginService.ImportSshPublicKey`
 * `google.cloud.oslogin.v1beta.OsLoginService.StartSession`
 
 </p>
@@ -2850,6 +3512,7 @@ Any custom application that can publish to a PubSub topic
 * `google.pubsub.v1beta2.Subscriber.CreateSubscription`
 * `google.pubsub.v1beta2.Subscriber.DeleteSubscription`
 * `google.pubsub.v1beta2.Subscriber.GetSubscription`
+* `google.pubsub.v1beta2.Subscriber.ListSubscriptions`
 * `google.pubsub.v1beta2.Subscriber.ModifyPushConfig`
 
 </p>
@@ -2862,32 +3525,44 @@ Any custom application that can publish to a PubSub topic
 * `AcceptProjectOwnership`
 * `CheckInvitationRequired`
 * `ClearOrgPolicy`
+* `CreateFolder`
 * `CreateProject`
+* `DeleteFolder`
 * `DeleteProject`
 * `DeleteProjectOwnershipInvite`
+* `FindOrCreateOrganization`
 * `GetContactInfo`
 * `GetEffectiveOrgPolicy`
+* `GetFolder`
 * `GetIamPolicy`
 * `GetOrgPolicy`
+* `GetOrganization`
 * `GetProject`
 * `InsertProjectOwnershipInvite`
 * `InsertProjectOwnershipInviteForPantheon`
 * `ListAvailableOrgPolicyConstraints`
+* `ListFolders`
 * `ListOrgPolicies`
 * `ListProjectOwnershipInvites`
+* `ListResources`
+* `MoveFolder`
 * `MoveProject`
 * `SearchProjects`
 * `SetIamPolicy`
 * `SetOrgPolicy`
+* `UndeleteFolder`
 * `UndeleteProject`
 * `UpdateContactInfo`
+* `UpdateFolder`
 * `UpdateProject`
 * `google.cloud.lien.v1.Liens.CreateLien`
 * `google.cloud.lien.v1.Liens.DeleteLien`
 * `google.cloud.lien.v1.Liens.GetLien`
 * `google.cloud.lien.v1.Liens.ListLiens`
+* `google.cloud.resourcemanager.v3.Projects.DeleteProject`
 * `google.cloud.resourcemanager.v3.Projects.GetIamPolicy`
 * `google.cloud.resourcemanager.v3.Projects.GetProject`
+* `google.cloud.resourcemanager.v3.Projects.MoveProject`
 * `google.cloud.resourcemanager.v3.Projects.SetIamPolicy`
 * `google.cloud.resourcemanager.v3.Projects.UpdateProject`
 * `google.cloud.resourcemanager.v3.TagBindings.CreateTagBinding`
@@ -2902,6 +3577,7 @@ Any custom application that can publish to a PubSub topic
 `retail.googleapis.com`
 
 * `google.cloud.retail.v2.CatalogService.ListCatalogs`
+* `google.cloud.retail.v2.CatalogService.UpdateCatalog`
 * `google.cloud.retail.v2.PredictionService.Predict`
 * `google.cloud.retail.v2.ProductService.CreateProduct`
 * `google.cloud.retail.v2.ProductService.DeleteProduct`
@@ -2910,6 +3586,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.retail.v2.ProductService.UpdateProduct`
 * `google.cloud.retail.v2.UserEventService.ImportUserEvents`
 * `google.cloud.retail.v2.UserEventService.PurgeUserEvents`
+* `google.cloud.retail.v2.UserEventService.RejoinUserEvents`
 * `google.cloud.retail.v2.UserEventService.WriteUserEvent`
 * `google.cloud.retail.v2beta.CatalogService.ListCatalogs`
 * `google.cloud.retail.v2beta.PredictionService.Predict`
@@ -3052,6 +3729,10 @@ Any custom application that can publish to a PubSub topic
 
 `spanner.googleapis.com`
 
+* `/Operations.CancelOperation`
+* `/Operations.GetOperation`
+* `/Operations.ListOperations`
+* `google.cloud.keyvisualizer.KeyVisualizer.GetScan`
 * `google.longrunning.Operations.CancelOperation`
 * `google.longrunning.Operations.GetOperation`
 * `google.longrunning.Operations.ListOperations`
@@ -3255,7 +3936,10 @@ Any custom application that can publish to a PubSub topic
 
 `translate.googleapis.com`
 
+* `google.cloud.location.Locations.GetLocation`
+* `google.cloud.location.Locations.ListLocations`
 * `google.cloud.translation.v3.TranslationService.BatchSearchTranslationMemoryEntries`
+* `google.cloud.translation.v3.TranslationService.BatchTranslateDocument`
 * `google.cloud.translation.v3.TranslationService.BatchTranslateText`
 * `google.cloud.translation.v3.TranslationService.BatchUpdateTranslationMemoryEntries`
 * `google.cloud.translation.v3.TranslationService.CreateGlossary`
@@ -3270,6 +3954,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.translation.v3.TranslationService.ListGlossaries`
 * `google.cloud.translation.v3.TranslationService.TranslateDocument`
 * `google.cloud.translation.v3.TranslationService.TranslateText`
+* `google.cloud.translation.v3beta1.TranslationService.BatchTranslateDocument`
 * `google.cloud.translation.v3beta1.TranslationService.BatchTranslateText`
 * `google.cloud.translation.v3beta1.TranslationService.CreateGlossary`
 * `google.cloud.translation.v3beta1.TranslationService.DeleteGlossary`
@@ -3347,19 +4032,43 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.vision.v1p3beta1.ProductSearch.CreateProductSet`
 * `google.cloud.vision.v1p3beta1.ProductSearch.CreateReferenceImage`
 * `google.cloud.vision.v1p3beta1.ProductSearch.DeleteProduct`
+* `google.cloud.vision.v1p3beta1.ProductSearch.DeleteProductSet`
 * `google.cloud.vision.v1p3beta1.ProductSearch.DeleteReferenceImage`
+* `google.cloud.vision.v1p3beta1.ProductSearch.GetProduct`
 * `google.cloud.vision.v1p3beta1.ProductSearch.GetProductSet`
 * `google.cloud.vision.v1p3beta1.ProductSearch.GetReferenceImage`
 * `google.cloud.vision.v1p3beta1.ProductSearch.ImportProductSets`
 * `google.cloud.vision.v1p3beta1.ProductSearch.ListProductSets`
+* `google.cloud.vision.v1p3beta1.ProductSearch.ListProducts`
 * `google.cloud.vision.v1p3beta1.ProductSearch.ListProductsInProductSet`
 * `google.cloud.vision.v1p3beta1.ProductSearch.ListReferenceImages`
+* `google.cloud.vision.v1p3beta1.ProductSearch.PurgeProducts`
+* `google.cloud.vision.v1p3beta1.ProductSearch.RemoveProductFromProductSet`
 * `google.cloud.vision.v1p3beta1.ProductSearch.UpdateProduct`
+* `google.cloud.vision.v1p3beta1.ProductSearch.UpdateProductSet`
 * `google.cloud.vision.v1p4beta1.ImageAnnotator.AsyncBatchAnnotateFiles`
 * `google.cloud.vision.v1p4beta1.ImageAnnotator.AsyncBatchAnnotateImages`
 * `google.cloud.vision.v1p4beta1.ImageAnnotator.BatchAnnotateFiles`
 * `google.cloud.vision.v1p4beta1.ImageAnnotator.BatchAnnotateImages`
+* `google.cloud.vision.v1p4beta1.ProductSearch.AddProductToProductSet`
+* `google.cloud.vision.v1p4beta1.ProductSearch.CreateProduct`
+* `google.cloud.vision.v1p4beta1.ProductSearch.CreateProductSet`
+* `google.cloud.vision.v1p4beta1.ProductSearch.CreateReferenceImage`
+* `google.cloud.vision.v1p4beta1.ProductSearch.DeleteProduct`
+* `google.cloud.vision.v1p4beta1.ProductSearch.DeleteProductSet`
+* `google.cloud.vision.v1p4beta1.ProductSearch.DeleteReferenceImage`
+* `google.cloud.vision.v1p4beta1.ProductSearch.GetProduct`
+* `google.cloud.vision.v1p4beta1.ProductSearch.GetProductSet`
+* `google.cloud.vision.v1p4beta1.ProductSearch.GetReferenceImage`
 * `google.cloud.vision.v1p4beta1.ProductSearch.ImportProductSets`
+* `google.cloud.vision.v1p4beta1.ProductSearch.ListProductSets`
+* `google.cloud.vision.v1p4beta1.ProductSearch.ListProducts`
+* `google.cloud.vision.v1p4beta1.ProductSearch.ListProductsInProductSet`
+* `google.cloud.vision.v1p4beta1.ProductSearch.ListReferenceImages`
+* `google.cloud.vision.v1p4beta1.ProductSearch.PurgeProducts`
+* `google.cloud.vision.v1p4beta1.ProductSearch.RemoveProductFromProductSet`
+* `google.cloud.vision.v1p4beta1.ProductSearch.UpdateProduct`
+* `google.cloud.vision.v1p4beta1.ProductSearch.UpdateProductSet`
 
 </p>
 </details>
@@ -3402,9 +4111,12 @@ Any custom application that can publish to a PubSub topic
 * `beta.compute.backendServices.deleteSignedUrlKey`
 * `beta.compute.backendServices.get`
 * `beta.compute.backendServices.getHealth`
+* `beta.compute.backendServices.getIamPolicy`
 * `beta.compute.backendServices.insert`
 * `beta.compute.backendServices.list`
 * `beta.compute.backendServices.patch`
+* `beta.compute.backendServices.setEdgeSecurityPolicy`
+* `beta.compute.backendServices.setIamPolicy`
 * `beta.compute.backendServices.setSecurityPolicy`
 * `beta.compute.backendServices.testIamPermissions`
 * `beta.compute.backendServices.update`
@@ -3430,6 +4142,9 @@ Any custom application that can publish to a PubSub topic
 * `beta.compute.externalVpnGateways.list`
 * `beta.compute.externalVpnGateways.setLabels`
 * `beta.compute.externalVpnGateways.testIamPermissions`
+* `beta.compute.firewallPolicies.addAssociation`
+* `beta.compute.firewallPolicies.listAssociations`
+* `beta.compute.firewallPolicies.removeAssociation`
 * `beta.compute.firewalls.delete`
 * `beta.compute.firewalls.get`
 * `beta.compute.firewalls.insert`
@@ -3472,6 +4187,7 @@ Any custom application that can publish to a PubSub topic
 * `beta.compute.globalOperations.get`
 * `beta.compute.globalOperations.list`
 * `beta.compute.globalOperations.wait`
+* `beta.compute.globalOrganizationOperations.get`
 * `beta.compute.globalPublicDelegatedPrefixes.delete`
 * `beta.compute.globalPublicDelegatedPrefixes.insert`
 * `beta.compute.globalPublicDelegatedPrefixes.list`
@@ -3562,6 +4278,7 @@ Any custom application that can publish to a PubSub topic
 * `beta.compute.instances.getIamPolicy`
 * `beta.compute.instances.getScreenshot`
 * `beta.compute.instances.getSerialPortOutput`
+* `beta.compute.instances.getShieldedInstanceIdentity`
 * `beta.compute.instances.getShieldedVmIdentity`
 * `beta.compute.instances.insert`
 * `beta.compute.instances.list`
@@ -3612,6 +4329,7 @@ Any custom application that can publish to a PubSub topic
 * `beta.compute.interconnects.patch`
 * `beta.compute.interconnects.setLabels`
 * `beta.compute.interconnects.testIamPermissions`
+* `beta.compute.licenseCodes.testIamPermissions`
 * `beta.compute.licenses.delete`
 * `beta.compute.licenses.get`
 * `beta.compute.licenses.getIamPolicy`
@@ -3672,6 +4390,20 @@ Any custom application that can publish to a PubSub topic
 * `beta.compute.nodeTypes.aggregatedList`
 * `beta.compute.nodeTypes.get`
 * `beta.compute.nodeTypes.list`
+* `beta.compute.organizationSecurityPolicies.addAssociation`
+* `beta.compute.organizationSecurityPolicies.addRule`
+* `beta.compute.organizationSecurityPolicies.copyRules`
+* `beta.compute.organizationSecurityPolicies.delete`
+* `beta.compute.organizationSecurityPolicies.get`
+* `beta.compute.organizationSecurityPolicies.getAssociation`
+* `beta.compute.organizationSecurityPolicies.getRule`
+* `beta.compute.organizationSecurityPolicies.insert`
+* `beta.compute.organizationSecurityPolicies.list`
+* `beta.compute.organizationSecurityPolicies.listAssociations`
+* `beta.compute.organizationSecurityPolicies.move`
+* `beta.compute.organizationSecurityPolicies.patchRule`
+* `beta.compute.organizationSecurityPolicies.removeAssociation`
+* `beta.compute.organizationSecurityPolicies.removeRule`
 * `beta.compute.packetMirrorings.aggregatedList`
 * `beta.compute.packetMirrorings.delete`
 * `beta.compute.packetMirrorings.get`
@@ -3698,6 +4430,7 @@ Any custom application that can publish to a PubSub topic
 * `beta.compute.publicAdvertisedPrefixes.patch`
 * `beta.compute.publicDelegatedPrefixes.aggregatedList`
 * `beta.compute.publicDelegatedPrefixes.delete`
+* `beta.compute.publicDelegatedPrefixes.get`
 * `beta.compute.publicDelegatedPrefixes.insert`
 * `beta.compute.publicDelegatedPrefixes.list`
 * `beta.compute.publicDelegatedPrefixes.patch`
@@ -3863,6 +4596,8 @@ Any custom application that can publish to a PubSub topic
 * `beta.compute.securityPolicies.setLabels`
 * `beta.compute.securityPolicies.testIamPermissions`
 * `beta.compute.serviceAttachments.aggregatedList`
+* `beta.compute.serviceAttachments.insert`
+* `beta.compute.serviceAttachments.patch`
 * `beta.compute.snapshots.delete`
 * `beta.compute.snapshots.get`
 * `beta.compute.snapshots.getIamPolicy`
@@ -3979,6 +4714,7 @@ Any custom application that can publish to a PubSub topic
 * `beta.compute.zones.get`
 * `beta.compute.zones.list`
 * `compute.disks.get`
+* `compute.globalAddresses.move`
 * `compute.images.insert`
 * `compute.instanceTemplates.get`
 * `compute.instances.get`
@@ -4046,6 +4782,14 @@ Any custom application that can publish to a PubSub topic
 * `v1.compute.externalVpnGateways.list`
 * `v1.compute.externalVpnGateways.setLabels`
 * `v1.compute.externalVpnGateways.testIamPermissions`
+* `v1.compute.firewallPolicies.addAssociation`
+* `v1.compute.firewallPolicies.addRule`
+* `v1.compute.firewallPolicies.delete`
+* `v1.compute.firewallPolicies.insert`
+* `v1.compute.firewallPolicies.patch`
+* `v1.compute.firewallPolicies.patchRule`
+* `v1.compute.firewallPolicies.removeAssociation`
+* `v1.compute.firewallPolicies.removeRule`
 * `v1.compute.firewalls.delete`
 * `v1.compute.firewalls.get`
 * `v1.compute.firewalls.insert`
@@ -4084,7 +4828,9 @@ Any custom application that can publish to a PubSub topic
 * `v1.compute.globalOperations.list`
 * `v1.compute.globalOperations.wait`
 * `v1.compute.globalPublicDelegatedPrefixes.delete`
+* `v1.compute.globalPublicDelegatedPrefixes.insert`
 * `v1.compute.globalPublicDelegatedPrefixes.list`
+* `v1.compute.globalPublicDelegatedPrefixes.patch`
 * `v1.compute.healthChecks.aggregatedList`
 * `v1.compute.healthChecks.delete`
 * `v1.compute.healthChecks.get`
@@ -4186,6 +4932,7 @@ Any custom application that can publish to a PubSub topic
 * `v1.compute.instances.start`
 * `v1.compute.instances.startWithEncryptionKey`
 * `v1.compute.instances.stop`
+* `v1.compute.instances.suspend`
 * `v1.compute.instances.testIamPermissions`
 * `v1.compute.instances.update`
 * `v1.compute.instances.updateAccessConfig`
@@ -4207,6 +4954,7 @@ Any custom application that can publish to a PubSub topic
 * `v1.compute.interconnects.list`
 * `v1.compute.interconnects.patch`
 * `v1.compute.licenseCodes.get`
+* `v1.compute.licenseCodes.testIamPermissions`
 * `v1.compute.licenses.delete`
 * `v1.compute.licenses.get`
 * `v1.compute.licenses.getIamPolicy`
@@ -4280,9 +5028,16 @@ Any custom application that can publish to a PubSub topic
 * `v1.compute.projects.setCommonInstanceMetadata`
 * `v1.compute.projects.setDefaultNetworkTier`
 * `v1.compute.projects.setUsageExportBucket`
+* `v1.compute.publicAdvertisedPrefixes.delete`
+* `v1.compute.publicAdvertisedPrefixes.get`
+* `v1.compute.publicAdvertisedPrefixes.insert`
 * `v1.compute.publicAdvertisedPrefixes.list`
+* `v1.compute.publicAdvertisedPrefixes.patch`
 * `v1.compute.publicDelegatedPrefixes.aggregatedList`
+* `v1.compute.publicDelegatedPrefixes.delete`
+* `v1.compute.publicDelegatedPrefixes.insert`
 * `v1.compute.publicDelegatedPrefixes.list`
+* `v1.compute.publicDelegatedPrefixes.patch`
 * `v1.compute.regionAutoscalers.delete`
 * `v1.compute.regionAutoscalers.get`
 * `v1.compute.regionAutoscalers.insert`
@@ -4300,6 +5055,7 @@ Any custom application that can publish to a PubSub topic
 * `v1.compute.regionCommitments.get`
 * `v1.compute.regionCommitments.insert`
 * `v1.compute.regionCommitments.list`
+* `v1.compute.regionDiskTypes.get`
 * `v1.compute.regionDiskTypes.list`
 * `v1.compute.regionDisks.addResourcePolicies`
 * `v1.compute.regionDisks.createSnapshot`
@@ -4337,6 +5093,7 @@ Any custom application that can publish to a PubSub topic
 * `v1.compute.regionInstanceGroupManagers.listManagedInstances`
 * `v1.compute.regionInstanceGroupManagers.listPerInstanceConfigs`
 * `v1.compute.regionInstanceGroupManagers.patch`
+* `v1.compute.regionInstanceGroupManagers.patchPerInstanceConfigs`
 * `v1.compute.regionInstanceGroupManagers.recreateInstances`
 * `v1.compute.regionInstanceGroupManagers.resize`
 * `v1.compute.regionInstanceGroupManagers.setInstanceTemplate`
@@ -4531,6 +5288,34 @@ Any custom application that can publish to a PubSub topic
 
 </p>
 </details>
+<details><summary>Contact Center AI</summary>
+<p>
+
+`contactcenterinsights.googleapis.com`
+
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.CalculateStats`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.CreateAnalysis`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.CreateConversation`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.CreatePhraseMatcher`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.DeleteAnalysis`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.DeleteConversation`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.DeletePhraseMatcher`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.ExportInsightsData`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.GetAnalysis`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.GetConversation`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.GetIssue`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.GetPhraseMatcher`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.GetSettings`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.IngestConversations`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.ListAnalyses`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.ListConversations`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.ListIssueModels`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.ListPhraseMatchers`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.UpdateConversation`
+* `google.cloud.contactcenterinsights.v1.ContactCenterInsights.UpdateSettings`
+
+</p>
+</details>
 <details><summary>Container Analysis</summary>
 <p>
 
@@ -4557,12 +5342,15 @@ Any custom application that can publish to a PubSub topic
 * `grafeas.v1.Grafeas.ListOccurrences`
 * `grafeas.v1.Grafeas.UpdateNote`
 * `grafeas.v1.Grafeas.UpdateOccurrence`
+* `grafeas.v1beta1.GrafeasV1Beta1.BatchCreateNotes`
+* `grafeas.v1beta1.GrafeasV1Beta1.BatchCreateOccurrences`
 * `grafeas.v1beta1.GrafeasV1Beta1.CreateNote`
 * `grafeas.v1beta1.GrafeasV1Beta1.CreateOccurrence`
 * `grafeas.v1beta1.GrafeasV1Beta1.DeleteNote`
 * `grafeas.v1beta1.GrafeasV1Beta1.DeleteOccurrence`
 * `grafeas.v1beta1.GrafeasV1Beta1.GetNote`
 * `grafeas.v1beta1.GrafeasV1Beta1.GetOccurrence`
+* `grafeas.v1beta1.GrafeasV1Beta1.GetOccurrenceNote`
 * `grafeas.v1beta1.GrafeasV1Beta1.GetVulnerabilityOccurrencesSummary`
 * `grafeas.v1beta1.GrafeasV1Beta1.ListNoteOccurrences`
 * `grafeas.v1beta1.GrafeasV1Beta1.ListNotes`
@@ -4662,11 +5450,32 @@ Any custom application that can publish to a PubSub topic
 
 </p>
 </details>
+<details><summary>Essential Contacts</summary>
+<p>
+
+`essentialcontacts.googleapis.com`
+
+* `google.cloud.essentialcontacts.v1.EssentialContactsService.ComputeContacts`
+* `google.cloud.essentialcontacts.v1.EssentialContactsService.CreateContact`
+* `google.cloud.essentialcontacts.v1.EssentialContactsService.ListContacts`
+* `google.cloud.essentialcontacts.v1beta1.EssentialContactsService.ComputeContacts`
+* `google.cloud.essentialcontacts.v1beta1.EssentialContactsService.CreateContact`
+* `google.cloud.essentialcontacts.v1beta1.EssentialContactsService.DeleteContact`
+* `google.cloud.essentialcontacts.v1beta1.EssentialContactsService.GetContact`
+* `google.cloud.essentialcontacts.v1beta1.EssentialContactsService.ListContacts`
+* `google.cloud.essentialcontacts.v1beta1.EssentialContactsService.SendTestMessage`
+* `google.cloud.essentialcontacts.v1beta1.EssentialContactsService.UpdateContact`
+* `google.cloud.essentialcontacts.v1main.EssentialContactsService.CreateContact`
+
+</p>
+</details>
 <details><summary>Eventarc</summary>
 <p>
 
 `eventarc.googleapis.com`
 
+* `GetIamPolicy`
+* `SetIamPolicy`
 * `google.cloud.eventarc.v1.Eventarc.CreateTrigger`
 * `google.cloud.eventarc.v1.Eventarc.DeleteTrigger`
 * `google.cloud.eventarc.v1.Eventarc.GetTrigger`
@@ -4685,6 +5494,7 @@ Any custom application that can publish to a PubSub topic
 
 `firebasedatabase.googleapis.com`
 
+* `-`
 * `google.firebase.database.v1beta.RealtimeDatabaseService.CreateDatabaseInstance`
 * `google.firebase.database.v1beta.RealtimeDatabaseService.DeleteDatabaseInstance`
 * `google.firebase.database.v1beta.RealtimeDatabaseService.DisableDatabaseInstance`
@@ -4721,14 +5531,21 @@ Any custom application that can publish to a PubSub topic
 `gkehub.googleapis.com`
 
 * `SetIamPolicy`
+* `google.cloud.gkehub.v1.GkeHub.CreateFeature`
 * `google.cloud.gkehub.v1.GkeHub.CreateMembership`
+* `google.cloud.gkehub.v1.GkeHub.DeleteFeature`
 * `google.cloud.gkehub.v1.GkeHub.DeleteMembership`
 * `google.cloud.gkehub.v1.GkeHub.GenerateConnectManifest`
+* `google.cloud.gkehub.v1.GkeHub.GetFeature`
 * `google.cloud.gkehub.v1.GkeHub.GetMembership`
+* `google.cloud.gkehub.v1.GkeHub.ListFeatures`
 * `google.cloud.gkehub.v1.GkeHub.ListMemberships`
+* `google.cloud.gkehub.v1.GkeHub.UpdateFeature`
 * `google.cloud.gkehub.v1.GkeHub.UpdateMembership`
 * `google.cloud.gkehub.v1beta.GkeHub.CreateFeature`
 * `google.cloud.gkehub.v1beta.GkeHub.DeleteFeature`
+* `google.cloud.gkehub.v1beta.GkeHub.GetFeature`
+* `google.cloud.gkehub.v1beta.GkeHub.ListFeatures`
 * `google.cloud.gkehub.v1beta.GkeHub.UpdateFeature`
 * `google.cloud.gkehub.v1beta1.GkeHubMembershipService.CreateMembership`
 * `google.cloud.gkehub.v1beta1.GkeHubMembershipService.DeleteMembership`
@@ -4877,11 +5694,26 @@ Any custom application that can publish to a PubSub topic
 
 </p>
 </details>
+<details><summary>Network Connectivity</summary>
+<p>
+
+`networkconnectivity.googleapis.com`
+
+* `google.cloud.networkconnectivity.v1.HubService.CreateHub`
+* `google.cloud.networkconnectivity.v1.HubService.CreateSpoke`
+* `google.cloud.networkconnectivity.v1.HubService.DeleteHub`
+* `google.cloud.networkconnectivity.v1.HubService.DeleteSpoke`
+* `google.cloud.networkconnectivity.v1.HubService.UpdateHub`
+* `google.cloud.networkconnectivity.v1.HubService.UpdateSpoke`
+
+</p>
+</details>
 <details><summary>Network Management</summary>
 <p>
 
 `networkmanagement.googleapis.com`
 
+* `GetIamPolicy`
 * `SetIamPolicy`
 * `google.cloud.networkmanagement.v1.ReachabilityService.CreateConnectivityTest`
 * `google.cloud.networkmanagement.v1.ReachabilityService.DeleteConnectivityTest`
@@ -4898,6 +5730,32 @@ Any custom application that can publish to a PubSub topic
 
 </p>
 </details>
+<details><summary>Network Security</summary>
+<p>
+
+`networksecurity.googleapis.com`
+
+* `google.cloud.networksecurity.v1beta1.NetworkSecurity.CreateAuthorizationPolicy`
+* `google.cloud.networksecurity.v1beta1.NetworkSecurity.CreateClientTlsPolicy`
+* `google.cloud.networksecurity.v1beta1.NetworkSecurity.CreateServerTlsPolicy`
+* `google.cloud.networksecurity.v1beta1.NetworkSecurity.DeleteAuthorizationPolicy`
+* `google.cloud.networksecurity.v1beta1.NetworkSecurity.DeleteClientTlsPolicy`
+* `google.cloud.networksecurity.v1beta1.NetworkSecurity.DeleteServerTlsPolicy`
+* `google.cloud.networksecurity.v1beta1.NetworkSecurity.UpdateAuthorizationPolicy`
+* `google.cloud.networksecurity.v1beta1.NetworkSecurity.UpdateClientTlsPolicy`
+* `google.cloud.networksecurity.v1beta1.NetworkSecurity.UpdateServerTlsPolicy`
+* `google.cloud.networksecurity.v1main.NetworkSecurity.CreateAuthorizationPolicy`
+* `google.cloud.networksecurity.v1main.NetworkSecurity.CreateClientTlsPolicy`
+* `google.cloud.networksecurity.v1main.NetworkSecurity.CreateServerTlsPolicy`
+* `google.cloud.networksecurity.v1main.NetworkSecurity.DeleteAuthorizationPolicy`
+* `google.cloud.networksecurity.v1main.NetworkSecurity.DeleteClientTlsPolicy`
+* `google.cloud.networksecurity.v1main.NetworkSecurity.DeleteServerTlsPolicy`
+* `google.cloud.networksecurity.v1main.NetworkSecurity.UpdateAuthorizationPolicy`
+* `google.cloud.networksecurity.v1main.NetworkSecurity.UpdateClientTlsPolicy`
+* `google.cloud.networksecurity.v1main.NetworkSecurity.UpdateServerTlsPolicy`
+
+</p>
+</details>
 <details><summary>Network Services</summary>
 <p>
 
@@ -4908,6 +5766,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.networkservices.v1main.NetworkServices.DeleteEndpointConfigSelector`
 * `google.cloud.networkservices.v1main.NetworkServices.DeleteHttpFilter`
 * `google.cloud.networkservices.v1main.NetworkServices.UpdateEndpointConfigSelector`
+* `google.cloud.networkservices.v1main.NetworkServices.UpdateHttpFilter`
 
 </p>
 </details>
@@ -4928,8 +5787,10 @@ Any custom application that can publish to a PubSub topic
 
 `pubsublite.googleapis.com`
 
+* `google.cloud.pubsublite.v1.AdminService.CreateReservation`
 * `google.cloud.pubsublite.v1.AdminService.CreateSubscription`
 * `google.cloud.pubsublite.v1.AdminService.CreateTopic`
+* `google.cloud.pubsublite.v1.AdminService.DeleteReservation`
 * `google.cloud.pubsublite.v1.AdminService.DeleteSubscription`
 * `google.cloud.pubsublite.v1.AdminService.DeleteTopic`
 * `google.cloud.pubsublite.v1.AdminService.GetSubscription`
@@ -5022,6 +5883,8 @@ Any custom application that can publish to a PubSub topic
 
 `resourcesettings.googleapis.com`
 
+* `google.cloud.resourcesettings.v1.ResourceSettingsService.GetSetting`
+* `google.cloud.resourcesettings.v1.ResourceSettingsService.ListSettings`
 * `google.cloud.resourcesettings.v1.ResourceSettingsService.UpdateSetting`
 
 </p>
@@ -5075,18 +5938,72 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.securitycenter.settings.v1beta2.Settings.CalculateWebSecurityScannerSettings`
 * `google.cloud.securitycenter.settings.v1beta2.Settings.GetContainerThreatDetectionSettings`
 * `google.cloud.securitycenter.settings.v1beta2.Settings.GetEventThreatDetectionSettings`
+* `google.cloud.securitycenter.settings.v1beta2.Settings.GetSecurityCenterSettings`
 * `google.cloud.securitycenter.settings.v1beta2.Settings.GetSecurityHealthAnalyticsSettings`
+* `google.cloud.securitycenter.settings.v1beta2.Settings.GetSubscription`
+* `google.cloud.securitycenter.settings.v1beta2.Settings.GetUserInterfaceMetadata`
 * `google.cloud.securitycenter.settings.v1beta2.Settings.GetWebSecurityScannerSettings`
+* `google.cloud.securitycenter.settings.v1beta2.Settings.InitializeSecurityCenterSettings`
 * `google.cloud.securitycenter.settings.v1beta2.Settings.UpdateContainerThreatDetectionSettings`
 * `google.cloud.securitycenter.settings.v1beta2.Settings.UpdateEventThreatDetectionSettings`
+* `google.cloud.securitycenter.settings.v1beta2.Settings.UpdateSecurityCenterSettings`
 * `google.cloud.securitycenter.settings.v1beta2.Settings.UpdateSecurityHealthAnalyticsSettings`
 * `google.cloud.securitycenter.settings.v1beta2.Settings.UpdateWebSecurityScannerSettings`
+* `google.cloud.securitycenter.v1.SecurityCenter.BulkMuteFindings`
+* `google.cloud.securitycenter.v1.SecurityCenter.CreateFinding`
+* `google.cloud.securitycenter.v1.SecurityCenter.CreateMuteConfig`
+* `google.cloud.securitycenter.v1.SecurityCenter.CreateNotificationConfig`
+* `google.cloud.securitycenter.v1.SecurityCenter.CreateSource`
+* `google.cloud.securitycenter.v1.SecurityCenter.DeleteMuteConfig`
+* `google.cloud.securitycenter.v1.SecurityCenter.DeleteNotificationConfig`
+* `google.cloud.securitycenter.v1.SecurityCenter.GetIamPolicy`
+* `google.cloud.securitycenter.v1.SecurityCenter.GetIsOnboarded`
+* `google.cloud.securitycenter.v1.SecurityCenter.GetMuteConfig`
+* `google.cloud.securitycenter.v1.SecurityCenter.GetNotificationConfig`
+* `google.cloud.securitycenter.v1.SecurityCenter.GetOrganizationSettings`
+* `google.cloud.securitycenter.v1.SecurityCenter.GetSource`
 * `google.cloud.securitycenter.v1.SecurityCenter.GroupAssets`
 * `google.cloud.securitycenter.v1.SecurityCenter.GroupFindings`
 * `google.cloud.securitycenter.v1.SecurityCenter.ListAssets`
 * `google.cloud.securitycenter.v1.SecurityCenter.ListFindings`
+* `google.cloud.securitycenter.v1.SecurityCenter.ListMuteConfigs`
+* `google.cloud.securitycenter.v1.SecurityCenter.ListNotificationConfigs`
 * `google.cloud.securitycenter.v1.SecurityCenter.ListSources`
+* `google.cloud.securitycenter.v1.SecurityCenter.SetFindingState`
+* `google.cloud.securitycenter.v1.SecurityCenter.SetIamPolicy`
+* `google.cloud.securitycenter.v1.SecurityCenter.SetMute`
+* `google.cloud.securitycenter.v1.SecurityCenter.UpdateFinding`
+* `google.cloud.securitycenter.v1.SecurityCenter.UpdateMuteConfig`
+* `google.cloud.securitycenter.v1.SecurityCenter.UpdateNotificationConfig`
+* `google.cloud.securitycenter.v1.SecurityCenter.UpdateOrganizationSettings`
 * `google.cloud.securitycenter.v1.SecurityCenter.UpdateSecurityMarks`
+* `google.cloud.securitycenter.v1.SecurityCenter.UpdateSource`
+* `google.cloud.securitycenter.v1beta1.SecurityCenter.CreateFinding`
+* `google.cloud.securitycenter.v1beta1.SecurityCenter.ListAssets`
+* `google.cloud.securitycenter.v1beta1.SecurityCenter.ListFindings`
+* `google.cloud.securitycenter.v1beta1.SecurityCenter.ListSources`
+* `google.cloud.securitycenter.v1beta1.SecurityCenter.UpdateSecurityMarks`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.CreateFinding`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.CreateNotificationConfig`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.CreateSource`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.DeleteNotificationConfig`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.GetIamPolicy`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.GetNotificationConfig`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.GetOrganizationSettings`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.GetSource`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.GroupAssets`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.GroupFindings`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.ListAssets`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.ListFindings`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.ListNotificationConfigs`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.ListSources`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.SetFindingState`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.SetIamPolicy`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.UpdateFinding`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.UpdateNotificationConfig`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.UpdateOrganizationSettings`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.UpdateSecurityMarks`
+* `google.cloud.securitycenter.v1p1beta1.SecurityCenter.UpdateSource`
 
 </p>
 </details>
@@ -5141,6 +6058,7 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.servicedirectory.v1.RegistrationService.DeleteNamespace`
 * `google.cloud.servicedirectory.v1.RegistrationService.DeleteService`
 * `google.cloud.servicedirectory.v1.RegistrationService.GetEndpoint`
+* `google.cloud.servicedirectory.v1.RegistrationService.GetIamPolicy`
 * `google.cloud.servicedirectory.v1.RegistrationService.GetNamespace`
 * `google.cloud.servicedirectory.v1.RegistrationService.GetService`
 * `google.cloud.servicedirectory.v1.RegistrationService.ListEndpoints`
@@ -5246,8 +6164,11 @@ Any custom application that can publish to a PubSub topic
 
 `websecurityscanner.googleapis.com`
 
+* `google.cloud.websecurityscanner.v1.WebSecurityScanner.CreateScanConfig`
+* `google.cloud.websecurityscanner.v1.WebSecurityScanner.DeleteScanConfig`
 * `google.cloud.websecurityscanner.v1.WebSecurityScanner.GetScanConfig`
 * `google.cloud.websecurityscanner.v1.WebSecurityScanner.ListScanConfigs`
+* `google.cloud.websecurityscanner.v1.WebSecurityScanner.StartScanRun`
 * `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.CreateScanConfig`
 * `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.DeleteScanConfig`
 * `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.GetScanConfig`
@@ -5269,6 +6190,7 @@ Any custom application that can publish to a PubSub topic
 
 `workflowexecutions.googleapis.com`
 
+* `google.cloud.workflows.executions.v1.Events.SendHttpCallback`
 * `google.cloud.workflows.executions.v1.Executions.CancelExecution`
 * `google.cloud.workflows.executions.v1.Executions.CreateExecution`
 * `google.cloud.workflows.executions.v1.Executions.GetExecution`

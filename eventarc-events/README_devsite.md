@@ -3433,7 +3433,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.monitoring.v3.ServiceMonitoringService.UpdateService`
 - `google.monitoring.v3.ServiceMonitoringService.UpdateServiceLevelObjective`
 - `google.monitoring.v3.TimeSeriesFilterService.FormatTimeSeriesFilter`
-- `google.monitoring.v3.TimeSeriesFilterService.ParseTimeSeriesFilter`
 - `google.monitoring.v3.UptimeCheckService.CreateUptimeCheckConfig`
 - `google.monitoring.v3.UptimeCheckService.DeleteUptimeCheckConfig`
 - `google.monitoring.v3.UptimeCheckService.GetUptimeCheckConfig`

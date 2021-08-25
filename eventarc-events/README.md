@@ -3404,7 +3404,6 @@ Any custom application that can publish to a PubSub topic
 * `google.monitoring.v3.ServiceMonitoringService.UpdateService`
 * `google.monitoring.v3.ServiceMonitoringService.UpdateServiceLevelObjective`
 * `google.monitoring.v3.TimeSeriesFilterService.FormatTimeSeriesFilter`
-* `google.monitoring.v3.TimeSeriesFilterService.ParseTimeSeriesFilter`
 * `google.monitoring.v3.UptimeCheckService.CreateUptimeCheckConfig`
 * `google.monitoring.v3.UptimeCheckService.DeleteUptimeCheckConfig`
 * `google.monitoring.v3.UptimeCheckService.GetUptimeCheckConfig`

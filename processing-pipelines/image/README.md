@@ -31,7 +31,7 @@ Make sure that the project id is setup:
 
 ```sh
 gcloud config set project [YOUR-PROJECT-ID]
-PROJECT_ID=$PROJECT_ID
+PROJECT_ID=$(gcloud config get-value project)
 ```
 
 Enable all necessary services:
@@ -49,7 +49,7 @@ You will use [Audit Logs](https://console.cloud.google.com/iam-admin/audit)
 trigger for Cloud Storage. Make sure `Admin Read`, `Data Read`, and `Data Write`
 log types are enabled for Cloud Storage.
 
-### Region, location, platform and Vision API
+### Region, location, platform
 
 Set region, location and platform for Cloud Run and Eventarc:
 
@@ -67,7 +67,7 @@ Default compute service account will be used in Audit Log triggers. Grant the
 `eventarc.eventReceiver` role to the default compute service account:
 
 ```sh
-PROJECT_NUMBER="$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')"
+PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
 
 gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member=serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com \

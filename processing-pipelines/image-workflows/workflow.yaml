@@ -1,0 +1,48 @@
+main:
+  params: [args]
+  steps:
+  - init:
+      assign:
+        - bucket: ${args.bucket}
+        - file: ${args.file}
+        - urls: ${args.urls}
+        - gcsUri: ${"gs://" + bucket + "/" + file}
+  - logFile:
+      call: sys.log
+      args:
+        text: ${gcsUri}
+  - label:
+      call: http.post
+      args:
+        url: ${urls.LABELER_URL}
+        auth:
+          type: OIDC
+        body:
+            bucket: ${bucket}
+            file: ${file}
+      result: labelResponse
+  - resize:
+      call: http.post
+      args:
+        url: ${urls.RESIZER_URL}
+        auth:
+          type: OIDC
+        body:
+            bucket: ${bucket}
+            file: ${file}
+      result: resizeResponse
+  - watermark:
+      call: http.post
+      args:
+        url: ${urls.WATERMARKER_URL}
+        auth:
+          type: OIDC
+        body:
+            bucket: ${bucket}
+            file: ${file}
+      result: watermarkResponse
+  - final:
+      return:
+        label: ${labelResponse.code}
+        resize: ${resizeResponse.code}
+        watermark: ${watermarkResponse.code}

@@ -45,7 +45,6 @@ namespace Common
         {
             _logger.LogInformation("Reading cloud storage data");
 
-
             string bucket = null, name = null;
             CloudEvent cloudEvent;
             CloudEventFormatter formatter;

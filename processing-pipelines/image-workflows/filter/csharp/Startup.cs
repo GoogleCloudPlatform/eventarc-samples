@@ -27,9 +27,6 @@ namespace Filter
 {
     public class Startup
     {
-        private const string CloudEventType = "dev.knative.samples.fileuploaded";
-        private const string CloudEventSource = "knative/eventing/samples/filter";
-
         public void ConfigureServices(IServiceCollection services)
         {
         }
@@ -47,8 +44,8 @@ namespace Filter
 
             var eventReader = new CloudEventReader(logger);
 
-            var configReader = new ConfigReader(logger, CloudEventSource, CloudEventType);
-            var bucketExpected = configReader.Read("BUCKET", false);
+            var configReader = new ConfigReader(logger);
+            var bucketExpected = configReader.Read("BUCKET");
             var projectId = configReader.Read("PROJECT_ID");
             var region = configReader.Read("REGION");
             var workflow = configReader.Read("WORKFLOW_NAME");

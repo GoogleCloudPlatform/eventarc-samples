@@ -29,8 +29,6 @@ namespace Watermarker
 {
     public class Function : IHttpFunction
     {
-        private const string Watermark = "Google Cloud Platform";
-
         private readonly ILogger _logger;
 
         private readonly Font _font;
@@ -56,7 +54,7 @@ namespace Watermarker
 
             try
             {
-                var (bucket, file) = await _requestReader.ReadCloudStorageData(context);
+                var (bucket, file, labels) = await _requestReader.ReadCloudStorageAndLabelsData(context);
 
                 using (var inputStream = new MemoryStream())
                 {
@@ -69,7 +67,7 @@ namespace Watermarker
                         inputStream.Position = 0; // Reset to read
                         using (var image = Image.Load(inputStream))
                         {
-                            using (var imageProcessed = image.Clone(ctx => ApplyScalingWaterMarkSimple(ctx, _font, Watermark, Color.DeepSkyBlue, 5)))
+                            using (var imageProcessed = image.Clone(ctx => ApplyScalingWaterMarkSimple(ctx, _font, labels, Color.DeepSkyBlue, 5)))
                             {
                                 _logger.LogInformation($"Added watermark to image '{file}'");
                                 imageProcessed.SaveAsJpeg(outputStream);

@@ -71,9 +71,16 @@ namespace Resizer
                             image.SaveAsPng(outputStream);
                         }
 
-                        var outputObjectName = $"{Path.GetFileNameWithoutExtension(file)}-{ThumbWidth}x{ThumbHeight}.png";
-                        await client.UploadObjectAsync(_outputBucket, outputObjectName, "image/png", outputStream);
-                        _logger.LogInformation($"Uploaded '{outputObjectName}' to bucket '{_outputBucket}'");
+                        var outputFile = $"{Path.GetFileNameWithoutExtension(file)}-{ThumbWidth}x{ThumbHeight}.png";
+                        await client.UploadObjectAsync(_outputBucket, outputFile, "image/png", outputStream);
+                        _logger.LogInformation($"Uploaded '{outputFile}' to bucket '{_outputBucket}'");
+
+                        var replyData = new {bucket = _outputBucket, file = outputFile};
+                        var json = JsonConvert.SerializeObject(replyData);
+                        _logger.LogInformation($"Replying back with json: {json}");
+
+                        context.Response.ContentType = "application/json";
+                        await context.Response.WriteAsync(json);
                     }
                 }
             }

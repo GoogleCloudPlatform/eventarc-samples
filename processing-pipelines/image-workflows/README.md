@@ -20,7 +20,7 @@ by **Workflows**.
    [ImageSharp](https://github.com/SixLabors/ImageSharp) and saves to the
    resized image to the output bucket.
 6. In the last step, Watermarker, a another Cloud Function service, adds a
-   watermark to the image using
+   watermark of labels from Labeler to the resized image using
    [ImageSharp](https://github.com/SixLabors/ImageSharp) and saves the image to
    the output bucket.
 
@@ -103,15 +103,14 @@ gsutil mb -l $REGION gs://$BUCKET2
 
 ## Watermarker
 
-This Cloud Functions service receives the bucket and file information, reads the
-file, adds the watermark to the image using
+This Cloud Functions service receives the bucket, file and labels information, reads the
+file, adds the labels as watermark to the image using
 [ImageSharp](https://github.com/SixLabors/ImageSharp) and saves the image to the
 output bucket.
 
 The code of the service is in [watermarker](watermarker) folder.
 
-Inside the top level [processing-pipelines](../processing-pipelines)
-folder, deploy the service:
+Inside the top level [processing-pipelines](..) folder, deploy the service:
 
 ```sh
 SERVICE_NAME=watermarker
@@ -138,8 +137,7 @@ the image to the output bucket.
 
 The code of the service is in [resizer](resizer) folder.
 
-Inside the top level [processing-pipelines](../processing-pipelines)
-folder, deploy the service:
+Inside the top level [processing-pipelines](..) folder, deploy the service:
 
 ```sh
 SERVICE_NAME=resizer
@@ -165,8 +163,7 @@ labels of the image with Vision API and saves the labels to the output bucket.
 
 The code of the service is in [labeler](labeler) folder.
 
-Inside the top level [processing-pipelines](../processing-pipelines) folder,
-deploy the service:
+Inside the top level [processing-pipelines](..) folder, deploy the service:
 
 ```sh
 SERVICE_NAME=labeler
@@ -208,11 +205,8 @@ main:
         - urls: ${args.urls}
 ```
 
-In the next `label`, `resize` and `watermark` steps, workflow makes a call to
-Labeler, Resizer and Watermarker services with the bucket and file information
-and capture their responses.
-
-Here's the `label` step as an example:
+In the `label` step, Workflows make a call to Labeler and captures the response
+of response (top 3 labels):
 
 ```yaml
   - label:
@@ -224,6 +218,39 @@ Here's the `label` step as an example:
         body:
             bucket: ${bucket}
             file: ${file}
+      result: labelResponse
+```
+
+Same with the `resize` step. The resize response is the bucket and name of the
+resized image:
+
+```yaml
+  - resize:
+      call: http.post
+      args:
+        url: ${urls.RESIZER_URL}
+        auth:
+          type: OIDC
+        body:
+            bucket: ${bucket}
+            file: ${file}
+      result: resizeResponse
+```
+
+In the `watermark` step, the resized image gets a watermark from the labels:
+
+```yaml
+  - watermark:
+      call: http.post
+      args:
+        url: ${urls.WATERMARKER_URL}
+        auth:
+          type: OIDC
+        body:
+            bucket: ${resizeResponse.body.bucket}
+            file: ${resizeResponse.body.file}
+            labels: ${labelResponse.body.labels}
+      result: watermarkResponse
 ```
 
 In the `final` step, the HTTP codes from each step is returned:
@@ -256,8 +283,8 @@ If the image is safe, it starts a Workflows execution with the bucket and file d
 
 The code of the service is in [filter](filter) folder.
 
-Inside the top level [processing-pipelines](../processing-pipelines) folder,
-build and push the container image:
+Inside the top level [processing-pipelines](..) folder, build and push the
+container image:
 
 ```sh
 SERVICE_NAME=filter

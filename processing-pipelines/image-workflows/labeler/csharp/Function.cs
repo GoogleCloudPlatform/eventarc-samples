@@ -16,13 +16,14 @@ using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using System.IO;
-using Newtonsoft.Json;
 using System;
 using System.Text;
 using Google.Cloud.Vision.V1;
 using Google.Cloud.Storage.V1;
 using System.Linq;
 using Common;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Labeler
 {
@@ -53,15 +54,24 @@ namespace Labeler
                 _logger.LogInformation($"Storage url: {storageUrl}");
 
                 var labels = await ExtractLabelsAsync(storageUrl);
-                _logger.LogInformation($"This picture is labelled: {labels}");
+                var allLabels = string.Join(",", labels);
+                _logger.LogInformation($"This picture is labelled: {allLabels}");
 
-                using (var outputStream = new MemoryStream(Encoding.UTF8.GetBytes(labels)))
+                using (var outputStream = new MemoryStream(Encoding.UTF8.GetBytes(allLabels)))
                 {
                     var outputObjectName = $"{Path.GetFileNameWithoutExtension(file)}-labels.txt";
                     var client = await StorageClient.CreateAsync();
                     await client.UploadObjectAsync(_outputBucket, outputObjectName, "text/plain", outputStream);
                     _logger.LogInformation($"Uploaded '{outputObjectName}' to bucket '{_outputBucket}'");
                 }
+
+                var topThreeLabels = string.Join(",", labels.Take(3));
+                var replyData = new {labels = topThreeLabels};
+                var json = JsonConvert.SerializeObject(replyData);
+                _logger.LogInformation($"Replying back with json: {json}");
+
+                context.Response.ContentType = "application/json";
+                await context.Response.WriteAsync(json);
             }
             catch (Exception e)
             {
@@ -70,7 +80,7 @@ namespace Labeler
             }
         }
 
-        private async Task<string> ExtractLabelsAsync(string storageUrl)
+        private async Task<List<string>> ExtractLabelsAsync(string storageUrl)
         {
             var visionClient = ImageAnnotatorClient.Create();
             var labels = await visionClient.DetectLabelsAsync(Image.FromUri(storageUrl), maxResults: 10);
@@ -81,7 +91,7 @@ namespace Labeler
                 .Select(x => x.Description)
                 .ToList();
 
-            return string.Join(",", orderedLabels.ToArray());
+            return orderedLabels;
         }
     }
 }

@@ -38,8 +38,9 @@ main:
         auth:
           type: OIDC
         body:
-            bucket: ${bucket}
-            file: ${file}
+            bucket: ${resizeResponse.body.bucket}
+            file: ${resizeResponse.body.file}
+            labels: ${labelResponse.body.labels}
       result: watermarkResponse
   - final:
       return:

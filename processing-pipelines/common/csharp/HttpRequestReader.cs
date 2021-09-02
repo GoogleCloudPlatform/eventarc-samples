@@ -37,5 +37,18 @@ namespace Common
             _logger.LogInformation($"Extracted bucket: {obj.bucket} and name: {obj.file}");
             return (obj.bucket, obj.file);
         }
+
+        public async Task<(string, string, string)> ReadCloudStorageAndLabelsData(HttpContext context)
+        {
+            _logger.LogInformation("Reading cloud storage and labels data");
+
+            // {"bucket": "workflows-atamel-input-files", "file": "atamel.jpg", "labels": "hello,beautiful,world"}
+            using TextReader reader = new StreamReader(context.Request.Body);
+            var json = await reader.ReadToEndAsync();
+            dynamic obj = JsonConvert.DeserializeObject(json);
+
+            _logger.LogInformation($"Extracted bucket: {obj.bucket}, name: {obj.file} and labels: {obj.labels}");
+            return (obj.bucket, obj.file, obj.labels);
+        }
     }
 }

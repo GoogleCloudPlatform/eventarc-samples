@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -45,7 +45,6 @@ namespace Filter
             var eventReader = new CloudEventReader(logger);
 
             var configReader = new ConfigReader(logger);
-            var bucketExpected = configReader.Read("BUCKET");
             var projectId = configReader.Read("PROJECT_ID");
             var region = configReader.Read("REGION");
             var workflow = configReader.Read("WORKFLOW_NAME");
@@ -58,14 +57,6 @@ namespace Filter
                 endpoints.MapPost("/", async context =>
                 {
                     var (bucket, file) = await eventReader.ReadCloudStorageData(context);
-
-                    // This is needed in Eventarc as GCS events cannot be
-                    // filtered by bucket yet.
-                    if (bucketExpected != null && bucket != bucketExpected)
-                    {
-                        logger.LogInformation($"Input bucket '{bucket}' does not match with expected bucket '{bucketExpected}'");
-                        return;
-                    }
 
                     var storageUrl = $"gs://{bucket}/{file}";
                     logger.LogInformation($"Storage url: {storageUrl}");

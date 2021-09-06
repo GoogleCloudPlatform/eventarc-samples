@@ -8,8 +8,8 @@ Functions** services orchestrated by **Workflows**.
 
 1. An image is saved to an input bucket that generates a Cloud Storage create
    event.
-2. Cloud Storage create event is read by Eventarc via an GCS trigger and
-   passed to a Filter service.
+2. Cloud Storage create event is read by Eventarc via an Cloud Storage trigger
+   and passed to a Filter service.
 3. Filter is a Cloud Run service. It receives and parses the Cloud Storage event
    wrapped into a CloudEvent. It uses Vision API to determine if the image is
    safe. If the image is safe, it starts a Workflows execution with the bucket
@@ -77,7 +77,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
 ```
 
 Grant the `pubsub.publisher` role to the Cloud Storage service account. This is
-needed for the Eventarc GCS trigger:
+needed for the Eventarc Cloud Storage trigger:
 
 ```sh
 SERVICE_ACCOUNT="$(gsutil kms serviceaccount -p ${PROJECT_NUMBER})"

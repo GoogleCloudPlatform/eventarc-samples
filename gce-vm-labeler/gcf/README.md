@@ -77,27 +77,18 @@ the `last:true` flag in `operation` field. If so, it extracts the relevant info 
 the AuditLog such as project id, zone, instance id and uses Compute Engine API
 to label the instance with the username of the creator.
 
-The source code of the service is in [csharp](csharp) folder.
+The source code of the service is in [csharp](csharp), [nodejs](nodejs] folders.
 
-Deploy the service:
+Deploy the service with the deploy script [csharp/deploy.sh](csharp/deploy.sh)
+or [nodejs/deploy.sh](nodejs/deploy.sh):
 
 ```sh
-REGION=us-west1
-SERVICE_NAME=gce-vm-labeler
-TRIGGER_LOCATION=us-central1
-gcloud alpha functions deploy $SERVICE_NAME \
---v2 \
---runtime dotnet3 \
---trigger-event-filters="type=google.cloud.audit.log.v1.written,serviceName=compute.googleapis.com,methodName=beta.compute.instances.insert" \
---entry-point GceVmLabeler.Function \
---source . \
---region $REGION \
---trigger-location $TRIGGER_LOCATION
+./deploy.sh
 ```
 
 > **Note:** For some reason, the trigger has to be in `us-central1` in order to
 > receive Compute Engine Audit Logs and GCF v2 functions are currently only
-> available in `us-west1`, hence the discrepency between the two.
+> available in `us-west1`, hence the discrepancy between the two.
 
 See that the service is deployed:
 
@@ -139,5 +130,5 @@ labels:
 You can also check the logs of the function as follows:
 
 ```sh
-gcloud alpha functions logs read $SERVICE_NAME --region $REGION --v2 --limit=100
+gcloud alpha functions logs read gce-vm-labeler --region us-west1 --v2 --limit=100
 ```

@@ -55,19 +55,6 @@ You will use [Audit Logs](https://console.cloud.google.com/iam-admin/audit)
 trigger for Compute Engine. Make sure `Admin Read`, `Data Read`, and `Data Write`
 log types are enabled for Compute Engine.
 
-### Configure a service account
-
-Default compute service account will be used in the Audit Log trigger of Eventarc. Grant the
-`eventarc.eventReceiver` role to the default compute service account:
-
-```sh
-PROJECT_NUMBER="$(gcloud projects describe $(gcloud config get-value project) --format='value(projectNumber)')"
-
-gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
-    --member=serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com \
-    --role='roles/eventarc.eventReceiver'
-```
-
 ## GCE VM Labeler
 
 This service receives AuditLogs for service `compute.googleapis.com` and
@@ -77,7 +64,7 @@ the `last:true` flag in `operation` field. If so, it extracts the relevant info 
 the AuditLog such as project id, zone, instance id and uses Compute Engine API
 to label the instance with the username of the creator.
 
-The source code of the service is in [csharp](csharp), [nodejs](nodejs] folders.
+The source code of the service is in [csharp](csharp), [nodejs](nodejs) folders.
 
 Deploy the service with the deploy script [csharp/deploy.sh](csharp/deploy.sh)
 or [nodejs/deploy.sh](nodejs/deploy.sh):

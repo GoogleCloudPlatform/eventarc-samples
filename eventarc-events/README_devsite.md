@@ -1,6 +1,10 @@
-# Eventarc Events
+# Events supported by Eventarc
 
-The list of events supported by Eventarc.
+The following is a list of the events supported by Eventarc.
+
+- Using Pub/Sub
+- Using Cloud Audit Logs
+- Directly from a Google Cloud source
 
 ## Using Pub/Sub
 
@@ -6303,3 +6307,13 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.workflows.v1beta.Workflows.ListWorkflows`
 - `google.cloud.workflows.v1beta.Workflows.UpdateWorkflow`
 
+## Directly from a Google Cloud source
+
+For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.md).
+
+### Cloud Storage
+
+- `google.cloud.storage.object.v1.archived`
+- `google.cloud.storage.object.v1.deleted`
+- `google.cloud.storage.object.v1.finalized`
+- `google.cloud.storage.object.v1.metadataUpdated`

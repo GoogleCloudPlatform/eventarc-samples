@@ -1,8 +1,12 @@
-# Eventarc Events
+# Events supported by Eventarc
 
-The list of events supported by Eventarc.
+The following is a list of the events supported by Eventarc.
 
-### via Cloud Pub/Sub
+- Using Pub/Sub
+- Using Cloud Audit Logs
+- Directly from a Google Cloud source
+
+### Using Cloud Pub/Sub
 <details><summary>Custom applications</summary>
 <p>
 
@@ -87,7 +91,7 @@ Any custom application that can publish to a PubSub topic
 </p>
 </details>
 
-### via Cloud Audit Logs
+### Using Cloud Audit Logs
 <details><summary>Access Approval</summary>
 <p>
 
@@ -6216,6 +6220,18 @@ Any custom application that can publish to a PubSub topic
 * `google.cloud.workflows.v1beta.Workflows.GetWorkflow`
 * `google.cloud.workflows.v1beta.Workflows.ListWorkflows`
 * `google.cloud.workflows.v1beta.Workflows.UpdateWorkflow`
+
+</p>
+</details>
+
+### Directly from a Google Cloud source
+<details><summary>Cloud Storage</summary>
+<p>
+
+* `google.cloud.storage.object.v1.archived`
+* `google.cloud.storage.object.v1.deleted`
+* `google.cloud.storage.object.v1.finalized`
+* `google.cloud.storage.object.v1.metadataUpdated`
 
 </p>
 </details>

@@ -1,0 +1,13 @@
+{
+  "services": [
+    {
+      "displayName": "Cloud Storage",
+      "events": [
+        "google.cloud.storage.object.v1.archived",
+        "google.cloud.storage.object.v1.deleted",
+        "google.cloud.storage.object.v1.finalized",
+        "google.cloud.storage.object.v1.metadataUpdated"
+      ]
+    }
+  ]
+}

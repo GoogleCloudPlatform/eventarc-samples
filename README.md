@@ -40,6 +40,7 @@ that explains Eventarc.
   * [Compute Engine VM Labeler](gce-vm-labeler/gcf)
   * [Expensive BigQuery jobs notifier](bigquery-jobs-notifier/gcf)
 * Eventarc and Workflows
+  * [Eventarc (Cloud Storage) and Workflows](eventarc-workflows-integration/eventarc-storage)
   * [Eventarc (AuditLog-Cloud Storage), Cloud Run and Workflows](eventarc-workflows-integration/eventarc-auditlog-storage-cloudrun)
   * [Eventarc (Pub/Sub) and Workflows](eventarc-workflows-integration/eventarc-pubsub)
   * [Eventarc (Pub/Sub), Cloud Run and Workflows](eventarc-workflows-integration/eventarc-pubsub-cloudrun)

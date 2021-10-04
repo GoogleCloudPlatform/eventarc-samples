@@ -1,0 +1,16 @@
+main:
+    params: [event]
+    steps:
+        - log_event:
+            call: sys.log
+            args:
+                text: ${event}
+                severity: INFO
+        - extract_bucket_object:
+            assign:
+            - bucket: ${event.data.bucket}
+            - object: ${event.data.name}
+        - return_bucket_object:
+                return:
+                    bucket: ${bucket}
+                    object: ${object}

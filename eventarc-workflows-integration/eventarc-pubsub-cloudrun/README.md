@@ -1,4 +1,4 @@
-# Eventarc (Pub/Sub_, Cloud Run and Workflows
+# Eventarc (Pub/Sub), Cloud Run and Workflows
 
 In this sample, you will see how to connect
 [Eventarc](https://cloud.google.com/eventarc/docs) events to

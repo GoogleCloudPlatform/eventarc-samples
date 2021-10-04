@@ -41,6 +41,7 @@ that explains Eventarc.
   * [Expensive BigQuery jobs notifier](bigquery-jobs-notifier/gcf)
 * Eventarc and Workflows
   * [Eventarc (AuditLog-Cloud Storage), Cloud Run and Workflows](eventarc-workflows-integration/eventarc-auditlog-storage-cloudrun)
+  * [Eventarc (Pub/Sub) and Workflows](eventarc-workflows-integration/eventarc-pubsub)
   * [Eventarc (Pub/Sub), Cloud Run and Workflows](eventarc-workflows-integration/eventarc-pubsub-cloudrun)
   * [Workflows and Eventarc Pub/Sub](https://github.com/GoogleCloudPlatform/workflows-demos/tree/master/workflows-eventarc-integration/workflows-pubsub)
   * [Image processing pipeline](processing-pipelines/image-workflows/)

@@ -1,4 +1,4 @@
-# Eventarc Pub/Sub and Workflows Integration
+# Eventarc (Pub/Sub_, Cloud Run and Workflows
 
 In this sample, you will see how to connect
 [Eventarc](https://cloud.google.com/eventarc/docs) events to
@@ -10,14 +10,15 @@ workflow with whole HTTP request from Eventarc passed to the workflow.
 
 ## Deploy a workflow
 
-First, deploy the [workflow.yaml](../eventarc-workflows-integration/eventarc-pubsub/workflow.yaml). It simply
+First, deploy the [workflow.yaml](workflow.yaml). It simply
 decodes and logs out the received Pub/Sub message.
 
 Deploy workflow:
 
 ```sh
-export WORKFLOW_NAME=workflow-pubsub
-export REGION=us-central1
+WORKFLOW_NAME=workflow-pubsub
+REGION=us-central1
+
 gcloud workflows deploy ${WORKFLOW_NAME} --source=workflow.yaml --location=${REGION}
 ```
 
@@ -25,13 +26,14 @@ gcloud workflows deploy ${WORKFLOW_NAME} --source=workflow.yaml --location=${REG
 
 Next, deploy a Cloud Run service to execute workflow. It simply executes the
 workflow with the HTTP request. You can see the source code in
-[trigger-workflow](../eventarc-workflows-integration/eventarc-pubsub/trigger-workflow).
+[trigger-workflow](trigger-workflow).
 
 Build the container:
 
 ```sh
-export PROJECT_ID=$(gcloud config get-value project)
-export SERVICE_NAME=trigger-workflow-pubsub
+PROJECT_ID=$(gcloud config get-value project)
+SERVICE_NAME=trigger-workflow-pubsub
+
 gcloud builds submit --tag gcr.io/${PROJECT_ID}/${SERVICE_NAME} .
 ```
 
@@ -64,7 +66,7 @@ gcloud eventarc triggers create ${SERVICE_NAME} \
 Find out the Pub/Sub topic that Eventarc created:
 
 ```sh
-export TOPIC_ID=$(basename $(gcloud eventarc triggers describe ${SERVICE_NAME} --format='value(transport.pubsub.topic)'))
+TOPIC_ID=$(basename $(gcloud eventarc triggers describe ${SERVICE_NAME} --format='value(transport.pubsub.topic)'))
 ```
 
 ## Trigger the workflow

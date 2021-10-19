@@ -1,10 +1,10 @@
-# Image Processing Pipeline - Eventarc + Workflows
+# Image processing pipeline v2 - Eventarc (Cloud Storage) + Cloud Run + Workflows
 
 In this sample, we'll build an image processing pipeline to read Google Cloud
 Storage events with **Eventarc** and pass to a set of **Cloud Run** and **Cloud
 Functions** services orchestrated by **Workflows**.
 
-![Image Processing Pipeline - Eventarc + Workflows](image-processing-pipeline-workflows.png)
+![Image Processing Pipeline](image-processing-pipeline-v2.png)
 
 1. An image is saved to an input bucket that generates a Cloud Storage create
    event.

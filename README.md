@@ -29,13 +29,14 @@ that explains Eventarc.
 
 * Eventarc and Cloud Run
   * [BigQuery processing pipeline](processing-pipelines/bigquery)
+  * [Image processing pipeline v1 - Eventarc (AuditLog-Cloud Storage) + Cloud Run](processing-pipelines/image-v1)
   * [Image processing pipeline](processing-pipelines/image)
   * [Expensive BigQuery jobs notifier](bigquery-jobs-notifier/run)
   * [Terraform sample](terraform)
   * [Compute Engine VM Labeler](gce-vm-labeler/run)
 * Eventarc and Cloud Run for Anthos
   * [BigQuery processing pipeline](processing-pipelines/bigquery/bigquery-processing-pipeline-eventarc-crfa.md)
-  * [Image processing pipeline](processing-pipelines/image/image-processing-pipeline-eventarc-crfa.md)
+  * [Image processing pipeline v1 - Eventarc (AuditLog-Cloud Storage) + Cloud Run for Anthos](processing-pipelines/image-v1/image-processing-pipeline-eventarc-crfa.md)
 * Eventarc and Cloud Functions (2nd gen)
   * [Compute Engine VM Labeler](gce-vm-labeler/gcf)
   * [Expensive BigQuery jobs notifier](bigquery-jobs-notifier/gcf)
@@ -45,7 +46,7 @@ that explains Eventarc.
   * [Eventarc (Pub/Sub) and Workflows](eventarc-workflows-integration/eventarc-pubsub)
   * [Eventarc (Pub/Sub), Cloud Run and Workflows](eventarc-workflows-integration/eventarc-pubsub-cloudrun)
   * [Workflows and Eventarc (Pub/Sub)](https://github.com/GoogleCloudPlatform/workflows-demos/tree/master/workflows-eventarc-integration/workflows-pubsub)
-  * [Image processing pipeline](processing-pipelines/image-workflows/)
+  * [Image processing pipeline v2 - Eventarc (Cloud Storage) + Cloud Run + Workflows](processing-pipelines/image-v2/)
 
 -------
 

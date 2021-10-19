@@ -1,4 +1,4 @@
-# Image Processing Pipeline - Eventarc for Cloud Run for Anthos
+# Image processing pipeline v1 - Eventarc (AuditLog-Cloud Storage) + Cloud Run for Anthos
 
 > **Note —** Eventarc for Cloud Run for Anthos is currently a feature in *private preview*.
 > Only whitelisted projects can currently take advantage of it. Please stay

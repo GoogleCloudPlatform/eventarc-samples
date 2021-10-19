@@ -1,9 +1,9 @@
-# Image Processing Pipeline - Eventarc
+# Image processing pipeline v1 - Eventarc (AuditLog-Cloud Storage) + Cloud Run
 
 In this sample, we'll build an image processing pipeline to connect Google Cloud
 Storage events to various services with **Eventarc**.
 
-![Image Processing Pipeline](image-processing-pipeline.png)
+![Image Processing Pipeline](image-processing-pipeline-v1.png)
 
 1. An image is saved to an input Cloud Storage bucket.
 2. Cloud Storage update event is read into Cloud Run via an `AuditLog`.

@@ -47,6 +47,7 @@ that explains Eventarc.
   * [Eventarc (Pub/Sub), Cloud Run and Workflows](eventarc-workflows-integration/eventarc-pubsub-cloudrun)
   * [Workflows and Eventarc (Pub/Sub)](https://github.com/GoogleCloudPlatform/workflows-demos/tree/master/workflows-eventarc-integration/workflows-pubsub)
   * [Image processing pipeline v2 - Eventarc (Cloud Storage) + Cloud Run + Workflows](processing-pipelines/image-v2/)
+  * [Image processing pipeline v3 - Eventarc (Cloud Storage) + Workflows](processing-pipelines/image-v3/)
 
 -------
 

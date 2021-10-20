@@ -1,0 +1,69 @@
+main:
+  params: [event]
+  steps:
+  - log_event:
+      call: sys.log
+      args:
+          text: ${event}
+          severity: INFO
+  - extract_bucket_and_file:
+      assign:
+      - bucket: ${event.data.bucket}
+      - file: ${event.data.name}
+  - filter:
+      call: http.post
+      args:
+        url: FILTER_URL # TODO: Replace
+        auth:
+          type: OIDC
+        body:
+            bucket: ${bucket}
+            file: ${file}
+      result: filterResponse
+  - log_safety:
+      call: sys.log
+      args:
+          text: ${filterResponse.body.safe}
+          severity: INFO
+  - check_safety:
+      switch:
+        - condition: ${filterResponse.body.safe == true}
+          next: label
+      next: end
+  - label:
+      call: http.post
+      args:
+        url: LABELER_URL # TODO: Replace
+        auth:
+          type: OIDC
+        body:
+            bucket: ${bucket}
+            file: ${file}
+      result: labelResponse
+  - resize:
+      call: http.post
+      args:
+        url: RESIZER_URL # TODO: Replace
+        auth:
+          type: OIDC
+        body:
+            bucket: ${bucket}
+            file: ${file}
+      result: resizeResponse
+  - watermark:
+      call: http.post
+      args:
+        url: WATERMARKER_URL # TODO: Replace
+        auth:
+          type: OIDC
+        body:
+            bucket: ${resizeResponse.body.bucket}
+            file: ${resizeResponse.body.file}
+            labels: ${labelResponse.body.labels}
+      result: watermarkResponse
+  - final:
+      return:
+        filter: ${filterResponse.code}
+        label: ${labelResponse.code}
+        resize: ${resizeResponse.code}
+        watermark: ${watermarkResponse.code}

@@ -94,7 +94,7 @@ image to the output bucket.
 
 ### Service
 
-The code of the service is in [watermarker](../processing-pipelines/image/watermarker)
+The code of the service is in [watermarker](watermarker)
 folder.
 
 Inside the top level
@@ -103,7 +103,7 @@ folder, build and push the container image:
 
 ```sh
 SERVICE_NAME=watermarker
-docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 -f image/$SERVICE_NAME/csharp/Dockerfile .
+docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 -f image-v1/$SERVICE_NAME/csharp/Dockerfile .
 docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:v1
 ```
 
@@ -142,7 +142,7 @@ event onwards.
 
 ### Service
 
-The code of the service is in [resizer](../processing-pipelines/image/resizer)
+The code of the service is in [resizer](resizer)
 folder.
 
 Inside the top level
@@ -151,7 +151,7 @@ folder, build and push the container image:
 
 ```sh
 SERVICE_NAME=resizer
-docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 -f image/$SERVICE_NAME/csharp/Dockerfile .
+docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 -f image-v1/$SERVICE_NAME/csharp/Dockerfile .
 docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:v1
 ```
 
@@ -193,7 +193,7 @@ saves the labels to the output bucket.
 
 ### Service
 
-The code of the service is in [labeler](../processing-pipelines/image/labeler)
+The code of the service is in [labeler](labeler)
 folder.
 
 Inside the top level
@@ -202,7 +202,7 @@ folder, build and push the container image:
 
 ```sh
 SERVICE_NAME=labeler
-docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 -f image/$SERVICE_NAME/csharp/Dockerfile .
+docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 -f image-v1/$SERVICE_NAME/csharp/Dockerfile .
 docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:v1
 ```
 
@@ -236,7 +236,7 @@ to determine if the image is safe. If so, it passes a custom event onwards.
 ### Service
 
 The code of the service is in
-[filter](../processing-pipelines/image/filter)
+[filter](filter)
 folder.
 
 Inside the top level
@@ -246,7 +246,7 @@ image:
 
 ```sh
 SERVICE_NAME=filter
-docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 -f image/$SERVICE_NAME/csharp/Dockerfile .
+docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 -f image-v1/$SERVICE_NAME/csharp/Dockerfile .
 docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:v1
 ```
 

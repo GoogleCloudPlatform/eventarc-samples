@@ -1,5 +1,10 @@
 # Image processing pipeline v3 - Eventarc (Cloud Storage) + Workflows
 
+> **Note:** Eventarc Workflows destination is currently a feature in *private preview*.
+> Only allow-listed projects can currently take advantage of it. Please fill out
+> [this form](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform?resourcekey=0-1ftfaZAk_IS2J61P6r1mSw)
+> to get your project allow-listed before attempting this sample.
+
 In this sample, we'll build an image processing pipeline to read Google Cloud
 Storage events with **Eventarc** and pass to a set of **Cloud Functions** services orchestrated by **Workflows**.
 

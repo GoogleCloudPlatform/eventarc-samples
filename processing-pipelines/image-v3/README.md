@@ -47,22 +47,11 @@ Enable all necessary services:
 ```sh
 gcloud services enable \
   cloudbuild.googleapis.com \
+  cloudfunctions.googleapis.com \
   eventarc.googleapis.com \
   vision.googleapis.com \
   workflows.googleapis.com \
   workflowexecutions.googleapis.com
-```
-
-### Region, location, platform
-
-Set region, location and platform for Cloud Run and Eventarc:
-
-```sh
-REGION=us-central1
-
-gcloud config set run/region $REGION
-gcloud config set run/platform managed
-gcloud config set eventarc/location $REGION
 ```
 
 ### Configure service accounts
@@ -82,10 +71,10 @@ Grant the `pubsub.publisher` role to the Cloud Storage service account. This is
 needed for the Eventarc Cloud Storage trigger:
 
 ```sh
-SERVICE_ACCOUNT="$(gsutil kms serviceaccount -p ${PROJECT_NUMBER})"
+SERVICE_ACCOUNT="$(gsutil kms serviceaccount -p $PROJECT_NUMBER)"
 
-gcloud projects add-iam-policy-binding ${PROJECT_NUMBER} \
-    --member serviceAccount:${SERVICE_ACCOUNT} \
+gcloud projects add-iam-policy-binding $PROJECT_NUMBER \
+    --member serviceAccount:$SERVICE_ACCOUNT \
     --role roles/pubsub.publisher
 ```
 
@@ -103,8 +92,10 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
 Create 2 unique storage buckets to save pre and post processed images.
 
 ```sh
+REGION=us-central1
 BUCKET1=$PROJECT_ID-images-input
 BUCKET2=$PROJECT_ID-images-output
+
 gsutil mb -l $REGION gs://$BUCKET1
 gsutil mb -l $REGION gs://$BUCKET2
 ```
@@ -122,10 +113,12 @@ Inside the top level [processing-pipelines](..) folder, deploy the service:
 
 ```sh
 SERVICE_NAME=watermarker
+
 gcloud functions deploy $SERVICE_NAME \
   --allow-unauthenticated \
   --runtime dotnet3 \
   --trigger-http \
+  --region=$REGION \
   --set-env-vars BUCKET=$BUCKET2 \
   --entry-point Watermarker.Function \
   --set-build-env-vars GOOGLE_BUILDABLE=image-v2/watermarker/csharp
@@ -149,10 +142,12 @@ Inside the top level [processing-pipelines](..) folder, deploy the service:
 
 ```sh
 SERVICE_NAME=resizer
+
 gcloud functions deploy $SERVICE_NAME \
   --allow-unauthenticated \
   --runtime dotnet3 \
   --trigger-http \
+  --region=$REGION \
   --set-env-vars BUCKET=$BUCKET2 \
   --entry-point Resizer.Function \
   --set-build-env-vars GOOGLE_BUILDABLE=image-v2/resizer/csharp
@@ -175,10 +170,12 @@ Inside the top level [processing-pipelines](..) folder, deploy the service:
 
 ```sh
 SERVICE_NAME=labeler
+
 gcloud functions deploy $SERVICE_NAME \
   --allow-unauthenticated \
   --runtime dotnet3 \
   --trigger-http \
+  --region=$REGION \
   --set-env-vars BUCKET=$BUCKET2 \
   --entry-point Labeler.Function \
   --set-build-env-vars GOOGLE_BUILDABLE=image-v2/labeler/csharp
@@ -201,10 +198,12 @@ Inside the top level [processing-pipelines](..) folder, deploy the service:
 
 ```sh
 SERVICE_NAME=filter
+
 gcloud functions deploy $SERVICE_NAME \
   --allow-unauthenticated \
   --runtime dotnet3 \
   --trigger-http \
+  --region=$REGION \
   --entry-point Filter.Function \
   --set-build-env-vars GOOGLE_BUILDABLE=image-v3/filter/csharp
 ```
@@ -346,8 +345,10 @@ Deploy the workflow:
 
 ```sh
 WORKFLOW_NAME=image-processing
+
 gcloud workflows deploy $WORKFLOW_NAME \
-    --source=workflow.yaml
+    --source=workflow.yaml \
+    --location=$REGION
 ```
 
 ## Eventarc Trigger
@@ -359,8 +360,9 @@ Create the trigger:
 
 ```sh
 TRIGGER_NAME=trigger-$WORKFLOW_NAME
+
 gcloud eventarc triggers create $TRIGGER_NAME \
-  --location=us-central1 \
+  --location=$REGION \
   --destination-workflow=$WORKFLOW_NAME \
   --destination-workflow-location=$REGION \
   --event-filters="type=google.cloud.storage.object.v1.finalized" \

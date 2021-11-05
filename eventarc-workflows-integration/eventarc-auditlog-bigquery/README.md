@@ -30,7 +30,7 @@ main:
         assign:
         - user: ${event.data.protoPayload.authenticationInfo.principalEmail}
         - query: ${event.data.protoPayload.serviceData.jobCompletedEvent.job.jobConfiguration.query.query}
-    - return_bucket_object:
+    - return_data:
         return:
             user: ${user}
             query: ${query}

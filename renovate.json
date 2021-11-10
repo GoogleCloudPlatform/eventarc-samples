@@ -3,6 +3,10 @@
     "config:base"
   ],
   "ignorePaths": [
-    "**"
+    "bigquery-jobs-notifier/**",
+    "eventarc-workflows-integration/**",
+    "gce-vm-labeler/**",
+    "processing-pipelines/**",
+    "terraform/**"
   ]
 }

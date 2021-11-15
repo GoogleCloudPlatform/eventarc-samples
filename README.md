@@ -3,10 +3,9 @@
 ![Eventarc Logo](Eventarc-128-color.png)
 
 [Eventarc](https://cloud.google.com/eventarc/) lets you asynchronously deliver
-events from Google services, SaaS, and your own apps using loosely coupled
-services that react to state changes. Eventarc requires no infrastructure
-management — you can optimize productivity and costs while building a modern,
-event-driven solution.
+events from different event sources (Google Cloud sources with Audit Logs, Cloud
+Storage buckets and Pub/Sub topics) to different event consumers (Cloud Run
+services, Cloud Functions, Workflows and GKE services).
 
 This repository contains a collection of samples for Eventarc for various use
 cases.

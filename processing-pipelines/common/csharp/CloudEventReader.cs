@@ -27,13 +27,6 @@ namespace Common
 {
     public class CloudEventReader
     {
-        private const string EVENT_TYPE_AUDITLOG = "google.cloud.audit.log.v1.written";
-        private const string EVENT_TYPE_PUBSUB = "google.cloud.pubsub.topic.v1.messagePublished";
-
-        private const string EVENT_TYPE_SCHEDULER = "google.cloud.scheduler.job.v1.executed";
-
-        private const string EVENT_TYPE_STORAGE = "google.cloud.storage.object.v1.finalized";
-
         private readonly ILogger _logger;
 
         public CloudEventReader(ILogger logger)
@@ -52,7 +45,7 @@ namespace Common
 
             switch (ceType)
             {
-                case EVENT_TYPE_AUDITLOG:
+                case LogEntryData.WrittenCloudEventType:
                     //"protoPayload" : {"resourceName":"projects/_/buckets/events-atamel-images-input/objects/atamel.jpg}";
                     formatter = CloudEventFormatterAttribute.CreateFormatter(typeof(LogEntryData));
                     cloudEvent = await context.Request.ToCloudEventAsync(formatter);
@@ -63,7 +56,7 @@ namespace Common
                     bucket = tokens[3];
                     name = tokens[5];
                     break;
-                case EVENT_TYPE_STORAGE:
+                case StorageObjectData.FinalizedCloudEventType:
                     formatter = CloudEventFormatterAttribute.CreateFormatter(typeof(StorageObjectData));
                     cloudEvent = await context.Request.ToCloudEventAsync(formatter);
                     _logger.LogInformation($"Received CloudEvent\n{cloudEvent.GetLog()}");
@@ -72,7 +65,7 @@ namespace Common
                     bucket = storageObjectData.Bucket;
                     name = storageObjectData.Name;
                     break;
-                case EVENT_TYPE_PUBSUB:
+                case MessagePublishedData.MessagePublishedCloudEventType:
                     // {"message": {
                     //     "data": "eyJidWNrZXQiOiJldmVudHMtYXRhbWVsLWltYWdlcy1pbnB1dCIsIm5hbWUiOiJiZWFjaC5qcGcifQ==",
                     // },"subscription": "projects/events-atamel/subscriptions/cre-europe-west1-trigger-resizer-sub-000"}
@@ -82,7 +75,7 @@ namespace Common
 
                     var messagePublishedData = (MessagePublishedData)cloudEvent.Data;
                     var pubSubMessage = messagePublishedData.Message;
-                    _logger.LogInformation($"Type: {EVENT_TYPE_PUBSUB} data: {pubSubMessage.Data.ToBase64()}");
+                    _logger.LogInformation($"Type: {ceType} data: {pubSubMessage.Data.ToBase64()}");
 
                     var decoded = pubSubMessage.Data.ToStringUtf8();
                     _logger.LogInformation($"decoded: {decoded}");
@@ -118,25 +111,25 @@ namespace Common
 
             switch (ceType)
             {
-                case EVENT_TYPE_PUBSUB:
+                case MessagePublishedData.MessagePublishedCloudEventType:
                     formatter = CloudEventFormatterAttribute.CreateFormatter(typeof(MessagePublishedData));
                     cloudEvent = await context.Request.ToCloudEventAsync(formatter);
                     _logger.LogInformation($"Received CloudEvent\n{cloudEvent.GetLog()}");
 
                     var messagePublishedData = (MessagePublishedData)cloudEvent.Data;
                     var pubSubMessage = messagePublishedData.Message;
-                    _logger.LogInformation($"Type: {EVENT_TYPE_PUBSUB} data: {pubSubMessage.Data.ToBase64()}");
+                    _logger.LogInformation($"Type: {ceType} data: {pubSubMessage.Data.ToBase64()}");
 
                     country = pubSubMessage.Data.ToStringUtf8();
                     break;
-                case EVENT_TYPE_SCHEDULER:
+                case SchedulerJobData.ExecutedCloudEventType:
                     // Data: {"custom_data":"Q3lwcnVz"}
                     formatter = CloudEventFormatterAttribute.CreateFormatter(typeof(SchedulerJobData));
                     cloudEvent = await context.Request.ToCloudEventAsync(formatter);
                     _logger.LogInformation($"Received CloudEvent\n{cloudEvent.GetLog()}");
 
                     var schedulerJobData = (SchedulerJobData)cloudEvent.Data;
-                    _logger.LogInformation($"Type: {EVENT_TYPE_SCHEDULER} data: {schedulerJobData.CustomData.ToBase64()}");
+                    _logger.LogInformation($"Type: {ceType} data: {schedulerJobData.CustomData.ToBase64()}");
 
                     country = schedulerJobData.CustomData.ToStringUtf8();
                     break;

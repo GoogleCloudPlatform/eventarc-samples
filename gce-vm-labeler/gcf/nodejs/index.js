@@ -15,7 +15,7 @@ const { google } = require("googleapis");
 var compute = google.compute("v1");
 
 exports.labelVmCreation = async (cloudevent) => {
-  var data = cloudevent.data;
+  var data = cloudevent;
 
   // in case an event has >1 audit log
   // make sure we respond to the last event

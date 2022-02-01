@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build
 WORKDIR /app
 
 # Copy local code to the container image.
-COPY image-workflows/filter ./image/filter
+COPY image-v2/filter ./image-v2/filter
 
 # Copy common library
 COPY common ./common
@@ -12,10 +12,10 @@ COPY common ./common
 # Install production dependencies
 # Restore as distinct layers
 RUN dotnet restore common/csharp
-RUN dotnet restore image/filter/csharp
+RUN dotnet restore image-v2/filter/csharp
 
 # Build a release artifact.
-RUN dotnet publish image/filter/csharp -c Release -o out
+RUN dotnet publish image-v2/filter/csharp -c Release -o out
 
 # Use Microsoft's official runtime .NET image.
 # https://hub.docker.com/_/microsoft-dotnet-core-aspnet/

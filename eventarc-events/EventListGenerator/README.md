@@ -11,10 +11,10 @@ The list has 3 parts: Pub/Sub, AuditLog, Direct services.
 
 The list has 2 formats:
 
-* GitHub friendly format is generated to `../README.md`
-* DevSite friendly format that is generated to `../README_devsite.md`.
+* GitHub friendly format is generated to `output/README.md`
+* DevSite friendly format that is generated to `output/README_devsite.md`.
 
-Generate the GitHub friendly format:
+Generate the GitHub friendly format to output folder:
 
 ```sh
 dotnet run
@@ -26,7 +26,7 @@ Generate the DevSite friendly format:
 dotnet run --devsite true
 ```
 
-Generate in a different (current) folder:
+Generate in a different folder:
 
 ```sh
 dotnet run --folder .

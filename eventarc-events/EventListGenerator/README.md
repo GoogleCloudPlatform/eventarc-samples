@@ -31,3 +31,15 @@ Generate in a different folder:
 ```sh
 dotnet run --folder .
 ```
+
+Build the container:
+
+```sh
+docker build -t eventlistgenerator .
+```
+
+Run as a container:
+
+```sh
+docker run -v $PWD/output:/app/output eventlistgenerator
+```

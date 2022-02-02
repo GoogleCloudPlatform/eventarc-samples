@@ -32,14 +32,16 @@ namespace EventListGenerator
         private static HashSet<string> AUDITLOG_METHOD_NAMES_BLOCK_LIST = new HashSet<string> {
             "google.monitoring.v3.TimeSeriesFilterService.ParseTimeSeriesFilter"
         };
-        private const string OUTPUT_GITHUB = "../README.md";
-        private const string OUTPUT_DEVSITE = "../README_devsite.md";
+        private const string OUTPUT_GITHUB = "README.md";
+        private const string OUTPUT_DEVSITE = "README_devsite.md";
         private static readonly HttpClient client = new HttpClient();
 
-        static async Task Main(bool devsite = false)
+        static async Task Main(bool devsite = false, string folder = "..")
         {
             Console.WriteLine($"Devsite? {devsite}");
-            var output = devsite ? OUTPUT_DEVSITE : OUTPUT_GITHUB;
+            Console.WriteLine($"Output folder: {folder}");
+
+            var output = devsite ? folder + "/" + OUTPUT_DEVSITE : folder + "/" + OUTPUT_GITHUB;
 
             using StreamWriter file = new(output);
 

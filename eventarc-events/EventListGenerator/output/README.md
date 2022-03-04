@@ -6838,3 +6838,24 @@ Any custom application that can publish to a PubSub topic
 
 </p>
 </details>
+<details><summary>Firebase Remote Config</summary>
+<p>
+
+* `google.firebase.remoteconfig.remoteConfig.v1.updated`
+
+</p>
+</details>
+<details><summary>Firebase Test Lab</summary>
+<p>
+
+* `google.firebase.testlab.testMatrix.v1.completed`
+
+</p>
+</details>
+<details><summary>Firebase Alerts</summary>
+<p>
+
+* `google.firebase.firebasealerts.alerts.v1.published`
+
+</p>
+</details>

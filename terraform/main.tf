@@ -95,10 +95,6 @@ resource "google_eventarc_trigger" "trigger-pubsub-tf" {
 
 # [START eventarc_terraform_auditlog_storage]
 
-# Used to retrieve project_number below
-data "google_project" "project" {
-}
-
 # Give default Compute service account eventarc.eventReceiver role
 resource "google_project_iam_binding" "project" {
   project = var.project_id

@@ -8,6 +8,24 @@
         "google.cloud.storage.object.v1.finalized",
         "google.cloud.storage.object.v1.metadataUpdated"
       ]
+    },
+    {
+      "displayName": "Firebase Remote Config",
+      "events": [
+        "google.firebase.remoteconfig.remoteConfig.v1.updated"
+      ]
+    },
+    {
+      "displayName": "Firebase Test Lab",
+      "events": [
+        "google.firebase.testlab.testMatrix.v1.completed"
+      ]
+    },
+    {
+      "displayName": "Firebase Alerts",
+      "events": [
+        "google.firebase.firebasealerts.alerts.v1.published"
+      ]
     }
   ]
 }

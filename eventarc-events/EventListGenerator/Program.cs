@@ -71,7 +71,7 @@ namespace EventListGenerator
             {
                 file.WriteLine("\n## Using Pub/Sub\n");
                 file.WriteLine("Requests to your service are triggered by messages published to a Pub/Sub topic.");
-                file.WriteLine("For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.md).");
+                file.WriteLine("For more information, see [All trigger targets](/eventarc/docs/targets.md).");
             }
             else
             {
@@ -131,7 +131,7 @@ namespace EventListGenerator
             if (devsite)
             {
                 file.WriteLine("\n## Using Cloud Audit Logs\n");
-                file.WriteLine("These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.md).\n");
+                file.WriteLine("These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [All trigger targets](/eventarc/docs/targets.md).\n");
             }
             else
             {
@@ -174,7 +174,7 @@ namespace EventListGenerator
             if (devsite)
             {
                 file.WriteLine("## Directly from a Google Cloud source\n");
-                file.WriteLine("For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.md).");
+                file.WriteLine("For more information, see [All trigger targets](/eventarc/docs/targets.md).");
             }
             else
             {

@@ -6929,6 +6929,10 @@ For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.
 - `google.cloud.storage.object.v1.finalized`
 - `google.cloud.storage.object.v1.metadataUpdated`
 
+### Firebase Alerts
+
+- `google.firebase.firebasealerts.alerts.v1.published`
+
 ### Firebase Remote Config
 
 - `google.firebase.remoteconfig.remoteConfig.v1.updated`
@@ -6936,7 +6940,3 @@ For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.
 ### Firebase Test Lab
 
 - `google.firebase.testlab.testMatrix.v1.completed`
-
-### Firebase Alerts
-
-- `google.firebase.firebasealerts.alerts.v1.published`

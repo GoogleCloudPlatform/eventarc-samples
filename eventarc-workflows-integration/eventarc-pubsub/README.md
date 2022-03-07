@@ -1,6 +1,6 @@
 # Eventarc (Pub/Sub) and Workflows
 
-> **Note:** Eventarc Workflows destination is currently a feature in *private preview*.
+> **Note:** Eventarc Workflows destination is currently a feature in *preview*.
 > Only allow-listed projects can currently take advantage of it. Please fill out
 > [this form](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform?resourcekey=0-1ftfaZAk_IS2J61P6r1mSw)
 > to get your project allow-listed before attempting this sample.

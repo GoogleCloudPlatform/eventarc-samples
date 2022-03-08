@@ -9,7 +9,7 @@ The following is a list of the events supported by Eventarc.
 ## Using Pub/Sub
 
 Requests to your service are triggered by messages published to a Pub/Sub topic.
-For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.md).
+For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 ### Custom applications
 
@@ -61,7 +61,7 @@ For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.
 
 ## Using Cloud Audit Logs
 
-These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.md).
+These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 ### Access Approval
 
@@ -6920,7 +6920,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 ## Directly from a Google Cloud source
 
-For more information, see [Creating a trigger](/eventarc/docs/creating-triggers.md).
+For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 ### Cloud Storage
 

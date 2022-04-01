@@ -95,6 +95,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.identity.accesscontextmanager.v1.AccessContextManager.GetAccessLevel`
 - `google.identity.accesscontextmanager.v1.AccessContextManager.GetAccessPolicy`
 - `google.identity.accesscontextmanager.v1.AccessContextManager.GetGcpUserAccessBinding`
+- `google.identity.accesscontextmanager.v1.AccessContextManager.GetIamPolicy`
 - `google.identity.accesscontextmanager.v1.AccessContextManager.GetServicePerimeter`
 - `google.identity.accesscontextmanager.v1.AccessContextManager.ListAccessLevels`
 - `google.identity.accesscontextmanager.v1.AccessContextManager.ListAccessPolicies`
@@ -179,6 +180,10 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.aiplatform.ui.FeaturestoreService.UpdateEntityType`
 - `google.cloud.aiplatform.ui.FeaturestoreService.UpdateFeature`
 - `google.cloud.aiplatform.ui.FeaturestoreService.UpdateFeaturestore`
+- `google.cloud.aiplatform.ui.IndexEndpointService.GetIndexEndpoint`
+- `google.cloud.aiplatform.ui.IndexEndpointService.ListIndexEndpoints`
+- `google.cloud.aiplatform.ui.IndexService.ListIndexes`
+- `google.cloud.aiplatform.ui.JobService.CancelBatchPredictionJob`
 - `google.cloud.aiplatform.ui.JobService.CancelCustomJob`
 - `google.cloud.aiplatform.ui.JobService.CancelDataLabelingJob`
 - `google.cloud.aiplatform.ui.JobService.CancelHyperparameterTuningJob`
@@ -193,7 +198,10 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.aiplatform.ui.JobService.DeleteHyperparameterTuningJob`
 - `google.cloud.aiplatform.ui.JobService.DeleteModelDeploymentMonitoringJob`
 - `google.cloud.aiplatform.ui.JobService.GetBatchPredictionJob`
+- `google.cloud.aiplatform.ui.JobService.GetCustomJob`
 - `google.cloud.aiplatform.ui.JobService.GetDataLabelingJob`
+- `google.cloud.aiplatform.ui.JobService.GetModelDeploymentMonitoringJob`
+- `google.cloud.aiplatform.ui.JobService.GetNasJob`
 - `google.cloud.aiplatform.ui.JobService.GetUiJob`
 - `google.cloud.aiplatform.ui.JobService.ListBatchPredictionJobs`
 - `google.cloud.aiplatform.ui.JobService.ListCustomJobs`
@@ -206,6 +214,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.aiplatform.ui.JobService.ResumeModelDeploymentMonitoringJob`
 - `google.cloud.aiplatform.ui.JobService.SearchModelDeploymentMonitoringStatsAnomalies`
 - `google.cloud.aiplatform.ui.JobService.UpdateModelDeploymentMonitoringJob`
+- `google.cloud.aiplatform.ui.MetadataService.AddContextChildren`
 - `google.cloud.aiplatform.ui.MetadataService.DeleteArtifact`
 - `google.cloud.aiplatform.ui.MetadataService.DeleteContext`
 - `google.cloud.aiplatform.ui.MetadataService.DeleteExecution`
@@ -217,6 +226,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.aiplatform.ui.MetadataService.ListExecutions`
 - `google.cloud.aiplatform.ui.MetadataService.QueryArtifactLineageSubgraph`
 - `google.cloud.aiplatform.ui.MetadataService.QueryExecutionInputsAndOutputs`
+- `google.cloud.aiplatform.ui.MetadataService.UpdateContext`
 - `google.cloud.aiplatform.ui.MigrationService.BatchMigrateResources`
 - `google.cloud.aiplatform.ui.MigrationService.SearchMigratableResources`
 - `google.cloud.aiplatform.ui.ModelService.DeleteModel`
@@ -250,6 +260,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.aiplatform.ui.TensorboardService.CreateTensorboard`
 - `google.cloud.aiplatform.ui.TensorboardService.DeleteTensorboard`
 - `google.cloud.aiplatform.ui.TensorboardService.DeleteTensorboardExperiment`
+- `google.cloud.aiplatform.ui.TensorboardService.GetTensorboard`
 - `google.cloud.aiplatform.ui.TensorboardService.ListTensorboards`
 - `google.cloud.aiplatform.ui.TensorboardService.UpdateTensorboard`
 - `google.cloud.aiplatform.ui.VizierService.CompleteTrial`
@@ -288,17 +299,20 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.aiplatform.v1.FeaturestoreService.DeleteFeature`
 - `google.cloud.aiplatform.v1.FeaturestoreService.DeleteFeaturestore`
 - `google.cloud.aiplatform.v1.FeaturestoreService.ExportFeatureValues`
+- `google.cloud.aiplatform.v1.FeaturestoreService.GetFeature`
 - `google.cloud.aiplatform.v1.FeaturestoreService.GetFeaturestore`
 - `google.cloud.aiplatform.v1.FeaturestoreService.ImportFeatureValues`
 - `google.cloud.aiplatform.v1.FeaturestoreService.ListEntityTypes`
 - `google.cloud.aiplatform.v1.FeaturestoreService.ListFeatures`
 - `google.cloud.aiplatform.v1.FeaturestoreService.ListFeaturestores`
 - `google.cloud.aiplatform.v1.FeaturestoreService.SearchFeatures`
+- `google.cloud.aiplatform.v1.FeaturestoreService.UpdateFeature`
 - `google.cloud.aiplatform.v1.FeaturestoreService.UpdateFeaturestore`
 - `google.cloud.aiplatform.v1.IndexEndpointService.CreateIndexEndpoint`
 - `google.cloud.aiplatform.v1.IndexEndpointService.DeleteIndexEndpoint`
 - `google.cloud.aiplatform.v1.IndexEndpointService.GetIndexEndpoint`
 - `google.cloud.aiplatform.v1.IndexEndpointService.ListIndexEndpoints`
+- `google.cloud.aiplatform.v1.IndexEndpointService.MutateDeployedIndex`
 - `google.cloud.aiplatform.v1.IndexEndpointService.UndeployIndex`
 - `google.cloud.aiplatform.v1.IndexService.CreateIndex`
 - `google.cloud.aiplatform.v1.IndexService.GetIndex`
@@ -312,18 +326,22 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.aiplatform.v1.JobService.CreateDataLabelingJob`
 - `google.cloud.aiplatform.v1.JobService.CreateHyperparameterTuningJob`
 - `google.cloud.aiplatform.v1.JobService.CreateModelDeploymentMonitoringJob`
+- `google.cloud.aiplatform.v1.JobService.CreateNasJob`
 - `google.cloud.aiplatform.v1.JobService.DeleteBatchPredictionJob`
 - `google.cloud.aiplatform.v1.JobService.DeleteCustomJob`
 - `google.cloud.aiplatform.v1.JobService.DeleteHyperparameterTuningJob`
 - `google.cloud.aiplatform.v1.JobService.DeleteModelDeploymentMonitoringJob`
+- `google.cloud.aiplatform.v1.JobService.DeleteNasJob`
 - `google.cloud.aiplatform.v1.JobService.GetBatchPredictionJob`
 - `google.cloud.aiplatform.v1.JobService.GetCustomJob`
 - `google.cloud.aiplatform.v1.JobService.GetHyperparameterTuningJob`
+- `google.cloud.aiplatform.v1.JobService.GetModelDeploymentMonitoringJob`
+- `google.cloud.aiplatform.v1.JobService.GetNasJob`
 - `google.cloud.aiplatform.v1.JobService.ListBatchPredictionJobs`
 - `google.cloud.aiplatform.v1.JobService.ListCustomJobs`
-- `google.cloud.aiplatform.v1.JobService.ListDataLabelingJobs`
 - `google.cloud.aiplatform.v1.JobService.ListHyperparameterTuningJobs`
 - `google.cloud.aiplatform.v1.JobService.ListModelDeploymentMonitoringJobs`
+- `google.cloud.aiplatform.v1.JobService.ListNasJobs`
 - `google.cloud.aiplatform.v1.JobService.PauseModelDeploymentMonitoringJob`
 - `google.cloud.aiplatform.v1.JobService.ResumeModelDeploymentMonitoringJob`
 - `google.cloud.aiplatform.v1.JobService.UpdateModelDeploymentMonitoringJob`
@@ -383,15 +401,35 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.aiplatform.v1.PredictionService.Predict`
 - `google.cloud.aiplatform.v1.PredictionService.RawPredict`
 - `google.cloud.aiplatform.v1.SpecialistPoolService.CreateSpecialistPool`
+- `google.cloud.aiplatform.v1.TensorboardService.BatchCreateTensorboardRuns`
+- `google.cloud.aiplatform.v1.TensorboardService.BatchCreateTensorboardTimeSeries`
+- `google.cloud.aiplatform.v1.TensorboardService.CreateTensorboard`
+- `google.cloud.aiplatform.v1.TensorboardService.CreateTensorboardExperiment`
+- `google.cloud.aiplatform.v1.TensorboardService.CreateTensorboardRun`
+- `google.cloud.aiplatform.v1.TensorboardService.CreateTensorboardTimeSeries`
+- `google.cloud.aiplatform.v1.TensorboardService.DeleteTensorboard`
+- `google.cloud.aiplatform.v1.TensorboardService.DeleteTensorboardExperiment`
+- `google.cloud.aiplatform.v1.TensorboardService.DeleteTensorboardRun`
+- `google.cloud.aiplatform.v1.TensorboardService.GetTensorboard`
+- `google.cloud.aiplatform.v1.TensorboardService.GetTensorboardExperiment`
+- `google.cloud.aiplatform.v1.TensorboardService.ListTensorboardRuns`
+- `google.cloud.aiplatform.v1.TensorboardService.ListTensorboardTimeSeries`
+- `google.cloud.aiplatform.v1.TensorboardService.ListTensorboards`
+- `google.cloud.aiplatform.v1.TensorboardService.ReadTensorboardBlobData`
+- `google.cloud.aiplatform.v1.TensorboardService.ReadTensorboardTimeSeriesData`
+- `google.cloud.aiplatform.v1.TensorboardService.WriteTensorboardExperimentData`
+- `google.cloud.aiplatform.v1.TensorboardService.WriteTensorboardRunData`
 - `google.cloud.aiplatform.v1.VizierService.AddTrialMeasurement`
 - `google.cloud.aiplatform.v1.VizierService.CompleteTrial`
 - `google.cloud.aiplatform.v1.VizierService.CreateStudy`
 - `google.cloud.aiplatform.v1.VizierService.DeleteStudy`
+- `google.cloud.aiplatform.v1.VizierService.GetStudy`
 - `google.cloud.aiplatform.v1.VizierService.GetTrial`
 - `google.cloud.aiplatform.v1.VizierService.ListOptimalTrials`
 - `google.cloud.aiplatform.v1.VizierService.SuggestTrials`
 - `google.cloud.aiplatform.v1beta1.DatasetService.CreateDataset`
 - `google.cloud.aiplatform.v1beta1.DatasetService.DeleteDataset`
+- `google.cloud.aiplatform.v1beta1.DatasetService.ExportData`
 - `google.cloud.aiplatform.v1beta1.DatasetService.GetDataset`
 - `google.cloud.aiplatform.v1beta1.DatasetService.ImportData`
 - `google.cloud.aiplatform.v1beta1.DatasetService.ListDataItems`
@@ -434,6 +472,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.aiplatform.v1beta1.IndexEndpointService.DeployIndex`
 - `google.cloud.aiplatform.v1beta1.IndexEndpointService.GetIndexEndpoint`
 - `google.cloud.aiplatform.v1beta1.IndexEndpointService.ListIndexEndpoints`
+- `google.cloud.aiplatform.v1beta1.IndexEndpointService.MutateDeployedIndex`
 - `google.cloud.aiplatform.v1beta1.IndexEndpointService.UndeployIndex`
 - `google.cloud.aiplatform.v1beta1.IndexEndpointService.UpdateIndexEndpoint`
 - `google.cloud.aiplatform.v1beta1.IndexService.CreateIndex`
@@ -459,9 +498,11 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.aiplatform.v1beta1.JobService.GetModelDeploymentMonitoringJob`
 - `google.cloud.aiplatform.v1beta1.JobService.ListBatchPredictionJobs`
 - `google.cloud.aiplatform.v1beta1.JobService.ListCustomJobs`
+- `google.cloud.aiplatform.v1beta1.JobService.ListHyperparameterTuningJobs`
 - `google.cloud.aiplatform.v1beta1.JobService.ListModelDeploymentMonitoringJobs`
 - `google.cloud.aiplatform.v1beta1.JobService.PauseModelDeploymentMonitoringJob`
 - `google.cloud.aiplatform.v1beta1.JobService.ResumeModelDeploymentMonitoringJob`
+- `google.cloud.aiplatform.v1beta1.JobService.SearchModelDeploymentMonitoringStatsAnomalies`
 - `google.cloud.aiplatform.v1beta1.JobService.UpdateModelDeploymentMonitoringJob`
 - `google.cloud.aiplatform.v1beta1.MetadataService.AddContextArtifactsAndExecutions`
 - `google.cloud.aiplatform.v1beta1.MetadataService.AddContextChildren`
@@ -520,7 +561,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.aiplatform.v1beta1.TensorboardService.CreateTensorboardRun`
 - `google.cloud.aiplatform.v1beta1.TensorboardService.CreateTensorboardTimeSeries`
 - `google.cloud.aiplatform.v1beta1.TensorboardService.DeleteTensorboard`
-- `google.cloud.aiplatform.v1beta1.TensorboardService.DeleteTensorboardExperiment`
 - `google.cloud.aiplatform.v1beta1.TensorboardService.DeleteTensorboardRun`
 - `google.cloud.aiplatform.v1beta1.TensorboardService.GetTensorboard`
 - `google.cloud.aiplatform.v1beta1.TensorboardService.GetTensorboardExperiment`
@@ -586,6 +626,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.notebooks.v1.NotebookService.StartInstance`
 - `google.cloud.notebooks.v1.NotebookService.StopInstance`
 - `google.cloud.notebooks.v1.NotebookService.UpdateInstanceConfig`
+- `google.cloud.notebooks.v1.NotebookService.UpdateInstanceMetadataItems`
 - `google.cloud.notebooks.v1.NotebookService.UpdateShieldedInstanceConfig`
 - `google.cloud.notebooks.v1.NotebookService.UpgradeInstance`
 - `google.cloud.notebooks.v1beta1.NotebookService.CreateEnvironment`
@@ -646,7 +687,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.apigee.v1.AnalyticsCustomReport.UpdateCustomReport`
 - `google.cloud.apigee.v1.AnalyticsDatastore.CreateDatastore`
 - `google.cloud.apigee.v1.AnalyticsDatastore.DeleteDatastore`
-- `google.cloud.apigee.v1.AnalyticsDatastore.GetDatastore`
 - `google.cloud.apigee.v1.AnalyticsDatastore.ListDatastores`
 - `google.cloud.apigee.v1.AnalyticsDatastore.TestDatastore`
 - `google.cloud.apigee.v1.AnalyticsDatastore.UpdateDatastore`
@@ -657,7 +697,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.apigee.v1.AnalyticsSchema.GetSchema`
 - `google.cloud.apigee.v1.ApiCategories.CreateApiCategory`
 - `google.cloud.apigee.v1.ApiCategories.DeleteApiCategory`
-- `google.cloud.apigee.v1.ApiCategories.GetApiCategory`
 - `google.cloud.apigee.v1.ApiCategories.ListApiCategories`
 - `google.cloud.apigee.v1.ApiCategories.UpdateApiCategory`
 - `google.cloud.apigee.v1.ApiDocs.CreateApiDoc`
@@ -701,11 +740,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.apigee.v1.AsyncQueryService.GetAsyncQuery`
 - `google.cloud.apigee.v1.AsyncQueryService.GetAsyncQueryResult`
 - `google.cloud.apigee.v1.AsyncQueryService.GetAsyncQueryResultView`
-- `google.cloud.apigee.v1.AsyncQueryService.GetHostAsyncQuery`
-- `google.cloud.apigee.v1.AsyncQueryService.GetHostAsyncQueryResult`
-- `google.cloud.apigee.v1.AsyncQueryService.GetHostAsyncQueryResultView`
 - `google.cloud.apigee.v1.AsyncQueryService.ListAsyncQueries`
-- `google.cloud.apigee.v1.AsyncQueryService.ListHostAsyncQueries`
 - `google.cloud.apigee.v1.CacheService.DeleteCache`
 - `google.cloud.apigee.v1.CacheService.ListCaches`
 - `google.cloud.apigee.v1.CollectionService.GetDataLocation`
@@ -734,7 +769,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.apigee.v1.DataCollectorService.UpdateDataCollector`
 - `google.cloud.apigee.v1.DataExport.CreateExport`
 - `google.cloud.apigee.v1.DataExport.GetExport`
-- `google.cloud.apigee.v1.DataExport.ListExports`
 - `google.cloud.apigee.v1.DataMaskService.GetEnvironmentDebugMask`
 - `google.cloud.apigee.v1.DataMaskService.UpdateEnvironmentDebugMask`
 - `google.cloud.apigee.v1.DebugSessionService.CreateDebugSession`
@@ -811,6 +845,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.apigee.v1.EnvironmentService.GetEnvironment`
 - `google.cloud.apigee.v1.EnvironmentService.GetIamPolicy`
 - `google.cloud.apigee.v1.EnvironmentService.ListEnvironments`
+- `google.cloud.apigee.v1.EnvironmentService.ModifyEnvironment`
 - `google.cloud.apigee.v1.EnvironmentService.SetIamPolicy`
 - `google.cloud.apigee.v1.EnvironmentService.Subscribe`
 - `google.cloud.apigee.v1.EnvironmentService.Unsubscribe`
@@ -848,7 +883,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.apigee.v1.KeystoreService.UpdateAlias`
 - `google.cloud.apigee.v1.MenuItems.CreateMenuItem`
 - `google.cloud.apigee.v1.MenuItems.DeleteMenuItem`
-- `google.cloud.apigee.v1.MenuItems.ListItemsByType`
 - `google.cloud.apigee.v1.MenuItems.ListMenuItems`
 - `google.cloud.apigee.v1.MenuItems.PublishMenuItem`
 - `google.cloud.apigee.v1.MenuItems.ToggleNested`
@@ -858,10 +892,8 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.apigee.v1.MenuTypes.DeleteMenuType`
 - `google.cloud.apigee.v1.MenuTypes.ListMenuTypes`
 - `google.cloud.apigee.v1.MenuTypes.ListMenuTypesByPage`
-- `google.cloud.apigee.v1.MigrationService.GenerateInfraMigrationPlan`
 - `google.cloud.apigee.v1.MigrationService.MigrateConfigData`
 - `google.cloud.apigee.v1.MigrationService.MigrateInfrastructure`
-- `google.cloud.apigee.v1.MigrationService.SwitchTraffic`
 - `google.cloud.apigee.v1.NatAddressService.ActivateNatAddress`
 - `google.cloud.apigee.v1.NatAddressService.CreateNatAddress`
 - `google.cloud.apigee.v1.NatAddressService.DeleteNatAddress`
@@ -907,22 +939,13 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.apigee.v1.ResourceFileService.GetEnvironmentResource`
 - `google.cloud.apigee.v1.ResourceFileService.ListEnvironmentResources`
 - `google.cloud.apigee.v1.ResourceFileService.UpdateEnvironmentResource`
-- `google.cloud.apigee.v1.Resources.GetConsumerResourceTypes`
 - `google.cloud.apigee.v1.Resources.QueryApiDocs`
 - `google.cloud.apigee.v1.Resources.QueryPages`
 - `google.cloud.apigee.v1.RuntimeService.CreateCanaryEvaluation`
-- `google.cloud.apigee.v1.RuntimeService.GetCanaryEvaluation`
 - `google.cloud.apigee.v1.RuntimeService.GetDeployedIngressConfig`
 - `google.cloud.apigee.v1.RuntimeService.GetRuntimeConfig`
 - `google.cloud.apigee.v1.RuntimeService.ReportInstanceStatus`
-- `google.cloud.apigee.v1.SecurityReportService.CreateHostSecurityReport`
 - `google.cloud.apigee.v1.SecurityReportService.CreateSecurityReport`
-- `google.cloud.apigee.v1.SecurityReportService.GetHostSecurityReport`
-- `google.cloud.apigee.v1.SecurityReportService.GetHostSecurityReportResult`
-- `google.cloud.apigee.v1.SecurityReportService.GetSecurityReport`
-- `google.cloud.apigee.v1.SecurityReportService.GetSecurityReportResult`
-- `google.cloud.apigee.v1.SecurityReportService.ListHostSecurityReports`
-- `google.cloud.apigee.v1.SecurityReportService.ListSecurityReports`
 - `google.cloud.apigee.v1.SharedFlowService.CreateSharedFlowRevision`
 - `google.cloud.apigee.v1.SharedFlowService.DeleteSharedFlow`
 - `google.cloud.apigee.v1.SharedFlowService.DeleteSharedFlowRevision`
@@ -953,14 +976,12 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.apigee.v1.Sites.CheckDnsCname`
 - `google.cloud.apigee.v1.Sites.CreateSite`
 - `google.cloud.apigee.v1.Sites.GetAllInOrgOrSingleWithDomain`
-- `google.cloud.apigee.v1.Sites.GetPublishedApis`
 - `google.cloud.apigee.v1.Sites.GetSite`
 - `google.cloud.apigee.v1.Sites.GetSmtp`
 - `google.cloud.apigee.v1.Sites.UpdateSite`
 - `google.cloud.apigee.v1.Sites.UpdateSmtp`
 - `google.cloud.apigee.v1.System.GetAnnouncement`
 - `google.cloud.apigee.v1.System.GetConfig`
-- `google.cloud.apigee.v1.System.GetMetrics`
 - `google.cloud.apigee.v1.System.GetSystemState`
 - `google.cloud.apigee.v1.TargetServerService.CreateTargetServer`
 - `google.cloud.apigee.v1.TargetServerService.DeleteTargetServer`
@@ -977,12 +998,8 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.apigee.v1.Zones.CreateIdentityProvider`
 - `google.cloud.apigee.v1.Zones.EnableZoneAudience`
 - `google.cloud.apigee.v1.Zones.GetAudiencesEnabled`
-- `google.cloud.apigee.v1.Zones.GetIdentityProvider`
 - `google.cloud.apigee.v1.Zones.GetZone`
-- `google.cloud.apigee.v1.Zones.GetZoneAudiencesEnabledForZone`
-- `google.cloud.apigee.v1.Zones.ListAudiencesEnabledForZonesInOrg`
 - `google.cloud.apigee.v1.Zones.ListIdentityProviders`
-- `google.cloud.apigee.v1.Zones.ListZones`
 - `google.cloud.apigee.v1.Zones.SendTestEmail`
 - `google.cloud.apigee.v1.Zones.UpdateIdentityProvider`
 - `google.cloud.apigee.v1.Zones.UpdateIdentityProviderCertificate`
@@ -1023,7 +1040,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `com.google.appengine.legacy.dos_configuration_changed`
 - `com.google.appengine.legacy.dos_enforcement_enabled`
 - `com.google.appengine.legacy.index_created`
-- `com.google.appengine.legacy.index_deleted`
 - `com.google.appengine.legacy.queue_created`
 - `com.google.appengine.legacy.queue_updated`
 - `com.google.appengine.legacy.version_deleted`
@@ -1084,13 +1100,35 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `Docker-DeleteManifest`
 - `Docker-DeleteTag`
 - `Docker-FinishUpload`
+- `Docker-GetEmptyTags`
 - `Docker-GetManifest`
 - `Docker-GetTags`
 - `Docker-PutManifest`
 - `Docker-ServeBlob`
 - `Docker-StartUpload`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.CreateRepository`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.CreateTag`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.DeletePackage`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.DeleteRepository`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.DeleteTag`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.DeleteVersion`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.GetDockerImage`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.GetFile`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.GetIamPolicy`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.GetPackage`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.GetProjectSettings`
 - `google.devtools.artifactregistry.v1.ArtifactRegistry.GetRepository`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.GetTag`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.GetVersion`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.ListFiles`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.ListPackages`
 - `google.devtools.artifactregistry.v1.ArtifactRegistry.ListRepositories`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.ListTags`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.ListVersions`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.SetIamPolicy`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.UpdateProjectSettings`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.UpdateRepository`
+- `google.devtools.artifactregistry.v1.ArtifactRegistry.UpdateTag`
 - `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.CreateRepository`
 - `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.CreateTag`
 - `google.devtools.artifactregistry.v1beta1.ArtifactRegistry.DeletePackage`
@@ -1148,12 +1186,17 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.assuredworkloads.v1.AssuredWorkloadsService.GetWorkload`
 - `google.cloud.assuredworkloads.v1.AssuredWorkloadsService.ListWorkloads`
 - `google.cloud.assuredworkloads.v1.AssuredWorkloadsService.UpdateWorkload`
+- `google.cloud.assuredworkloads.v1beta1.AssuredWorkloadsService.AnalyzeWorkloadMove`
 - `google.cloud.assuredworkloads.v1beta1.AssuredWorkloadsService.CheckOnboardingState`
 - `google.cloud.assuredworkloads.v1beta1.AssuredWorkloadsService.CreateWorkload`
 - `google.cloud.assuredworkloads.v1beta1.AssuredWorkloadsService.DeleteWorkload`
 - `google.cloud.assuredworkloads.v1beta1.AssuredWorkloadsService.GetWorkload`
 - `google.cloud.assuredworkloads.v1beta1.AssuredWorkloadsService.ListWorkloads`
 - `google.cloud.assuredworkloads.v1beta1.AssuredWorkloadsService.UpdateWorkload`
+- `google.cloud.assuredworkloads.versioning.v1beta1.AssuredWorkloadsV1MainService.AnalyzeWorkloadMove`
+- `google.cloud.assuredworkloads.versioning.v1beta1.AssuredWorkloadsV1MainService.CheckAllowedOnboardingFolder`
+- `google.cloud.assuredworkloads.versioning.v1beta1.AssuredWorkloadsV1MainService.CheckOnboardingState`
+- `google.cloud.assuredworkloads.versioning.v1main.AssuredWorkloadsV1MainService.GetWorkload`
 
 ### Bare Metal Solution
 
@@ -1164,7 +1207,18 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 #### `methodName`
 
 - `google.cloud.baremetalsolution.v2.BareMetalSolution.GetInstance`
+- `google.cloud.baremetalsolution.v2.BareMetalSolution.GetLun`
+- `google.cloud.baremetalsolution.v2.BareMetalSolution.GetProvisioningConfig`
+- `google.cloud.baremetalsolution.v2.BareMetalSolution.GetSnapshotSchedulePolicy`
+- `google.cloud.baremetalsolution.v2.BareMetalSolution.GetVolume`
 - `google.cloud.baremetalsolution.v2.BareMetalSolution.ListInstances`
+- `google.cloud.baremetalsolution.v2.BareMetalSolution.ListLuns`
+- `google.cloud.baremetalsolution.v2.BareMetalSolution.ListNetworks`
+- `google.cloud.baremetalsolution.v2.BareMetalSolution.ListNfsShares`
+- `google.cloud.baremetalsolution.v2.BareMetalSolution.ListSnapshotSchedulePolicies`
+- `google.cloud.baremetalsolution.v2.BareMetalSolution.ListVolumes`
+- `google.cloud.baremetalsolution.v2.BareMetalSolution.UpdateNetwork`
+- `google.cloud.baremetalsolution.v2.BareMetalSolution.UpdateProvisioningConfig`
 
 ### BigQuery
 
@@ -1209,7 +1263,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `ExecutionService.Query`
 - `MetadataService.BatchCreateModel`
 - `MetadataService.DeleteModel`
-- `ReservationService.GetReservation`
 
 ### BigQuery Connection
 
@@ -1307,6 +1360,10 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.binaryauthorization.v1.BinauthzManagementServiceV1.ListAttestors`
 - `google.cloud.binaryauthorization.v1.BinauthzManagementServiceV1.UpdateAttestor`
 - `google.cloud.binaryauthorization.v1.BinauthzManagementServiceV1.UpdatePolicy`
+- `google.cloud.binaryauthorization.v1.PlatformPolicyManagementService.CreatePlatformPolicy`
+- `google.cloud.binaryauthorization.v1.PlatformPolicyManagementService.DeletePlatformPolicy`
+- `google.cloud.binaryauthorization.v1.PlatformPolicyManagementService.ListPlatformPolicies`
+- `google.cloud.binaryauthorization.v1.PlatformPolicyManagementService.ReplacePlatformPolicy`
 - `google.cloud.binaryauthorization.v1.ValidationHelperV1.ValidateAttestationOccurrence`
 - `google.cloud.binaryauthorization.v1beta1.BinauthzManagementServiceV1Beta1.CreateAttestor`
 - `google.cloud.binaryauthorization.v1beta1.BinauthzManagementServiceV1Beta1.DeleteAttestor`
@@ -1390,7 +1447,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.datalabeling.v1beta1.DataLabelingService.DeleteAnnotatedDataset`
 - `google.cloud.datalabeling.v1beta1.DataLabelingService.DeleteAnnotationSpecSet`
 - `google.cloud.datalabeling.v1beta1.DataLabelingService.DeleteDataset`
-- `google.cloud.datalabeling.v1beta1.DataLabelingService.ImportData`
 - `google.longrunning.Operations.CancelOperation`
 - `google.longrunning.Operations.GetOperation`
 
@@ -1428,16 +1484,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.asset.v1p7beta1.AssetService.ExportAssets`
 - `google.longrunning.Operations.ListOperations`
 
-### Cloud Asset
-
-#### `serviceName`
-
-- `mediaasset.googleapis.com`
-
-#### `methodName`
-
-- `google.longrunning.Operations.GetOperation`
-
 ### Cloud AutoML (under Vertex AI)
 
 #### `serviceName`
@@ -1451,6 +1497,8 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.automl.v1.AutoMl.DeleteDataset`
 - `google.cloud.automl.v1.AutoMl.DeleteModel`
 - `google.cloud.automl.v1.AutoMl.DeployModel`
+- `google.cloud.automl.v1.AutoMl.ExportData`
+- `google.cloud.automl.v1.AutoMl.ExportModel`
 - `google.cloud.automl.v1.AutoMl.GetDataset`
 - `google.cloud.automl.v1.AutoMl.GetModel`
 - `google.cloud.automl.v1.AutoMl.ImportData`
@@ -1458,7 +1506,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.automl.v1.AutoMl.ListModelEvaluations`
 - `google.cloud.automl.v1.AutoMl.ListModels`
 - `google.cloud.automl.v1.AutoMl.UndeployModel`
-- `google.cloud.automl.v1.AutoMl.UpdateModel`
 - `google.cloud.automl.v1.PredictionService.BatchPredict`
 - `google.cloud.automl.v1.PredictionService.Predict`
 - `google.cloud.automl.v1beta1.AutoMl.BatchDeleteExamples`
@@ -1473,6 +1520,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.automl.v1beta1.AutoMl.DeleteModel`
 - `google.cloud.automl.v1beta1.AutoMl.DeployModel`
 - `google.cloud.automl.v1beta1.AutoMl.EstimateDatasetTrainCost`
+- `google.cloud.automl.v1beta1.AutoMl.EvaluateTranslationModels`
 - `google.cloud.automl.v1beta1.AutoMl.ExportData`
 - `google.cloud.automl.v1beta1.AutoMl.ExportEvaluatedExamples`
 - `google.cloud.automl.v1beta1.AutoMl.ExportModel`
@@ -1498,6 +1546,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.automl.v1beta1.AutoMl.UndeployModel`
 - `google.cloud.automl.v1beta1.AutoMl.UpdateColumnSpec`
 - `google.cloud.automl.v1beta1.AutoMl.UpdateDataset`
+- `google.cloud.automl.v1beta1.AutoMl.UpdateModel`
 - `google.cloud.automl.v1beta1.AutoMl.UpdateTableSpec`
 - `google.cloud.automl.v1beta1.PredictionService.BatchPredict`
 - `google.cloud.automl.v1beta1.PredictionService.Predict`
@@ -1508,18 +1557,18 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.automl.v1p1beta.AutoMl.DeployModel`
 - `google.cloud.automl.v1p1beta.AutoMl.ExportData`
 - `google.cloud.automl.v1p1beta.AutoMl.GetDataset`
-- `google.cloud.automl.v1p1beta.AutoMl.GetModel`
-- `google.cloud.automl.v1p1beta.AutoMl.GetTableSpec`
 - `google.cloud.automl.v1p1beta.AutoMl.ImportData`
 - `google.cloud.automl.v1p1beta.AutoMl.ListDatasets`
-- `google.cloud.automl.v1p1beta.AutoMl.ListModelEvaluations`
 - `google.cloud.automl.v1p1beta.AutoMl.ListModels`
 - `google.cloud.automl.v1p1beta.AutoMl.UndeployModel`
 - `google.cloud.automl.v1p1beta.PredictionService.Predict`
+- `google.iam.v1.IAMPolicy.GetIamPolicy`
 - `google.iam.v1.IAMPolicy.SetIamPolicy`
 - `google.longrunning.Operations.CancelOperation`
+- `google.longrunning.Operations.DeleteOperation`
 - `google.longrunning.Operations.GetOperation`
 - `google.longrunning.Operations.ListOperations`
+- `google.longrunning.Operations.WaitOperation`
 
 ### Cloud Bigtable Admin
 
@@ -1589,6 +1638,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `ListBillingAccountResources`
 - `ListBillingAccounts`
 - `ListProjectIdentifiers`
+- `MigrateAccountSettings`
 - `MigrateBillableServices`
 - `ReopenBillingAccount`
 - `SetIamPolicy`
@@ -1610,58 +1660,63 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `CloudBuildClusterProxy.CancelBuild`
 - `CloudBuildClusterProxy.CreateBuild`
 - `google.devtools.cloudbuild.v1.CloudBuild.AddBitbucketServerConnectedRepository`
+- `google.devtools.cloudbuild.v1.CloudBuild.ApproveBuild`
+- `google.devtools.cloudbuild.v1.CloudBuild.BatchCreateGitLabConnectedRepositories`
 - `google.devtools.cloudbuild.v1.CloudBuild.CancelBuild`
 - `google.devtools.cloudbuild.v1.CloudBuild.CreateBitbucketServerConfig`
 - `google.devtools.cloudbuild.v1.CloudBuild.CreateBuild`
+- `google.devtools.cloudbuild.v1.CloudBuild.CreateBuildTrigger`
 - `google.devtools.cloudbuild.v1.CloudBuild.CreateGitHubEnterpriseConfig`
 - `google.devtools.cloudbuild.v1.CloudBuild.CreateWorkerPool`
 - `google.devtools.cloudbuild.v1.CloudBuild.DeleteBitbucketServerConfig`
+- `google.devtools.cloudbuild.v1.CloudBuild.DeleteBuildTrigger`
 - `google.devtools.cloudbuild.v1.CloudBuild.DeleteGitHubEnterpriseConfig`
+- `google.devtools.cloudbuild.v1.CloudBuild.DeleteGitHubInstallation`
+- `google.devtools.cloudbuild.v1.CloudBuild.DeleteGitLabConfig`
 - `google.devtools.cloudbuild.v1.CloudBuild.DeleteWorkerPool`
 - `google.devtools.cloudbuild.v1.CloudBuild.GetBitbucketServerConfig`
 - `google.devtools.cloudbuild.v1.CloudBuild.GetBuild`
+- `google.devtools.cloudbuild.v1.CloudBuild.GetBuildTrigger`
+- `google.devtools.cloudbuild.v1.CloudBuild.GetGitHubEnterpriseApp`
+- `google.devtools.cloudbuild.v1.CloudBuild.GetGitHubEnterpriseConfig`
+- `google.devtools.cloudbuild.v1.CloudBuild.GetGlobalTriggerSettings`
 - `google.devtools.cloudbuild.v1.CloudBuild.GetWorkerPool`
 - `google.devtools.cloudbuild.v1.CloudBuild.ListBitbucketServerConfigs`
 - `google.devtools.cloudbuild.v1.CloudBuild.ListBitbucketServerRepositories`
+- `google.devtools.cloudbuild.v1.CloudBuild.ListBuildTriggers`
 - `google.devtools.cloudbuild.v1.CloudBuild.ListBuilds`
+- `google.devtools.cloudbuild.v1.CloudBuild.ListGitHubEnterpriseConfigs`
+- `google.devtools.cloudbuild.v1.CloudBuild.ListGitHubInstallationsForProject`
+- `google.devtools.cloudbuild.v1.CloudBuild.ListGitHubRefs`
 - `google.devtools.cloudbuild.v1.CloudBuild.ListTags`
 - `google.devtools.cloudbuild.v1.CloudBuild.ListWorkerPools`
 - `google.devtools.cloudbuild.v1.CloudBuild.ProcessAppManifestCallback`
 - `google.devtools.cloudbuild.v1.CloudBuild.RemoveBitbucketServerConnectedRepository`
 - `google.devtools.cloudbuild.v1.CloudBuild.RetryBuild`
+- `google.devtools.cloudbuild.v1.CloudBuild.RunBuildTrigger`
 - `google.devtools.cloudbuild.v1.CloudBuild.UpdateBitbucketServerConfig`
+- `google.devtools.cloudbuild.v1.CloudBuild.UpdateBuildTrigger`
 - `google.devtools.cloudbuild.v1.CloudBuild.UpdateGitHubEnterpriseConfig`
+- `google.devtools.cloudbuild.v1.CloudBuild.UpdateGitHubInstallation`
+- `google.devtools.cloudbuild.v1.CloudBuild.UpdateGlobalTriggerSettings`
 - `google.devtools.cloudbuild.v1.CloudBuild.UpdateWorkerPool`
-- `google.devtools.cloudbuild.v1.ConstructAppManifest`
-- `google.devtools.cloudbuild.v1.CreateBitbucketServerConfig`
-- `google.devtools.cloudbuild.v1.CreateBuildTrigger`
-- `google.devtools.cloudbuild.v1.CreateGitHubInstallation`
-- `google.devtools.cloudbuild.v1.DeleteBuildTrigger`
-- `google.devtools.cloudbuild.v1.DeleteGitHubInstallation`
-- `google.devtools.cloudbuild.v1.GetBitbucketServerConfig`
-- `google.devtools.cloudbuild.v1.GetBuildTrigger`
-- `google.devtools.cloudbuild.v1.GetGitHubEnterpriseApp`
-- `google.devtools.cloudbuild.v1.GetGitHubEnterpriseConfig`
-- `google.devtools.cloudbuild.v1.GetGlobalTriggerSettings`
-- `google.devtools.cloudbuild.v1.ListBitbucketServerConfigs`
-- `google.devtools.cloudbuild.v1.ListBitbucketServerRepositories`
-- `google.devtools.cloudbuild.v1.ListBuildTriggers`
-- `google.devtools.cloudbuild.v1.ListGitHubEnterpriseConfigs`
-- `google.devtools.cloudbuild.v1.ListGitHubInstallationsForProject`
-- `google.devtools.cloudbuild.v1.ListGitHubRefs`
-- `google.devtools.cloudbuild.v1.ListTags`
-- `google.devtools.cloudbuild.v1.ReceiveProjectEventQueue`
 - `google.devtools.cloudbuild.v1.ReceiveWebhook`
-- `google.devtools.cloudbuild.v1.RunBuildTrigger`
-- `google.devtools.cloudbuild.v1.UpdateBitbucketServerConfig`
-- `google.devtools.cloudbuild.v1.UpdateBuildTrigger`
-- `google.devtools.cloudbuild.v1.UpdateGitHubInstallation`
-- `google.devtools.cloudbuild.v1.UpdateGlobalTriggerSettings`
 - `google.devtools.cloudbuild.v1beta1.CloudBuild.CreateWorkerPool`
 - `google.devtools.cloudbuild.v1beta1.CloudBuild.DeleteWorkerPool`
 - `google.devtools.cloudbuild.v1beta1.CloudBuild.GetWorkerPool`
 - `google.devtools.cloudbuild.v1beta1.CloudBuild.ListWorkerPools`
 - `google.devtools.cloudbuild.v1beta1.CloudBuild.UpdateWorkerPool`
+- `google.devtools.cloudbuild.v2.CloudBuild.CreateTaskRun`
+- `google.devtools.cloudbuild.v2.CloudBuild.CreateWorkflow`
+- `google.devtools.cloudbuild.v2.CloudBuild.DeleteWorkflow`
+- `google.devtools.cloudbuild.v2.CloudBuild.GetTaskRun`
+- `google.devtools.cloudbuild.v2.CloudBuild.GetWorkflow`
+- `google.devtools.cloudbuild.v2.CloudBuild.ListResults`
+- `google.devtools.cloudbuild.v2.CloudBuild.ListTaskRuns`
+- `google.devtools.cloudbuild.v2.CloudBuild.RunWorkflow`
+- `google.devtools.cloudbuild.v2.CloudBuild.UpdateTaskRun`
+- `google.devtools.cloudbuild.v2.CloudBuild.UpdateWorkflow`
+- `google.longrunning.Operations.CancelOperation`
 
 ### Cloud Composer
 
@@ -1683,6 +1738,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.orchestration.airflow.service.v1beta1.Environments.GetEnvironment`
 - `google.cloud.orchestration.airflow.service.v1beta1.Environments.ListEnvironments`
 - `google.cloud.orchestration.airflow.service.v1beta1.Environments.RestartWebServer`
+- `google.cloud.orchestration.airflow.service.v1beta1.Environments.SaveSnapshot`
 - `google.cloud.orchestration.airflow.service.v1beta1.Environments.UpdateEnvironment`
 - `google.cloud.orchestration.airflow.service.v1beta1.ImageVersions.ListImageVersions`
 - `google.longrunning.Operations.DeleteOperation`
@@ -1770,6 +1826,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.datafusion.v1beta1.DataFusion.ListDnsPeerings`
 - `google.cloud.datafusion.v1beta1.DataFusion.ListInstances`
 - `google.cloud.datafusion.v1beta1.DataFusion.RemoveDnsPeering`
+- `google.cloud.datafusion.v1beta1.DataFusion.RemoveIamPolicy`
 - `google.cloud.datafusion.v1beta1.DataFusion.RestartInstance`
 - `google.cloud.datafusion.v1beta1.DataFusion.UpdateInstance`
 - `google.cloud.datafusion.v1beta1.DataFusion.UpgradeInstance`
@@ -1858,6 +1915,11 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.dataproc.v1.JobController.SubmitJob`
 - `google.cloud.dataproc.v1.JobController.SubmitJobAsOperation`
 - `google.cloud.dataproc.v1.JobController.UpdateJob`
+- `google.cloud.dataproc.v1.SessionController.CreateSession`
+- `google.cloud.dataproc.v1.SessionController.DeleteSession`
+- `google.cloud.dataproc.v1.SessionController.GetSession`
+- `google.cloud.dataproc.v1.SessionController.ListSessions`
+- `google.cloud.dataproc.v1.SessionController.TerminateSession`
 - `google.cloud.dataproc.v1.WorkflowTemplateService.CreateWorkflowTemplate`
 - `google.cloud.dataproc.v1.WorkflowTemplateService.DeleteWorkflowTemplate`
 - `google.cloud.dataproc.v1.WorkflowTemplateService.GetWorkflowTemplate`
@@ -1955,6 +2017,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 #### `methodName`
 
+- `GetIamPolicy`
 - `SetIamPolicy`
 - `google.cloud.deploy.v1.CloudDeploy.ApproveRollout`
 - `google.cloud.deploy.v1.CloudDeploy.CreateDeliveryPipeline`
@@ -1963,6 +2026,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.deploy.v1.CloudDeploy.CreateTarget`
 - `google.cloud.deploy.v1.CloudDeploy.DeleteDeliveryPipeline`
 - `google.cloud.deploy.v1.CloudDeploy.DeleteTarget`
+- `google.cloud.deploy.v1.CloudDeploy.GetConfig`
 - `google.cloud.deploy.v1.CloudDeploy.GetDeliveryPipeline`
 - `google.cloud.deploy.v1.CloudDeploy.GetRelease`
 - `google.cloud.deploy.v1.CloudDeploy.GetRollout`
@@ -1971,12 +2035,12 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.deploy.v1.CloudDeploy.ListReleases`
 - `google.cloud.deploy.v1.CloudDeploy.ListRollouts`
 - `google.cloud.deploy.v1.CloudDeploy.ListTargets`
-- `google.cloud.deploy.v1.CloudDeploy.PromoteRelease`
 - `google.cloud.deploy.v1.CloudDeploy.UpdateDeliveryPipeline`
 - `google.cloud.deploy.v1.CloudDeploy.UpdateTarget`
 - `google.longrunning.Operations.CancelOperation`
 - `google.longrunning.Operations.DeleteOperation`
 - `google.longrunning.Operations.GetOperation`
+- `google.longrunning.Operations.ListOperations`
 
 ### Cloud Deployment Manager
 
@@ -1989,11 +2053,13 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v2.deploymentmanager.deployments.cancelPreview`
 - `v2.deploymentmanager.deployments.delete`
 - `v2.deploymentmanager.deployments.get`
+- `v2.deploymentmanager.deployments.getIamPolicy`
 - `v2.deploymentmanager.deployments.insert`
 - `v2.deploymentmanager.deployments.list`
 - `v2.deploymentmanager.deployments.patch`
 - `v2.deploymentmanager.deployments.setIamPolicy`
 - `v2.deploymentmanager.deployments.stop`
+- `v2.deploymentmanager.deployments.testIamPermissions`
 - `v2.deploymentmanager.deployments.update`
 - `v2.deploymentmanager.manifests.get`
 - `v2.deploymentmanager.manifests.list`
@@ -2002,6 +2068,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v2.deploymentmanager.resources.get`
 - `v2.deploymentmanager.resources.list`
 - `v2.deploymentmanager.types.list`
+- `v2beta.deploymentmanager.deployments.cancelPreview`
 - `v2beta.deploymentmanager.deployments.delete`
 - `v2beta.deploymentmanager.deployments.get`
 - `v2beta.deploymentmanager.deployments.insert`
@@ -2010,7 +2077,9 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v2beta.deploymentmanager.deployments.stop`
 - `v2beta.deploymentmanager.deployments.update`
 - `v2beta.deploymentmanager.manifests.get`
+- `v2beta.deploymentmanager.manifests.list`
 - `v2beta.deploymentmanager.operations.get`
+- `v2beta.deploymentmanager.operations.list`
 - `v2beta.deploymentmanager.resources.list`
 
 ### Cloud Dialogflow
@@ -2021,27 +2090,22 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 #### `methodName`
 
-- `google.cloud.dialogflow.aam.v2beta1.AamAdminTool.ExportAdminToolMetricsCsvReport`
+- `google.cloud.dialogflow.aam.v2beta1.AamAdminTool.DisplayStats`
 - `google.cloud.dialogflow.aam.v2beta1.AamDatasets.SearchAamDataset`
 - `google.cloud.dialogflow.aam.v2beta1.AamDiscriminantChanges.ApproveAamDiscriminantChange`
 - `google.cloud.dialogflow.aam.v2beta1.AamDiscriminantChanges.ListAamDiscriminantChanges`
-- `google.cloud.dialogflow.aam.v2beta1.AamDiscriminantChanges.RejectAamDiscriminantChange`
 - `google.cloud.dialogflow.aam.v2beta1.AamDiscriminants.CreateAamDiscriminant`
-- `google.cloud.dialogflow.aam.v2beta1.AamDiscriminants.DeleteAamDiscriminant`
 - `google.cloud.dialogflow.aam.v2beta1.AamDiscriminants.DisplayTaxonomyProgress`
 - `google.cloud.dialogflow.aam.v2beta1.AamDiscriminants.GetAamDiscriminant`
 - `google.cloud.dialogflow.aam.v2beta1.AamDiscriminants.ListAamDiscriminants`
 - `google.cloud.dialogflow.aam.v2beta1.AamDiscriminants.ListCompositeAamDiscriminants`
 - `google.cloud.dialogflow.aam.v2beta1.AamDiscriminants.MergeAamDiscriminant`
-- `google.cloud.dialogflow.aam.v2beta1.AamDiscriminants.SplitAamDiscriminant`
 - `google.cloud.dialogflow.aam.v2beta1.AamDiscriminants.UpdateAamDiscriminant`
 - `google.cloud.dialogflow.aam.v2beta1.AamLabels.ListAamLabels`
 - `google.cloud.dialogflow.aam.v2beta1.AamLabels.MarkLabelsReviewed`
 - `google.cloud.dialogflow.aam.v2beta1.AamNotices.UpdateAamNotice`
 - `google.cloud.dialogflow.aam.v2beta1.AamTasks.CompleteAamTask`
 - `google.cloud.dialogflow.aam.v2beta1.AamTasks.GenerateAamFlowTask`
-- `google.cloud.dialogflow.aam.v2beta1.AamTasks.GenerateAamReviewTask`
-- `google.cloud.dialogflow.aam.v2beta1.AamTasks.GenerateAamTask`
 - `google.cloud.dialogflow.aam.v2beta1.AamTasks.GenerateAamTranscriptTask`
 - `google.cloud.dialogflow.aam.v2beta1.AamTranscripts.DeleteAamTranscript`
 - `google.cloud.dialogflow.aam.v2beta1.AamTranscripts.ListFlowLabeledAamTranscripts`
@@ -2054,11 +2118,13 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.dialogflow.cx.v3.Agents.RestoreAgent`
 - `google.cloud.dialogflow.cx.v3.Agents.UpdateAgent`
 - `google.cloud.dialogflow.cx.v3.Agents.ValidateAgent`
+- `google.cloud.dialogflow.cx.v3.Changelogs.ListChangelogs`
 - `google.cloud.dialogflow.cx.v3.EntityTypes.CreateEntityType`
 - `google.cloud.dialogflow.cx.v3.EntityTypes.DeleteEntityType`
 - `google.cloud.dialogflow.cx.v3.EntityTypes.GetEntityType`
 - `google.cloud.dialogflow.cx.v3.EntityTypes.ListEntityTypes`
 - `google.cloud.dialogflow.cx.v3.EntityTypes.UpdateEntityType`
+- `google.cloud.dialogflow.cx.v3.Environments.CreateEnvironment`
 - `google.cloud.dialogflow.cx.v3.Environments.ListEnvironments`
 - `google.cloud.dialogflow.cx.v3.Flows.CreateFlow`
 - `google.cloud.dialogflow.cx.v3.Flows.DeleteFlow`
@@ -2088,12 +2154,13 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.dialogflow.cx.v3.SecuritySettingsService.ListSecuritySettings`
 - `google.cloud.dialogflow.cx.v3.SecuritySettingsService.UpdateSecuritySettings`
 - `google.cloud.dialogflow.cx.v3.SessionEntityTypes.CreateSessionEntityType`
-- `google.cloud.dialogflow.cx.v3.SessionEntityTypes.ListSessionEntityTypes`
+- `google.cloud.dialogflow.cx.v3.SessionEntityTypes.GetSessionEntityType`
 - `google.cloud.dialogflow.cx.v3.Sessions.DetectIntent`
 - `google.cloud.dialogflow.cx.v3.Sessions.FulfillIntent`
 - `google.cloud.dialogflow.cx.v3.Sessions.MatchIntent`
 - `google.cloud.dialogflow.cx.v3.Sessions.StreamingDetectIntent`
-- `google.cloud.dialogflow.cx.v3.TestCases.BatchDeleteTestCases`
+- `google.cloud.dialogflow.cx.v3.TestCases.BatchRunTestCases`
+- `google.cloud.dialogflow.cx.v3.TestCases.CalculateCoverage`
 - `google.cloud.dialogflow.cx.v3.TestCases.CreateTestCase`
 - `google.cloud.dialogflow.cx.v3.TestCases.ExportTestCases`
 - `google.cloud.dialogflow.cx.v3.TestCases.GetTestCase`
@@ -2123,15 +2190,15 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.dialogflow.cx.v3beta1.Agents.RestoreAgent`
 - `google.cloud.dialogflow.cx.v3beta1.Agents.UpdateAgent`
 - `google.cloud.dialogflow.cx.v3beta1.Agents.ValidateAgent`
+- `google.cloud.dialogflow.cx.v3beta1.Changelogs.ListChangelogs`
 - `google.cloud.dialogflow.cx.v3beta1.EntityTypes.CreateEntityType`
-- `google.cloud.dialogflow.cx.v3beta1.EntityTypes.DeleteEntityType`
 - `google.cloud.dialogflow.cx.v3beta1.EntityTypes.GetEntityType`
 - `google.cloud.dialogflow.cx.v3beta1.EntityTypes.ListEntityTypes`
-- `google.cloud.dialogflow.cx.v3beta1.Environments.GetEnvironment`
+- `google.cloud.dialogflow.cx.v3beta1.EntityTypes.UpdateEntityType`
 - `google.cloud.dialogflow.cx.v3beta1.Environments.ListEnvironments`
 - `google.cloud.dialogflow.cx.v3beta1.Environments.UpdateEnvironment`
+- `google.cloud.dialogflow.cx.v3beta1.Experiments.ListExperiments`
 - `google.cloud.dialogflow.cx.v3beta1.Flows.CreateFlow`
-- `google.cloud.dialogflow.cx.v3beta1.Flows.DeleteFlow`
 - `google.cloud.dialogflow.cx.v3beta1.Flows.GetFlow`
 - `google.cloud.dialogflow.cx.v3beta1.Flows.ListFlows`
 - `google.cloud.dialogflow.cx.v3beta1.Flows.TrainFlow`
@@ -2142,16 +2209,13 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.dialogflow.cx.v3beta1.Intents.ListIntents`
 - `google.cloud.dialogflow.cx.v3beta1.Intents.UpdateIntent`
 - `google.cloud.dialogflow.cx.v3beta1.Pages.CreatePage`
-- `google.cloud.dialogflow.cx.v3beta1.Pages.DeletePage`
 - `google.cloud.dialogflow.cx.v3beta1.Pages.GetPage`
 - `google.cloud.dialogflow.cx.v3beta1.Pages.ListPages`
 - `google.cloud.dialogflow.cx.v3beta1.Pages.UpdatePage`
 - `google.cloud.dialogflow.cx.v3beta1.SecuritySettingsService.CreateSecuritySettings`
 - `google.cloud.dialogflow.cx.v3beta1.SecuritySettingsService.DeleteSecuritySettings`
-- `google.cloud.dialogflow.cx.v3beta1.SecuritySettingsService.GetSecuritySettings`
 - `google.cloud.dialogflow.cx.v3beta1.SecuritySettingsService.ListSecuritySettings`
 - `google.cloud.dialogflow.cx.v3beta1.SecuritySettingsService.UpdateSecuritySettings`
-- `google.cloud.dialogflow.cx.v3beta1.SessionEntityTypes.ListSessionEntityTypes`
 - `google.cloud.dialogflow.cx.v3beta1.Sessions.DetectIntent`
 - `google.cloud.dialogflow.cx.v3beta1.Sessions.MatchIntent`
 - `google.cloud.dialogflow.cx.v3beta1.Sessions.StreamingDetectIntent`
@@ -2160,11 +2224,11 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.dialogflow.cx.v3beta1.TestCases.ListTestCases`
 - `google.cloud.dialogflow.cx.v3beta1.TestCases.RunTestCase`
 - `google.cloud.dialogflow.cx.v3beta1.TransitionRouteGroups.CreateTransitionRouteGroup`
-- `google.cloud.dialogflow.cx.v3beta1.TransitionRouteGroups.GetTransitionRouteGroup`
 - `google.cloud.dialogflow.cx.v3beta1.TransitionRouteGroups.ListTransitionRouteGroups`
-- `google.cloud.dialogflow.cx.v3beta1.TransitionRouteGroups.UpdateTransitionRouteGroup`
+- `google.cloud.dialogflow.cx.v3beta1.Versions.CompareVersions`
 - `google.cloud.dialogflow.cx.v3beta1.Versions.CreateVersion`
 - `google.cloud.dialogflow.cx.v3beta1.Versions.DeleteVersion`
+- `google.cloud.dialogflow.cx.v3beta1.Versions.GetVersion`
 - `google.cloud.dialogflow.cx.v3beta1.Versions.ListVersions`
 - `google.cloud.dialogflow.cx.v3beta1.Webhooks.CreateWebhook`
 - `google.cloud.dialogflow.cx.v3beta1.Webhooks.ListWebhooks`
@@ -2186,13 +2250,17 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.dialogflow.v2.Contexts.GetContext`
 - `google.cloud.dialogflow.v2.Contexts.ListContexts`
 - `google.cloud.dialogflow.v2.Contexts.UpdateContext`
+- `google.cloud.dialogflow.v2.ConversationModels.CreateConversationModelEvaluation`
+- `google.cloud.dialogflow.v2.ConversationModels.GetConversationModelEvaluation`
+- `google.cloud.dialogflow.v2.ConversationModels.ListConversationModelEvaluations`
+- `google.cloud.dialogflow.v2.ConversationProfiles.ClearSuggestionFeatureConfig`
 - `google.cloud.dialogflow.v2.ConversationProfiles.CreateConversationProfile`
 - `google.cloud.dialogflow.v2.ConversationProfiles.DeleteConversationProfile`
 - `google.cloud.dialogflow.v2.ConversationProfiles.GetConversationProfile`
 - `google.cloud.dialogflow.v2.ConversationProfiles.ListConversationProfiles`
+- `google.cloud.dialogflow.v2.ConversationProfiles.SetSuggestionFeatureConfig`
 - `google.cloud.dialogflow.v2.ConversationProfiles.UpdateConversationProfile`
 - `google.cloud.dialogflow.v2.Conversations.CompleteConversation`
-- `google.cloud.dialogflow.v2.Conversations.CreateCallMatcher`
 - `google.cloud.dialogflow.v2.Conversations.CreateConversation`
 - `google.cloud.dialogflow.v2.Conversations.GetConversation`
 - `google.cloud.dialogflow.v2.Conversations.ListConversations`
@@ -2241,6 +2309,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.dialogflow.v2.Participants.StreamingAnalyzeContent`
 - `google.cloud.dialogflow.v2.Participants.SuggestArticles`
 - `google.cloud.dialogflow.v2.Participants.SuggestFaqAnswers`
+- `google.cloud.dialogflow.v2.Participants.SuggestSmartReplies`
 - `google.cloud.dialogflow.v2.Participants.UpdateParticipant`
 - `google.cloud.dialogflow.v2.SessionEntityTypes.CreateSessionEntityType`
 - `google.cloud.dialogflow.v2.SessionEntityTypes.DeleteSessionEntityType`
@@ -2293,6 +2362,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.dialogflow.v2beta1.Conversations.CompleteConversation`
 - `google.cloud.dialogflow.v2beta1.Conversations.CreateCallMatcher`
 - `google.cloud.dialogflow.v2beta1.Conversations.CreateConversation`
+- `google.cloud.dialogflow.v2beta1.Conversations.DeactivateConversation`
 - `google.cloud.dialogflow.v2beta1.Conversations.ExportMessages`
 - `google.cloud.dialogflow.v2beta1.Conversations.GetConversation`
 - `google.cloud.dialogflow.v2beta1.Conversations.ListConversations`
@@ -2332,12 +2402,10 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.dialogflow.v2beta1.Environments.UpdateEnvironment`
 - `google.cloud.dialogflow.v2beta1.Fulfillments.GetFulfillment`
 - `google.cloud.dialogflow.v2beta1.Fulfillments.UpdateFulfillment`
-- `google.cloud.dialogflow.v2beta1.HumanAgentAssistants.CreateHumanAgentAssistant`
 - `google.cloud.dialogflow.v2beta1.Integrations.FinalizeIntegration`
 - `google.cloud.dialogflow.v2beta1.Integrations.GetIntegration`
 - `google.cloud.dialogflow.v2beta1.Integrations.ListIntegrations`
 - `google.cloud.dialogflow.v2beta1.Integrations.RemoveIntegration`
-- `google.cloud.dialogflow.v2beta1.Integrations.RevokeIntegration`
 - `google.cloud.dialogflow.v2beta1.Integrations.SignupIntegration`
 - `google.cloud.dialogflow.v2beta1.Integrations.StartIntegration`
 - `google.cloud.dialogflow.v2beta1.Integrations.StopIntegration`
@@ -2366,7 +2434,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.dialogflow.v2beta1.Participants.ListSuggestions`
 - `google.cloud.dialogflow.v2beta1.Participants.StreamingAnalyzeContent`
 - `google.cloud.dialogflow.v2beta1.Participants.SuggestArticles`
-- `google.cloud.dialogflow.v2beta1.Participants.SuggestDialogflowAssists`
 - `google.cloud.dialogflow.v2beta1.Participants.SuggestFaqAnswers`
 - `google.cloud.dialogflow.v2beta1.Participants.SuggestSmartComposeAnswers`
 - `google.cloud.dialogflow.v2beta1.Participants.SuggestSmartReplies`
@@ -2386,17 +2453,15 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.dialogflow.v2beta1.SessionEntityTypes.GetSessionEntityType`
 - `google.cloud.dialogflow.v2beta1.SessionEntityTypes.ListSessionEntityTypes`
 - `google.cloud.dialogflow.v2beta1.SessionEntityTypes.UpdateSessionEntityType`
-- `google.cloud.dialogflow.v2beta1.SessionHistory.CreateSessionConversation`
 - `google.cloud.dialogflow.v2beta1.SessionHistory.DeleteSessionConversation`
 - `google.cloud.dialogflow.v2beta1.SessionHistory.ListInteractions`
 - `google.cloud.dialogflow.v2beta1.SessionHistory.SearchSessionConversations`
 - `google.cloud.dialogflow.v2beta1.SessionHistory.UpdateSessionConversation`
 - `google.cloud.dialogflow.v2beta1.Sessions.DetectIntent`
+- `google.cloud.dialogflow.v2beta1.Sessions.MatchIntent`
 - `google.cloud.dialogflow.v2beta1.Sessions.StreamingDetectIntent`
 - `google.cloud.dialogflow.v2beta1.SmallTalk.GetSmallTalkConfig`
 - `google.cloud.dialogflow.v2beta1.SmallTalk.UpdateSmallTalkConfig`
-- `google.cloud.dialogflow.v2beta1.SpecialistPools.CreateSpecialistPool`
-- `google.cloud.dialogflow.v2beta1.SpecialistPools.DeleteSpecialistPool`
 - `google.cloud.dialogflow.v2beta1.Versions.CreateVersion`
 - `google.cloud.dialogflow.v2beta1.Versions.DeleteVersion`
 - `google.cloud.dialogflow.v2beta1.Versions.GetVersion`
@@ -2427,12 +2492,21 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `dns.policies.delete`
 - `dns.policies.get`
 - `dns.policies.list`
+- `dns.policies.patch`
+- `dns.policies.update`
 - `dns.projects.get`
-- `dns.resourceRecordSets.create`
-- `dns.resourceRecordSets.delete`
-- `dns.resourceRecordSets.get`
-- `dns.resourceRecordSets.list`
-- `dns.resourceRecordSets.patch`
+- `dns.responsePolicies.create`
+- `dns.responsePolicies.delete`
+- `dns.responsePolicies.get`
+- `dns.responsePolicies.list`
+- `dns.responsePolicies.patch`
+- `dns.responsePolicies.update`
+- `dns.responsePolicyRules.create`
+- `dns.responsePolicyRules.delete`
+- `dns.responsePolicyRules.get`
+- `dns.responsePolicyRules.list`
+- `dns.responsePolicyRules.patch`
+- `dns.responsePolicyRules.update`
 
 ### Cloud Error Reporting
 
@@ -2459,15 +2533,20 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 - `google.cloud.filestore.v1.CloudFilestoreManager.CreateBackup`
 - `google.cloud.filestore.v1.CloudFilestoreManager.CreateInstance`
+- `google.cloud.filestore.v1.CloudFilestoreManager.CreateSnapshot`
 - `google.cloud.filestore.v1.CloudFilestoreManager.DeleteBackup`
 - `google.cloud.filestore.v1.CloudFilestoreManager.DeleteInstance`
+- `google.cloud.filestore.v1.CloudFilestoreManager.DeleteSnapshot`
 - `google.cloud.filestore.v1.CloudFilestoreManager.GetBackup`
 - `google.cloud.filestore.v1.CloudFilestoreManager.GetInstance`
+- `google.cloud.filestore.v1.CloudFilestoreManager.GetSnapshot`
 - `google.cloud.filestore.v1.CloudFilestoreManager.ListBackups`
 - `google.cloud.filestore.v1.CloudFilestoreManager.ListInstances`
+- `google.cloud.filestore.v1.CloudFilestoreManager.ListSnapshots`
 - `google.cloud.filestore.v1.CloudFilestoreManager.RestoreInstance`
 - `google.cloud.filestore.v1.CloudFilestoreManager.UpdateBackup`
 - `google.cloud.filestore.v1.CloudFilestoreManager.UpdateInstance`
+- `google.cloud.filestore.v1.CloudFilestoreManager.UpdateSnapshot`
 - `google.cloud.filestore.v1beta1.CloudFilestoreManager.CreateBackup`
 - `google.cloud.filestore.v1beta1.CloudFilestoreManager.CreateInstance`
 - `google.cloud.filestore.v1beta1.CloudFilestoreManager.CreateSnapshot`
@@ -2481,6 +2560,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.filestore.v1beta1.CloudFilestoreManager.ListInstances`
 - `google.cloud.filestore.v1beta1.CloudFilestoreManager.ListSnapshots`
 - `google.cloud.filestore.v1beta1.CloudFilestoreManager.RestoreInstance`
+- `google.cloud.filestore.v1beta1.CloudFilestoreManager.RevertInstance`
 - `google.cloud.filestore.v1beta1.CloudFilestoreManager.UpdateBackup`
 - `google.cloud.filestore.v1beta1.CloudFilestoreManager.UpdateInstance`
 - `google.cloud.filestore.v1beta1.CloudFilestoreManager.UpdateSnapshot`
@@ -2615,8 +2695,14 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.functions.v1.CloudFunctionsService.UpdateFunction`
 - `google.cloud.functions.v2beta.FunctionService.CreateFunction`
 - `google.cloud.functions.v2beta.FunctionService.DeleteFunction`
+- `google.cloud.functions.v2beta.FunctionService.GenerateDownloadUrl`
 - `google.cloud.functions.v2beta.FunctionService.GenerateUploadUrl`
+- `google.cloud.functions.v2beta.FunctionService.GetFunction`
+- `google.cloud.functions.v2beta.FunctionService.ListFunctions`
 - `google.cloud.functions.v2beta.FunctionService.UpdateFunction`
+- `google.cloud.functions.v2main.FunctionService.CreateFunction`
+- `google.cloud.functions.v2main.FunctionService.DeleteFunction`
+- `google.cloud.functions.v2main.FunctionService.GetFunction`
 - `google.cloud.location.Locations.ListLocations`
 - `google.longrunning.Operations.GetOperation`
 
@@ -2738,12 +2824,9 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.healthcare.v1.dataset.DatasetService.UpdateDataset`
 - `google.cloud.healthcare.v1.deidentify.DeidentifyService.DeidentifyDicomStore`
 - `google.cloud.healthcare.v1.deidentify.DeidentifyService.DeidentifyFhirStore`
-- `google.cloud.healthcare.v1.deidentify.DeidentifyServiceV1.DeidentifyFhirStore`
 - `google.cloud.healthcare.v1.dicom.DicomService.CreateDicomStore`
 - `google.cloud.healthcare.v1.dicom.DicomService.DeleteDicomStore`
 - `google.cloud.healthcare.v1.dicom.DicomService.ExportDicomData`
-- `google.cloud.healthcare.v1.dicom.DicomService.ExportDicomData_bq`
-- `google.cloud.healthcare.v1.dicom.DicomService.ExportDicomData_gcs`
 - `google.cloud.healthcare.v1.dicom.DicomService.GetDicomStore`
 - `google.cloud.healthcare.v1.dicom.DicomService.ImportDicomData`
 - `google.cloud.healthcare.v1.dicom.DicomService.ListDicomStores`
@@ -2783,6 +2866,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.healthcare.v1.fhir.rest.FhirService.PatchResource`
 - `google.cloud.healthcare.v1.fhir.rest.FhirService.SearchResources`
 - `google.cloud.healthcare.v1.fhir.rest.FhirService.UpdateResource`
+- `google.cloud.healthcare.v1.fhir.rest.FhirService.ValidateResource`
 - `google.cloud.healthcare.v1.fhir.stu3.grpc.FhirGRPCService.CreateResource`
 - `google.cloud.healthcare.v1.fhir.stu3.grpc.FhirGRPCService.DeleteResource`
 - `google.cloud.healthcare.v1.fhir.stu3.grpc.FhirGRPCService.GetResource`
@@ -2795,10 +2879,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.healthcare.v1.fhir.stu3.grpc.FhirService.GetResourceVersion`
 - `google.cloud.healthcare.v1.fhir.stu3.grpc.FhirService.SearchResources`
 - `google.cloud.healthcare.v1.fhir.stu3.grpc.FhirService.UpdateResource`
-- `google.cloud.healthcare.v1.fhirstore.FhirStoreService.ExportResources`
-- `google.cloud.healthcare.v1.fhirstore.FhirStoreService.ExportResources_bq`
-- `google.cloud.healthcare.v1.fhirstore.FhirStoreService.ExportResources_gcs`
-- `google.cloud.healthcare.v1.fhirstore.FhirStoreService.ImportResources`
+- `google.cloud.healthcare.v1.fhir.stu3.grpc.FhirService.ValidateResource`
 - `google.cloud.healthcare.v1.hl7v2.Hl7V2Service.CreateHl7V2Store`
 - `google.cloud.healthcare.v1.hl7v2.Hl7V2Service.CreateMessage`
 - `google.cloud.healthcare.v1.hl7v2.Hl7V2Service.DeleteHl7V2Store`
@@ -2940,10 +3021,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.healthcare.v1beta1.fhir.stu3.grpc.FhirService.SearchResources`
 - `google.cloud.healthcare.v1beta1.fhir.stu3.grpc.FhirService.UpdateResource`
 - `google.cloud.healthcare.v1beta1.fhir.stu3.grpc.FhirService.ValidateResource`
-- `google.cloud.healthcare.v1beta1.fhirstore.FhirStoreService.ExportResources`
-- `google.cloud.healthcare.v1beta1.fhirstore.FhirStoreService.ExportResources_bq`
-- `google.cloud.healthcare.v1beta1.fhirstore.FhirStoreService.ExportResources_gcs`
-- `google.cloud.healthcare.v1beta1.fhirstore.FhirStoreService.ImportResources`
 - `google.cloud.healthcare.v1beta1.hl7v2.Hl7V2Service.BatchGetMessages`
 - `google.cloud.healthcare.v1beta1.hl7v2.Hl7V2Service.CreateHl7V2Store`
 - `google.cloud.healthcare.v1beta1.hl7v2.Hl7V2Service.CreateMessage`
@@ -3006,11 +3083,14 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.iam.admin.v1.WorkforcePools.CreateWorkforcePoolProvider`
 - `google.iam.admin.v1.WorkforcePools.DeleteWorkforcePool`
 - `google.iam.admin.v1.WorkforcePools.DeleteWorkforcePoolProvider`
+- `google.iam.admin.v1.WorkforcePools.DeleteWorkforcePoolSubject`
 - `google.iam.admin.v1.WorkforcePools.GetWorkforcePool`
 - `google.iam.admin.v1.WorkforcePools.GetWorkforcePoolProvider`
+- `google.iam.admin.v1.WorkforcePools.ListWorkforcePoolProviders`
 - `google.iam.admin.v1.WorkforcePools.ListWorkforcePools`
 - `google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool`
 - `google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider`
+- `google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolSubject`
 - `google.iam.admin.v1.WorkforcePools.UpdateWorkforcePool`
 - `google.iam.admin.v1.WorkforcePools.UpdateWorkforcePoolProvider`
 - `google.iam.v1.WorkloadIdentityPools.CreateWorkloadIdentityPool`
@@ -3114,6 +3194,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `AsymmetricSign`
 - `CreateCryptoKey`
 - `CreateCryptoKeyVersion`
+- `CreateEkmConnection`
 - `CreateImportJob`
 - `CreateKeyRing`
 - `Decrypt`
@@ -3121,6 +3202,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `Encrypt`
 - `GetCryptoKey`
 - `GetCryptoKeyVersion`
+- `GetEkmConnection`
 - `GetIamPolicy`
 - `GetImportJob`
 - `GetKeyRing`
@@ -3128,6 +3210,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `ImportCryptoKeyVersion`
 - `ListCryptoKeyVersions`
 - `ListCryptoKeys`
+- `ListEkmConnections`
 - `ListImportJobs`
 - `ListKeyRings`
 - `MacSign`
@@ -3139,6 +3222,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `UpdateCryptoKey`
 - `UpdateCryptoKeyPrimaryVersion`
 - `UpdateCryptoKeyVersion`
+- `UpdateEkmConnection`
 
 ### Cloud Life Sciences
 
@@ -3235,11 +3319,11 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.ml.v1.StudyService.CreateStudy`
 - `google.cloud.ml.v1.StudyService.CreateTrial`
 - `google.cloud.ml.v1.StudyService.DeleteStudy`
+- `google.cloud.ml.v1.StudyService.DeleteTrial`
 - `google.cloud.ml.v1.StudyService.GetStudy`
 - `google.cloud.ml.v1.StudyService.GetTrial`
 - `google.cloud.ml.v1.StudyService.ListStudies`
 - `google.cloud.ml.v1.StudyService.ListTrials`
-- `google.cloud.ml.v1.StudyService.StopTrial`
 - `google.cloud.ml.v1.StudyService.SuggestTrials`
 - `google.iam.v1.IAMPolicy.GetIamPolicy`
 - `google.iam.v1.IAMPolicy.SetIamPolicy`
@@ -3397,7 +3481,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.monitoring.v3.MetricService.DeleteMetricDescriptor`
 - `google.monitoring.v3.MetricService.GetMetricDescriptor`
 - `google.monitoring.v3.MetricService.ListMetricDescriptors`
-- `google.monitoring.v3.MetricService.ListMetrics`
 - `google.monitoring.v3.MetricService.ListTimeSeries`
 - `google.monitoring.v3.MetricService.QueryActiveTimeSeries`
 - `google.monitoring.v3.NotificationChannelService.CreateNotificationChannel`
@@ -3450,6 +3533,8 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.osconfig.v1.OsConfigService.ListPatchDeployments`
 - `google.cloud.osconfig.v1.OsConfigService.ListPatchJobInstanceDetails`
 - `google.cloud.osconfig.v1.OsConfigService.ListPatchJobs`
+- `google.cloud.osconfig.v1.OsConfigService.PausePatchDeployment`
+- `google.cloud.osconfig.v1.OsConfigService.ResumePatchDeployment`
 - `google.cloud.osconfig.v1.OsConfigService.UpdatePatchDeployment`
 - `google.cloud.osconfig.v1.OsConfigZonalService.CreateOSPolicyAssignment`
 - `google.cloud.osconfig.v1.OsConfigZonalService.DeleteOSPolicyAssignment`
@@ -3476,6 +3561,8 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.osconfig.v1beta.OsConfigService.ListPatchDeployments`
 - `google.cloud.osconfig.v1beta.OsConfigService.ListPatchJobInstanceDetails`
 - `google.cloud.osconfig.v1beta.OsConfigService.ListPatchJobs`
+- `google.cloud.osconfig.v1beta.OsConfigService.PausePatchDeployment`
+- `google.cloud.osconfig.v1beta.OsConfigService.ResumePatchDeployment`
 - `google.cloud.osconfig.v1beta.OsConfigService.UpdateGuestPolicy`
 - `google.cloud.osconfig.v1beta.OsConfigService.UpdatePatchDeployment`
 
@@ -3622,6 +3709,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.resourcemanager.v3.TagBindings.CreateTagBinding`
 - `google.cloud.resourcemanager.v3.TagBindings.DeleteTagBinding`
 - `google.cloud.resourcemanager.v3.TagBindings.ListTagBindings`
+- `google.cloud.resourcemanager.v3.TagBindingsBulk.SetTagsForResource`
 - `google.cloud.resourcemanager.v3.TagKeys.CreateTagKey`
 - `google.cloud.resourcemanager.v3.TagKeys.DeleteTagKey`
 - `google.cloud.resourcemanager.v3.TagKeys.GetIamPolicy`
@@ -3649,7 +3737,9 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.retail.v2.CatalogService.ListCatalogs`
 - `google.cloud.retail.v2.CatalogService.SetDefaultBranch`
 - `google.cloud.retail.v2.CatalogService.UpdateCatalog`
+- `google.cloud.retail.v2.CompletionService.CompleteQuery`
 - `google.cloud.retail.v2.PredictionService.Predict`
+- `google.cloud.retail.v2.ProductService.AddFulfillmentPlaces`
 - `google.cloud.retail.v2.ProductService.CreateProduct`
 - `google.cloud.retail.v2.ProductService.DeleteProduct`
 - `google.cloud.retail.v2.ProductService.GetProduct`
@@ -3662,11 +3752,14 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.retail.v2.UserEventService.RejoinUserEvents`
 - `google.cloud.retail.v2.UserEventService.WriteUserEvent`
 - `google.cloud.retail.v2beta.CatalogService.ListCatalogs`
+- `google.cloud.retail.v2beta.ControlService.ListControls`
 - `google.cloud.retail.v2beta.PredictionService.Predict`
 - `google.cloud.retail.v2beta.ProductService.DeleteProduct`
 - `google.cloud.retail.v2beta.ProductService.GetProduct`
 - `google.cloud.retail.v2beta.ProductService.ImportProducts`
+- `google.cloud.retail.v2beta.ProductService.ListProducts`
 - `google.cloud.retail.v2beta.SearchService.Search`
+- `google.cloud.retail.v2beta.ServingConfigService.GetServingConfig`
 - `google.cloud.retail.v2beta.UserEventService.ImportUserEvents`
 
 ### Cloud Run
@@ -3678,6 +3771,16 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 #### `methodName`
 
 - `google.cloud.location.Locations.ListLocations`
+- `google.cloud.run.op.v2.Jobs.CreateJob`
+- `google.cloud.run.op.v2.Jobs.DeleteJob`
+- `google.cloud.run.op.v2.Jobs.UpdateJob`
+- `google.cloud.run.op.v2.Revisions.DeleteRevision`
+- `google.cloud.run.op.v2.Revisions.GetRevision`
+- `google.cloud.run.op.v2.Revisions.ListRevisions`
+- `google.cloud.run.op.v2.Services.GetIamPolicy`
+- `google.cloud.run.op.v2.Services.GetService`
+- `google.cloud.run.op.v2.Services.ListServices`
+- `google.cloud.run.op.v2.Services.SetIamPolicy`
 - `google.cloud.run.v1.AuthorizedDomains.ListAuthorizedDomains`
 - `google.cloud.run.v1.Configurations.CreateConfiguration`
 - `google.cloud.run.v1.Configurations.DeleteConfiguration`
@@ -3688,6 +3791,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.run.v1.DomainMappings.DeleteDomainMapping`
 - `google.cloud.run.v1.DomainMappings.GetDomainMapping`
 - `google.cloud.run.v1.DomainMappings.ListDomainMappings`
+- `google.cloud.run.v1.Jobs.RunJobPubSub`
 - `google.cloud.run.v1.Revisions.DeleteRevision`
 - `google.cloud.run.v1.Revisions.GetRevision`
 - `google.cloud.run.v1.Revisions.ListRevisions`
@@ -3702,6 +3806,19 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.run.v1.Services.ListServices`
 - `google.cloud.run.v1.Services.ReplaceService`
 - `google.cloud.run.v1.Services.SetIamPolicy`
+- `google.cloud.run.v2.Jobs.CreateJob`
+- `google.cloud.run.v2.Jobs.DeleteJob`
+- `google.cloud.run.v2.Jobs.UpdateJob`
+- `google.cloud.run.v2.Revisions.DeleteRevision`
+- `google.cloud.run.v2.Revisions.GetRevision`
+- `google.cloud.run.v2.Revisions.ListRevisions`
+- `google.cloud.run.v2.Services.CreateService`
+- `google.cloud.run.v2.Services.DeleteService`
+- `google.cloud.run.v2.Services.GetIamPolicy`
+- `google.cloud.run.v2.Services.GetService`
+- `google.cloud.run.v2.Services.ListServices`
+- `google.cloud.run.v2.Services.SetIamPolicy`
+- `google.cloud.run.v2.Services.UpdateService`
 
 ### Cloud Scheduler
 
@@ -3768,6 +3885,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.apps.search.v1.SettingsService.UpdateDataSource`
 - `google.apps.search.v1.StatsService.GetCustomerIndexStats`
 - `google.apps.search.v1.StatsService.GetCustomerQueryStats`
+- `google.apps.search.v1.StatsService.GetCustomerSearchApplicationStats`
 - `google.apps.search.v1.StatsService.GetCustomerSessionStats`
 - `google.apps.search.v1.StatsService.GetCustomerUserStats`
 - `google.apps.search.v1.StatsService.GetDataSourceIndexStats`
@@ -4008,6 +4126,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.tpu.v1.Tpu.ResetNode`
 - `google.cloud.tpu.v1.Tpu.StartNode`
 - `google.cloud.tpu.v1.Tpu.StopNode`
+- `google.cloud.tpu.v2.Tpu.DeleteNode`
 
 ### Cloud Trace
 
@@ -4137,10 +4256,16 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.vision.v1p4beta1.ImageAnnotator.BatchAnnotateImages`
 - `google.cloud.vision.v1p4beta1.ProductSearch.AddProductToProductSet`
 - `google.cloud.vision.v1p4beta1.ProductSearch.CreateProduct`
-- `google.cloud.vision.v1p4beta1.ProductSearch.CreateProductSet`
 - `google.cloud.vision.v1p4beta1.ProductSearch.CreateReferenceImage`
+- `google.cloud.vision.v1p4beta1.ProductSearch.DeleteProduct`
 - `google.cloud.vision.v1p4beta1.ProductSearch.DeleteProductSet`
+- `google.cloud.vision.v1p4beta1.ProductSearch.DeleteReferenceImage`
 - `google.cloud.vision.v1p4beta1.ProductSearch.GetProduct`
+- `google.cloud.vision.v1p4beta1.ProductSearch.GetReferenceImage`
+- `google.cloud.vision.v1p4beta1.ProductSearch.ImportProductSets`
+- `google.cloud.vision.v1p4beta1.ProductSearch.ListProductSets`
+- `google.cloud.vision.v1p4beta1.ProductSearch.ListProducts`
+- `google.cloud.vision.v1p4beta1.ProductSearch.ListProductsInProductSet`
 - `google.cloud.vision.v1p4beta1.ProductSearch.ListReferenceImages`
 - `google.cloud.vision.v1p4beta1.ProductSearch.PurgeProducts`
 - `google.cloud.vision.v1p4beta1.ProductSearch.UpdateProduct`
@@ -4223,8 +4348,12 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `beta.compute.firewallPolicies.addAssociation`
 - `beta.compute.firewallPolicies.addRule`
 - `beta.compute.firewallPolicies.delete`
+- `beta.compute.firewallPolicies.get`
+- `beta.compute.firewallPolicies.getAssociation`
 - `beta.compute.firewallPolicies.insert`
+- `beta.compute.firewallPolicies.list`
 - `beta.compute.firewallPolicies.listAssociations`
+- `beta.compute.firewallPolicies.move`
 - `beta.compute.firewallPolicies.patch`
 - `beta.compute.firewallPolicies.patchRule`
 - `beta.compute.firewallPolicies.removeAssociation`
@@ -4319,6 +4448,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `beta.compute.instanceGroupManagers.listManagedInstances`
 - `beta.compute.instanceGroupManagers.listPerInstanceConfigs`
 - `beta.compute.instanceGroupManagers.patch`
+- `beta.compute.instanceGroupManagers.patchPerInstanceConfigs`
 - `beta.compute.instanceGroupManagers.recreateInstances`
 - `beta.compute.instanceGroupManagers.resize`
 - `beta.compute.instanceGroupManagers.resizeAdvanced`
@@ -4437,6 +4567,17 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `beta.compute.networkEndpointGroups.list`
 - `beta.compute.networkEndpointGroups.listNetworkEndpoints`
 - `beta.compute.networkEndpointGroups.testIamPermissions`
+- `beta.compute.networkFirewallPolicies.addAssociation`
+- `beta.compute.networkFirewallPolicies.addRule`
+- `beta.compute.networkFirewallPolicies.delete`
+- `beta.compute.networkFirewallPolicies.getIamPolicy`
+- `beta.compute.networkFirewallPolicies.insert`
+- `beta.compute.networkFirewallPolicies.list`
+- `beta.compute.networkFirewallPolicies.patch`
+- `beta.compute.networkFirewallPolicies.patchRule`
+- `beta.compute.networkFirewallPolicies.removeAssociation`
+- `beta.compute.networkFirewallPolicies.removeRule`
+- `beta.compute.networkFirewallPolicies.setIamPolicy`
 - `beta.compute.networks.addPeering`
 - `beta.compute.networks.delete`
 - `beta.compute.networks.get`
@@ -4501,7 +4642,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `beta.compute.projects.getXpnHost`
 - `beta.compute.projects.getXpnResources`
 - `beta.compute.projects.listXpnHosts`
-- `beta.compute.projects.moveInstance`
+- `beta.compute.projects.moveDisk`
 - `beta.compute.projects.setCommonInstanceMetadata`
 - `beta.compute.projects.setDefaultNetworkTier`
 - `beta.compute.projects.setUsageExportBucket`
@@ -4532,6 +4673,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `beta.compute.regionCommitments.insert`
 - `beta.compute.regionCommitments.list`
 - `beta.compute.regionCommitments.testIamPermissions`
+- `beta.compute.regionCommitments.update`
 - `beta.compute.regionCommitments.updateReservations`
 - `beta.compute.regionDiskTypes.list`
 - `beta.compute.regionDisks.addResourcePolicies`
@@ -4572,8 +4714,10 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `beta.compute.regionInstanceGroupManagers.listManagedInstances`
 - `beta.compute.regionInstanceGroupManagers.listPerInstanceConfigs`
 - `beta.compute.regionInstanceGroupManagers.patch`
+- `beta.compute.regionInstanceGroupManagers.patchPerInstanceConfigs`
 - `beta.compute.regionInstanceGroupManagers.recreateInstances`
 - `beta.compute.regionInstanceGroupManagers.resize`
+- `beta.compute.regionInstanceGroupManagers.resizeAdvanced`
 - `beta.compute.regionInstanceGroupManagers.setAutoHealingPolicies`
 - `beta.compute.regionInstanceGroupManagers.setInstanceTemplate`
 - `beta.compute.regionInstanceGroupManagers.setTargetPools`
@@ -4585,10 +4729,24 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `beta.compute.regionInstanceGroups.listInstances`
 - `beta.compute.regionInstanceGroups.setNamedPorts`
 - `beta.compute.regionInstanceGroups.testIamPermissions`
+- `beta.compute.regionInstances.bulkInsert`
+- `beta.compute.regionInstances.recommendLocations`
 - `beta.compute.regionNetworkEndpointGroups.delete`
 - `beta.compute.regionNetworkEndpointGroups.get`
 - `beta.compute.regionNetworkEndpointGroups.insert`
 - `beta.compute.regionNetworkEndpointGroups.list`
+- `beta.compute.regionNetworkFirewallPolicies.addAssociation`
+- `beta.compute.regionNetworkFirewallPolicies.addRule`
+- `beta.compute.regionNetworkFirewallPolicies.delete`
+- `beta.compute.regionNetworkFirewallPolicies.getIamPolicy`
+- `beta.compute.regionNetworkFirewallPolicies.insert`
+- `beta.compute.regionNetworkFirewallPolicies.list`
+- `beta.compute.regionNetworkFirewallPolicies.patch`
+- `beta.compute.regionNetworkFirewallPolicies.patchRule`
+- `beta.compute.regionNetworkFirewallPolicies.removeAssociation`
+- `beta.compute.regionNetworkFirewallPolicies.removeRule`
+- `beta.compute.regionNetworkFirewallPolicies.setIamPolicy`
+- `beta.compute.regionNetworkFirewallPolicies.testIamPermissions`
 - `beta.compute.regionNotificationEndpoints.delete`
 - `beta.compute.regionNotificationEndpoints.insert`
 - `beta.compute.regionNotificationEndpoints.list`
@@ -4713,6 +4871,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `beta.compute.targetHttpProxies.get`
 - `beta.compute.targetHttpProxies.insert`
 - `beta.compute.targetHttpProxies.list`
+- `beta.compute.targetHttpProxies.patch`
 - `beta.compute.targetHttpProxies.setUrlMap`
 - `beta.compute.targetHttpProxies.testIamPermissions`
 - `beta.compute.targetHttpsProxies.aggregatedList`
@@ -4831,6 +4990,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v1.compute.backendBuckets.insert`
 - `v1.compute.backendBuckets.list`
 - `v1.compute.backendBuckets.patch`
+- `v1.compute.backendBuckets.setEdgeSecurityPolicy`
 - `v1.compute.backendBuckets.update`
 - `v1.compute.backendServices.addSignedUrlKey`
 - `v1.compute.backendServices.aggregatedList`
@@ -4841,6 +5001,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v1.compute.backendServices.insert`
 - `v1.compute.backendServices.list`
 - `v1.compute.backendServices.patch`
+- `v1.compute.backendServices.setEdgeSecurityPolicy`
 - `v1.compute.backendServices.setSecurityPolicy`
 - `v1.compute.backendServices.update`
 - `v1.compute.diskTypes.aggregatedList`
@@ -5032,9 +5193,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v1.compute.instancesInternal.delete`
 - `v1.compute.instancesInternal.get`
 - `v1.compute.instancesInternal.insert`
-- `v1.compute.instancesInternal.resume`
 - `v1.compute.instancesInternal.setDiskAutoDelete`
-- `v1.compute.instancesInternal.start`
 - `v1.compute.instancesInternal.stop`
 - `v1.compute.instancesInternal.suspend`
 - `v1.compute.instancesInternal.update`
@@ -5044,6 +5203,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v1.compute.interconnectAttachments.insert`
 - `v1.compute.interconnectAttachments.list`
 - `v1.compute.interconnectAttachments.patch`
+- `v1.compute.interconnectLocations.get`
 - `v1.compute.interconnectLocations.list`
 - `v1.compute.interconnects.delete`
 - `v1.compute.interconnects.get`
@@ -5060,6 +5220,13 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v1.compute.licenses.list`
 - `v1.compute.licenses.setIamPolicy`
 - `v1.compute.licenses.testIamPermissions`
+- `v1.compute.machineImages.delete`
+- `v1.compute.machineImages.get`
+- `v1.compute.machineImages.getIamPolicy`
+- `v1.compute.machineImages.insert`
+- `v1.compute.machineImages.list`
+- `v1.compute.machineImages.setIamPolicy`
+- `v1.compute.machineImages.testIamPermissions`
 - `v1.compute.machineTypes.aggregatedList`
 - `v1.compute.machineTypes.get`
 - `v1.compute.machineTypes.list`
@@ -5072,6 +5239,18 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v1.compute.networkEndpointGroups.list`
 - `v1.compute.networkEndpointGroups.listNetworkEndpoints`
 - `v1.compute.networkEndpointGroups.testIamPermissions`
+- `v1.compute.networkFirewallPolicies.addAssociation`
+- `v1.compute.networkFirewallPolicies.addRule`
+- `v1.compute.networkFirewallPolicies.delete`
+- `v1.compute.networkFirewallPolicies.getIamPolicy`
+- `v1.compute.networkFirewallPolicies.insert`
+- `v1.compute.networkFirewallPolicies.list`
+- `v1.compute.networkFirewallPolicies.patch`
+- `v1.compute.networkFirewallPolicies.patchRule`
+- `v1.compute.networkFirewallPolicies.removeAssociation`
+- `v1.compute.networkFirewallPolicies.removeRule`
+- `v1.compute.networkFirewallPolicies.setIamPolicy`
+- `v1.compute.networkFirewallPolicies.testIamPermissions`
 - `v1.compute.networks.addPeering`
 - `v1.compute.networks.delete`
 - `v1.compute.networks.get`
@@ -5127,11 +5306,13 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v1.compute.projects.setDefaultNetworkTier`
 - `v1.compute.projects.setUsageExportBucket`
 - `v1.compute.publicAdvertisedPrefixes.delete`
+- `v1.compute.publicAdvertisedPrefixes.get`
 - `v1.compute.publicAdvertisedPrefixes.insert`
 - `v1.compute.publicAdvertisedPrefixes.list`
 - `v1.compute.publicAdvertisedPrefixes.patch`
 - `v1.compute.publicDelegatedPrefixes.aggregatedList`
 - `v1.compute.publicDelegatedPrefixes.delete`
+- `v1.compute.publicDelegatedPrefixes.get`
 - `v1.compute.publicDelegatedPrefixes.insert`
 - `v1.compute.publicDelegatedPrefixes.list`
 - `v1.compute.publicDelegatedPrefixes.patch`
@@ -5152,6 +5333,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v1.compute.regionCommitments.get`
 - `v1.compute.regionCommitments.insert`
 - `v1.compute.regionCommitments.list`
+- `v1.compute.regionCommitments.update`
 - `v1.compute.regionDiskTypes.list`
 - `v1.compute.regionDisks.addResourcePolicies`
 - `v1.compute.regionDisks.createSnapshot`
@@ -5174,6 +5356,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v1.compute.regionHealthChecks.get`
 - `v1.compute.regionHealthChecks.insert`
 - `v1.compute.regionHealthChecks.list`
+- `v1.compute.regionHealthChecks.patch`
 - `v1.compute.regionHealthChecks.update`
 - `v1.compute.regionInstanceGroupManagers.abandonInstances`
 - `v1.compute.regionInstanceGroupManagers.applyUpdatesToInstances`
@@ -5204,6 +5387,18 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v1.compute.regionNetworkEndpointGroups.get`
 - `v1.compute.regionNetworkEndpointGroups.insert`
 - `v1.compute.regionNetworkEndpointGroups.list`
+- `v1.compute.regionNetworkFirewallPolicies.addAssociation`
+- `v1.compute.regionNetworkFirewallPolicies.addRule`
+- `v1.compute.regionNetworkFirewallPolicies.delete`
+- `v1.compute.regionNetworkFirewallPolicies.getIamPolicy`
+- `v1.compute.regionNetworkFirewallPolicies.insert`
+- `v1.compute.regionNetworkFirewallPolicies.list`
+- `v1.compute.regionNetworkFirewallPolicies.patch`
+- `v1.compute.regionNetworkFirewallPolicies.patchRule`
+- `v1.compute.regionNetworkFirewallPolicies.removeAssociation`
+- `v1.compute.regionNetworkFirewallPolicies.removeRule`
+- `v1.compute.regionNetworkFirewallPolicies.setIamPolicy`
+- `v1.compute.regionNetworkFirewallPolicies.testIamPermissions`
 - `v1.compute.regionNotificationEndpoints.delete`
 - `v1.compute.regionNotificationEndpoints.insert`
 - `v1.compute.regionNotificationEndpoints.list`
@@ -5243,6 +5438,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v1.compute.reservations.resize`
 - `v1.compute.reservations.setIamPolicy`
 - `v1.compute.reservations.testIamPermissions`
+- `v1.compute.reservations.update`
 - `v1.compute.resourcePolicies.aggregatedList`
 - `v1.compute.resourcePolicies.delete`
 - `v1.compute.resourcePolicies.get`
@@ -5285,6 +5481,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `v1.compute.snapshots.delete`
 - `v1.compute.snapshots.get`
 - `v1.compute.snapshots.getIamPolicy`
+- `v1.compute.snapshots.insert`
 - `v1.compute.snapshots.list`
 - `v1.compute.snapshots.setIamPolicy`
 - `v1.compute.snapshots.setLabels`
@@ -5404,10 +5601,12 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.CreateConversation`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.CreateIssueModel`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.CreatePhraseMatcher`
+- `google.cloud.contactcenterinsights.v1.ContactCenterInsights.CreateView`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.DeleteAnalysis`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.DeleteConversation`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.DeleteIssueModel`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.DeletePhraseMatcher`
+- `google.cloud.contactcenterinsights.v1.ContactCenterInsights.DeleteView`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.DeployIssueModel`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.ExportInsightsData`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.GetAnalysis`
@@ -5416,18 +5615,22 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.GetIssueModel`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.GetPhraseMatcher`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.GetSettings`
+- `google.cloud.contactcenterinsights.v1.ContactCenterInsights.GetView`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.IngestConversations`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.ListAnalyses`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.ListConversations`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.ListIssueModels`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.ListIssues`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.ListPhraseMatchers`
+- `google.cloud.contactcenterinsights.v1.ContactCenterInsights.ListViews`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.UndeployIssueModel`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.UpdateConversation`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.UpdateIssue`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.UpdateIssueModel`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.UpdatePhraseMatcher`
 - `google.cloud.contactcenterinsights.v1.ContactCenterInsights.UpdateSettings`
+- `google.cloud.contactcenterinsights.v1.ContactCenterInsights.UpdateView`
+- `google.cloud.contactcenterinsights.v1main.ContactCenterInsights.ListIssueModels`
 
 ### Container Analysis
 
@@ -5485,6 +5688,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.datapipelines.v1.Pipelines.CreatePipeline`
 - `google.cloud.datapipelines.v1.Pipelines.DeletePipeline`
 - `google.cloud.datapipelines.v1.Pipelines.GetPipeline`
+- `google.cloud.datapipelines.v1.Pipelines.ListJobs`
 - `google.cloud.datapipelines.v1.Pipelines.ListPipelines`
 - `google.cloud.datapipelines.v1.Pipelines.RunPipeline`
 - `google.cloud.datapipelines.v1.Pipelines.StopPipeline`
@@ -5498,21 +5702,31 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 #### `methodName`
 
+- `GetIamPolicy`
+- `SetIamPolicy`
 - `google.cloud.clouddms.v1.DataMigrationService.CreateConnectionProfile`
+- `google.cloud.clouddms.v1.DataMigrationService.CreateConversionWorkspace`
 - `google.cloud.clouddms.v1.DataMigrationService.CreateMigrationJob`
 - `google.cloud.clouddms.v1.DataMigrationService.DeleteConnectionProfile`
+- `google.cloud.clouddms.v1.DataMigrationService.DeleteConversionWorkspace`
 - `google.cloud.clouddms.v1.DataMigrationService.DeleteMigrationJob`
 - `google.cloud.clouddms.v1.DataMigrationService.GenerateSshScript`
 - `google.cloud.clouddms.v1.DataMigrationService.GetConnectionProfile`
 - `google.cloud.clouddms.v1.DataMigrationService.GetMigrationJob`
+- `google.cloud.clouddms.v1.DataMigrationService.ImportMappingRules`
 - `google.cloud.clouddms.v1.DataMigrationService.ListConnectionProfiles`
+- `google.cloud.clouddms.v1.DataMigrationService.ListConversionWorkspaces`
+- `google.cloud.clouddms.v1.DataMigrationService.ListMappingRules`
 - `google.cloud.clouddms.v1.DataMigrationService.ListMigrationJobs`
 - `google.cloud.clouddms.v1.DataMigrationService.PromoteMigrationJob`
 - `google.cloud.clouddms.v1.DataMigrationService.RestartMigrationJob`
 - `google.cloud.clouddms.v1.DataMigrationService.ResumeMigrationJob`
+- `google.cloud.clouddms.v1.DataMigrationService.SearchBackgroundJobs`
+- `google.cloud.clouddms.v1.DataMigrationService.SeedConversionWorkspace`
 - `google.cloud.clouddms.v1.DataMigrationService.StartMigrationJob`
 - `google.cloud.clouddms.v1.DataMigrationService.StopMigrationJob`
 - `google.cloud.clouddms.v1.DataMigrationService.UpdateConnectionProfile`
+- `google.cloud.clouddms.v1.DataMigrationService.UpdateConversionWorkspace`
 - `google.cloud.clouddms.v1.DataMigrationService.UpdateMigrationJob`
 - `google.cloud.clouddms.v1.DataMigrationService.VerifyMigrationJob`
 - `google.cloud.clouddms.v1beta1.DataMigrationService.CreateConnectionProfile`
@@ -5532,6 +5746,20 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.clouddms.v1beta1.DataMigrationService.UpdateConnectionProfile`
 - `google.cloud.clouddms.v1beta1.DataMigrationService.UpdateMigrationJob`
 - `google.cloud.clouddms.v1beta1.DataMigrationService.VerifyMigrationJob`
+- `google.longrunning.Operations.CancelOperation`
+- `google.longrunning.Operations.DeleteOperation`
+- `google.longrunning.Operations.GetOperation`
+- `google.longrunning.Operations.ListOperations`
+
+### datalineage.googleapis.com
+
+#### `serviceName`
+
+- `datalineage.googleapis.com`
+
+#### `methodName`
+
+- `google.cloud.datacatalog.lineage.v1.Lineage.GetProcess`
 
 ### Dataproc Metastore
 
@@ -5592,8 +5820,27 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.datastream.v1.Datastream.DeletePrivateConnection`
 - `google.cloud.datastream.v1.Datastream.DeleteRoute`
 - `google.cloud.datastream.v1.Datastream.DeleteStream`
+- `google.cloud.datastream.v1.Datastream.DiscoverConnectionProfile`
+- `google.cloud.datastream.v1.Datastream.FetchStaticIps`
+- `google.cloud.datastream.v1.Datastream.GetConnectionProfile`
+- `google.cloud.datastream.v1.Datastream.GetPrivateConnection`
+- `google.cloud.datastream.v1.Datastream.GetRoute`
+- `google.cloud.datastream.v1.Datastream.GetStream`
+- `google.cloud.datastream.v1.Datastream.GetStreamObject`
+- `google.cloud.datastream.v1.Datastream.ListConnectionProfiles`
+- `google.cloud.datastream.v1.Datastream.ListPrivateConnections`
+- `google.cloud.datastream.v1.Datastream.ListRoutes`
+- `google.cloud.datastream.v1.Datastream.ListStreamObjects`
+- `google.cloud.datastream.v1.Datastream.ListStreams`
+- `google.cloud.datastream.v1.Datastream.LookupStreamObject`
+- `google.cloud.datastream.v1.Datastream.StartBackfillJob`
+- `google.cloud.datastream.v1.Datastream.StopBackfillJob`
 - `google.cloud.datastream.v1.Datastream.UpdateConnectionProfile`
 - `google.cloud.datastream.v1.Datastream.UpdateStream`
+- `google.longrunning.Operations.CancelOperation`
+- `google.longrunning.Operations.DeleteOperation`
+- `google.longrunning.Operations.GetOperation`
+- `google.longrunning.Operations.ListOperations`
 
 ### Essential Contacts
 
@@ -5603,10 +5850,12 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 #### `methodName`
 
+- `google.cloud.essentialcontacts.v1.EssentialContactsService.ComputeContacts`
 - `google.cloud.essentialcontacts.v1.EssentialContactsService.CreateContact`
 - `google.cloud.essentialcontacts.v1.EssentialContactsService.DeleteContact`
 - `google.cloud.essentialcontacts.v1.EssentialContactsService.GetContact`
 - `google.cloud.essentialcontacts.v1.EssentialContactsService.ListContacts`
+- `google.cloud.essentialcontacts.v1.EssentialContactsService.SendTestMessage`
 - `google.cloud.essentialcontacts.v1.EssentialContactsService.UpdateContact`
 - `google.cloud.essentialcontacts.v1beta1.EssentialContactsService.ComputeContacts`
 - `google.cloud.essentialcontacts.v1beta1.EssentialContactsService.CreateContact`
@@ -5626,6 +5875,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 - `GetIamPolicy`
 - `SetIamPolicy`
+- `google.cloud.eventarc.v1.Eventarc.CreateChannel`
 - `google.cloud.eventarc.v1.Eventarc.CreateTrigger`
 - `google.cloud.eventarc.v1.Eventarc.DeleteTrigger`
 - `google.cloud.eventarc.v1.Eventarc.GetTrigger`
@@ -5677,19 +5927,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.ssh-serialport.v1.connect`
 - `google.ssh-serialport.v1.disconnect`
 
-### GKE Backup
-
-#### `serviceName`
-
-- `gkebackup.googleapis.com`
-
-#### `methodName`
-
-- `GetIamPolicy`
-- `SetIamPolicy`
-- `google.longrunning.Operations.GetOperation`
-- `google.longrunning.Operations.ListOperations`
-
 ### GKE Hub
 
 #### `serviceName`
@@ -5698,7 +5935,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 #### `methodName`
 
-- `GetIamPolicy`
 - `SetIamPolicy`
 - `google.cloud.gkehub.v1.GkeHub.CreateFeature`
 - `google.cloud.gkehub.v1.GkeHub.CreateMembership`
@@ -5735,17 +5971,20 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 #### `methodName`
 
+- `SetIamPolicy`
 - `google.cloud.domains.v1.Domains.ConfigureContactSettings`
 - `google.cloud.domains.v1.Domains.ConfigureDnsSettings`
 - `google.cloud.domains.v1.Domains.ConfigureManagementSettings`
 - `google.cloud.domains.v1.Domains.DeleteRegistration`
 - `google.cloud.domains.v1.Domains.ExportRegistration`
+- `google.cloud.domains.v1.Domains.GetRegistration`
 - `google.cloud.domains.v1.Domains.ListRegistrations`
 - `google.cloud.domains.v1.Domains.RegisterDomain`
 - `google.cloud.domains.v1.Domains.ResetAuthorizationCode`
 - `google.cloud.domains.v1.Domains.RetrieveAuthorizationCode`
 - `google.cloud.domains.v1.Domains.RetrieveRegisterParameters`
 - `google.cloud.domains.v1.Domains.RetrieveTransferParameters`
+- `google.cloud.domains.v1.Domains.SearchDomains`
 - `google.cloud.domains.v1.Domains.TransferDomain`
 - `google.cloud.domains.v1.Domains.UpdateRegistration`
 - `google.cloud.domains.v1beta1.Domains.ConfigureContactSettings`
@@ -5758,8 +5997,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.domains.v1beta1.Domains.RegisterDomain`
 - `google.cloud.domains.v1beta1.Domains.ResetAuthorizationCode`
 - `google.cloud.domains.v1beta1.Domains.RetrieveAuthorizationCode`
-- `google.cloud.domains.v1beta1.Domains.RetrieveRegisterParameters`
-- `google.cloud.domains.v1beta1.Domains.SearchDomains`
 - `google.cloud.domains.v1beta1.Domains.TransferDomain`
 - `google.cloud.domains.v1beta1.Domains.UpdateRegistration`
 - `google.longrunning.Operations.GetOperation`
@@ -5801,8 +6038,10 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.admin.AdminService.addToTrustedOauth2Apps`
 - `google.admin.AdminService.addTrustedDomains`
 - `google.admin.AdminService.alertCenterBatchDeleteAlerts`
+- `google.admin.AdminService.alertCenterBatchUndeleteAlerts`
 - `google.admin.AdminService.alertCenterCreateFeedback`
 - `google.admin.AdminService.alertCenterDeleteAlert`
+- `google.admin.AdminService.alertCenterGetAlertMetadata`
 - `google.admin.AdminService.alertCenterGetCustomerSettings`
 - `google.admin.AdminService.alertCenterGetSitLink`
 - `google.admin.AdminService.alertCenterListChange`
@@ -5813,6 +6052,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.admin.AdminService.alertCenterUpdateCustomerSettings`
 - `google.admin.AdminService.alertCenterView`
 - `google.admin.AdminService.alertHangoutsDevice`
+- `google.admin.AdminService.alertStatusChanged`
 - `google.admin.AdminService.allowServiceForOauth2Access`
 - `google.admin.AdminService.allowStrongAuthentication`
 - `google.admin.AdminService.appleDepTokenSetupComplete`
@@ -5820,16 +6060,14 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.admin.AdminService.assignCustomLogo`
 - `google.admin.AdminService.assignRole`
 - `google.admin.AdminService.authorizeApiClientAccess`
-- `google.admin.AdminService.autoProvConfigAttributeMappingRemoved`
 - `google.admin.AdminService.autoProvConfigAttributeMappingUpdated`
 - `google.admin.AdminService.autoProvConfigGroupNameAdded`
-- `google.admin.AdminService.autoProvConfigGroupNameRemoved`
 - `google.admin.AdminService.autoProvConfigGroupRestrictionDeactivated`
-- `google.admin.AdminService.autoProvDeprovActionRemoved`
 - `google.admin.AdminService.blockAllThirdPartyApiAccess`
 - `google.admin.AdminService.cancelAlertHangoutsDevice`
 - `google.admin.AdminService.cancelCalendarEvents`
 - `google.admin.AdminService.cancelUserInvite`
+- `google.admin.AdminService.changeAlertCriteria`
 - `google.admin.AdminService.changeAllowedTwoStepVerificationMethods`
 - `google.admin.AdminService.changeApplicationSetting`
 - `google.admin.AdminService.changeCaaAppAssignments`
@@ -5844,13 +6082,13 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.admin.AdminService.changeChromeOsWebApplicationSetting`
 - `google.admin.AdminService.changeCustomUserSchemaDescription`
 - `google.admin.AdminService.changeCustomUserSchemaDisplayName`
-- `google.admin.AdminService.changeCustomUserSchemaName`
 - `google.admin.AdminService.changeDataLocalizationForRussia`
 - `google.admin.AdminService.changeDeviceState`
 - `google.admin.AdminService.changeDocsSetting`
 - `google.admin.AdminService.changeDomainDefaultLocale`
 - `google.admin.AdminService.changeDomainDefaultTimezone`
 - `google.admin.AdminService.changeDomainSupportMessage`
+- `google.admin.AdminService.changeEduType`
 - `google.admin.AdminService.changeEmailSetting`
 - `google.admin.AdminService.changeFirstName`
 - `google.admin.AdminService.changeGmailSetting`
@@ -5864,6 +6102,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.admin.AdminService.changeHangoutsDeviceState`
 - `google.admin.AdminService.changeLastName`
 - `google.admin.AdminService.changeLdapApplicationAuthenticationSettings`
+- `google.admin.AdminService.changeLdapApplicationCertificateName`
 - `google.admin.AdminService.changeLdapApplicationDescription`
 - `google.admin.AdminService.changeLdapApplicationGroupSearchSettings`
 - `google.admin.AdminService.changeLdapApplicationName`
@@ -5883,8 +6122,11 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.admin.AdminService.changeRuleCriteria`
 - `google.admin.AdminService.changeSaml2ServiceProviderConfigAcsEndpoint`
 - `google.admin.AdminService.changeSaml2ServiceProviderConfigAttribute`
+- `google.admin.AdminService.changeSaml2ServiceProviderConfigDescription`
 - `google.admin.AdminService.changeSaml2ServiceProviderConfigEntityId`
 - `google.admin.AdminService.changeSaml2ServiceProviderConfigIdMapping`
+- `google.admin.AdminService.changeSaml2ServiceProviderConfigLogo`
+- `google.admin.AdminService.changeSaml2ServiceProviderConfigName`
 - `google.admin.AdminService.changeSaml2ServiceProviderConfigNameidFormat`
 - `google.admin.AdminService.changeSaml2ServiceProviderConfigSignResponse`
 - `google.admin.AdminService.changeSaml2ServiceProviderConfigStartUrl`
@@ -5907,6 +6149,9 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.admin.AdminService.changeUserPhoneNumber`
 - `google.admin.AdminService.changeUserRelation`
 - `google.admin.AdminService.chromeAppLicensesEnabled`
+- `google.admin.AdminService.chromeApplicationLicenseReservationCreated`
+- `google.admin.AdminService.chromeConnectorConfigurationChange`
+- `google.admin.AdminService.chromeLicensesRedeemed`
 - `google.admin.AdminService.cleanCalendarResourceCalendarEvents`
 - `google.admin.AdminService.communicationPreferencesSettingChange`
 - `google.admin.AdminService.companyDeviceDeletion`
@@ -5933,7 +6178,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.admin.AdminService.createManagedConfiguration`
 - `google.admin.AdminService.createNetwork`
 - `google.admin.AdminService.createOrgUnit`
-- `google.admin.AdminService.createRemoteDirectory`
 - `google.admin.AdminService.createRole`
 - `google.admin.AdminService.createRule`
 - `google.admin.AdminService.createSaml2ServiceProviderConfig`
@@ -5991,8 +6235,8 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.admin.AdminService.enableDirectorySync`
 - `google.admin.AdminService.enableUserIpWhitelist`
 - `google.admin.AdminService.enforceStrongAuthentication`
+- `google.admin.AdminService.ewsInNewCredentialsGenerated`
 - `google.admin.AdminService.ewsOutEndpointConfigurationChanged`
-- `google.admin.AdminService.ewsOutEndpointConfigurationReset`
 - `google.admin.AdminService.exitMigration`
 - `google.admin.AdminService.generate2svScratchCodes`
 - `google.admin.AdminService.generateCertificate`
@@ -6027,6 +6271,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.admin.AdminService.removeApiClientAccess`
 - `google.admin.AdminService.removeApplication`
 - `google.admin.AdminService.removeCertificate`
+- `google.admin.AdminService.removeChromeOsApplicationSetting`
 - `google.admin.AdminService.removeDomainAlias`
 - `google.admin.AdminService.removeFromBlockedOauth2Apps`
 - `google.admin.AdminService.removeFromTrustedOauth2Apps`
@@ -6041,6 +6286,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.admin.AdminService.removeSecondaryDomain`
 - `google.admin.AdminService.removeTrustedDomains`
 - `google.admin.AdminService.renameRole`
+- `google.admin.AdminService.renameRule`
 - `google.admin.AdminService.renameUser`
 - `google.admin.AdminService.reorderGroupBasedPoliciesEvent`
 - `google.admin.AdminService.requestMailboxDump`
@@ -6087,7 +6333,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.admin.AdminService.suspendAutoProvisionedUser`
 - `google.admin.AdminService.suspendUser`
 - `google.admin.AdminService.systemDefinedRuleUpdated`
-- `google.admin.AdminService.testRemoteDirectoryConnectionStatus`
 - `google.admin.AdminService.toggleAutoAddNewService`
 - `google.admin.AdminService.toggleAutomaticContactSharing`
 - `google.admin.AdminService.toggleCaaEnablement`
@@ -6095,6 +6340,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.admin.AdminService.toggleServiceEnabled`
 - `google.admin.AdminService.toggleSsoEnabled`
 - `google.admin.AdminService.trustDomainOwnedOauth2Apps`
+- `google.admin.AdminService.trustRulesOptIn`
 - `google.admin.AdminService.turnOffBigqueryExport`
 - `google.admin.AdminService.turnOnBigqueryExport`
 - `google.admin.AdminService.unarchiveUser`
@@ -6142,6 +6388,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.admin.AdminService.updateRemoteDirectory`
 - `google.admin.AdminService.updateRule`
 - `google.admin.AdminService.updateSmartFeatures`
+- `google.admin.AdminService.updateSyncJob`
 - `google.admin.AdminService.upgradeUserToGplus`
 - `google.admin.AdminService.userEnrolledInTwoStepVerification`
 - `google.admin.AdminService.userInvite`
@@ -6175,7 +6422,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.identitytoolkit.admin.v2.ProjectConfigService.EnableIdentityPlatform`
 - `google.cloud.identitytoolkit.admin.v2.ProjectConfigService.GetConfig`
 - `google.cloud.identitytoolkit.admin.v2.ProjectConfigService.GetDefaultSupportedIdpConfig`
-- `google.cloud.identitytoolkit.admin.v2.ProjectConfigService.GetIamPolicy`
 - `google.cloud.identitytoolkit.admin.v2.ProjectConfigService.GetInboundSamlConfig`
 - `google.cloud.identitytoolkit.admin.v2.ProjectConfigService.GetOAuthIdpConfig`
 - `google.cloud.identitytoolkit.admin.v2.ProjectConfigService.ListDefaultSupportedIdpConfigs`
@@ -6206,7 +6452,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.identitytoolkit.v2beta1.ProjectConfigService.CreateOAuthIdpConfig`
 - `google.cloud.identitytoolkit.v2beta1.ProjectConfigService.DeleteInboundSamlConfig`
 - `google.cloud.identitytoolkit.v2beta1.ProjectConfigService.DeleteOAuthIdpConfig`
-- `google.cloud.identitytoolkit.v2beta1.ProjectConfigService.GetConfig`
 - `google.cloud.identitytoolkit.v2beta1.ProjectConfigService.ListInboundSamlConfigs`
 - `google.cloud.identitytoolkit.v2beta1.ProjectConfigService.ListOAuthIdpConfigs`
 - `google.cloud.identitytoolkit.v2beta1.ProjectConfigService.UpdateInboundSamlConfig`
@@ -6253,9 +6498,12 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 #### `methodName`
 
 - `google.cloud.vmmigration.v1.VmMigration.AddGroupMigration`
+- `google.cloud.vmmigration.v1.VmMigration.CancelCloneJob`
+- `google.cloud.vmmigration.v1.VmMigration.CancelCutoverJob`
 - `google.cloud.vmmigration.v1.VmMigration.CreateCloneJob`
 - `google.cloud.vmmigration.v1.VmMigration.CreateCutoverJob`
 - `google.cloud.vmmigration.v1.VmMigration.CreateDatacenterConnector`
+- `google.cloud.vmmigration.v1.VmMigration.CreateGroup`
 - `google.cloud.vmmigration.v1.VmMigration.CreateMigratingVm`
 - `google.cloud.vmmigration.v1.VmMigration.CreateSource`
 - `google.cloud.vmmigration.v1.VmMigration.CreateTargetProject`
@@ -6264,19 +6512,39 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.vmmigration.v1.VmMigration.DeleteGroup`
 - `google.cloud.vmmigration.v1.VmMigration.DeleteMigratingVm`
 - `google.cloud.vmmigration.v1.VmMigration.DeleteSource`
+- `google.cloud.vmmigration.v1.VmMigration.DeleteTargetProject`
 - `google.cloud.vmmigration.v1.VmMigration.DeleteUtilizationReport`
+- `google.cloud.vmmigration.v1.VmMigration.FetchInventory`
 - `google.cloud.vmmigration.v1.VmMigration.FinalizeMigration`
+- `google.cloud.vmmigration.v1.VmMigration.GetCloneJob`
+- `google.cloud.vmmigration.v1.VmMigration.GetCutoverJob`
 - `google.cloud.vmmigration.v1.VmMigration.GetDatacenterConnector`
+- `google.cloud.vmmigration.v1.VmMigration.GetGroup`
 - `google.cloud.vmmigration.v1.VmMigration.GetMigratingVm`
+- `google.cloud.vmmigration.v1.VmMigration.GetSource`
+- `google.cloud.vmmigration.v1.VmMigration.GetTargetProject`
+- `google.cloud.vmmigration.v1.VmMigration.GetUtilizationReport`
+- `google.cloud.vmmigration.v1.VmMigration.ListCloneJobs`
+- `google.cloud.vmmigration.v1.VmMigration.ListCutoverJobs`
 - `google.cloud.vmmigration.v1.VmMigration.ListDatacenterConnectors`
+- `google.cloud.vmmigration.v1.VmMigration.ListGroups`
 - `google.cloud.vmmigration.v1.VmMigration.ListMigratingVms`
 - `google.cloud.vmmigration.v1.VmMigration.ListSources`
 - `google.cloud.vmmigration.v1.VmMigration.ListTargetProjects`
+- `google.cloud.vmmigration.v1.VmMigration.ListUtilizationReports`
+- `google.cloud.vmmigration.v1.VmMigration.PauseMigration`
 - `google.cloud.vmmigration.v1.VmMigration.RemoveGroupMigration`
+- `google.cloud.vmmigration.v1.VmMigration.ResumeMigration`
 - `google.cloud.vmmigration.v1.VmMigration.StartMigration`
 - `google.cloud.vmmigration.v1.VmMigration.UpdateGroup`
 - `google.cloud.vmmigration.v1.VmMigration.UpdateMigratingVm`
 - `google.cloud.vmmigration.v1.VmMigration.UpdateSource`
+- `google.cloud.vmmigration.v1.VmMigration.UpdateTargetProject`
+- `google.cloud.vmmigration.v1.VmMigration.UpgradeAppliance`
+- `google.longrunning.Operations.CancelOperation`
+- `google.longrunning.Operations.DeleteOperation`
+- `google.longrunning.Operations.GetOperation`
+- `google.longrunning.Operations.ListOperations`
 
 ### Network Connectivity
 
@@ -6299,6 +6567,10 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.networkconnectivity.v1.HubService.ListSpokes`
 - `google.cloud.networkconnectivity.v1.HubService.UpdateHub`
 - `google.cloud.networkconnectivity.v1.HubService.UpdateSpoke`
+- `google.longrunning.Operations.CancelOperation`
+- `google.longrunning.Operations.DeleteOperation`
+- `google.longrunning.Operations.GetOperation`
+- `google.longrunning.Operations.ListOperations`
 
 ### Network Management
 
@@ -6331,18 +6603,13 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 #### `methodName`
 
-- `google.cloud.networksecurity.v1.NetworkSecurity.CreateAuthorizationPolicy`
 - `google.cloud.networksecurity.v1.NetworkSecurity.CreateClientTlsPolicy`
 - `google.cloud.networksecurity.v1.NetworkSecurity.CreateServerTlsPolicy`
 - `google.cloud.networksecurity.v1.NetworkSecurity.DeleteAuthorizationPolicy`
 - `google.cloud.networksecurity.v1.NetworkSecurity.DeleteClientTlsPolicy`
 - `google.cloud.networksecurity.v1.NetworkSecurity.DeleteServerTlsPolicy`
-- `google.cloud.networksecurity.v1.NetworkSecurity.ListAuthorizationPolicies`
+- `google.cloud.networksecurity.v1.NetworkSecurity.GetClientTlsPolicy`
 - `google.cloud.networksecurity.v1.NetworkSecurity.ListClientTlsPolicies`
-- `google.cloud.networksecurity.v1.NetworkSecurity.ListServerTlsPolicies`
-- `google.cloud.networksecurity.v1.NetworkSecurity.UpdateAuthorizationPolicy`
-- `google.cloud.networksecurity.v1.NetworkSecurity.UpdateClientTlsPolicy`
-- `google.cloud.networksecurity.v1.NetworkSecurity.UpdateServerTlsPolicy`
 - `google.cloud.networksecurity.v1beta1.NetworkSecurity.CreateAuthorizationPolicy`
 - `google.cloud.networksecurity.v1beta1.NetworkSecurity.CreateClientTlsPolicy`
 - `google.cloud.networksecurity.v1beta1.NetworkSecurity.CreateServerTlsPolicy`
@@ -6355,6 +6622,8 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.networksecurity.v1beta1.NetworkSecurity.UpdateAuthorizationPolicy`
 - `google.cloud.networksecurity.v1beta1.NetworkSecurity.UpdateClientTlsPolicy`
 - `google.cloud.networksecurity.v1beta1.NetworkSecurity.UpdateServerTlsPolicy`
+- `google.longrunning.Operations.DeleteOperation`
+- `google.longrunning.Operations.GetOperation`
 
 ### Network Services
 
@@ -6364,7 +6633,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 #### `methodName`
 
-- `SetIamPolicy`
 - `google.cloud.networkservices.v1.NetworkServices.CreateEdgeCacheKeyset`
 - `google.cloud.networkservices.v1.NetworkServices.CreateEdgeCacheOrigin`
 - `google.cloud.networkservices.v1.NetworkServices.CreateEdgeCacheService`
@@ -6379,14 +6647,17 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.networkservices.v1.NetworkServices.ListEdgeCacheKeysets`
 - `google.cloud.networkservices.v1.NetworkServices.ListEdgeCacheOrigins`
 - `google.cloud.networkservices.v1.NetworkServices.ListEdgeCacheServices`
+- `google.cloud.networkservices.v1.NetworkServices.ListEndpointPolicies`
 - `google.cloud.networkservices.v1.NetworkServices.UpdateEdgeCacheKeyset`
 - `google.cloud.networkservices.v1.NetworkServices.UpdateEdgeCacheOrigin`
 - `google.cloud.networkservices.v1.NetworkServices.UpdateEdgeCacheService`
-- `google.cloud.networkservices.v1.NetworkServices.UpdateEndpointPolicy`
 - `google.cloud.networkservices.v1beta1.NetworkServices.CreateEndpointPolicy`
+- `google.cloud.networkservices.v1beta1.NetworkServices.CreateServiceBinding`
 - `google.cloud.networkservices.v1beta1.NetworkServices.DeleteEndpointPolicy`
-- `google.cloud.networkservices.v1beta1.NetworkServices.GetEndpointPolicy`
+- `google.cloud.networkservices.v1beta1.NetworkServices.DeleteServiceBinding`
 - `google.cloud.networkservices.v1beta1.NetworkServices.UpdateEndpointPolicy`
+- `google.longrunning.Operations.DeleteOperation`
+- `google.longrunning.Operations.GetOperation`
 
 ### OAuth 2.0
 
@@ -6397,6 +6668,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 #### `methodName`
 
 - `google.identity.oauth2.GetToken`
+- `google.identity.oauth2.GetTokenInfo`
 - `google.identity.oauth2.RevokeToken`
 
 ### On-Demand Scanning
@@ -6447,6 +6719,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.pubsublite.v1.TopicStatsService.ComputeMessageStats`
 - `google.cloud.pubsublite.v1.TopicStatsService.ComputeTimeCursor`
 - `google.longrunning.Operations.GetOperation`
+- `google.longrunning.Operations.ListOperations`
 
 ### reCAPTCHA Enterprise
 
@@ -6614,9 +6887,9 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.securitycenter.v1.SecurityCenter.CreateSource`
 - `google.cloud.securitycenter.v1.SecurityCenter.DeleteMuteConfig`
 - `google.cloud.securitycenter.v1.SecurityCenter.DeleteNotificationConfig`
+- `google.cloud.securitycenter.v1.SecurityCenter.GetBigQueryExport`
 - `google.cloud.securitycenter.v1.SecurityCenter.GetFindingResponse`
 - `google.cloud.securitycenter.v1.SecurityCenter.GetIamPolicy`
-- `google.cloud.securitycenter.v1.SecurityCenter.GetIsOnboarded`
 - `google.cloud.securitycenter.v1.SecurityCenter.GetMuteConfig`
 - `google.cloud.securitycenter.v1.SecurityCenter.GetNotificationConfig`
 - `google.cloud.securitycenter.v1.SecurityCenter.GetOrganizationSettings`
@@ -6644,6 +6917,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.securitycenter.v1beta1.SecurityCenter.ListAssets`
 - `google.cloud.securitycenter.v1beta1.SecurityCenter.ListFindings`
 - `google.cloud.securitycenter.v1beta1.SecurityCenter.ListSources`
+- `google.cloud.securitycenter.v1beta1.SecurityCenter.SetFindingState`
 - `google.cloud.securitycenter.v1beta1.SecurityCenter.UpdateSecurityMarks`
 - `google.cloud.securitycenter.v1p1beta1.SecurityCenter.CreateFinding`
 - `google.cloud.securitycenter.v1p1beta1.SecurityCenter.CreateNotificationConfig`
@@ -6764,7 +7038,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.api.servicemanagement.v1.ServiceManager.CreateService`
 - `google.api.servicemanagement.v1.ServiceManager.CreateServiceConfig`
 - `google.api.servicemanagement.v1.ServiceManager.CreateServiceRollout`
-- `google.api.servicemanagement.v1.ServiceManager.DeactivateServices`
 - `google.api.servicemanagement.v1.ServiceManager.DeleteService`
 - `google.api.servicemanagement.v1.ServiceManager.EnableService`
 - `google.api.servicemanagement.v1.ServiceManager.SubmitConfigSource`
@@ -6785,6 +7058,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.api.serviceusage.v1.ServiceUsage.DisableService`
 - `google.api.serviceusage.v1.ServiceUsage.EnableService`
 - `google.api.serviceusage.v1beta1.ServiceUsage.BatchEnableServices`
+- `google.api.serviceusage.v1beta1.ServiceUsage.CreateAdminOverride`
 - `google.api.serviceusage.v1beta1.ServiceUsage.CreateConsumerOverride`
 - `google.api.serviceusage.v1beta1.ServiceUsage.DeleteConsumerOverride`
 - `google.api.serviceusage.v1beta1.ServiceUsage.DisableService`
@@ -6827,6 +7101,17 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.bi.customerusagedataprocessing.v1.DataProcessingGroupControlService.ListEffectiveDataProcessingGroupControls`
 - `google.cloud.bi.customerusagedataprocessing.v1beta.DataProcessingGroupControlService.ListEffectiveDataProcessingGroupControls`
 
+### visionai.googleapis.com
+
+#### `serviceName`
+
+- `visionai.googleapis.com`
+
+#### `methodName`
+
+- `google.longrunning.Operations.GetOperation`
+- `google.longrunning.Operations.ListOperations`
+
 ### VMware Engine
 
 #### `serviceName`
@@ -6835,16 +7120,28 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 #### `methodName`
 
-- `SetIamPolicy`
 - `google.cloud.vmwareengine.v1.VmwareEngine.CreateCluster`
+- `google.cloud.vmwareengine.v1.VmwareEngine.CreateExternalAddress`
+- `google.cloud.vmwareengine.v1.VmwareEngine.CreateHcxActivationKey`
+- `google.cloud.vmwareengine.v1.VmwareEngine.CreateNetworkPolicy`
 - `google.cloud.vmwareengine.v1.VmwareEngine.CreatePrivateCloud`
 - `google.cloud.vmwareengine.v1.VmwareEngine.DeleteCluster`
+- `google.cloud.vmwareengine.v1.VmwareEngine.DeleteExternalAddress`
+- `google.cloud.vmwareengine.v1.VmwareEngine.DeleteNetworkPolicy`
 - `google.cloud.vmwareengine.v1.VmwareEngine.DeletePrivateCloud`
+- `google.cloud.vmwareengine.v1.VmwareEngine.GetCluster`
+- `google.cloud.vmwareengine.v1.VmwareEngine.GetNodeType`
+- `google.cloud.vmwareengine.v1.VmwareEngine.GetPrivateCloud`
+- `google.cloud.vmwareengine.v1.VmwareEngine.ListClusters`
+- `google.cloud.vmwareengine.v1.VmwareEngine.ListNetworkPolicies`
+- `google.cloud.vmwareengine.v1.VmwareEngine.ListPrivateClouds`
 - `google.cloud.vmwareengine.v1.VmwareEngine.ResetNsxCredentials`
 - `google.cloud.vmwareengine.v1.VmwareEngine.ResetVcenterCredentials`
+- `google.cloud.vmwareengine.v1.VmwareEngine.ShowVcenterCredentials`
 - `google.cloud.vmwareengine.v1.VmwareEngine.UndeletePrivateCloud`
 - `google.cloud.vmwareengine.v1.VmwareEngine.UpdateCluster`
-- `google.cloud.vmwareengine.v1.VmwareEngine.UpdatePrivateCloud`
+- `google.cloud.vmwareengine.v1.VmwareEngine.UpdateExternalAddress`
+- `google.cloud.vmwareengine.v1.VmwareEngine.UpdateNetworkPolicy`
 - `google.vmwareengine.authorize`
 
 ### Web Security Scanner

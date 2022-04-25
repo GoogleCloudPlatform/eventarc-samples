@@ -46,6 +46,7 @@ that explains Eventarc.
   * [Workflows and Eventarc (Pub/Sub)](https://github.com/GoogleCloudPlatform/workflows-demos/tree/master/workflows-eventarc-integration/workflows-pubsub)
   * [Image processing pipeline v2 - Eventarc (Cloud Storage) + Cloud Run + Workflows](processing-pipelines/image-v2/)
   * [Image processing pipeline v3 - Eventarc (Cloud Storage) + Workflows](processing-pipelines/image-v3/)
+  * [Take screenshots of webpages with Cloud Run jobs, Workflows and Eventarc](https://github.com/GoogleCloudPlatform/workflows-demos/blob/master/screenshot-jobs)
 * Other
   * [Cross project eventing](cross-project-eventing)
   * [Terraform sample](terraform)

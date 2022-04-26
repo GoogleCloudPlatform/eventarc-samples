@@ -18,9 +18,9 @@ using Io.Cloudevents.V1;
 using static Io.Cloudevents.V1.CloudEvent.Types;
 
 var commandArgs = Environment.GetCommandLineArgs();
-var ProjectId = commandArgs[1]; //"events-atamel";
-var Region = commandArgs[2]; //"us-central1";
-var Channel = commandArgs[3]; //"atamel-custom-events-channel";
+var ProjectId = commandArgs[1]; // "your-project-id";
+var Region = commandArgs[2];    // "us-central1";
+var Channel = commandArgs[3];   // "hello-custom-events-channel";
 Console.WriteLine($"ProjectId: {ProjectId}, Region: {Region}, Channel: {Channel}");
 
 var publisherClient = await PublisherClient.CreateAsync();
@@ -44,3 +44,4 @@ var request = new PublishEventsRequest
     Events = { Any.Pack(ce) }
 };
 var response = await publisherClient.PublishEventsAsync(request);
+Console.WriteLine("Event published!");

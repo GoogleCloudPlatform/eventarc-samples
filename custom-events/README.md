@@ -36,9 +36,5 @@ event type and attributes.
 
 ### Publish from client libraries
 
-You can also publish events from client libraries. Here's an example run for C#:
-
-```sh
-cd client-libraries/csharp
-./publish.sh
-```
+You can also publish events from client libraries. Check
+[client-libraries](client-libraries) for different languages.

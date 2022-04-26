@@ -28,7 +28,7 @@ var publisherClient = await PublisherClient.CreateAsync();
 var ce = new CloudEvent
 {
     Id = "12345",
-    Source = "urn:from/client/library",
+    Source = "urn:from/csharp",
     SpecVersion = "1.0",
     TextData = "{\"message\": \"Hello world from C# client library\"}",
     Type = "mycompany.myorg.myproject.v1.myevent"

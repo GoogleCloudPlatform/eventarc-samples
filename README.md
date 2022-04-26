@@ -50,6 +50,7 @@ that explains Eventarc.
 * Other
   * [Cross project eventing](cross-project-eventing)
   * [Terraform sample](terraform)
+  * [Custom events samples](custom-events)
 
 -------
 

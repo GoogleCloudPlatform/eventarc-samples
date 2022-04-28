@@ -3,7 +3,7 @@ plugins {
     id 'application'
 }
 
-mainClassName = 'com.google.cloud.eventarc.publish.example.PublishEventsExample'
+mainClassName = 'com.google.cloud.eventarc.publishing.example.PublishEventsExample'
 
 group 'org.example'
 version '1.0-SNAPSHOT'

@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+mainClassName = 'com.google.cloud.eventarc.publish.example.PublishEventsExample'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    implementation 'com.github.googleapis:java-eventarc-publishing:main-SNAPSHOT'
+    implementation group: 'io.cloudevents', name: 'cloudevents-protobuf', version: '2.3.0'
+    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.20.1'
+    implementation 'com.google.code.gson:gson:2.9.0'
+}
+
+test {
+    useJUnitPlatform()
+}

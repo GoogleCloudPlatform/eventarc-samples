@@ -1,4 +1,4 @@
-# Eventarc Terraform
+# Basic Terraform
 
 This is a sample that shows how to use Terraform's
 [eventarc_trigger](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/eventarc_trigger)

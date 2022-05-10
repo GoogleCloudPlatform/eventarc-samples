@@ -52,6 +52,7 @@ that explains Eventarc.
   * [Terraform with Eventarc and Workflows](terraform/eventarc-workflows)
 * [Cross project eventing](cross-project-eventing)
 * [Custom events samples](custom-events)
+* [Cloud IoT Events](cloudiot-events)
 
 -------
 

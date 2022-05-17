@@ -48,7 +48,7 @@ echo "Create a Cloud IoT trigger to listen for registry creation events with tes
 gcloud eventarc triggers create cloudiot-trigger \
   --destination-run-service=$SERVICE_NAME \
   --destination-run-region=$REGION \
-  --event-filters="type=google.cloud.iot.registry.v1.created" \
+  --event-filters="type=google.api.cloud.iot.v1.registryCreated" \
   --event-filters-path-pattern="registry=**/test-registry-*" \
   --service-account=$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com
 

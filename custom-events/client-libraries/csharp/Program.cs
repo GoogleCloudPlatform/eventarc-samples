@@ -14,8 +14,8 @@
 
 using Google.Cloud.Eventarc.Publishing.V1;
 using Google.Protobuf.WellKnownTypes;
-using Io.Cloudevents.V1;
-using static Io.Cloudevents.V1.CloudEvent.Types;
+using CloudNative.CloudEvents;
+using CloudNative.CloudEvents.Protobuf;
 
 var commandArgs = Environment.GetCommandLineArgs();
 var ProjectId = commandArgs[1]; // "your-project-id";
@@ -25,23 +25,35 @@ Console.WriteLine($"ProjectId: {ProjectId}, Region: {Region}, Channel: {Channel}
 
 var publisherClient = await PublisherClient.CreateAsync();
 
-var ce = new CloudEvent
+//Construct the CloudEvent and set necessary attributes.
+var cloudEventAttributes = new[]
 {
-    Id = "12345",
-    Source = "urn:from/csharp",
-    SpecVersion = "1.0",
-    TextData = "{\"message\": \"Hello world from C# client library\"}",
-    Type = "mycompany.myorg.myproject.v1.myevent"
+    CloudEventAttribute.CreateExtension("someattribute", CloudEventAttributeType.String),
+    CloudEventAttribute.CreateExtension("temperature", CloudEventAttributeType.Integer),
+    CloudEventAttribute.CreateExtension("weather", CloudEventAttributeType.String),
 };
 
-ce.Attributes.Add("datacontenttype", new CloudEventAttributeValue{CeString = "application/json"});
-ce.Attributes.Add("someattribute", new CloudEventAttributeValue{CeString = "somevalue"});
-ce.Attributes.Add("time", new CloudEventAttributeValue{CeTimestamp = Timestamp.FromDateTime(DateTime.UtcNow)});
+var cloudEvent = new CloudEvent(cloudEventAttributes)
+{
+    Id = "12345",
+    Type = "example.v1.event",
+    Source = new Uri("urn:from/client/library"),
+    Subject = "test-event-subject",
+    DataContentType = "application/json",
+    Data = "{\"message\": \"Test Event using Client Library\"}",
+    Time = DateTimeOffset.UtcNow,
+    ["somattribute"] = "some value",
+    ["temperature"] = 5,
+    ["weather"] = "sunny"
+};
+
+ //Convert the CloudEvent to proto format using the proto converter
+var cloudEventProto = new ProtobufEventFormatter().ConvertToProto(cloudEvent);
 
 var request = new PublishEventsRequest
 {
     Channel = $"projects/{ProjectId}/locations/{Region}/channels/{Channel}",
-    Events = { Any.Pack(ce) }
+    Events = { Any.Pack(cloudEventProto) }
 };
 var response = await publisherClient.PublishEventsAsync(request);
 Console.WriteLine("Event published!");

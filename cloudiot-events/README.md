@@ -13,15 +13,15 @@ These are the Cloud IoT events supported.
 
 [Device](https://cloud.google.com/iot/docs/reference/cloudiot/rest#rest-resource:-v1.projects.locations.registries.devices) Events:
 
-* google.cloud.iot.device.v1.created
-* google.cloud.iot.device.v1.updated
-* google.cloud.iot.device.v1.deleted
+* google.api.cloud.iot.v1.deviceCreated
+* google.api.cloud.iot.v1.deviceUpdated
+* google.api.cloud.iot.v1.deviceDeleted
 
 [Registry](https://cloud.google.com/iot/docs/reference/cloudiot/rest#rest-resource:-v1.projects.locations.registries) Events:
 
-* google.cloud.iot.registry.v1.created
-* google.cloud.iot.registry.v1.updated
-* google.cloud.iot.registry.v1.deleted
+* google.api.cloud.iot.v1.registryCreated
+* google.api.cloud.iot.v1.registryUpdated
+* google.api.cloud.iot.v1.registryDeleted
 
 ## Before you begin
 

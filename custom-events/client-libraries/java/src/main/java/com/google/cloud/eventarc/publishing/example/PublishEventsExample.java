@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+// [START eventarc_custom_publish_java]
 package com.google.cloud.eventarc.publishing.example;
 
 import com.google.cloud.eventarc.publishing.v1.PublishEventsRequest;
@@ -98,3 +99,4 @@ public class PublishEventsExample {
     new PublishEventsExample().SendPublishEvent(projectId, region, channel);
   }
 }
+// [END eventarc_custom_publish_java]

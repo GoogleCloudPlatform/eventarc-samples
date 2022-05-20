@@ -11,7 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
+// [START eventarc_custom_publish_csharp]
 using Google.Cloud.Eventarc.Publishing.V1;
 using Google.Protobuf.WellKnownTypes;
 using CloudNative.CloudEvents;
@@ -57,3 +57,4 @@ var request = new PublishEventsRequest
 };
 var response = await publisherClient.PublishEventsAsync(request);
 Console.WriteLine("Event published!");
+// [END eventarc_custom_publish_csharp]

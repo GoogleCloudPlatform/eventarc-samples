@@ -16,6 +16,15 @@
       ]
     },
     {
+      "displayName": "Firebase Realtime Database",
+      "events": [
+        "google.firebase.database.ref.v1.created",
+        "google.firebase.database.ref.v1.updated",
+        "google.firebase.database.ref.v1.deleted",
+        "google.firebase.database.ref.v1.written"
+      ]
+    },
+    {
       "displayName": "Firebase Remote Config",
       "events": [
         "google.firebase.remoteconfig.remoteConfig.v1.updated"

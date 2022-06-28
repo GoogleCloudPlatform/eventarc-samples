@@ -2,62 +2,39 @@
 
 The following is a list of the events supported by Eventarc.
 
-- Using Pub/Sub
-- Using Cloud Audit Logs
 - Directly from a Google Cloud source
+- Using Cloud Audit Logs
+- Using Pub/Sub
 
-## Using Pub/Sub
+## Directly from a Google Cloud source
 
-Requests to your service are triggered by messages published to a Pub/Sub topic.
 For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
-### Custom applications
+### Cloud Storage
 
-- Any custom application that can publish to a PubSub topic
+- `google.cloud.storage.object.v1.archived`
+- `google.cloud.storage.object.v1.deleted`
+- `google.cloud.storage.object.v1.finalized`
+- `google.cloud.storage.object.v1.metadataUpdated`
 
-### [Artifact Registry](https://cloud.google.com/artifact-registry/docs/configure-notifications)
+### Firebase Alerts
 
-- `artifactregistry`
+- `google.firebase.firebasealerts.alerts.v1.published`
 
-### [BigQuery (scheduled queries)](https://cloud.google.com/bigquery/docs/scheduling-queries)
+### Firebase Realtime Database
 
-- `bigquery.googleapis.com`
+- `google.firebase.database.ref.v1.created`
+- `google.firebase.database.ref.v1.updated`
+- `google.firebase.database.ref.v1.deleted`
+- `google.firebase.database.ref.v1.written`
 
-### [Cloud Asset](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes)
+### Firebase Remote Config
 
-- `cloudasset.googleapis.com`
+- `google.firebase.remoteconfig.remoteConfig.v1.updated`
 
-### [Cloud Billing](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications)
+### Firebase Test Lab
 
-- `cloudbilling.googleapis.com`
-
-### [Cloud Build](https://cloud.google.com/build/docs/subscribe-build-notifications)
-
-- `cloudbuild.googleapis.com`
-
-### [Cloud Healthcare](https://cloud.google.com/healthcare/docs/how-tos/pubsub)
-
-- `healthcare.googleapis.com`
-
-### [Cloud IoT](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#publishing_telemetry_events_to_additional_cloud_pubsub_topics)
-
-- `cloudiot.googleapis.com`
-
-### [Cloud Scheduler](https://cloud.google.com/scheduler/docs/creating)
-
-- `cloudscheduler.googleapis.com`
-
-### [Cloud Source Repositories](https://cloud.google.com/source-repositories/docs/pubsub-notifications)
-
-- `sourcerepo.googleapis.com`
-
-### [Cloud Storage](https://cloud.google.com/storage/docs/pubsub-notifications)
-
-- `storage.googleapis.com`
-
-### [Container Registry](https://cloud.google.com/container-registry/docs/configuring-notifications)
-
-- `containerregistry`
+- `google.firebase.testlab.testMatrix.v1.completed`
 
 ## Using Cloud Audit Logs
 
@@ -7349,32 +7326,56 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.workflows.v1beta.Workflows.ListWorkflows`
 - `google.cloud.workflows.v1beta.Workflows.UpdateWorkflow`
 
-## Directly from a Google Cloud source
 
+## Using Pub/Sub
+
+Requests to your service are triggered by messages published to a Pub/Sub topic.
 For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
-### Cloud Storage
+### Custom applications
 
-- `google.cloud.storage.object.v1.archived`
-- `google.cloud.storage.object.v1.deleted`
-- `google.cloud.storage.object.v1.finalized`
-- `google.cloud.storage.object.v1.metadataUpdated`
+- Any custom application that can publish to a PubSub topic
 
-### Firebase Alerts
+### [Artifact Registry](https://cloud.google.com/artifact-registry/docs/configure-notifications)
 
-- `google.firebase.firebasealerts.alerts.v1.published`
+- `artifactregistry`
 
-### Firebase Realtime Database
+### [BigQuery (scheduled queries)](https://cloud.google.com/bigquery/docs/scheduling-queries)
 
-- `google.firebase.database.ref.v1.created`
-- `google.firebase.database.ref.v1.updated`
-- `google.firebase.database.ref.v1.deleted`
-- `google.firebase.database.ref.v1.written`
+- `bigquery.googleapis.com`
 
-### Firebase Remote Config
+### [Cloud Asset](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes)
 
-- `google.firebase.remoteconfig.remoteConfig.v1.updated`
+- `cloudasset.googleapis.com`
 
-### Firebase Test Lab
+### [Cloud Billing](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications)
 
-- `google.firebase.testlab.testMatrix.v1.completed`
+- `cloudbilling.googleapis.com`
+
+### [Cloud Build](https://cloud.google.com/build/docs/subscribe-build-notifications)
+
+- `cloudbuild.googleapis.com`
+
+### [Cloud Healthcare](https://cloud.google.com/healthcare/docs/how-tos/pubsub)
+
+- `healthcare.googleapis.com`
+
+### [Cloud IoT](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#publishing_telemetry_events_to_additional_cloud_pubsub_topics)
+
+- `cloudiot.googleapis.com`
+
+### [Cloud Scheduler](https://cloud.google.com/scheduler/docs/creating)
+
+- `cloudscheduler.googleapis.com`
+
+### [Cloud Source Repositories](https://cloud.google.com/source-repositories/docs/pubsub-notifications)
+
+- `sourcerepo.googleapis.com`
+
+### [Cloud Storage](https://cloud.google.com/storage/docs/pubsub-notifications)
+
+- `storage.googleapis.com`
+
+### [Container Registry](https://cloud.google.com/container-registry/docs/configuring-notifications)
+
+- `containerregistry`

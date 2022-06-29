@@ -49,9 +49,9 @@ namespace EventListGenerator
             using StreamWriter file = new(output);
 
             AddHeader(file);
-            AddPubSubServices(file, devsite);
-            await AddAuditLogServicesAsync(file, devsite);
             AddDirectServices(file, devsite);
+            await AddAuditLogServicesAsync(file, devsite);
+            AddPubSubServices(file, devsite);
 
             Console.WriteLine($"File generated: {output}");
         }
@@ -60,9 +60,9 @@ namespace EventListGenerator
         {
             file.WriteLine("# Events supported by Eventarc\n");
             file.WriteLine("The following is a list of the events supported by Eventarc.\n");
-            file.WriteLine("- Using Pub/Sub");
-            file.WriteLine("- Using Cloud Audit Logs");
             file.WriteLine("- Directly from a Google Cloud source");
+            file.WriteLine("- Using Cloud Audit Logs");
+            file.WriteLine("- Using Pub/Sub");
         }
 
         private static void AddPubSubServices(StreamWriter file, bool devsite)
@@ -173,7 +173,7 @@ namespace EventListGenerator
         {
             if (devsite)
             {
-                file.WriteLine("## Directly from a Google Cloud source\n");
+                file.WriteLine("\n## Directly from a Google Cloud source\n");
                 file.WriteLine("For more information, see [All trigger targets](/eventarc/docs/targets.md).");
             }
             else

@@ -44,7 +44,7 @@ The following is a list of the events supported by Eventarc.
 <details><summary>Firebase Test Lab</summary>
 <p>
 
-* `google.firebase.testlab.testMatrix.v1.completed`
+* `custom`
 
 </p>
 </details>
@@ -1310,6 +1310,17 @@ The following is a list of the events supported by Eventarc.
 
 </p>
 </details>
+<details><summary>BigQuery Migration</summary>
+<p>
+
+`bigquerymigration.googleapis.com`
+
+* `google.cloud.bigquery.migration.v2.MigrationService.CreateMigrationWorkflow`
+* `google.cloud.bigquery.migration.v2.MigrationService.ListMigrationWorkflows`
+* `google.cloud.bigquery.migration.v2.SqlTranslationService.TranslateQuery`
+
+</p>
+</details>
 <details><summary>BigQuery Reservation</summary>
 <p>
 
@@ -1341,17 +1352,6 @@ The following is a list of the events supported by Eventarc.
 * `google.cloud.bigquery.reservation.v1beta1.ReservationService.UpdateBiReservation`
 * `google.cloud.bigquery.reservation.v1beta1.ReservationService.UpdateCapacityCommitment`
 * `google.cloud.bigquery.reservation.v1beta1.ReservationService.UpdateReservation`
-
-</p>
-</details>
-<details><summary>bigquerymigration.googleapis.com</summary>
-<p>
-
-`bigquerymigration.googleapis.com`
-
-* `google.cloud.bigquery.migration.v2.MigrationService.CreateMigrationWorkflow`
-* `google.cloud.bigquery.migration.v2.MigrationService.ListMigrationWorkflows`
-* `google.cloud.bigquery.migration.v2.SqlTranslationService.TranslateQuery`
 
 </p>
 </details>
@@ -2049,9 +2049,6 @@ The following is a list of the events supported by Eventarc.
 
 `deploymentmanager.googleapis.com`
 
-* `dogfood.deploymentmanager.deployments.cancelPreview`
-* `dogfood.deploymentmanager.deployments.patch`
-* `dogfood.deploymentmanager.deployments.stop`
 * `v2.deploymentmanager.deployments.cancelPreview`
 * `v2.deploymentmanager.deployments.delete`
 * `v2.deploymentmanager.deployments.get`
@@ -5907,7 +5904,6 @@ The following is a list of the events supported by Eventarc.
 
 `firebasedatabase.googleapis.com`
 
-* `-`
 * `google.firebase.database.v1beta.RealtimeDatabaseService.CreateDatabaseInstance`
 * `google.firebase.database.v1beta.RealtimeDatabaseService.DeleteDatabaseInstance`
 * `google.firebase.database.v1beta.RealtimeDatabaseService.DisableDatabaseInstance`
@@ -7295,6 +7291,41 @@ Any custom application that can publish to a PubSub topic
 <p>
 
 `containerregistry` ([more info](https://cloud.google.com/container-registry/docs/configuring-notifications))
+
+</p>
+</details>
+
+### Third-party sources
+<details><summary>Datadog</summary>
+<p>
+
+* `datadog.v1.alert`
+
+</p>
+</details>
+<details><summary>Lacework</summary>
+<p>
+
+* `lacework.compliance.v1.newViolation`
+* `lacework.polygraph.v1.cloudActivity`
+* `lacework.polygraph.v1.application`
+* `lacework.polygraph.v1.file`
+* `lacework.polygraph.v1.machine`
+* `lacework.polygraph.v1.user`
+
+</p>
+</details>
+<details><summary>Check Point CloudGuard</summary>
+<p>
+
+* `cloudguard.v1.event`
+
+</p>
+</details>
+<details><summary>ForgeRock</summary>
+<p>
+
+* `custom`
 
 </p>
 </details>

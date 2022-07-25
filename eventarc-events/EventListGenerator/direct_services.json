@@ -33,7 +33,7 @@
     {
       "displayName": "Firebase Test Lab",
       "events": [
-        "google.firebase.testlab.testMatrix.v1.completed"
+        "custom"
       ]
     }
   ]

@@ -28,6 +28,8 @@ namespace EventListGenerator
 
         private const string DIRECT_SERVICE_CATALOG_FILE = "direct_services.json";
 
+        private const string THIRDPARTY_SERVICE_CATALOG_FILE = "thirdparty_services.json";
+
         // TODO: Externalize to a file if the list gets long at some point.
         private static HashSet<string> AUDITLOG_METHOD_NAMES_BLOCK_LIST = new HashSet<string> {
             "google.monitoring.v3.TimeSeriesFilterService.ParseTimeSeriesFilter"
@@ -52,6 +54,7 @@ namespace EventListGenerator
             AddDirectServices(file, devsite);
             await AddAuditLogServicesAsync(file, devsite);
             AddPubSubServices(file, devsite);
+            AddThirdPartyServices(file, devsite);
 
             Console.WriteLine($"File generated: {output}");
         }
@@ -171,17 +174,27 @@ namespace EventListGenerator
 
         private static void AddDirectServices(StreamWriter file, bool devsite)
         {
+            DoAddServices("Directly from a Google Cloud source", DIRECT_SERVICE_CATALOG_FILE, file, devsite);
+        }
+
+        private static void AddThirdPartyServices(StreamWriter file, bool devsite)
+        {
+            DoAddServices("Third-party sources", THIRDPARTY_SERVICE_CATALOG_FILE, file, devsite);
+        }
+
+        private static void DoAddServices(string title, string catalogFile, StreamWriter file, bool devsite)
+        {
             if (devsite)
             {
-                file.WriteLine("\n## Directly from a Google Cloud source\n");
+                file.WriteLine($"\n## {title}\n");
                 file.WriteLine("For more information, see [All trigger targets](/eventarc/docs/targets.md).");
             }
             else
             {
-                file.WriteLine("\n### Directly from a Google Cloud source");
+                file.WriteLine($"\n### {title}");
             }
 
-            var jsonString = File.ReadAllText(DIRECT_SERVICE_CATALOG_FILE);
+            var jsonString = File.ReadAllText(catalogFile);
             var services = JsonSerializer.Deserialize<DirectServices>(jsonString);
 
             services.services.ForEach(service =>

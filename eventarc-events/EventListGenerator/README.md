@@ -8,6 +8,7 @@ The list has 3 parts: Pub/Sub, AuditLog, Direct services.
 * AuditLog list comes from the [AuditLog service
   catalog](https://raw.githubusercontent.com/googleapis/google-cloudevents/master/json/audit/service_catalog.json).
 * Pub/Sub list comes from `pubsub_services.json`.
+* 3rd party list comes from `thirdparty_services.json`.
 
 The list has 2 formats:
 

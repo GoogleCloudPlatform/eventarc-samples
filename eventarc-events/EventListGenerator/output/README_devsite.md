@@ -34,7 +34,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 ### Firebase Test Lab
 
-- `google.firebase.testlab.testMatrix.v1.completed`
+- `custom`
 
 ## Using Cloud Audit Logs
 
@@ -1315,6 +1315,18 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.location.Locations.GetLocation`
 - `google.cloud.location.Locations.ListLocations`
 
+### BigQuery Migration
+
+#### `serviceName`
+
+- `bigquerymigration.googleapis.com`
+
+#### `methodName`
+
+- `google.cloud.bigquery.migration.v2.MigrationService.CreateMigrationWorkflow`
+- `google.cloud.bigquery.migration.v2.MigrationService.ListMigrationWorkflows`
+- `google.cloud.bigquery.migration.v2.SqlTranslationService.TranslateQuery`
+
 ### BigQuery Reservation
 
 #### `serviceName`
@@ -1349,18 +1361,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.bigquery.reservation.v1beta1.ReservationService.UpdateBiReservation`
 - `google.cloud.bigquery.reservation.v1beta1.ReservationService.UpdateCapacityCommitment`
 - `google.cloud.bigquery.reservation.v1beta1.ReservationService.UpdateReservation`
-
-### bigquerymigration.googleapis.com
-
-#### `serviceName`
-
-- `bigquerymigration.googleapis.com`
-
-#### `methodName`
-
-- `google.cloud.bigquery.migration.v2.MigrationService.CreateMigrationWorkflow`
-- `google.cloud.bigquery.migration.v2.MigrationService.ListMigrationWorkflows`
-- `google.cloud.bigquery.migration.v2.SqlTranslationService.TranslateQuery`
 
 ### Binary Authorization
 
@@ -2075,9 +2075,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 #### `methodName`
 
-- `dogfood.deploymentmanager.deployments.cancelPreview`
-- `dogfood.deploymentmanager.deployments.patch`
-- `dogfood.deploymentmanager.deployments.stop`
 - `v2.deploymentmanager.deployments.cancelPreview`
 - `v2.deploymentmanager.deployments.delete`
 - `v2.deploymentmanager.deployments.get`
@@ -5984,7 +5981,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 #### `methodName`
 
-- `-`
 - `google.firebase.database.v1beta.RealtimeDatabaseService.CreateDatabaseInstance`
 - `google.firebase.database.v1beta.RealtimeDatabaseService.DeleteDatabaseInstance`
 - `google.firebase.database.v1beta.RealtimeDatabaseService.DisableDatabaseInstance`
@@ -7379,3 +7375,28 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 ### [Container Registry](https://cloud.google.com/container-registry/docs/configuring-notifications)
 
 - `containerregistry`
+
+## Third-party sources
+
+For more information, see [All trigger targets](/eventarc/docs/targets.md).
+
+### Datadog
+
+- `datadog.v1.alert`
+
+### Lacework
+
+- `lacework.compliance.v1.newViolation`
+- `lacework.polygraph.v1.cloudActivity`
+- `lacework.polygraph.v1.application`
+- `lacework.polygraph.v1.file`
+- `lacework.polygraph.v1.machine`
+- `lacework.polygraph.v1.user`
+
+### Check Point CloudGuard
+
+- `cloudguard.v1.event`
+
+### ForgeRock
+
+- `custom`

@@ -1,0 +1,33 @@
+{
+  "services": [
+    {
+      "displayName": "Datadog",
+      "events": [
+        "datadog.v1.alert"
+      ]
+    },
+    {
+      "displayName": "Lacework",
+      "events": [
+        "lacework.compliance.v1.newViolation",
+        "lacework.polygraph.v1.cloudActivity",
+        "lacework.polygraph.v1.application",
+        "lacework.polygraph.v1.file",
+        "lacework.polygraph.v1.machine",
+        "lacework.polygraph.v1.user"
+      ]
+    },
+    {
+      "displayName": "Check Point CloudGuard",
+      "events": [
+        "cloudguard.v1.event"
+      ]
+    },
+    {
+      "displayName": "ForgeRock",
+      "events": [
+        "custom"
+      ]
+    }
+  ]
+}

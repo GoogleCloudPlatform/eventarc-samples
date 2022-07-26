@@ -45,7 +45,7 @@ The following is a list of the events supported by Eventarc.
 <details><summary>Firebase Test Lab</summary>
 <p>
 
-* `custom`
+* `google.firebase.testlab.testMatrix.v1.completed`
 
 </p>
 </details>

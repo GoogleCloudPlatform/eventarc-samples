@@ -35,7 +35,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 ### Firebase Test Lab
 
-- `custom`
+- `google.firebase.testlab.testMatrix.v1.completed`
 
 ## Using Cloud Audit Logs
 

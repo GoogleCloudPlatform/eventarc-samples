@@ -66,7 +66,7 @@ namespace EventListGenerator
             file.WriteLine("- Directly from a Google Cloud source");
             file.WriteLine("- Using Cloud Audit Logs");
             file.WriteLine("- Using Pub/Sub");
-            file.WriteLine("- Third-party sources");
+            file.WriteLine("- Using third-party sources");
         }
 
         private static void AddPubSubServices(StreamWriter file, bool devsite)

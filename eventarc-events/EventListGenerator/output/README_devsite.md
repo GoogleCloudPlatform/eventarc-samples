@@ -7377,7 +7377,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 - `containerregistry`
 
-## Third-party sources
+## Using third-party sources
 
 For more information, see [All trigger targets](/eventarc/docs/targets.md).
 

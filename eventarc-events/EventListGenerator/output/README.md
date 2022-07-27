@@ -7296,7 +7296,7 @@ Any custom application that can publish to a PubSub topic
 </p>
 </details>
 
-### Third-party sources
+### Using third-party sources
 <details><summary>Datadog</summary>
 <p>
 

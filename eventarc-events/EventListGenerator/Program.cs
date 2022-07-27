@@ -180,7 +180,7 @@ namespace EventListGenerator
 
         private static void AddThirdPartyServices(StreamWriter file, bool devsite)
         {
-            DoAddServices("Third-party sources", THIRDPARTY_SERVICE_CATALOG_FILE, file, devsite);
+            DoAddServices("Using third-party sources", THIRDPARTY_SERVICE_CATALOG_FILE, file, devsite);
         }
 
         private static void DoAddServices(string title, string catalogFile, StreamWriter file, bool devsite)

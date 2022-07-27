@@ -5,7 +5,7 @@ The following is a list of the events supported by Eventarc.
 - [Directly from a Google Cloud source](/eventarc/docs/reference/supported-events#directly-from-a-google-cloud-source)
 - [Using Cloud Audit Logs](/eventarc/docs/reference/supported-events#using-cloud-audit-logs)
 - [Using Pub/Sub](/eventarc/docs/reference/supported-events#using-pubsub)
-- [Using third-party sources](/eventarc/docs/reference/supported-events#third-party-sources)
+- [Using third-party sources](/eventarc/docs/reference/supported-events#using-third-party-sources)
 
 ## Directly from a Google Cloud source
 

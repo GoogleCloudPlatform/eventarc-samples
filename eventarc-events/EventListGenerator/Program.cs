@@ -87,7 +87,7 @@ namespace EventListGenerator
 
             file.WriteLine($"- [{HEADER_THIRDPARTY}]"
                 + (devsite ?
-                "(/eventarc/docs/reference/supported-events#third-party-sources)" : 
+                "(/eventarc/docs/reference/supported-events#using-third-party-sources)" :
                 "(#using-third-party-sources)"));
         }
 

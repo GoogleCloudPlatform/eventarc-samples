@@ -2,10 +2,10 @@
 
 The following is a list of the events supported by Eventarc.
 
-- Directly from a Google Cloud source
-- Using Cloud Audit Logs
-- Using Pub/Sub
-- Using third-party sources
+- [Directly from a Google Cloud source](#directly-from-a-google-cloud-source)
+- [Using Cloud Audit Logs](#using-cloud-audit-logs)
+- [Using Pub/Sub](#using-pubsub)
+- [Using third-party sources](#using-third-party-sources)
 
 ### Directly from a Google Cloud source
 <details><summary>Cloud Storage</summary>
@@ -7211,7 +7211,7 @@ The following is a list of the events supported by Eventarc.
 </p>
 </details>
 
-### Using Cloud Pub/Sub
+### Using Pub/Sub
 <details><summary>Custom applications</summary>
 <p>
 

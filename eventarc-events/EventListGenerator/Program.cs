@@ -35,6 +35,14 @@ namespace EventListGenerator
             "google.monitoring.v3.TimeSeriesFilterService.ParseTimeSeriesFilter"
         };
 
+        private const string HEADER_DIRECT = "Directly from a Google Cloud source";
+
+        private const string HEADER_AUDITLOG = "Using Cloud Audit Logs";
+
+        private const string HEADER_PUBSUB = "Using Pub/Sub";
+
+        private const string HEADER_THIRDPARTY = "Using third-party sources";
+
         private const string OUTPUT_FOLDER = "output";
         private const string OUTPUT_GITHUB = "README.md";
         private const string OUTPUT_DEVSITE = "README_devsite.md";
@@ -50,36 +58,50 @@ namespace EventListGenerator
             var output = devsite ? folder + "/" + OUTPUT_DEVSITE : folder + "/" + OUTPUT_GITHUB;
             using StreamWriter file = new(output);
 
-            AddHeader(file);
-            AddDirectServices(file, devsite);
+            AddHeader(file, devsite);
+            DoAddServices(HEADER_DIRECT, DIRECT_SERVICE_CATALOG_FILE, file, devsite);
             await AddAuditLogServicesAsync(file, devsite);
             AddPubSubServices(file, devsite);
-            AddThirdPartyServices(file, devsite);
+            DoAddServices(HEADER_THIRDPARTY, THIRDPARTY_SERVICE_CATALOG_FILE, file, devsite);
 
             Console.WriteLine($"File generated: {output}");
         }
 
-        private static void AddHeader(StreamWriter file)
+        private static void AddHeader(StreamWriter file, bool devsite)
         {
             file.WriteLine("# Events supported by Eventarc\n");
             file.WriteLine("The following is a list of the events supported by Eventarc.\n");
-            file.WriteLine("- Directly from a Google Cloud source");
-            file.WriteLine("- Using Cloud Audit Logs");
-            file.WriteLine("- Using Pub/Sub");
-            file.WriteLine("- Using third-party sources");
+            file.WriteLine($"- [{HEADER_DIRECT}]"
+                + (devsite ?
+                "(/eventarc/docs/reference/supported-events#directly-from-a-google-cloud-source)" :
+                "(#directly-from-a-google-cloud-source)"));
+            file.WriteLine($"- [{HEADER_AUDITLOG}]"
+                + (devsite ?
+                "(/eventarc/docs/reference/supported-events#using-cloud-audit-logs)" :
+                "(#using-cloud-audit-logs)"));
+
+            file.WriteLine($"- [{HEADER_PUBSUB}]"
+                + (devsite ?
+                "(/eventarc/docs/reference/supported-events#using-pubsub)" :
+                "(#using-pubsub)"));
+
+            file.WriteLine($"- [{HEADER_THIRDPARTY}]"
+                + (devsite ?
+                "(/eventarc/docs/reference/supported-events#third-party-sources)" : 
+                "(#using-third-party-sources)"));
         }
 
         private static void AddPubSubServices(StreamWriter file, bool devsite)
         {
             if (devsite)
             {
-                file.WriteLine("\n## Using Pub/Sub\n");
+                file.WriteLine($"\n## {HEADER_PUBSUB}\n");
                 file.WriteLine("Requests to your service are triggered by messages published to a Pub/Sub topic.");
                 file.WriteLine("For more information, see [All trigger targets](/eventarc/docs/targets.md).");
             }
             else
             {
-                file.WriteLine("\n### Using Cloud Pub/Sub");
+                file.WriteLine($"\n### {HEADER_PUBSUB}");
             }
 
             var jsonString = File.ReadAllText(PUBSUB_SERVICE_CATALOG_FILE);
@@ -134,12 +156,12 @@ namespace EventListGenerator
         {
             if (devsite)
             {
-                file.WriteLine("\n## Using Cloud Audit Logs\n");
+                file.WriteLine($"\n## {HEADER_AUDITLOG}\n");
                 file.WriteLine("These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [All trigger targets](/eventarc/docs/targets.md).\n");
             }
             else
             {
-                file.WriteLine("\n### Using Cloud Audit Logs");
+                file.WriteLine($"\n### {HEADER_AUDITLOG}");
             }
 
             var stream = await client.GetStreamAsync(AUDITLOG_SERVICE_CATALOG_URL);
@@ -172,17 +194,6 @@ namespace EventListGenerator
                 }
             });
         }
-
-        private static void AddDirectServices(StreamWriter file, bool devsite)
-        {
-            DoAddServices("Directly from a Google Cloud source", DIRECT_SERVICE_CATALOG_FILE, file, devsite);
-        }
-
-        private static void AddThirdPartyServices(StreamWriter file, bool devsite)
-        {
-            DoAddServices("Using third-party sources", THIRDPARTY_SERVICE_CATALOG_FILE, file, devsite);
-        }
-
         private static void DoAddServices(string title, string catalogFile, StreamWriter file, bool devsite)
         {
             if (devsite)

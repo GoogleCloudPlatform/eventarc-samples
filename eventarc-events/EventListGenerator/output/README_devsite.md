@@ -18,22 +18,22 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.storage.object.v1.finalized`
 - `google.cloud.storage.object.v1.metadataUpdated`
 
-### Firebase Alerts
+### Firebase Alerts (preview)
 
 - `google.firebase.firebasealerts.alerts.v1.published`
 
-### Firebase Realtime Database
+### Firebase Realtime Database (preview)
 
 - `google.firebase.database.ref.v1.created`
 - `google.firebase.database.ref.v1.updated`
 - `google.firebase.database.ref.v1.deleted`
 - `google.firebase.database.ref.v1.written`
 
-### Firebase Remote Config
+### Firebase Remote Config (preview)
 
 - `google.firebase.remoteconfig.remoteConfig.v1.updated`
 
-### Firebase Test Lab
+### Firebase Test Lab (preview)
 
 - `google.firebase.testlab.testMatrix.v1.completed`
 

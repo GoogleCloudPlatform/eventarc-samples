@@ -18,14 +18,14 @@ The following is a list of the events supported by Eventarc.
 
 </p>
 </details>
-<details><summary>Firebase Alerts</summary>
+<details><summary>Firebase Alerts (preview)</summary>
 <p>
 
 * `google.firebase.firebasealerts.alerts.v1.published`
 
 </p>
 </details>
-<details><summary>Firebase Realtime Database</summary>
+<details><summary>Firebase Realtime Database (preview)</summary>
 <p>
 
 * `google.firebase.database.ref.v1.created`
@@ -35,14 +35,14 @@ The following is a list of the events supported by Eventarc.
 
 </p>
 </details>
-<details><summary>Firebase Remote Config</summary>
+<details><summary>Firebase Remote Config (preview)</summary>
 <p>
 
 * `google.firebase.remoteconfig.remoteConfig.v1.updated`
 
 </p>
 </details>
-<details><summary>Firebase Test Lab</summary>
+<details><summary>Firebase Test Lab (preview)</summary>
 <p>
 
 * `google.firebase.testlab.testMatrix.v1.completed`

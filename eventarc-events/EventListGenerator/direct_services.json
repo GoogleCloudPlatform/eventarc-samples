@@ -10,13 +10,13 @@
       ]
     },
     {
-      "displayName": "Firebase Alerts",
+      "displayName": "Firebase Alerts (preview)",
       "events": [
         "google.firebase.firebasealerts.alerts.v1.published"
       ]
     },
     {
-      "displayName": "Firebase Realtime Database",
+      "displayName": "Firebase Realtime Database (preview)",
       "events": [
         "google.firebase.database.ref.v1.created",
         "google.firebase.database.ref.v1.updated",
@@ -25,13 +25,13 @@
       ]
     },
     {
-      "displayName": "Firebase Remote Config",
+      "displayName": "Firebase Remote Config (preview)",
       "events": [
         "google.firebase.remoteconfig.remoteConfig.v1.updated"
       ]
     },
     {
-      "displayName": "Firebase Test Lab",
+      "displayName": "Firebase Test Lab (preview)",
       "events": [
         "google.firebase.testlab.testMatrix.v1.completed"
       ]

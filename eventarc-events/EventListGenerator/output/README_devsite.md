@@ -7381,11 +7381,11 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
-### Datadog
+### Datadog (preview)
 
 - `datadog.v1.alert`
 
-### Lacework
+### Lacework (preview)
 
 - `lacework.compliance.v1.newViolation`
 - `lacework.polygraph.v1.cloudActivity`
@@ -7394,10 +7394,10 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `lacework.polygraph.v1.machine`
 - `lacework.polygraph.v1.user`
 
-### Check Point CloudGuard
+### Check Point CloudGuard (preview)
 
 - `cloudguard.v1.event`
 
-### ForgeRock
+### ForgeRock (preview)
 
 - `custom`

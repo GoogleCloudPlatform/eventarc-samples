@@ -7297,14 +7297,14 @@ Any custom application that can publish to a PubSub topic
 </details>
 
 ### Using third-party sources
-<details><summary>Datadog</summary>
+<details><summary>Datadog (preview)</summary>
 <p>
 
 * `datadog.v1.alert`
 
 </p>
 </details>
-<details><summary>Lacework</summary>
+<details><summary>Lacework (preview)</summary>
 <p>
 
 * `lacework.compliance.v1.newViolation`
@@ -7316,14 +7316,14 @@ Any custom application that can publish to a PubSub topic
 
 </p>
 </details>
-<details><summary>Check Point CloudGuard</summary>
+<details><summary>Check Point CloudGuard (preview)</summary>
 <p>
 
 * `cloudguard.v1.event`
 
 </p>
 </details>
-<details><summary>ForgeRock</summary>
+<details><summary>ForgeRock (preview)</summary>
 <p>
 
 * `custom`

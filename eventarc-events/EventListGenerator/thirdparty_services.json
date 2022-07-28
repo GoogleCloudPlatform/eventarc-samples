@@ -1,13 +1,13 @@
 {
   "services": [
     {
-      "displayName": "Datadog",
+      "displayName": "Datadog (preview)",
       "events": [
         "datadog.v1.alert"
       ]
     },
     {
-      "displayName": "Lacework",
+      "displayName": "Lacework (preview)",
       "events": [
         "lacework.compliance.v1.newViolation",
         "lacework.polygraph.v1.cloudActivity",
@@ -18,13 +18,13 @@
       ]
     },
     {
-      "displayName": "Check Point CloudGuard",
+      "displayName": "Check Point CloudGuard (preview)",
       "events": [
         "cloudguard.v1.event"
       ]
     },
     {
-      "displayName": "ForgeRock",
+      "displayName": "ForgeRock (preview)",
       "events": [
         "custom"
       ]

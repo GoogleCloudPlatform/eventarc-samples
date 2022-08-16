@@ -18,6 +18,15 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.storage.object.v1.finalized`
 - `google.cloud.storage.object.v1.metadataUpdated`
 
+### Cloud IoT (preview)
+
+- `google.api.cloud.iot.v1.deviceCreated`
+- `google.api.cloud.iot.v1.deviceUpdated`
+- `google.api.cloud.iot.v1.deviceDeleted`
+- `google.api.cloud.iot.v1.registryCreated`
+- `google.api.cloud.iot.v1.registryUpdated`
+- `google.api.cloud.iot.v1.registryDeleted`
+
 ### Firebase Alerts (preview)
 
 - `google.firebase.firebasealerts.alerts.v1.published`

@@ -18,6 +18,18 @@ The following is a list of the events supported by Eventarc.
 
 </p>
 </details>
+<details><summary>Cloud IoT (preview)</summary>
+<p>
+
+* `google.api.cloud.iot.v1.deviceCreated`
+* `google.api.cloud.iot.v1.deviceUpdated`
+* `google.api.cloud.iot.v1.deviceDeleted`
+* `google.api.cloud.iot.v1.registryCreated`
+* `google.api.cloud.iot.v1.registryUpdated`
+* `google.api.cloud.iot.v1.registryDeleted`
+
+</p>
+</details>
 <details><summary>Firebase Alerts (preview)</summary>
 <p>
 

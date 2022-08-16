@@ -10,6 +10,17 @@
       ]
     },
     {
+      "displayName": "Cloud IoT (preview)",
+      "events": [
+        "google.api.cloud.iot.v1.deviceCreated",
+        "google.api.cloud.iot.v1.deviceUpdated",
+        "google.api.cloud.iot.v1.deviceDeleted",
+        "google.api.cloud.iot.v1.registryCreated",
+        "google.api.cloud.iot.v1.registryUpdated",
+        "google.api.cloud.iot.v1.registryDeleted"
+      ]
+    },
+    {
       "displayName": "Firebase Alerts (preview)",
       "events": [
         "google.firebase.firebasealerts.alerts.v1.published"

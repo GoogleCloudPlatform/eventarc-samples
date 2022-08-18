@@ -23,12 +23,6 @@ Generate the GitHub and DevSite friendly formats to output folder:
 dotnet run
 ```
 
-Generate in a different folder:
-
-```sh
-dotnet run --folder .
-```
-
 ## Run in a container
 
 Build the container:

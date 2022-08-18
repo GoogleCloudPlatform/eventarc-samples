@@ -1,4 +1,4 @@
-﻿// Copyright 2021 Google LLC
+﻿// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -48,20 +48,17 @@ namespace EventListGenerator
         private const string OUTPUT_DEVSITE = "README_devsite.md";
         private static readonly HttpClient client = new HttpClient();
 
-        static async Task Main(string folder = OUTPUT_FOLDER)
+        static async Task Main()
         {
-            await Generate(false, folder);
-            await Generate(true, folder);
+            await Generate(false);
+            await Generate(true);
         }
 
-        private async static Task Generate(bool devsite, string folder)
+        private async static Task Generate(bool devsite)
         {
-            Console.WriteLine($"Devsite? {devsite}");
-            Console.WriteLine($"Output folder: {folder}");
+            Directory.CreateDirectory(OUTPUT_FOLDER);
 
-            Directory.CreateDirectory(folder);
-
-            var output = devsite ? folder + "/" + OUTPUT_DEVSITE : folder + "/" + OUTPUT_GITHUB;
+            var output = devsite ? OUTPUT_FOLDER + "/" + OUTPUT_DEVSITE : OUTPUT_FOLDER + "/" + OUTPUT_GITHUB;
             using StreamWriter file = new(output);
 
             AddHeader(file, devsite);

@@ -48,7 +48,7 @@ namespace EventListGenerator
         private const string OUTPUT_DEVSITE = "README_devsite.md";
         private static readonly HttpClient client = new HttpClient();
 
-        static async Task Main(bool devsite = false, string folder = OUTPUT_FOLDER)
+        static async Task Main(string folder = OUTPUT_FOLDER)
         {
             await Generate(false, folder);
             await Generate(true, folder);

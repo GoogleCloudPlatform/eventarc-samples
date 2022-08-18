@@ -16,8 +16,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Mime;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Google.Cloud.Storage.V1;
 
 namespace EventListGenerator
 {
@@ -50,16 +52,16 @@ namespace EventListGenerator
 
         static async Task Main()
         {
-            await Generate(false);
-            await Generate(true);
+            await GenerateFile(false);
+            await GenerateFile(true);
         }
 
-        private async static Task Generate(bool devsite)
+        private async static Task GenerateFile(bool devsite)
         {
             Directory.CreateDirectory(OUTPUT_FOLDER);
 
-            var output = devsite ? OUTPUT_FOLDER + "/" + OUTPUT_DEVSITE : OUTPUT_FOLDER + "/" + OUTPUT_GITHUB;
-            using StreamWriter file = new(output);
+            var filePath = devsite ? OUTPUT_FOLDER + "/" + OUTPUT_DEVSITE : OUTPUT_FOLDER + "/" + OUTPUT_GITHUB;
+            using StreamWriter file = new(filePath);
 
             AddHeader(file, devsite);
             DoAddServices(HEADER_DIRECT, DIRECT_SERVICE_CATALOG_FILE, file, devsite);
@@ -67,7 +69,8 @@ namespace EventListGenerator
             AddPubSubServices(file, devsite);
             DoAddServices(HEADER_THIRDPARTY, THIRDPARTY_SERVICE_CATALOG_FILE, file, devsite);
 
-            Console.WriteLine($"File generated: {output}");
+            Console.WriteLine($"File generated: {filePath}");
+            await UploadToBucket(filePath);
         }
 
         private static void AddHeader(StreamWriter file, bool devsite)
@@ -228,6 +231,20 @@ namespace EventListGenerator
                     file.WriteLine("</details>");
                 }
             });
+        }
+
+        private static async Task UploadToBucket(string filePath)
+        {
+            var bucket = Environment.GetEnvironmentVariable("BUCKET");
+            if (string.IsNullOrEmpty(bucket))
+            {
+                return;
+            }
+
+            var client = await StorageClient.CreateAsync();
+            using var fileStream = File.OpenRead(filePath);
+            await client.UploadObjectAsync(bucket, Path.GetFileName(filePath), MediaTypeNames.Text.Plain, fileStream);
+            Console.WriteLine($"File uploaded to bucket: {bucket}");
         }
     }
 }

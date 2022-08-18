@@ -36,3 +36,14 @@ Generate the GitHub and DevSite friendly format to output folder:
 ```sh
 docker run -v $PWD/output:/app/output eventlistgenerator
 ```
+
+## Run on a schedule with Cloud Run jobs
+
+Run `setup.sh` to setup everything needed in your project to run the events list
+generator as a Cloud Run job that runs on a schedule every day at 9am and
+generates the GitHub and DevSite friendly formats in a public bucket.
+
+Here are 2 files in a public bucket that get regenerated automatically every day:
+
+* [README.md](https://storage.googleapis.com/events-atamel-event-list-generator/README.md)
+* [README_devsite.md](https://storage.googleapis.com/events-atamel-event-list-generator/README_devsite.md)

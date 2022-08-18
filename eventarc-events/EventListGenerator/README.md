@@ -17,16 +17,10 @@ The list has 2 formats:
 
 ## Run locally
 
-Generate the GitHub friendly format to output folder:
+Generate the GitHub and DevSite friendly formats to output folder:
 
 ```sh
 dotnet run
-```
-
-Generate the DevSite friendly format:
-
-```sh
-dotnet run --devsite true
 ```
 
 Generate in a different folder:
@@ -43,14 +37,8 @@ Build the container:
 docker build -t eventlistgenerator .
 ```
 
-Generate the GitHub friendly format to output folder:
+Generate the GitHub and DevSite friendly format to output folder:
 
 ```sh
 docker run -v $PWD/output:/app/output eventlistgenerator
-```
-
-Generate the DevSite friendly format:
-
-```sh
-docker run -v $PWD/output:/app/output eventlistgenerator --devsite true
 ```

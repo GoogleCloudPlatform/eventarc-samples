@@ -50,6 +50,12 @@ namespace EventListGenerator
 
         static async Task Main(bool devsite = false, string folder = OUTPUT_FOLDER)
         {
+            await Generate(false, folder);
+            await Generate(true, folder);
+        }
+
+        private async static Task Generate(bool devsite, string folder)
+        {
             Console.WriteLine($"Devsite? {devsite}");
             Console.WriteLine($"Output folder: {folder}");
 

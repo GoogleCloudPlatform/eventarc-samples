@@ -7811,4 +7811,140 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.websecurityscanner.v1.WebSecurityScanner.GetScanRun`
 - `google.cloud.websecurityscanner.v1.WebSecurityScanner.ListFindingTypeStats`
 - `google.cloud.websecurityscanner.v1.WebSecurityScanner.ListScanConfigs`
-- `google.cloud.websecur
+- `google.cloud.websecurityscanner.v1.WebSecurityScanner.ListScanRuns`
+- `google.cloud.websecurityscanner.v1.WebSecurityScanner.StartScanRun`
+- `google.cloud.websecurityscanner.v1.WebSecurityScanner.StopScanRun`
+- `google.cloud.websecurityscanner.v1.WebSecurityScanner.UpdateScanConfig`
+- `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.CreateScanConfig`
+- `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.DeleteScanConfig`
+- `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.GetScanConfig`
+- `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.GetScanRun`
+- `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.ListCrawledUrls`
+- `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.ListFindingTypeStats`
+- `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.ListFindings`
+- `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.ListScanConfigs`
+- `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.ListScanRuns`
+- `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.ListStartingUrls`
+- `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.StartScanRun`
+- `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.StopScanRun`
+- `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.UpdateScanConfig`
+
+### Workflow Executions
+
+#### `serviceName`
+
+- `workflowexecutions.googleapis.com`
+
+#### `methodName`
+
+- `google.cloud.workflows.executions.v1.Events.SendHttpCallback`
+- `google.cloud.workflows.executions.v1.Executions.CancelExecution`
+- `google.cloud.workflows.executions.v1.Executions.CreateExecution`
+- `google.cloud.workflows.executions.v1.Executions.GetExecution`
+- `google.cloud.workflows.executions.v1.Executions.ListExecutions`
+- `google.cloud.workflows.executions.v1.Executions.TriggerPubsubExecution`
+- `google.cloud.workflows.executions.v1beta.Executions.CancelExecution`
+- `google.cloud.workflows.executions.v1beta.Executions.CreateExecution`
+- `google.cloud.workflows.executions.v1beta.Executions.GetExecution`
+- `google.cloud.workflows.executions.v1beta.Executions.ListExecutions`
+
+### Workflows
+
+#### `serviceName`
+
+- `workflows.googleapis.com`
+
+#### `methodName`
+
+- `google.cloud.workflows.v1.Workflows.CreateWorkflow`
+- `google.cloud.workflows.v1.Workflows.DeleteWorkflow`
+- `google.cloud.workflows.v1.Workflows.GetWorkflow`
+- `google.cloud.workflows.v1.Workflows.ListWorkflows`
+- `google.cloud.workflows.v1.Workflows.UpdateWorkflow`
+- `google.cloud.workflows.v1beta.Workflows.CreateWorkflow`
+- `google.cloud.workflows.v1beta.Workflows.DeleteWorkflow`
+- `google.cloud.workflows.v1beta.Workflows.GetWorkflow`
+- `google.cloud.workflows.v1beta.Workflows.ListWorkflows`
+- `google.cloud.workflows.v1beta.Workflows.UpdateWorkflow`
+- `google.longrunning.Operations.DeleteOperation`
+- `google.longrunning.Operations.GetOperation`
+- `google.longrunning.Operations.ListOperations`
+
+
+## Using Pub/Sub
+
+Requests to your service are triggered by messages published to a Pub/Sub topic.
+For more information, see [All trigger targets](/eventarc/docs/targets.md).
+
+### Custom applications
+
+- Any custom application that can publish to a PubSub topic
+
+### [Artifact Registry](https://cloud.google.com/artifact-registry/docs/configure-notifications)
+
+- `artifactregistry`
+
+### [BigQuery (scheduled queries)](https://cloud.google.com/bigquery/docs/scheduling-queries)
+
+- `bigquery.googleapis.com`
+
+### [Cloud Asset](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes)
+
+- `cloudasset.googleapis.com`
+
+### [Cloud Billing](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications)
+
+- `cloudbilling.googleapis.com`
+
+### [Cloud Build](https://cloud.google.com/build/docs/subscribe-build-notifications)
+
+- `cloudbuild.googleapis.com`
+
+### [Cloud Healthcare](https://cloud.google.com/healthcare/docs/how-tos/pubsub)
+
+- `healthcare.googleapis.com`
+
+### [Cloud IoT](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#publishing_telemetry_events_to_additional_cloud_pubsub_topics)
+
+- `cloudiot.googleapis.com`
+
+### [Cloud Scheduler](https://cloud.google.com/scheduler/docs/creating)
+
+- `cloudscheduler.googleapis.com`
+
+### [Cloud Source Repositories](https://cloud.google.com/source-repositories/docs/pubsub-notifications)
+
+- `sourcerepo.googleapis.com`
+
+### [Cloud Storage](https://cloud.google.com/storage/docs/pubsub-notifications)
+
+- `storage.googleapis.com`
+
+### [Container Registry](https://cloud.google.com/container-registry/docs/configuring-notifications)
+
+- `containerregistry`
+
+## Using third-party sources
+
+For more information, see [All trigger targets](/eventarc/docs/targets.md).
+
+### Datadog (preview)
+
+- `datadog.v1.alert`
+
+### Lacework (preview)
+
+- `lacework.compliance.v1.newViolation`
+- `lacework.polygraph.v1.cloudActivity`
+- `lacework.polygraph.v1.application`
+- `lacework.polygraph.v1.file`
+- `lacework.polygraph.v1.machine`
+- `lacework.polygraph.v1.user`
+
+### Check Point CloudGuard (preview)
+
+- `cloudguard.v1.event`
+
+### ForgeRock (preview)
+
+- `custom`

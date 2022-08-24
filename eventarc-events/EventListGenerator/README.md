@@ -47,3 +47,7 @@ Here are 2 files in a public bucket that get regenerated automatically every day
 
 * [README.md](https://storage.googleapis.com/events-atamel-event-list-generator/README.md)
 * [README_devsite.md](https://storage.googleapis.com/events-atamel-event-list-generator/README_devsite.md)
+
+If there's a change to the event list generator, run `update.sh` to build a new
+container image, update the Cloud Run job and trigger the Cloud Scheduler to run
+the new job.

@@ -27,24 +27,16 @@ namespace EventListGenerator
     {
         private const string PUBSUB_SERVICE_CATALOG_FILE = "pubsub_services.json";
         private const string AUDITLOG_SERVICE_CATALOG_URL = "https://raw.githubusercontent.com/googleapis/google-cloudevents/master/json/audit/service_catalog.json";
-
         private const string DIRECT_SERVICE_CATALOG_FILE = "direct_services.json";
-
         private const string THIRDPARTY_SERVICE_CATALOG_FILE = "thirdparty_services.json";
-
         // TODO: Externalize to a file if the list gets long at some point.
         private static HashSet<string> AUDITLOG_METHOD_NAMES_BLOCK_LIST = new HashSet<string> {
             "google.monitoring.v3.TimeSeriesFilterService.ParseTimeSeriesFilter"
         };
-
         private const string HEADER_DIRECT = "Directly from a Google Cloud source";
-
         private const string HEADER_AUDITLOG = "Using Cloud Audit Logs";
-
         private const string HEADER_PUBSUB = "Using Pub/Sub";
-
         private const string HEADER_THIRDPARTY = "Using third-party sources";
-
         private const string OUTPUT_FOLDER = "output";
         private const string OUTPUT_GITHUB = "README.md";
         private const string OUTPUT_DEVSITE = "README_devsite.md";
@@ -95,6 +87,8 @@ namespace EventListGenerator
                 + (devsite ?
                 "(/eventarc/docs/reference/supported-events#using-third-party-sources)" :
                 "(#using-third-party-sources)"));
+
+            file.WriteLine("\nNote: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud IoT events will also be deprecated at that time. Contact your Google Cloud account team for more information.");
         }
 
         private static void AddPubSubServices(StreamWriter file, bool devsite)

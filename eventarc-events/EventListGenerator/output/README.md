@@ -7,6 +7,8 @@ The following is a list of the events supported by Eventarc.
 - [Using Pub/Sub](#using-pubsub)
 - [Using third-party sources](#using-third-party-sources)
 
+Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud IoT events will also be deprecated at that time. Contact your Google Cloud account team for more information.
+
 ### Directly from a Google Cloud source
 <details><summary>Cloud Storage</summary>
 <p>

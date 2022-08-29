@@ -16,6 +16,7 @@
 
 APP=event-list-generator
 REGION=us-central1
+GITHUB_TOKEN=YOUR_GITHUB_TOKEN
 
 echo "Get the project id and project number"
 PROJECT_ID=$(gcloud config get-value project)
@@ -38,28 +39,28 @@ echo "Create a service account that you will use to run the job"
 SERVICE_ACCOUNT=$APP-sa
 gcloud iam service-accounts create $SERVICE_ACCOUNT --display-name="Eventarc event list generator service account"
 
-echo "Grant storage.admin role to the service account"
-gcloud projects add-iam-policy-binding $PROJECT_ID \
-  --role roles/storage.admin \
-  --member serviceAccount:$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com
+# echo "Grant storage.admin role to the service account"
+# gcloud projects add-iam-policy-binding $PROJECT_ID \
+#   --role roles/storage.admin \
+#   --member serviceAccount:$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com
 
-echo "Create a public bucket to store events lists"
-BUCKET_NAME=$PROJECT_ID-$APP
-gsutil mb -l EU gs://$BUCKET_NAME
-gsutil uniformbucketlevelaccess set on gs://$BUCKET_NAME
-gsutil iam ch allUsers:objectViewer gs://$BUCKET_NAME
+# echo "Create a public bucket to store events lists"
+# BUCKET_NAME=$PROJECT_ID-$APP
+# gsutil mb -l EU gs://$BUCKET_NAME
+# gsutil uniformbucketlevelaccess set on gs://$BUCKET_NAME
+# gsutil iam ch allUsers:objectViewer gs://$BUCKET_NAME
 
 echo "Create a Cloud Run job"
 gcloud beta run jobs create $APP \
   --image=$REGION-docker.pkg.dev/$PROJECT_ID/containers/$APP \
   --tasks=1 \
   --task-timeout=5m \
-  --set-env-vars=BUCKET=$BUCKET_NAME \
+  --set-env-vars=GITHUB_TOKEN=$GITHUB_TOKEN \
   --service-account=$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com
 
-echo "Create a Cloud Scheduler job to run the Cloud Run job every day at 9:00"
-gcloud scheduler jobs create http $APP --schedule "0 9 * * *" \
+echo "Create a Cloud Scheduler job to run the Cloud Run job every Sunday at midnight"
+gcloud scheduler jobs create http $APP --schedule "0 0 * * SUN" \
    --http-method=POST \
-   --uri=https://$REGION-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/$PROJECT_ID/jobs/$APP:run \
+   --uri=https://$REGION-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/$PROJECT_ID/jobs/${APP}:run \
    --oauth-service-account-email=$PROJECT_NUMBER-compute@developer.gserviceaccount.com \
    --location $REGION

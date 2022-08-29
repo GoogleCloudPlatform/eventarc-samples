@@ -16,7 +16,8 @@
 
 PROJECT_ID=$(gcloud config get-value project)
 APP=event-list-generator
-BUCKET_NAME=$PROJECT_ID-$APP
+#BUCKET_NAME=$PROJECT_ID-$APP
+GITHUB_TOKEN=YOUR_GITHUB_TOKEN
 REGION=us-central1
 SERVICE_ACCOUNT=$APP-sa
 
@@ -28,7 +29,7 @@ gcloud beta run jobs update $APP \
   --image=$REGION-docker.pkg.dev/$PROJECT_ID/containers/$APP \
   --tasks=1 \
   --task-timeout=5m \
-  --set-env-vars=BUCKET=$BUCKET_NAME \
+  --set-env-vars=GITHUB_TOKEN=$GITHUB_TOKEN \
   --service-account=$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com
 
 echo "Trigger the Cloud Scheduler job to run with the updated Cloud Run job"

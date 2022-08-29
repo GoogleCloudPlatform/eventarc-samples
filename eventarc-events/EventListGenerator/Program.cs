@@ -20,6 +20,7 @@ using System.Net.Mime;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Google.Cloud.Storage.V1;
+using Octokit;
 
 namespace EventListGenerator
 {
@@ -40,6 +41,11 @@ namespace EventListGenerator
         private const string OUTPUT_FOLDER = "output";
         private const string OUTPUT_GITHUB = "README.md";
         private const string OUTPUT_DEVSITE = "README_devsite.md";
+        private const string GITHUB_OWNER = "GoogleCloudPlatform";
+        private const string GITHUB_REPO = "eventarc-samples";
+        private const string GITHUB_BRANCH = "main";
+        private const string GITHUB_OUTPUT_PATH = "eventarc-events/EventListGenerator/";
+
         private static readonly HttpClient client = new HttpClient();
 
         static async Task Main()
@@ -61,11 +67,12 @@ namespace EventListGenerator
             AddPubSubServices(file, devsite);
             DoAddServices(HEADER_THIRDPARTY, THIRDPARTY_SERVICE_CATALOG_FILE, file, devsite);
 
-            // Important to close the stream before trying to upload to the bucket
+            // Important to close the stream before trying to do anything else
             file.Close();
             Console.WriteLine($"File generated: {filePath}");
 
-            await UploadToBucket(filePath);
+            //await UploadToBucket(filePath);
+            await CommitToGitHub(filePath);
         }
 
         private static void AddHeader(StreamWriter file, bool devsite)
@@ -230,18 +237,40 @@ namespace EventListGenerator
             });
         }
 
-        private static async Task UploadToBucket(string filePath)
+        // private static async Task UploadToBucket(string filePath)
+        // {
+        //     var bucket = Environment.GetEnvironmentVariable("BUCKET");
+        //     if (string.IsNullOrEmpty(bucket))
+        //     {
+        //         return;
+        //     }
+
+        //     var client = await StorageClient.CreateAsync();
+        //     using var fileStream = File.OpenRead(filePath);
+        //     await client.UploadObjectAsync(bucket, Path.GetFileName(filePath), MediaTypeNames.Text.Plain, fileStream);
+        //     Console.WriteLine($"File uploaded to bucket: {bucket}");
+        // }
+
+        private static async Task CommitToGitHub(string filePath)
         {
-            var bucket = Environment.GetEnvironmentVariable("BUCKET");
-            if (string.IsNullOrEmpty(bucket))
+            var token = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
+            if (string.IsNullOrEmpty(token))
             {
                 return;
             }
 
-            var client = await StorageClient.CreateAsync();
-            using var fileStream = File.OpenRead(filePath);
-            await client.UploadObjectAsync(bucket, Path.GetFileName(filePath), MediaTypeNames.Text.Plain, fileStream);
-            Console.WriteLine($"File uploaded to bucket: {bucket}");
+            var gitHubClient = new GitHubClient(new ProductHeaderValue("EventListGenerator"));
+            gitHubClient.Credentials = new Credentials(token);
+
+            var gitHubFilePath = Path.Combine(GITHUB_OUTPUT_PATH, filePath);
+
+            var fileDetails = await gitHubClient.Repository.Content.GetAllContentsByRef(GITHUB_OWNER, GITHUB_REPO,
+                gitHubFilePath, GITHUB_BRANCH);
+
+            var updateResult = await gitHubClient.Repository.Content.UpdateFile(GITHUB_OWNER, GITHUB_REPO,
+                gitHubFilePath, new UpdateFileRequest($"Automatic update of {Path.GetFileName(filePath)}", File.ReadAllText(filePath), fileDetails.First().Sha));
+
+            Console.WriteLine($"File committed to GitHub: {updateResult.Commit.Sha}");
         }
     }
 }

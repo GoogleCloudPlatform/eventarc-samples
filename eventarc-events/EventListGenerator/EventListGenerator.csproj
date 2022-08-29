@@ -8,5 +8,6 @@
 
   <ItemGroup>
     <PackageReference Include="Google.Cloud.Storage.V1" Version="4.1.0" />
+    <PackageReference Include="Octokit" Version="2.0.1" />
   </ItemGroup>
 </Project>

@@ -61,7 +61,10 @@ namespace EventListGenerator
             AddPubSubServices(file, devsite);
             DoAddServices(HEADER_THIRDPARTY, THIRDPARTY_SERVICE_CATALOG_FILE, file, devsite);
 
+            // Important to close the stream before trying to upload to the bucket
+            file.Close();
             Console.WriteLine($"File generated: {filePath}");
+
             await UploadToBucket(filePath);
         }
 

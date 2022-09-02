@@ -1,12 +1,8 @@
 # Image processing pipeline v3 - Eventarc (Cloud Storage) + Workflows
 
-> **Note:** Eventarc triggers for Workflows is currently a *preview feature*.
-> Only allow-listed projects can currently take advantage of it. Please fill out
-> [this form](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform?resourcekey=0-1ftfaZAk_IS2J61P6r1mSw)
-> to get your project allow-listed before attempting this sample.
-
 In this sample, we'll build an image processing pipeline to read Google Cloud
-Storage events with **Eventarc** and pass to a set of **Cloud Functions** services orchestrated by **Workflows**.
+Storage events with **Eventarc** and pass to a set of **Cloud Functions**
+services orchestrated by **Workflows**.
 
 ![Image Processing Pipeline](image-processing-pipeline-v3.png)
 
@@ -46,9 +42,11 @@ Enable all necessary services:
 
 ```sh
 gcloud services enable \
+  artifactregistry.googleapis.com \
   cloudbuild.googleapis.com \
   cloudfunctions.googleapis.com \
   eventarc.googleapis.com \
+  run.googleapis.com \
   vision.googleapis.com \
   workflows.googleapis.com \
   workflowexecutions.googleapis.com
@@ -56,35 +54,35 @@ gcloud services enable \
 
 ### Configure service accounts
 
-Default compute service account will be used in triggers. Grant the
-`eventarc.eventReceiver` role to the default compute service account:
+Create a service account that you will use to in Eventarc trigger.
 
 ```sh
-PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
+APP=image-processing
+SERVICE_ACCOUNT=$APP-sa
 
+gcloud iam service-accounts create $SERVICE_ACCOUNT \
+  --display-name="Image processing service account"
+```
+
+Grant the `workflows.invoker` role, so the service account can be used to invoke
+Workflows from Eventarc:
+
+```sh
 gcloud projects add-iam-policy-binding $PROJECT_ID \
-    --member serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com \
-    --role roles/eventarc.eventReceiver
+  --role roles/workflows.invoker \
+  --member serviceAccount:$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com
 ```
 
 Grant the `pubsub.publisher` role to the Cloud Storage service account. This is
 needed for the Eventarc Cloud Storage trigger:
 
 ```sh
-SERVICE_ACCOUNT="$(gsutil kms serviceaccount -p $PROJECT_NUMBER)"
+PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
+STORAGE_SERVICE_ACCOUNT="$(gsutil kms serviceaccount -p $PROJECT_NUMBER)"
 
 gcloud projects add-iam-policy-binding $PROJECT_NUMBER \
-    --member serviceAccount:$SERVICE_ACCOUNT \
+    --member serviceAccount:$STORAGE_SERVICE_ACCOUNT \
     --role roles/pubsub.publisher
-```
-
-If you enabled the Pub/Sub service account on or before April 8, 2021, grant the
-`iam.serviceAccountTokenCreator` role to the Pub/Sub service account:
-
-```sh
-gcloud projects add-iam-policy-binding $PROJECT_ID \
-  --member serviceAccount:service-$PROJECT_NUMBER@gcp-sa-pubsub.iam.gserviceaccount.com \
-  --role roles/iam.serviceAccountTokenCreator
 ```
 
 ## Create storage buckets
@@ -115,6 +113,7 @@ Inside the top level [processing-pipelines](..) folder, deploy the service:
 SERVICE_NAME=watermarker
 
 gcloud functions deploy $SERVICE_NAME \
+  --gen2 \
   --allow-unauthenticated \
   --runtime dotnet3 \
   --trigger-http \
@@ -127,7 +126,7 @@ gcloud functions deploy $SERVICE_NAME \
 Set the service URL in an env variable, we'll need later:
 
 ```sh
-WATERMARKER_URL=$(gcloud functions describe $SERVICE_NAME --format 'value(httpsTrigger.url)')
+WATERMARKER_URL=$(gcloud functions describe $SERVICE_NAME --region=$REGION --gen2 --format 'value(serviceConfig.uri)')
 ```
 
 ## Resizer
@@ -144,19 +143,24 @@ Inside the top level [processing-pipelines](..) folder, deploy the service:
 SERVICE_NAME=resizer
 
 gcloud functions deploy $SERVICE_NAME \
+  --gen2 \
   --allow-unauthenticated \
   --runtime dotnet3 \
   --trigger-http \
   --region=$REGION \
   --set-env-vars BUCKET=$BUCKET2 \
   --entry-point Resizer.Function \
-  --set-build-env-vars GOOGLE_BUILDABLE=image-v2/resizer/csharp
+  --set-build-env-vars GOOGLE_BUILDABLE=image-v2/resizer/csharp \
+  --timeout=120s
 ```
+
+Note that we increased the `timeout` value to 2 minutes to allow the resizer
+function extra time for processing.
 
 Set the service URL in an env variable, we'll need later:
 
 ```sh
-RESIZER_URL=$(gcloud functions describe $SERVICE_NAME --format 'value(httpsTrigger.url)')
+RESIZER_URL=$(gcloud functions describe $SERVICE_NAME --region=$REGION --gen2 --format 'value(serviceConfig.uri)')
 ```
 
 ## Labeler
@@ -172,6 +176,7 @@ Inside the top level [processing-pipelines](..) folder, deploy the service:
 SERVICE_NAME=labeler
 
 gcloud functions deploy $SERVICE_NAME \
+  --gen2 \
   --allow-unauthenticated \
   --runtime dotnet3 \
   --trigger-http \
@@ -184,7 +189,7 @@ gcloud functions deploy $SERVICE_NAME \
 Set the service URL in an env variable, we'll need later:
 
 ```sh
-LABELER_URL=$(gcloud functions describe $SERVICE_NAME --format 'value(httpsTrigger.url)')
+LABELER_URL=$(gcloud functions describe $SERVICE_NAME --region=$REGION --gen2 --format 'value(serviceConfig.uri)')
 ```
 
 ## Filter
@@ -200,6 +205,7 @@ Inside the top level [processing-pipelines](..) folder, deploy the service:
 SERVICE_NAME=filter
 
 gcloud functions deploy $SERVICE_NAME \
+  --gen2 \
   --allow-unauthenticated \
   --runtime dotnet3 \
   --trigger-http \
@@ -211,7 +217,7 @@ gcloud functions deploy $SERVICE_NAME \
 Set the service URL in an env variable, we'll need later:
 
 ```sh
-FILTER_URL=$(gcloud functions describe $SERVICE_NAME --format 'value(httpsTrigger.url)')
+FILTER_URL=$(gcloud functions describe $SERVICE_NAME --region=$REGION --gen2 --format 'value(serviceConfig.uri)')
 ```
 
 ## Workflow
@@ -344,7 +350,7 @@ sed -i -e "s|WATERMARKER_URL|${WATERMARKER_URL}|" workflow.yaml
 Deploy the workflow:
 
 ```sh
-WORKFLOW_NAME=image-processing
+WORKFLOW_NAME=$APP-workflow
 
 gcloud workflows deploy $WORKFLOW_NAME \
     --source=workflow.yaml \
@@ -359,7 +365,7 @@ bucket and passes them onto Workflows.
 Create the trigger:
 
 ```sh
-TRIGGER_NAME=trigger-$WORKFLOW_NAME
+TRIGGER_NAME=$APP-trigger
 
 gcloud eventarc triggers create $TRIGGER_NAME \
   --location=$REGION \
@@ -367,7 +373,7 @@ gcloud eventarc triggers create $TRIGGER_NAME \
   --destination-workflow-location=$REGION \
   --event-filters="type=google.cloud.storage.object.v1.finalized" \
   --event-filters="bucket=$BUCKET1" \
-  --service-account=$PROJECT_NUMBER-compute@developer.gserviceaccount.com
+  --service-account=$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com
 ```
 
 ## Test the pipeline

@@ -1,6 +1,12 @@
 {
   "services": [
     {
+      "displayName": "Cloud Pub/Sub",
+      "events": [
+        "google.cloud.pubsub.topic.v1.messagePublished"
+      ]
+    },
+    {
       "displayName": "Cloud Storage",
       "events": [
         "google.cloud.storage.object.v1.archived",

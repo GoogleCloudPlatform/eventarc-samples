@@ -16,17 +16,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Mime;
+//using System.Net.Mime;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Google.Cloud.Storage.V1;
+//using Google.Cloud.Storage.V1;
 using Octokit;
 
 namespace EventListGenerator
 {
     class Program
     {
-        private const string PUBSUB_SERVICE_CATALOG_FILE = "pubsub_services.json";
         private const string AUDITLOG_SERVICE_CATALOG_URL = "https://raw.githubusercontent.com/googleapis/google-cloudevents/master/json/audit/service_catalog.json";
         private const string DIRECT_SERVICE_CATALOG_FILE = "direct_services.json";
         private const string THIRDPARTY_SERVICE_CATALOG_FILE = "thirdparty_services.json";
@@ -36,7 +35,6 @@ namespace EventListGenerator
         };
         private const string HEADER_DIRECT = "Directly from a Google Cloud source";
         private const string HEADER_AUDITLOG = "Using Cloud Audit Logs";
-        private const string HEADER_PUBSUB = "Using Pub/Sub";
         private const string HEADER_THIRDPARTY = "Using third-party sources";
         private const string OUTPUT_FOLDER = "output";
         private const string OUTPUT_GITHUB = "README.md";
@@ -64,7 +62,6 @@ namespace EventListGenerator
             AddHeader(file, devsite);
             DoAddServices(HEADER_DIRECT, DIRECT_SERVICE_CATALOG_FILE, file, devsite);
             await AddAuditLogServicesAsync(file, devsite);
-            AddPubSubServices(file, devsite);
             DoAddServices(HEADER_THIRDPARTY, THIRDPARTY_SERVICE_CATALOG_FILE, file, devsite);
 
             // Important to close the stream before trying to do anything else
@@ -88,78 +85,12 @@ namespace EventListGenerator
                 "(/eventarc/docs/reference/supported-events#using-cloud-audit-logs)" :
                 "(#using-cloud-audit-logs)"));
 
-            file.WriteLine($"- [{HEADER_PUBSUB}]"
-                + (devsite ?
-                "(/eventarc/docs/reference/supported-events#using-pubsub)" :
-                "(#using-pubsub)"));
-
             file.WriteLine($"- [{HEADER_THIRDPARTY}]"
                 + (devsite ?
                 "(/eventarc/docs/reference/supported-events#using-third-party-sources)" :
                 "(#using-third-party-sources)"));
 
             file.WriteLine("\nNote: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud IoT events will also be deprecated at that time. Contact your Google Cloud account team for more information.");
-        }
-
-        private static void AddPubSubServices(StreamWriter file, bool devsite)
-        {
-            if (devsite)
-            {
-                file.WriteLine($"\n## {HEADER_PUBSUB}\n");
-                file.WriteLine("Requests to your service are triggered by messages published to a Pub/Sub topic.");
-                file.WriteLine("For more information, see [All trigger targets](/eventarc/docs/targets.md).");
-            }
-            else
-            {
-                file.WriteLine($"\n### {HEADER_PUBSUB}");
-            }
-
-            var jsonString = File.ReadAllText(PUBSUB_SERVICE_CATALOG_FILE);
-            var services = JsonSerializer.Deserialize<PubSubServices>(jsonString);
-            var orderedServices = services.services.OrderByDescending(service => service.priority)
-                .ThenBy(service => service.displayName);
-
-            orderedServices.ToList().ForEach(service =>
-            {
-                if (devsite)
-                {
-                    if (string.IsNullOrEmpty(service.url))
-                    {
-                        file.WriteLine($"\n### {service.displayName}");
-                    }
-                    else
-                    {
-                        file.WriteLine($"\n### [{service.displayName}]({service.url})");
-                    }
-
-                    // Assuming one or the other
-                    if (!string.IsNullOrEmpty(service.serviceName))
-                    {
-                        file.WriteLine($"\n- `{service.serviceName}`");
-                    }
-                    else if (!string.IsNullOrEmpty(service.description))
-                    {
-                        file.WriteLine($"\n- {service.description}");
-                    }
-                }
-                else
-                {
-                    file.WriteLine($"<details><summary>{service.displayName}</summary>");
-                    file.WriteLine("<p>\n");
-                    // Assuming one or the other
-                    if (!string.IsNullOrEmpty(service.serviceName))
-                    {
-                        file.Write($"`{service.serviceName}`");
-                    }
-                    else if (!string.IsNullOrEmpty(service.description))
-                    {
-                        file.Write($"{service.description}");
-                    }
-                    if (!string.IsNullOrEmpty(service.url)) file.WriteLine($" ([more info]({service.url}))");
-                    file.WriteLine("\n</p>");
-                    file.WriteLine("</details>");
-                }
-            });
         }
 
         private static async Task AddAuditLogServicesAsync(StreamWriter file, bool devsite)

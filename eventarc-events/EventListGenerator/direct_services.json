@@ -16,7 +16,8 @@
       ]
     },
     {
-      "displayName": "Cloud IoT (preview)",
+      "displayName": "Cloud IoT",
+      "preview": true,
       "events": [
         "google.api.cloud.iot.v1.deviceCreated",
         "google.api.cloud.iot.v1.deviceUpdated",
@@ -27,13 +28,15 @@
       ]
     },
     {
-      "displayName": "Firebase Alerts (preview)",
+      "displayName": "Firebase Alerts",
+      "preview": true,
       "events": [
         "google.firebase.firebasealerts.alerts.v1.published"
       ]
     },
     {
-      "displayName": "Firebase Realtime Database (preview)",
+      "displayName": "Firebase Realtime Database",
+      "preview": true,
       "events": [
         "google.firebase.database.ref.v1.created",
         "google.firebase.database.ref.v1.updated",
@@ -42,13 +45,15 @@
       ]
     },
     {
-      "displayName": "Firebase Remote Config (preview)",
+      "displayName": "Firebase Remote Config",
+      "preview": true,
       "events": [
         "google.firebase.remoteconfig.remoteConfig.v1.updated"
       ]
     },
     {
-      "displayName": "Firebase Test Lab (preview)",
+      "displayName": "Firebase Test Lab",
+      "preview": true,
       "events": [
         "google.firebase.testlab.testMatrix.v1.completed"
       ]

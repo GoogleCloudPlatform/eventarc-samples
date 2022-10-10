@@ -149,14 +149,15 @@ namespace EventListGenerator
 
             services.services.ForEach(service =>
             {
+                var displayName = service.preview ? service.displayName + " (preview)" : service.displayName;
                 if (devsite)
                 {
-                    file.WriteLine($"\n### {service.displayName}\n");
+                    file.WriteLine($"\n### {displayName}\n");
                     service.events.ForEach(current => file.WriteLine($"- `{current}`"));
                 }
                 else
                 {
-                    file.WriteLine($"<details><summary>{service.displayName}</summary>");
+                    file.WriteLine($"<details><summary>{displayName}</summary>");
                     file.WriteLine("<p>\n");
                     service.events.ForEach(current => file.WriteLine($"* `{current}`"));
                     file.WriteLine("\n</p>");

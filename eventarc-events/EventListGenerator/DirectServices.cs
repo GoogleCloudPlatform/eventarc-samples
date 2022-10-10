@@ -25,5 +25,7 @@ namespace EventListGenerator
         public string displayName {get; set;}
 
         public List<string> events {get; set;}
+
+        public bool preview {get; set;}
     }
 }

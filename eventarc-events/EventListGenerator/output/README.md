@@ -4,12 +4,18 @@ The following is a list of the events supported by Eventarc.
 
 - [Directly from a Google Cloud source](#directly-from-a-google-cloud-source)
 - [Using Cloud Audit Logs](#using-cloud-audit-logs)
-- [Using Pub/Sub](#using-pubsub)
 - [Using third-party sources](#using-third-party-sources)
 
 Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud IoT events will also be deprecated at that time. Contact your Google Cloud account team for more information.
 
 ### Directly from a Google Cloud source
+<details><summary>Cloud Pub/Sub</summary>
+<p>
+
+* `google.cloud.pubsub.topic.v1.messagePublished`
+
+</p>
+</details>
 <details><summary>Cloud Storage</summary>
 <p>
 
@@ -7808,91 +7814,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.longrunning.Operations.DeleteOperation`
 * `google.longrunning.Operations.GetOperation`
 * `google.longrunning.Operations.ListOperations`
-
-</p>
-</details>
-
-### Using Pub/Sub
-<details><summary>Custom applications</summary>
-<p>
-
-Any custom application that can publish to a PubSub topic
-</p>
-</details>
-<details><summary>Artifact Registry</summary>
-<p>
-
-`artifactregistry` ([more info](https://cloud.google.com/artifact-registry/docs/configure-notifications))
-
-</p>
-</details>
-<details><summary>BigQuery (scheduled queries)</summary>
-<p>
-
-`bigquery.googleapis.com` ([more info](https://cloud.google.com/bigquery/docs/scheduling-queries))
-
-</p>
-</details>
-<details><summary>Cloud Asset</summary>
-<p>
-
-`cloudasset.googleapis.com` ([more info](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes))
-
-</p>
-</details>
-<details><summary>Cloud Billing</summary>
-<p>
-
-`cloudbilling.googleapis.com` ([more info](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications))
-
-</p>
-</details>
-<details><summary>Cloud Build</summary>
-<p>
-
-`cloudbuild.googleapis.com` ([more info](https://cloud.google.com/build/docs/subscribe-build-notifications))
-
-</p>
-</details>
-<details><summary>Cloud Healthcare</summary>
-<p>
-
-`healthcare.googleapis.com` ([more info](https://cloud.google.com/healthcare/docs/how-tos/pubsub))
-
-</p>
-</details>
-<details><summary>Cloud IoT</summary>
-<p>
-
-`cloudiot.googleapis.com` ([more info](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#publishing_telemetry_events_to_additional_cloud_pubsub_topics))
-
-</p>
-</details>
-<details><summary>Cloud Scheduler</summary>
-<p>
-
-`cloudscheduler.googleapis.com` ([more info](https://cloud.google.com/scheduler/docs/creating))
-
-</p>
-</details>
-<details><summary>Cloud Source Repositories</summary>
-<p>
-
-`sourcerepo.googleapis.com` ([more info](https://cloud.google.com/source-repositories/docs/pubsub-notifications))
-
-</p>
-</details>
-<details><summary>Cloud Storage</summary>
-<p>
-
-`storage.googleapis.com` ([more info](https://cloud.google.com/storage/docs/pubsub-notifications))
-
-</p>
-</details>
-<details><summary>Container Registry</summary>
-<p>
-
-`containerregistry` ([more info](https://cloud.google.com/container-registry/docs/configuring-notifications))
 
 </p>
 </details>

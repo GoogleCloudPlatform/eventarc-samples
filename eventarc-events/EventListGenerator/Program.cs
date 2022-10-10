@@ -16,10 +16,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-//using System.Net.Mime;
 using System.Text.Json;
 using System.Threading.Tasks;
-//using Google.Cloud.Storage.V1;
 using Octokit;
 
 namespace EventListGenerator
@@ -68,7 +66,6 @@ namespace EventListGenerator
             file.Close();
             Console.WriteLine($"File generated: {filePath}");
 
-            //await UploadToBucket(filePath);
             await CommitToGitHub(filePath);
         }
 
@@ -167,20 +164,6 @@ namespace EventListGenerator
                 }
             });
         }
-
-        // private static async Task UploadToBucket(string filePath)
-        // {
-        //     var bucket = Environment.GetEnvironmentVariable("BUCKET");
-        //     if (string.IsNullOrEmpty(bucket))
-        //     {
-        //         return;
-        //     }
-
-        //     var client = await StorageClient.CreateAsync();
-        //     using var fileStream = File.OpenRead(filePath);
-        //     await client.UploadObjectAsync(bucket, Path.GetFileName(filePath), MediaTypeNames.Text.Plain, fileStream);
-        //     Console.WriteLine($"File uploaded to bucket: {bucket}");
-        // }
 
         private static async Task CommitToGitHub(string filePath)
         {

@@ -2,7 +2,7 @@
 
 This generates a list of events supported by Eventarc.
 
-The list has 4 parts:
+The list has 3 parts:
 
 1. Direct list comes from `direct_services.json`.
 1. AuditLog list comes from the [AuditLog service

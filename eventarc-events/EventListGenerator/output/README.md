@@ -9,6 +9,18 @@ The following is a list of the events supported by Eventarc.
 Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud IoT events will also be deprecated at that time. Contact your Google Cloud account team for more information.
 
 ### Directly from a Google Cloud source
+<details><summary>Cloud IoT (preview)</summary>
+<p>
+
+* `google.api.cloud.iot.v1.deviceCreated`
+* `google.api.cloud.iot.v1.deviceUpdated`
+* `google.api.cloud.iot.v1.deviceDeleted`
+* `google.api.cloud.iot.v1.registryCreated`
+* `google.api.cloud.iot.v1.registryUpdated`
+* `google.api.cloud.iot.v1.registryDeleted`
+
+</p>
+</details>
 <details><summary>Cloud Pub/Sub</summary>
 <p>
 
@@ -23,18 +35,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.storage.object.v1.deleted`
 * `google.cloud.storage.object.v1.finalized`
 * `google.cloud.storage.object.v1.metadataUpdated`
-
-</p>
-</details>
-<details><summary>Cloud IoT (preview)</summary>
-<p>
-
-* `google.api.cloud.iot.v1.deviceCreated`
-* `google.api.cloud.iot.v1.deviceUpdated`
-* `google.api.cloud.iot.v1.deviceDeleted`
-* `google.api.cloud.iot.v1.registryCreated`
-* `google.api.cloud.iot.v1.registryUpdated`
-* `google.api.cloud.iot.v1.registryDeleted`
 
 </p>
 </details>
@@ -7819,10 +7819,24 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 </details>
 
 ### Using third-party sources
+<details><summary>Check Point CloudGuard (preview)</summary>
+<p>
+
+* `cloudguard.v1.event`
+
+</p>
+</details>
 <details><summary>Datadog (preview)</summary>
 <p>
 
 * `datadog.v1.alert`
+
+</p>
+</details>
+<details><summary>ForgeRock (preview)</summary>
+<p>
+
+* `custom`
 
 </p>
 </details>
@@ -7835,20 +7849,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `lacework.polygraph.v1.file`
 * `lacework.polygraph.v1.machine`
 * `lacework.polygraph.v1.user`
-
-</p>
-</details>
-<details><summary>Check Point CloudGuard (preview)</summary>
-<p>
-
-* `cloudguard.v1.event`
-
-</p>
-</details>
-<details><summary>ForgeRock (preview)</summary>
-<p>
-
-* `custom`
 
 </p>
 </details>

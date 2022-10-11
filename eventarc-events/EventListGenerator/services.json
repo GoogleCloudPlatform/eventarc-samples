@@ -1,5 +1,5 @@
 {
-  "services": [
+  "direct": [
     {
       "displayName": "Cloud Pub/Sub",
       "events": [
@@ -56,6 +56,41 @@
       "preview": true,
       "events": [
         "google.firebase.testlab.testMatrix.v1.completed"
+      ]
+    }
+  ],
+  "thirdParty": [
+    {
+      "displayName": "Datadog",
+      "preview": true,
+      "events": [
+        "datadog.v1.alert"
+      ]
+    },
+    {
+      "displayName": "Lacework",
+      "preview": true,
+      "events": [
+        "lacework.compliance.v1.newViolation",
+        "lacework.polygraph.v1.cloudActivity",
+        "lacework.polygraph.v1.application",
+        "lacework.polygraph.v1.file",
+        "lacework.polygraph.v1.machine",
+        "lacework.polygraph.v1.user"
+      ]
+    },
+    {
+      "displayName": "Check Point CloudGuard",
+      "preview": true,
+      "events": [
+        "cloudguard.v1.event"
+      ]
+    },
+    {
+      "displayName": "ForgeRock",
+      "preview": true,
+      "events": [
+        "custom"
       ]
     }
   ]

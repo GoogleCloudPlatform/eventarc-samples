@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -25,12 +24,7 @@ namespace EventListGenerator
     class Program
     {
         private const string AUDITLOG_SERVICE_CATALOG_URL = "https://raw.githubusercontent.com/googleapis/google-cloudevents/master/json/audit/service_catalog.json";
-        private const string DIRECT_SERVICE_CATALOG_FILE = "direct_services.json";
-        private const string THIRDPARTY_SERVICE_CATALOG_FILE = "thirdparty_services.json";
-        // TODO: Externalize to a file if the list gets long at some point.
-        private static HashSet<string> AUDITLOG_METHOD_NAMES_BLOCK_LIST = new HashSet<string> {
-            "google.monitoring.v3.TimeSeriesFilterService.ParseTimeSeriesFilter"
-        };
+        private const string SERVICE_CATALOG_FILE = "services.json";
         private const string HEADER_DIRECT = "Directly from a Google Cloud source";
         private const string HEADER_AUDITLOG = "Using Cloud Audit Logs";
         private const string HEADER_THIRDPARTY = "Using third-party sources";
@@ -58,9 +52,9 @@ namespace EventListGenerator
             using StreamWriter file = new(filePath);
 
             AddHeader(file, devsite);
-            DoAddServices(HEADER_DIRECT, DIRECT_SERVICE_CATALOG_FILE, file, devsite);
+            AddServices(HEADER_DIRECT, file, devsite);
             await AddAuditLogServicesAsync(file, devsite);
-            DoAddServices(HEADER_THIRDPARTY, THIRDPARTY_SERVICE_CATALOG_FILE, file, devsite);
+            AddServices(HEADER_THIRDPARTY, file, devsite);
 
             // Important to close the stream before trying to do anything else
             file.Close();
@@ -108,31 +102,10 @@ namespace EventListGenerator
 
             orderedServices.ToList().ForEach(service =>
             {
-                if (devsite)
-                {
-                    file.WriteLine($"### {service.displayName}\n");
-                    file.WriteLine("#### `serviceName`\n");
-                    file.WriteLine($"- `{service.serviceName}`\n");
-                    file.WriteLine("#### `methodName`\n");
-
-                    var allowedMethods = service.methods.Where(method => !AUDITLOG_METHOD_NAMES_BLOCK_LIST.Contains(method.methodName)).ToList();
-                    allowedMethods.ForEach(method => file.WriteLine($"- `{method.methodName}`"));
-                    file.WriteLine("");
-                }
-                else
-                {
-                    file.WriteLine($"<details><summary>{service.displayName}</summary>");
-                    file.WriteLine("<p>\n");
-                    file.WriteLine($"`{service.serviceName}`\n");
-
-                    var allowedMethods = service.methods.Where(method => !AUDITLOG_METHOD_NAMES_BLOCK_LIST.Contains(method.methodName)).ToList();
-                    allowedMethods.ForEach(method => file.WriteLine($"* `{method.methodName}`"));
-                    file.WriteLine("\n</p>");
-                    file.WriteLine("</details>");
-                }
+                service.WriteToStream(file, devsite);
             });
         }
-        private static void DoAddServices(string title, string catalogFile, StreamWriter file, bool devsite)
+        private static void AddServices(string title, StreamWriter file, bool devsite)
         {
             if (devsite)
             {
@@ -144,25 +117,14 @@ namespace EventListGenerator
                 file.WriteLine($"\n### {title}");
             }
 
-            var jsonString = File.ReadAllText(catalogFile);
-            var services = JsonSerializer.Deserialize<DirectServices>(jsonString);
+            var jsonString = File.ReadAllText(SERVICE_CATALOG_FILE);
+            var services = JsonSerializer.Deserialize<Services>(jsonString);
+            var filteredServices = title == HEADER_DIRECT ? services.direct : services.thirdParty;
+            var orderedServices = filteredServices.OrderBy(service => service.displayName);
 
-            services.services.ForEach(service =>
+            orderedServices.ToList().ForEach(service =>
             {
-                var displayName = service.preview ? service.displayName + " (preview)" : service.displayName;
-                if (devsite)
-                {
-                    file.WriteLine($"\n### {displayName}\n");
-                    service.events.ForEach(current => file.WriteLine($"- `{current}`"));
-                }
-                else
-                {
-                    file.WriteLine($"<details><summary>{displayName}</summary>");
-                    file.WriteLine("<p>\n");
-                    service.events.ForEach(current => file.WriteLine($"* `{current}`"));
-                    file.WriteLine("\n</p>");
-                    file.WriteLine("</details>");
-                }
+                service.WriteToStream(file, devsite);
             });
         }
 

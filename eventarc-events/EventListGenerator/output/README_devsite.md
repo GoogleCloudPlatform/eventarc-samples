@@ -12,6 +12,15 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
+### Cloud IoT (preview)
+
+- `google.api.cloud.iot.v1.deviceCreated`
+- `google.api.cloud.iot.v1.deviceUpdated`
+- `google.api.cloud.iot.v1.deviceDeleted`
+- `google.api.cloud.iot.v1.registryCreated`
+- `google.api.cloud.iot.v1.registryUpdated`
+- `google.api.cloud.iot.v1.registryDeleted`
+
 ### Cloud Pub/Sub
 
 - `google.cloud.pubsub.topic.v1.messagePublished`
@@ -22,15 +31,6 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.storage.object.v1.deleted`
 - `google.cloud.storage.object.v1.finalized`
 - `google.cloud.storage.object.v1.metadataUpdated`
-
-### Cloud IoT (preview)
-
-- `google.api.cloud.iot.v1.deviceCreated`
-- `google.api.cloud.iot.v1.deviceUpdated`
-- `google.api.cloud.iot.v1.deviceDeleted`
-- `google.api.cloud.iot.v1.registryCreated`
-- `google.api.cloud.iot.v1.registryUpdated`
-- `google.api.cloud.iot.v1.registryDeleted`
 
 ### Firebase Alerts (preview)
 
@@ -7939,9 +7939,17 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
+### Check Point CloudGuard (preview)
+
+- `cloudguard.v1.event`
+
 ### Datadog (preview)
 
 - `datadog.v1.alert`
+
+### ForgeRock (preview)
+
+- `custom`
 
 ### Lacework (preview)
 
@@ -7951,11 +7959,3 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `lacework.polygraph.v1.file`
 - `lacework.polygraph.v1.machine`
 - `lacework.polygraph.v1.user`
-
-### Check Point CloudGuard (preview)
-
-- `cloudguard.v1.event`
-
-### ForgeRock (preview)
-
-- `custom`

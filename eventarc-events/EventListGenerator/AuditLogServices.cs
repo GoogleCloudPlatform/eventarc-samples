@@ -12,16 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace EventListGenerator
 {
     public class AuditLogServices
     {
-        public List<Service> services {get; set;}
+        public List<AuditLogService> services {get; set;}
     }
 
-    public class Service
+    public class AuditLogService
     {
+        // TODO: Externalize to a file if the list gets long at some point.
+        private static HashSet<string> AUDITLOG_METHOD_NAMES_BLOCK_LIST = new HashSet<string> {
+            "google.monitoring.v3.TimeSeriesFilterService.ParseTimeSeriesFilter"
+        };
+
         public string serviceName { get; set; }
 
         private string _displayName;
@@ -32,6 +39,32 @@ namespace EventListGenerator
         }
 
         public List<Method> methods {get; set;}
+
+        public void WriteToStream(StreamWriter file, bool devsite)
+        {
+            if (devsite)
+            {
+                file.WriteLine($"### {displayName}\n");
+                file.WriteLine("#### `serviceName`\n");
+                file.WriteLine($"- `{serviceName}`\n");
+                file.WriteLine("#### `methodName`\n");
+
+                var allowedMethods = methods.Where(method => !AUDITLOG_METHOD_NAMES_BLOCK_LIST.Contains(method.methodName)).ToList();
+                allowedMethods.ForEach(method => file.WriteLine($"- `{method.methodName}`"));
+                file.WriteLine("");
+            }
+            else
+            {
+                file.WriteLine($"<details><summary>{displayName}</summary>");
+                file.WriteLine("<p>\n");
+                file.WriteLine($"`{serviceName}`\n");
+
+                var allowedMethods = methods.Where(method => !AUDITLOG_METHOD_NAMES_BLOCK_LIST.Contains(method.methodName)).ToList();
+                allowedMethods.ForEach(method => file.WriteLine($"* `{method.methodName}`"));
+                file.WriteLine("\n</p>");
+                file.WriteLine("</details>");
+            }
+        }
     }
 
     public class Method

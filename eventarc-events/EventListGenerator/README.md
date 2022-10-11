@@ -2,12 +2,9 @@
 
 This generates a list of events supported by Eventarc.
 
-The list has 3 parts:
-
-1. Direct list comes from `direct_services.json`.
+1. Direct and 3rd party list comes from `services.json`.
 1. AuditLog list comes from the [AuditLog service
   catalog](https://raw.githubusercontent.com/googleapis/google-cloudevents/master/json/audit/service_catalog.json).
-1. 3rd party list comes from `thirdparty_services.json`.
 
 The list has 2 formats:
 

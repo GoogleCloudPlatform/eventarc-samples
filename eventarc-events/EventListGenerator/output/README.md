@@ -9,15 +9,89 @@ The following is a list of the events supported by Eventarc.
 Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud IoT events will also be deprecated at that time. Contact your Google Cloud account team for more information.
 
 ### Directly from a Google Cloud source
+<details><summary>Apigee Registry (preview)</summary>
+<p>
+
+* `google.cloud.apigeeregistry.api.v1.created`
+* `google.cloud.apigeeregistry.api.v1.deleted`
+* `google.cloud.apigeeregistry.api.v1.updated`
+* `google.cloud.apigeeregistry.apiDeployment.v1.created`
+* `google.cloud.apigeeregistry.apiDeployment.v1.deleted`
+* `google.cloud.apigeeregistry.apiDeployment.v1.updated`
+* `google.cloud.apigeeregistry.apiSpec.v1.created`
+* `google.cloud.apigeeregistry.apiSpec.v1.deleted`
+* `google.cloud.apigeeregistry.apiSpec.v1.updated`
+* `google.cloud.apigeeregistry.apiVersion.v1.created`
+* `google.cloud.apigeeregistry.apiVersion.v1.deleted`
+* `google.cloud.apigeeregistry.apiVersion.v1.updated`
+* `google.cloud.apigeeregistry.instance.v1.created`
+* `google.cloud.apigeeregistry.instance.v1.deleted`
+
+</p>
+</details>
+<details><summary>BeyondCorp (preview)</summary>
+<p>
+
+* `google.cloud.beyondcorp.appconnections.appConnection.v1.created`
+* `google.cloud.beyondcorp.appconnections.appConnection.v1.deleted`
+* `google.cloud.beyondcorp.appconnections.appConnection.v1.updated`
+* `google.cloud.beyondcorp.appconnectors.appConnector.v1.created`
+* `google.cloud.beyondcorp.appconnectors.appConnector.v1.deleted`
+* `google.cloud.beyondcorp.appconnectors.appConnector.v1.updated`
+* `google.cloud.beyondcorp.appgateways.appGateway.v1.created`
+* `google.cloud.beyondcorp.appgateways.appGateway.v1.deleted`
+* `google.cloud.beyondcorp.clientconnectorservices.clientConnectorService.v1.created`
+* `google.cloud.beyondcorp.clientconnectorservices.clientConnectorService.v1.deleted`
+* `google.cloud.beyondcorp.clientconnectorservices.clientConnectorService.v1.updated`
+* `google.cloud.beyondcorp.clientgateways.clientGateway.v1.created`
+* `google.cloud.beyondcorp.clientgateways.clientGateway.v1.deleted`
+
+</p>
+</details>
+<details><summary>Cloud Data Fusion (preview)</summary>
+<p>
+
+* `google.cloud.datafusion.dnsPeering.v1.created`
+* `google.cloud.datafusion.dnsPeering.v1.deleted`
+* `google.cloud.datafusion.instance.v1.created`
+* `google.cloud.datafusion.instance.v1.deleted`
+* `google.cloud.datafusion.instance.v1.updated`
+
+</p>
+</details>
+<details><summary>Cloud Functions (preview)</summary>
+<p>
+
+* `google.cloud.functions.function.v2.created`
+* `google.cloud.functions.function.v2.deleted`
+* `google.cloud.functions.function.v2.updated`
+
+</p>
+</details>
 <details><summary>Cloud IoT (preview)</summary>
 <p>
 
 * `google.api.cloud.iot.v1.deviceCreated`
-* `google.api.cloud.iot.v1.deviceUpdated`
 * `google.api.cloud.iot.v1.deviceDeleted`
+* `google.api.cloud.iot.v1.deviceUpdated`
 * `google.api.cloud.iot.v1.registryCreated`
-* `google.api.cloud.iot.v1.registryUpdated`
 * `google.api.cloud.iot.v1.registryDeleted`
+* `google.api.cloud.iot.v1.registryUpdated`
+* `google.cloud.iot.v1.DeviceManager.CreateDevice`
+* `google.cloud.iot.v1.DeviceManager.CreateDeviceRegistry`
+* `google.cloud.iot.v1.DeviceManager.DeleteDevice`
+* `google.cloud.iot.v1.DeviceManager.DeleteDeviceRegistry`
+* `google.cloud.iot.v1.DeviceManager.UpdateDevice`
+* `google.cloud.iot.v1.DeviceManager.UpdateDeviceRegistry`
+
+</p>
+</details>
+<details><summary>Cloud Memorystore for Memcached (preview)</summary>
+<p>
+
+* `google.cloud.memcache.instance.v1.created`
+* `google.cloud.memcache.instance.v1.deleted`
+* `google.cloud.memcache.instance.v1.updated`
 
 </p>
 </details>
@@ -49,8 +123,8 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 <p>
 
 * `google.firebase.database.ref.v1.created`
-* `google.firebase.database.ref.v1.updated`
 * `google.firebase.database.ref.v1.deleted`
+* `google.firebase.database.ref.v1.updated`
 * `google.firebase.database.ref.v1.written`
 
 </p>
@@ -66,6 +140,15 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 <p>
 
 * `google.firebase.testlab.testMatrix.v1.completed`
+
+</p>
+</details>
+<details><summary>Workflows (preview)</summary>
+<p>
+
+* `google.cloud.workflows.workflow.v1.created`
+* `google.cloud.workflows.workflow.v1.deleted`
+* `google.cloud.workflows.workflow.v1.updated`
 
 </p>
 </details>
@@ -7844,8 +7927,8 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 <p>
 
 * `lacework.compliance.v1.newViolation`
-* `lacework.polygraph.v1.cloudActivity`
 * `lacework.polygraph.v1.application`
+* `lacework.polygraph.v1.cloudActivity`
 * `lacework.polygraph.v1.file`
 * `lacework.polygraph.v1.machine`
 * `lacework.polygraph.v1.user`

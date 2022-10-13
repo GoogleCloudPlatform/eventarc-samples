@@ -13,6 +13,7 @@
 // limitations under the License.
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace EventListGenerator
 {
@@ -34,16 +35,17 @@ namespace EventListGenerator
         public void WriteToStream(StreamWriter file, bool devsite)
         {
             var displayNameWithPreview = preview ? displayName + " (preview)" : displayName;
+            var orderedEvents = events.OrderBy(events => events.ToString());
             if (devsite)
             {
                 file.WriteLine($"\n### {displayNameWithPreview}\n");
-                events.ForEach(current => file.WriteLine($"- `{current}`"));
+                orderedEvents.ToList().ForEach(current => file.WriteLine($"- `{current}`"));
             }
             else
             {
                 file.WriteLine($"<details><summary>{displayNameWithPreview}</summary>");
                 file.WriteLine("<p>\n");
-                events.ForEach(current => file.WriteLine($"* `{current}`"));
+                orderedEvents.ToList().ForEach(current => file.WriteLine($"* `{current}`"));
                 file.WriteLine("\n</p>");
                 file.WriteLine("</details>");
             }

@@ -12,14 +12,73 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
+### Apigee Registry (preview)
+
+- `google.cloud.apigeeregistry.api.v1.created`
+- `google.cloud.apigeeregistry.api.v1.deleted`
+- `google.cloud.apigeeregistry.api.v1.updated`
+- `google.cloud.apigeeregistry.apiDeployment.v1.created`
+- `google.cloud.apigeeregistry.apiDeployment.v1.deleted`
+- `google.cloud.apigeeregistry.apiDeployment.v1.updated`
+- `google.cloud.apigeeregistry.apiSpec.v1.created`
+- `google.cloud.apigeeregistry.apiSpec.v1.deleted`
+- `google.cloud.apigeeregistry.apiSpec.v1.updated`
+- `google.cloud.apigeeregistry.apiVersion.v1.created`
+- `google.cloud.apigeeregistry.apiVersion.v1.deleted`
+- `google.cloud.apigeeregistry.apiVersion.v1.updated`
+- `google.cloud.apigeeregistry.instance.v1.created`
+- `google.cloud.apigeeregistry.instance.v1.deleted`
+
+### BeyondCorp (preview)
+
+- `google.cloud.beyondcorp.appconnections.appConnection.v1.created`
+- `google.cloud.beyondcorp.appconnections.appConnection.v1.deleted`
+- `google.cloud.beyondcorp.appconnections.appConnection.v1.updated`
+- `google.cloud.beyondcorp.appconnectors.appConnector.v1.created`
+- `google.cloud.beyondcorp.appconnectors.appConnector.v1.deleted`
+- `google.cloud.beyondcorp.appconnectors.appConnector.v1.updated`
+- `google.cloud.beyondcorp.appgateways.appGateway.v1.created`
+- `google.cloud.beyondcorp.appgateways.appGateway.v1.deleted`
+- `google.cloud.beyondcorp.clientconnectorservices.clientConnectorService.v1.created`
+- `google.cloud.beyondcorp.clientconnectorservices.clientConnectorService.v1.deleted`
+- `google.cloud.beyondcorp.clientconnectorservices.clientConnectorService.v1.updated`
+- `google.cloud.beyondcorp.clientgateways.clientGateway.v1.created`
+- `google.cloud.beyondcorp.clientgateways.clientGateway.v1.deleted`
+
+### Cloud Data Fusion (preview)
+
+- `google.cloud.datafusion.dnsPeering.v1.created`
+- `google.cloud.datafusion.dnsPeering.v1.deleted`
+- `google.cloud.datafusion.instance.v1.created`
+- `google.cloud.datafusion.instance.v1.deleted`
+- `google.cloud.datafusion.instance.v1.updated`
+
+### Cloud Functions (preview)
+
+- `google.cloud.functions.function.v2.created`
+- `google.cloud.functions.function.v2.deleted`
+- `google.cloud.functions.function.v2.updated`
+
 ### Cloud IoT (preview)
 
 - `google.api.cloud.iot.v1.deviceCreated`
-- `google.api.cloud.iot.v1.deviceUpdated`
 - `google.api.cloud.iot.v1.deviceDeleted`
+- `google.api.cloud.iot.v1.deviceUpdated`
 - `google.api.cloud.iot.v1.registryCreated`
-- `google.api.cloud.iot.v1.registryUpdated`
 - `google.api.cloud.iot.v1.registryDeleted`
+- `google.api.cloud.iot.v1.registryUpdated`
+- `google.cloud.iot.v1.DeviceManager.CreateDevice`
+- `google.cloud.iot.v1.DeviceManager.CreateDeviceRegistry`
+- `google.cloud.iot.v1.DeviceManager.DeleteDevice`
+- `google.cloud.iot.v1.DeviceManager.DeleteDeviceRegistry`
+- `google.cloud.iot.v1.DeviceManager.UpdateDevice`
+- `google.cloud.iot.v1.DeviceManager.UpdateDeviceRegistry`
+
+### Cloud Memorystore for Memcached (preview)
+
+- `google.cloud.memcache.instance.v1.created`
+- `google.cloud.memcache.instance.v1.deleted`
+- `google.cloud.memcache.instance.v1.updated`
 
 ### Cloud Pub/Sub
 
@@ -39,8 +98,8 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 ### Firebase Realtime Database (preview)
 
 - `google.firebase.database.ref.v1.created`
-- `google.firebase.database.ref.v1.updated`
 - `google.firebase.database.ref.v1.deleted`
+- `google.firebase.database.ref.v1.updated`
 - `google.firebase.database.ref.v1.written`
 
 ### Firebase Remote Config (preview)
@@ -50,6 +109,12 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 ### Firebase Test Lab (preview)
 
 - `google.firebase.testlab.testMatrix.v1.completed`
+
+### Workflows (preview)
+
+- `google.cloud.workflows.workflow.v1.created`
+- `google.cloud.workflows.workflow.v1.deleted`
+- `google.cloud.workflows.workflow.v1.updated`
 
 ## Using Cloud Audit Logs
 
@@ -7954,8 +8019,8 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 ### Lacework (preview)
 
 - `lacework.compliance.v1.newViolation`
-- `lacework.polygraph.v1.cloudActivity`
 - `lacework.polygraph.v1.application`
+- `lacework.polygraph.v1.cloudActivity`
 - `lacework.polygraph.v1.file`
 - `lacework.polygraph.v1.machine`
 - `lacework.polygraph.v1.user`

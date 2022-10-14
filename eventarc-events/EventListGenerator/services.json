@@ -78,12 +78,6 @@
       "displayName": "Cloud IoT",
       "preview": true,
       "events": [
-        "google.api.cloud.iot.v1.deviceCreated",
-        "google.api.cloud.iot.v1.deviceUpdated",
-        "google.api.cloud.iot.v1.deviceDeleted",
-        "google.api.cloud.iot.v1.registryCreated",
-        "google.api.cloud.iot.v1.registryUpdated",
-        "google.api.cloud.iot.v1.registryDeleted",
         "google.cloud.iot.v1.DeviceManager.CreateDevice",
         "google.cloud.iot.v1.DeviceManager.UpdateDevice",
         "google.cloud.iot.v1.DeviceManager.DeleteDevice",

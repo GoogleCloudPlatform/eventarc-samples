@@ -71,12 +71,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 <details><summary>Cloud IoT (preview)</summary>
 <p>
 
-* `google.api.cloud.iot.v1.deviceCreated`
-* `google.api.cloud.iot.v1.deviceDeleted`
-* `google.api.cloud.iot.v1.deviceUpdated`
-* `google.api.cloud.iot.v1.registryCreated`
-* `google.api.cloud.iot.v1.registryDeleted`
-* `google.api.cloud.iot.v1.registryUpdated`
 * `google.cloud.iot.v1.DeviceManager.CreateDevice`
 * `google.cloud.iot.v1.DeviceManager.CreateDeviceRegistry`
 * `google.cloud.iot.v1.DeviceManager.DeleteDevice`

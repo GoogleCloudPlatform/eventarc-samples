@@ -7,7 +7,7 @@ resource to create Eventarc triggers.
 More specifically, this sample:
 
 1. Enables Cloud Run and Eventarc APIs.
-1. Deploys a publicly accessible Cloud Run service.
+1. Deploys a private Cloud Run service.
 1. Creates an Eventarc Pub/Sub trigger for that service.
 1. Creates an Eventarc AuditLog trigger for Cloud Storage events for that
    service.
@@ -41,6 +41,13 @@ Run the following commands inside [terraform](../terraform) folder.
 
     ```sh
     gcloud eventarc triggers list --location YOUR-GCP-REGION
+    ```
+
+1. Generate an event and check the logs to confirm that the Pub/Sub Eventarc trigger is working as expected:
+
+    ```sh
+    TOPIC_ID=$(gcloud eventarc triggers describe trigger-pubsub-tf --location=us-central1 --format='value(transport.pubsub.topic)')
+    gcloud pubsub topics publish $TOPIC_ID --message "Hello there"
     ```
 
 1. Cleanup:

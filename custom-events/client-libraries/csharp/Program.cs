@@ -18,7 +18,7 @@ using CloudNative.CloudEvents;
 using CloudNative.CloudEvents.Protobuf;
 
 var commandArgs = Environment.GetCommandLineArgs();
-var ProjectId = commandArgs[1]; // "your-project-id";
+var ProjectId = commandArgs[1]; // "events-atamel";
 var Region = commandArgs[2];    // "us-central1";
 var Channel = commandArgs[3];   // "hello-custom-events-channel";
 Console.WriteLine($"ProjectId: {ProjectId}, Region: {Region}, Channel: {Channel}");
@@ -36,13 +36,15 @@ var cloudEventAttributes = new[]
 var cloudEvent = new CloudEvent(cloudEventAttributes)
 {
     Id = "12345",
-    Type = "example.v1.event",
-    Source = new Uri("urn:from/client/library"),
+    // Note: Type has to match with the trigger!
+    Type = "mycompany.myorg.myproject.v1.myevent",
+    Source = new Uri("urn:csharp/client/library"),
     Subject = "test-event-subject",
     DataContentType = "application/json",
-    Data = "{\"message\": \"Test Event using Client Library\"}",
+    Data = "{\"message\": \"Hello World from latest C# client library\"}",
     Time = DateTimeOffset.UtcNow,
-    ["somattribute"] = "some value",
+    // Note: someattribute and somevalue have to match with the trigger!
+    ["someattribute"] = "somevalue",
     ["temperature"] = 5,
     ["weather"] = "sunny"
 };

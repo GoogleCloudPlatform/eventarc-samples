@@ -16,6 +16,7 @@
 
 echo "Get the project id"
 PROJECT_ID=$(gcloud config get-value project)
+PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
 
 echo "Set the Eventarc location and Cloud Run region"
 REGION=us-central1
@@ -44,4 +45,5 @@ gcloud eventarc triggers create hello-custom-events-trigger \
   --destination-run-service=$SERVICE_NAME \
   --destination-run-region=$REGION \
   --event-filters="type=mycompany.myorg.myproject.v1.myevent" \
-  --event-filters="someattribute=somevalue"
+  --event-filters="someattribute=somevalue" \
+  --service-account=${PROJECT_NUMBER}-compute@developer.gserviceaccount.com

@@ -9,9 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Cloud.Eventarc.Publishing.V1" Version="1.0.0-beta02" />
-    <PackageReference Include="CloudNative.CloudEvents" Version="2.2.0" />
-    <PackageReference Include="CloudNative.CloudEvents.Protobuf" Version="2.0.0-beta.1" />
+    <PackageReference Include="Google.Cloud.Eventarc.Publishing.V1" Version="2.0.0-beta01" />
+    <PackageReference Include="CloudNative.CloudEvents" Version="2.5.0" />
+    <PackageReference Include="CloudNative.CloudEvents.Protobuf" Version="2.5.0" />
   </ItemGroup>
 
 </Project>

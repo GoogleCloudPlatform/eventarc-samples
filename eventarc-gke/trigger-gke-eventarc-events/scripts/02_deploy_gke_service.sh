@@ -21,12 +21,11 @@ gcloud container clusters get-credentials $CLUSTER_NAME \
     --region $REGION
 
 SERVICE_NAME=hello-gke
-echo "Creating a deployment named $DEPLOYMENT_NAME"
-kubectl create deployment $DEPLOYMENT_NAME \
+echo "Creating a deployment named $SERVICE_NAME"
+kubectl create deployment $SERVICE_NAME \
     --image=gcr.io/cloudrun/hello
 
 echo "Expose the deployment as a Kubernetes service"
-# TODO: This creates a service with public IP. Is there a way to set a
-# Kubernetes service without public IP and get it used by Eventarc?
+# This creates a service with a stable IP accessible within the cluster.
 kubectl expose deployment $SERVICE_NAME \
-  --type LoadBalancer --port 80 --target-port 8080
+  --type ClusterIP --port 80 --target-port 8080

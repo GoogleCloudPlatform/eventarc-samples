@@ -41,7 +41,7 @@ And the service is running:
 kubectl get svc
 
 NAME         TYPE           CLUSTER-IP    EXTERNAL-IP
-hello-gke    LoadBalancer   10.51.0.138   11.111.1.111
+hello-gke    LoadBalancer   10.51.1.26    <none>
 ```
 
 ## Enable Eventarc, Eventarc GKE destination, and a trigger service account

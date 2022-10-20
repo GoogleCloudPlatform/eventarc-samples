@@ -13,9 +13,9 @@
 // limitations under the License.
 // [START eventarc_custom_publish_csharp]
 using Google.Cloud.Eventarc.Publishing.V1;
-using Google.Protobuf.WellKnownTypes;
 using CloudNative.CloudEvents;
-using CloudNative.CloudEvents.Protobuf;
+using CloudNative.CloudEvents.SystemTextJson;
+//using CloudNative.CloudEvents.Protobuf;
 
 var commandArgs = Environment.GetCommandLineArgs();
 var ProjectId = commandArgs[1]; // "events-atamel";
@@ -49,13 +49,19 @@ var cloudEvent = new CloudEvent(cloudEventAttributes)
     ["weather"] = "sunny"
 };
 
- //Convert the CloudEvent to proto format using the proto converter
-var cloudEventProto = new ProtobufEventFormatter().ConvertToProto(cloudEvent);
+// Convert the CloudEvent to proto
+// var cloudEventProto = new ProtobufEventFormatter().ConvertToProto(cloudEvent);
+
+// Convert the CloudEvent to JSON
+var formatter = new JsonEventFormatter();
+var cloudEventJson = formatter.ConvertToJsonElement(cloudEvent).ToString();
+Console.WriteLine($"Sending CloudEvent: {cloudEventJson}");
 
 var request = new PublishEventsRequest
 {
     Channel = $"projects/{ProjectId}/locations/{Region}/channels/{Channel}",
-    Events = { Any.Pack(cloudEventProto) }
+    // Events = { Any.Pack(cloudEventProto) },
+    TextEvents = { cloudEventJson }
 };
 var response = await publisherClient.PublishEventsAsync(request);
 Console.WriteLine("Event published!");

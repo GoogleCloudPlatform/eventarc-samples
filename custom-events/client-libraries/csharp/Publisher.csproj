@@ -9,9 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Cloud.Eventarc.Publishing.V1" Version="2.0.0-beta01" />
+    <!--TODO: Remove these once the publishing package is updated on NuGet -->
+    <PackageReference Include="Google.Protobuf" Version="3.21.8" />
+    <PackageReference Include="Google.Api.Gax" Version="4.1.1" />
+    <PackageReference Include="Google.Api.Gax.Grpc" Version="4.1.1" />
+
+    <!-- TODO: Add this once the package is updated on NuGet -->
+    <!-- <PackageReference Include="Google.Cloud.Eventarc.Publishing.V1" Version="2.0.0-beta01" /> -->
     <PackageReference Include="CloudNative.CloudEvents" Version="2.5.0" />
-    <PackageReference Include="CloudNative.CloudEvents.Protobuf" Version="2.5.0" />
+    <!-- <PackageReference Include="CloudNative.CloudEvents.Protobuf" Version="2.5.0" /> -->
+    <PackageReference Include="CloudNative.CloudEvents.SystemTextJson" Version="2.5.0" />
   </ItemGroup>
 
 </Project>

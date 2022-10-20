@@ -32,7 +32,7 @@ that explains Eventarc.
   * [Expensive BigQuery jobs notifier](bigquery-jobs-notifier/run)
   * [Compute Engine VM Labeler](gce-vm-labeler/run)
 * Eventarc and Google Kubernetes Engine (GKE)
-  * [Trigger GKE services with Eventarc events](eventarc-gke/trigger-gke-eventarc-events)
+  * [Trigger Kubernetes services with Eventarc events](eventarc-gke/trigger-gke-eventarc-events)
 * Eventarc and Cloud Run for Anthos
   * [BigQuery processing pipeline](processing-pipelines/bigquery/bigquery-processing-pipeline-eventarc-crfa.md)
   * [Image processing pipeline v1 - Eventarc (AuditLog-Cloud Storage) + Cloud Run for Anthos](processing-pipelines/image-v1/image-processing-pipeline-eventarc-crfa.md)

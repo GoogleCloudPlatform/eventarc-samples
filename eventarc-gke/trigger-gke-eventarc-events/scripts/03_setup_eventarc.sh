@@ -21,30 +21,10 @@ echo "Enable required services for Eventarc and Eventarc GKE destinations"
 gcloud services enable eventarc.googleapis.com \
   cloudresourcemanager.googleapis.com
 
-echo "Allow Eventarc to manage GKE clusters"
+echo "Enable Eventarc to manage GKE clusters"
 # Eventarc creates a separate Event Forwarder pod for each trigger targeting a
 # GKE service, and  requires explicit permissions to make changes to the
 # cluster. This is done by granting permissions to a special service account
 # (the Eventarc P4SA) to manage resources in the cluster. This needs to be done
 # once per Google Cloud project.
 gcloud eventarc gke-destinations init
-
-SERVICE_ACCOUNT=eventarc-gke-trigger-sa
-echo "Create a service account named $SERVICE_ACCOUNT to be used by GKE triggers"
-# Eventarc for GKE triggers require a user-provided SA to be used by the Event
-# Forwarder to pull events from Pub/Sub
-gcloud iam service-accounts create $SERVICE_ACCOUNT
-
-echo "Add right roles to the service account"
-# The SA must be granted the following roles:
-# * roles/pubsub.subscriber
-# * roles/monitoring.metricWriter
-# * roles/eventarc.eventReceiver (Only for AuditLog triggers that will be added
-#   in a later script).
-gcloud projects add-iam-policy-binding $PROJECT_ID \
-  --member serviceAccount:$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com \
-  --role roles/pubsub.subscriber
-
-gcloud projects add-iam-policy-binding $PROJECT_ID \
-  --member serviceAccount:$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com \
-  --role roles/monitoring.metricWriter

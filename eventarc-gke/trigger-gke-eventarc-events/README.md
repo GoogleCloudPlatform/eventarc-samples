@@ -1,7 +1,7 @@
-# Trigger GKE services with Eventarc events
+# Trigger Kubernetes services with Eventarc events
 
-In this sample, you will see how to trigger services running on Google
-Kubernetes Engine (GKE) with events from Eventarc.
+In this sample, you will see how to trigger Kubernetes services running on
+Google Kubernetes Engine (GKE) with Eventarc events.
 
 ## Before you begin
 
@@ -44,18 +44,18 @@ NAME         TYPE           CLUSTER-IP    EXTERNAL-IP
 hello-gke    LoadBalancer   10.51.1.26    <none>
 ```
 
-## Enable Eventarc, Eventarc GKE destination, and a trigger service account
+## Set up Eventarc
 
-Run [03_enable_eventarc_gke.sh](scripts/03_enable_eventarc_gke.sh) to enable required
-services for Eventarc, initialize GKE destinations in Eventarc and create a
-service account to be used in triggers later.
+Run [03_setup_eventarc.sh](scripts/03_setup_eventarc.sh) to enable required
+services for Eventarc, initialize Eventarc GKE destinations.
 
 ## Create a Pub/Sub trigger
 
 ### Create a trigger
 
 Run [04_create_eventarc_pubsub_trigger.sh](scripts/04_create_eventarc_pubsub_trigger.sh)
-to create a Pub/Sub trigger to the deployed GKE service.
+to create a service account for Eventarc triggers and create a Pub/Sub trigger
+to the deployed GKE service.
 
 ### Test the trigger
 
@@ -63,7 +63,7 @@ Run [05_test_eventarc_pubsub.sh](scripts/05_test_eventarc_pubsub.sh) to
 find the underlying Pub/Sub topic for the trigger and send a message to that
 topic.
 
-You can then check the logs of the service by find the pod id:
+To check if the event is received, first, find the pod id:
 
 ```sh
 kubectl get pods
@@ -156,7 +156,7 @@ kubectl logs hello-gke-df6469d4b-5vv22
 }
 ```
 
-## Create an Audit Logs trigger
+## Create a Cloud Audit Logs trigger
 
 Although Cloud Storage trigger is the better way to listen for Cloud Storage
 events, here we show you how to create an Audit Log trigger to do the same.
@@ -170,14 +170,14 @@ left-hand menu. In the list of services, check `Google Cloud Storage`:
 ![Enable AuditLog](images/image1.png)
 
 On the right hand side, make sure `Admin`, `Read` and `Write` are selected and
-save:
+click `Save`:
 
 ![Enable AuditLog](images/image2.png)
 
 ### Create a trigger
 
 Run
-[08_create_eventarc_auditlog_storage_trigger.sh](08_create_eventarc_auditlog_storage_trigger.sh)
+[08_create_eventarc_auditlog_storage_trigger.sh](scripts/08_create_eventarc_auditlog_storage_trigger.sh)
 to create an Audit Log trigger from the bucket created earlier to the deployed GKE service.
 
 ### Test the trigger
@@ -193,7 +193,7 @@ trigger-auditlog-storage-gke  google.cloud.audit.log.v1.written              GKE
 ```
 
 You can run the same
-[07_test_eventarc_storage.sh](07_test_eventarc_storage.sh) to upload a file to
+[07_test_eventarc_storage.sh](scripts/07_test_eventarc_storage.sh) to upload a file to
 the bucket.
 
 Check the logs of the pod:

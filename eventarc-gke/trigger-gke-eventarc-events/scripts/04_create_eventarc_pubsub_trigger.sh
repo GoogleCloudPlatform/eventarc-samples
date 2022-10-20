@@ -17,10 +17,29 @@
 echo "Get the project id"
 PROJECT_ID=$(gcloud config get-value project)
 
+SERVICE_ACCOUNT=eventarc-gke-trigger-sa
+echo "Create a service account named $SERVICE_ACCOUNT to be used by GKE triggers"
+# Eventarc for GKE triggers require a user-provided SA to be used by the Event
+# Forwarder to pull events from Pub/Sub
+gcloud iam service-accounts create $SERVICE_ACCOUNT
+
+echo "Add right roles to the service account"
+# The SA must be granted the following roles:
+# * roles/pubsub.subscriber
+# * roles/monitoring.metricWriter
+# * roles/eventarc.eventReceiver (Only for AuditLog triggers that will be added
+#   in a later script).
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member serviceAccount:$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com \
+  --role roles/pubsub.subscriber
+
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member serviceAccount:$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com \
+  --role roles/monitoring.metricWriter
+
 CLUSTER_NAME=eventarc-cluster
 SERVICE_NAME=hello-gke
 REGION=us-central1
-SERVICE_ACCOUNT=eventarc-gke-trigger-sa
 TRIGGER_NAME=trigger-pubsub-gke
 echo "Create a Pub/Sub trigger named $TRIGGER_NAME"
 gcloud eventarc triggers create $TRIGGER_NAME \

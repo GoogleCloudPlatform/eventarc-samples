@@ -14,10 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+source config.sh
+
 echo "Enable required services for GKE"
 gcloud services enable container.googleapis.com
 
-CLUSTER_NAME=eventarc-cluster
-REGION=us-central1
 echo "Create a GKE cluster named $CLUSTER_NAME in region: $REGION"
 gcloud container clusters create-auto $CLUSTER_NAME --region $REGION

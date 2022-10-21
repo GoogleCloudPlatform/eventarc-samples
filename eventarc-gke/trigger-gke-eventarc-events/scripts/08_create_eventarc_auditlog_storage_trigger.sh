@@ -14,27 +14,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-echo "Get the project id"
-PROJECT_ID=$(gcloud config get-value project)
-
-BUCKET_NAME=eventarc-gcs-$PROJECT_ID
-REGION=us-central1
-# This is already created in a previous script
-#echo "Create a bucket with name $BUCKET_NAME"
-#gsutil mb -l $REGION gs://$BUCKET_NAME
+source config.sh
 
 echo "Add eventarc.eventReceiver role to the trigger service account"
 # This is needed for Audit Log triggers
-SERVICE_ACCOUNT=eventarc-gke-trigger-sa
 gcloud projects add-iam-policy-binding $PROJECT_ID \
-  --member serviceAccount:$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com \
+  --member serviceAccount:$TRIGGER_SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com \
   --role roles/eventarc.eventReceiver
 
-CLUSTER_NAME=eventarc-cluster
-SERVICE_NAME=hello-gke
-TRIGGER_NAME=trigger-auditlog-storage-gke
-echo "Create an Audit Log trigger named $TRIGGER_NAME"
-gcloud eventarc triggers create $TRIGGER_NAME \
+TRIGGER_AUDITLOG_STORAGE_NAME=trigger-auditlog-storage-gke
+echo "Create an Audit Log trigger named $TRIGGER_AUDITLOG_STORAGE_NAME"
+gcloud eventarc triggers create $TRIGGER_AUDITLOG_STORAGE_NAME \
   --destination-gke-cluster=$CLUSTER_NAME \
   --destination-gke-location=$REGION \
   --destination-gke-namespace=default \
@@ -45,4 +35,4 @@ gcloud eventarc triggers create $TRIGGER_NAME \
   --event-filters="methodName=storage.objects.create" \
   --event-filters-path-pattern="resourceName=/projects/_/buckets/$BUCKET_NAME/objects/*" \
   --location=$REGION \
-  --service-account=$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com
+  --service-account=$TRIGGER_SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com

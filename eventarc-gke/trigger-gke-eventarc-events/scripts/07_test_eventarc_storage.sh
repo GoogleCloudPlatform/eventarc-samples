@@ -14,10 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-echo "Get the project id"
-PROJECT_ID=$(gcloud config get-value project)
+source config.sh
 
-BUCKET_NAME=eventarc-gcs-$PROJECT_ID
 echo "Create and upload random.txt to $BUCKET_NAME"
 echo "Hello World" > random.txt
 gsutil cp random.txt gs://$BUCKET_NAME/random.txt

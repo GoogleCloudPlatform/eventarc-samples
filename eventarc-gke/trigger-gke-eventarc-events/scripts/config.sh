@@ -14,10 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-source config.sh
+export PROJECT_ID=$(gcloud config get-value project)
 
-echo "Get the underlying topic for trigger $TRIGGER_PUBSUB_NAME"
-TOPIC_ID=$(gcloud eventarc triggers describe $TRIGGER_PUBSUB_NAME --location $REGION --format='value(transport.pubsub.topic)')
+export CLUSTER_NAME=eventarc-cluster
+export REGION=us-central1
+export SERVICE_NAME=hello-gke
 
-echo "Send a message to topic $TOPIC_ID"
-gcloud pubsub topics publish $TOPIC_ID --message="Hello World"
+export TRIGGER_SERVICE_ACCOUNT=eventarc-gke-trigger-sa
+export TRIGGER_PUBSUB_NAME=trigger-pubsub-gke
+
+export BUCKET_NAME=eventarc-gcs-$PROJECT_ID

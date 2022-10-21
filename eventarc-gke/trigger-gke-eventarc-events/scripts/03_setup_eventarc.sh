@@ -14,8 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-echo "Get the project id"
-PROJECT_ID=$(gcloud config get-value project)
+source config.sh
 
 echo "Enable required services for Eventarc and Eventarc GKE destinations"
 gcloud services enable eventarc.googleapis.com \

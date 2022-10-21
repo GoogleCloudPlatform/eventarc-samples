@@ -14,13 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-CLUSTER_NAME=eventarc-cluster
-REGION=us-central1
+source config.sh
+
 echo "Get authentication credentials to interact with the cluster"
 gcloud container clusters get-credentials $CLUSTER_NAME \
     --region $REGION
 
-SERVICE_NAME=hello-gke
 echo "Creating a deployment named $SERVICE_NAME"
 kubectl create deployment $SERVICE_NAME \
     --image=gcr.io/cloudrun/hello

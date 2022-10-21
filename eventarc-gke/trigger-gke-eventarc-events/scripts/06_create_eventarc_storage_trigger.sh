@@ -14,11 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-echo "Get the project id"
-PROJECT_ID=$(gcloud config get-value project)
+source config.sh
 
-BUCKET_NAME=eventarc-gcs-$PROJECT_ID
-REGION=us-central1
 echo "Create a bucket with name $BUCKET_NAME"
 gsutil mb -l $REGION gs://$BUCKET_NAME
 
@@ -29,12 +26,9 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member serviceAccount:$SERVICE_ACCOUNT_STORAGE \
     --role roles/pubsub.publisher
 
-CLUSTER_NAME=eventarc-cluster
-SERVICE_NAME=hello-gke
-SERVICE_ACCOUNT=eventarc-gke-trigger-sa
-TRIGGER_NAME=trigger-storage-gke
-echo "Create a Cloud Storage trigger named $TRIGGER_NAME"
-gcloud eventarc triggers create $TRIGGER_NAME \
+TRIGGER_STORAGE_NAME=trigger-storage-gke
+echo "Create a Cloud Storage trigger named $TRIGGER_STORAGE_NAME"
+gcloud eventarc triggers create $TRIGGER_STORAGE_NAME \
   --destination-gke-cluster=$CLUSTER_NAME \
   --destination-gke-location=$REGION \
   --destination-gke-namespace=default \
@@ -43,4 +37,4 @@ gcloud eventarc triggers create $TRIGGER_NAME \
   --event-filters="type=google.cloud.storage.object.v1.finalized" \
   --event-filters="bucket=$BUCKET_NAME" \
   --location=$REGION \
-  --service-account=$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com
+  --service-account=$TRIGGER_SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com

@@ -14,14 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-echo "Get the project id"
-PROJECT_ID=$(gcloud config get-value project)
+source config.sh
 
-SERVICE_ACCOUNT=eventarc-gke-trigger-sa
-echo "Create a service account named $SERVICE_ACCOUNT to be used by GKE triggers"
+echo "Create a service account named $TRIGGER_SERVICE_ACCOUNT to be used by GKE triggers"
 # Eventarc for GKE triggers require a user-provided SA to be used by the Event
 # Forwarder to pull events from Pub/Sub
-gcloud iam service-accounts create $SERVICE_ACCOUNT
+gcloud iam service-accounts create $TRIGGER_SERVICE_ACCOUNT
 
 echo "Add right roles to the service account"
 # The SA must be granted the following roles:
@@ -30,19 +28,15 @@ echo "Add right roles to the service account"
 # * roles/eventarc.eventReceiver (Only for AuditLog triggers that will be added
 #   in a later script).
 gcloud projects add-iam-policy-binding $PROJECT_ID \
-  --member serviceAccount:$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com \
+  --member serviceAccount:$TRIGGER_SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com \
   --role roles/pubsub.subscriber
 
 gcloud projects add-iam-policy-binding $PROJECT_ID \
-  --member serviceAccount:$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com \
+  --member serviceAccount:$TRIGGER_SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com \
   --role roles/monitoring.metricWriter
 
-CLUSTER_NAME=eventarc-cluster
-SERVICE_NAME=hello-gke
-REGION=us-central1
-TRIGGER_NAME=trigger-pubsub-gke
-echo "Create a Pub/Sub trigger named $TRIGGER_NAME"
-gcloud eventarc triggers create $TRIGGER_NAME \
+echo "Create a Pub/Sub trigger named $TRIGGER_PUBSUB_NAME"
+gcloud eventarc triggers create $TRIGGER_PUBSUB_NAME \
   --destination-gke-cluster=$CLUSTER_NAME \
   --destination-gke-location=$REGION \
   --destination-gke-namespace=default \

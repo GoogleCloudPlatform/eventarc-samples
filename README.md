@@ -33,6 +33,7 @@ that explains Eventarc.
   * [Compute Engine VM Labeler](gce-vm-labeler/run)
 * Eventarc and Google Kubernetes Engine (GKE)
   * [Trigger Kubernetes services with Eventarc events](eventarc-gke/trigger-gke-eventarc-events)
+  * [Trigger Kubernetes services with Eventarc events (Terraform)](terraform/eventarc-gke/trigger-gke-eventarc-events/)
 * Eventarc and Cloud Run for Anthos
   * [BigQuery processing pipeline](processing-pipelines/bigquery/bigquery-processing-pipeline-eventarc-crfa.md)
   * [Image processing pipeline v1 - Eventarc (AuditLog-Cloud Storage) + Cloud Run for Anthos](processing-pipelines/image-v1/image-processing-pipeline-eventarc-crfa.md)
@@ -53,6 +54,7 @@ that explains Eventarc.
 * Terraform samples
   * [Basic Terraform](terraform/basic)
   * [Terraform with Eventarc and Workflows](terraform/eventarc-workflows)
+  * [Trigger Kubernetes services with Eventarc events (Terraform)](terraform/eventarc-gke/trigger-gke-eventarc-events/)
 * [Cross project eventing](cross-project-eventing)
 * [Custom events samples](custom-events)
 * [Cloud IoT Events](cloudiot-events)

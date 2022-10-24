@@ -72,6 +72,11 @@ resource "google_project_iam_binding" "containerDeveloper" {
   members = [
     "serviceAccount:service-${data.google_project.project.number}@gcp-sa-eventarc.iam.gserviceaccount.com"
   ]
+
+  depends_on = [
+    google_project_service.eventarc,
+    google_project_service.cloudresourcemanager
+  ]
 }
 
 resource "google_project_iam_binding" "serviceAccountAdmin" {
@@ -80,5 +85,10 @@ resource "google_project_iam_binding" "serviceAccountAdmin" {
 
   members = [
     "serviceAccount:service-${data.google_project.project.number}@gcp-sa-eventarc.iam.gserviceaccount.com"
+  ]
+
+  depends_on = [
+    google_project_service.eventarc,
+    google_project_service.cloudresourcemanager
   ]
 }

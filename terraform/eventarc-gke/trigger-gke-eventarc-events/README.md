@@ -31,13 +31,13 @@ for GKE and creates a GKE cluster.
 Plan for changes with your project id and region:
 
 ```sh
-terraform plan -var="project_id=eventarc-terraform" -var="region=us-central1" var="cluster_name=eventarc-cluster"
+terraform plan -var="project_id=eventarc-terraform" -var="region=us-central1" -var="cluster_name=eventarc-cluster"
 ```
 
 Apply changes:
 
 ```sh
-terraform apply -var="project_id=eventarc-terraform" -var="region=us-central1" var="cluster_name=eventarc-cluster"
+terraform apply -var="project_id=eventarc-terraform" -var="region=us-central1" -var="cluster_name=eventarc-cluster"
 ```
 
 Make sure the cluster creation is finished before moving onto the next step.
@@ -48,9 +48,10 @@ To deploy a GKE service, we'll rely on `kubectl` instead (as Terraform does not
 handle resource drift, potentially missing out on a key benefit of Kubernetes,
 which is its continuous reconciling from desired state to actual state).
 
-Run [deploy_gke_service.sh](scripts/deploy_gke_service.sh) to deploy Cloud Run's [hello
-container](https://github.com/GoogleCloudPlatform/cloud-run-hello) as a Kubernetes
-service on GKE. This service logs received HTTP requests and CloudEvents.
+Go to [.scripts/](./scripts) folder and run
+[deploy_gke_service.sh](scripts/deploy_gke_service.sh) to deploy Cloud Run's
+[hello container](https://github.com/GoogleCloudPlatform/cloud-run-hello) as a
+Kubernetes service on GKE. This service logs received HTTP requests and CloudEvents.
 
 Make sure the pod is running:
 
@@ -112,13 +113,13 @@ deployed GKE service.
 Plan for changes with your project id and region:
 
 ```sh
-terraform plan -var="project_id=eventarc-terraform" -var="region=us-central1" var="cluster_name=eventarc-cluster"
+terraform plan -var="project_id=eventarc-terraform" -var="region=us-central1" -var="cluster_name=eventarc-cluster"
 ```
 
 Apply changes:
 
 ```sh
-terraform apply -var="project_id=eventarc-terraform" -var="region=us-central1" var="cluster_name=eventarc-cluster"
+terraform apply -var="project_id=eventarc-terraform" -var="region=us-central1" -var="cluster_name=eventarc-cluster"
 ```
 
 ### Test the trigger

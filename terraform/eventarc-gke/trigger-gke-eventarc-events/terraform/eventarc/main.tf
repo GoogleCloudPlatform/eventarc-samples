@@ -22,14 +22,14 @@ variable "region" {
   type = string
 }
 
+# Used to retrieve project_number later
+data "google_project" "project" {
+}
+
 # Needed for API enablement
 provider "google" {
   project = var.project_id
   region  = var.region
-}
-
-# Used to retrieve project_number later
-data "google_project" "project" {
 }
 
 # Enable required services for Eventarc and Eventarc GKE destinations
@@ -51,6 +51,20 @@ resource "google_project_service" "cloudresourcemanager" {
 # cluster. This is done by granting permissions to a special service account
 # (the Eventarc P4SA) to manage resources in the cluster. This needs to be done
 # once per Google Cloud project.
+
+# Make sure the Eventarc Service Agent is created upfront before
+# granting permissions.
+resource "google_project_service_identity" "eventarc" {
+  provider = google-beta
+
+  project = var.project_id
+  service = "eventarc.googleapis.com"
+  depends_on = [
+    google_project_service.eventarc,
+    google_project_service.cloudresourcemanager
+  ]
+}
+
 resource "google_project_iam_binding" "computeViewer" {
   project = var.project_id
   role    = "roles/compute.viewer"
@@ -60,8 +74,7 @@ resource "google_project_iam_binding" "computeViewer" {
   ]
 
   depends_on = [
-    google_project_service.eventarc,
-    google_project_service.cloudresourcemanager
+    google_project_service.eventarc
   ]
 }
 
@@ -74,8 +87,7 @@ resource "google_project_iam_binding" "containerDeveloper" {
   ]
 
   depends_on = [
-    google_project_service.eventarc,
-    google_project_service.cloudresourcemanager
+    google_project_service.eventarc
   ]
 }
 
@@ -88,7 +100,6 @@ resource "google_project_iam_binding" "serviceAccountAdmin" {
   ]
 
   depends_on = [
-    google_project_service.eventarc,
-    google_project_service.cloudresourcemanager
+    google_project_service.eventarc
   ]
 }

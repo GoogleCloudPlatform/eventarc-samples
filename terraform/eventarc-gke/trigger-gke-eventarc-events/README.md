@@ -18,7 +18,7 @@ gcloud config set project $PROJECT_ID
 
 ## Create a GKE cluster
 
-Go to [./terraform/gke](./terraform/gke) folder and initialize Terraform:
+Go to [terraform/gke](terraform/gke) folder and initialize Terraform:
 
 ```sh
 cd terraform/gke
@@ -48,10 +48,15 @@ To deploy a GKE service, we'll rely on `kubectl` instead (as Terraform does not
 handle resource drift, potentially missing out on a key benefit of Kubernetes,
 which is its continuous reconciling from desired state to actual state).
 
-Go to [.scripts/](./scripts) folder and run
+Go to [scripts](scripts) folder and run
 [deploy_gke_service.sh](scripts/deploy_gke_service.sh) to deploy Cloud Run's
 [hello container](https://github.com/GoogleCloudPlatform/cloud-run-hello) as a
 Kubernetes service on GKE. This service logs received HTTP requests and CloudEvents.
+
+```sh
+cd scripts
+./deploy_gke_service.sh
+```
 
 Make sure the pod is running:
 
@@ -73,7 +78,7 @@ hello-gke    LoadBalancer   10.51.1.26    <none>
 
 ## Set up Eventarc
 
-Go to [./terraform/eventarc](./terraform/eventarc) folder and initialize Terraform:
+Go to [terraform/eventarc](terraform/eventarc) folder and initialize Terraform:
 
 ```sh
 cd terraform/eventarc
@@ -99,10 +104,10 @@ terraform apply -var="project_id=eventarc-terraform" -var="region=us-central1"
 
 ### Create a trigger
 
-Go to [./terraform/pubsub-trigger](./terraform/pubsub-trigger) folder and initialize Terraform:
+Go to [terraform/pubsub-trigger](terraform/pubsub-trigger) folder and initialize Terraform:
 
 ```sh
-cd terraform/eventarc
+cd terraform/pubsub-trigger
 terraform init
 ```
 
@@ -122,10 +127,21 @@ Apply changes:
 terraform apply -var="project_id=eventarc-terraform" -var="region=us-central1" -var="cluster_name=eventarc-cluster"
 ```
 
+**Note**: If the trigger creation takes a long time and fails with Terraform
+(there seems to be a bug around this), you can run
+[create_eventarc_pubsub_trigger.sh](./scripts/create_eventarc_pubsub_trigger.sh)
+as an alternative.
+
 ### Test the trigger
 
-Run [test_eventarc_pubsub.sh](scripts/test_eventarc_pubsub.sh) to find the
+Go to [scripts](scripts) folder and run
+[test_eventarc_pubsub.sh](scripts/test_eventarc_pubsub.sh) to find the
 underlying Pub/Sub topic for the trigger and send a message to that topic.
+
+```sh
+cd scripts
+./test_eventarc_pubsub.sh
+```
 
 To check if the event is received, first, find the pod id:
 

@@ -25,69 +25,17 @@ services orchestrated by **Workflows**.
 
 ## Before you begin
 
-Before deploying services and triggers, go through some setup steps.
-
-### Set project id
-
 Make sure that the project id is setup:
 
 ```sh
-gcloud config set project [YOUR-PROJECT-ID]
-PROJECT_ID=$(gcloud config get-value project)
+PROJECT_ID=your-project-id
+gcloud config set project $PROJECT_ID
 ```
 
-### Enable APIs
+## Create buckets
 
-Enable all necessary services:
-
-```sh
-gcloud services enable \
-  artifactregistry.googleapis.com \
-  cloudbuild.googleapis.com \
-  cloudfunctions.googleapis.com \
-  eventarc.googleapis.com \
-  run.googleapis.com \
-  vision.googleapis.com \
-  workflows.googleapis.com \
-  workflowexecutions.googleapis.com
-```
-
-### Configure service accounts
-
-Create a service account that you will use to in Eventarc trigger.
-
-```sh
-APP=image-processing
-SERVICE_ACCOUNT=$APP-sa
-
-gcloud iam service-accounts create $SERVICE_ACCOUNT \
-  --display-name="Image processing service account"
-```
-
-Grant the `workflows.invoker` role, so the service account can be used to invoke
-Workflows from Eventarc:
-
-```sh
-gcloud projects add-iam-policy-binding $PROJECT_ID \
-  --role roles/workflows.invoker \
-  --member serviceAccount:$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com
-```
-
-Grant the `pubsub.publisher` role to the Cloud Storage service account. This is
-needed for the Eventarc Cloud Storage trigger:
-
-```sh
-PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
-STORAGE_SERVICE_ACCOUNT="$(gsutil kms serviceaccount -p $PROJECT_NUMBER)"
-
-gcloud projects add-iam-policy-binding $PROJECT_NUMBER \
-    --member serviceAccount:$STORAGE_SERVICE_ACCOUNT \
-    --role roles/pubsub.publisher
-```
-
-## Create storage buckets
-
-Create 2 unique storage buckets to save pre and post processed images.
+Create an input bucket for users to upload the images to and an output bucket
+for the image processing pipeline to save the processed images.
 
 ```sh
 REGION=us-central1
@@ -98,19 +46,57 @@ gsutil mb -l $REGION gs://$BUCKET1
 gsutil mb -l $REGION gs://$BUCKET2
 ```
 
-## Watermarker
+## Deploy filter service
 
-This Cloud Functions service receives the bucket, file and labels information, reads the
-file, adds the labels as watermark to the image using
-[ImageSharp](https://github.com/SixLabors/ImageSharp) and saves the image to the
-output bucket.
+First, enable required services for Cloud Functions gen2 and the Vision API:
 
-The code of the service is in [watermarker](../image-v2/watermarker) folder.
+```sh
+gcloud services enable \
+  artifactregistry.googleapis.com \
+  cloudbuild.googleapis.com \
+  cloudfunctions.googleapis.com \
+  run.googleapis.com \
+  vision.googleapis.com
+```
+
+This Cloud Functions service receives the bucket and file information,
+determines if the image is safe with Vision API and returns the result.
+
+The code of the service is in [filter](filter) folder.
 
 Inside the top level [processing-pipelines](..) folder, deploy the service:
 
 ```sh
-SERVICE_NAME=watermarker
+SERVICE_NAME=filter
+
+gcloud functions deploy $SERVICE_NAME \
+  --gen2 \
+  --allow-unauthenticated \
+  --runtime dotnet3 \
+  --trigger-http \
+  --region=$REGION \
+  --entry-point Filter.Function \
+  --set-build-env-vars GOOGLE_BUILDABLE=image-v3/filter/csharp
+```
+
+Once the function is deployed, set the service URL in an env variable, we'll
+need later:
+
+```sh
+FILTER_URL=$(gcloud functions describe $SERVICE_NAME --region=$REGION --gen2 --format 'value(serviceConfig.uri)')
+```
+
+## Deploy labeler service
+
+This Cloud Functions service receives the bucket and file information, extracts
+labels of the image with Vision API and saves the labels to the output bucket.
+
+The code of the service is in [labeler](../image-v2/labeler) folder.
+
+Inside the top level [processing-pipelines](..) folder, deploy the service:
+
+```sh
+SERVICE_NAME=labeler
 
 gcloud functions deploy $SERVICE_NAME \
   --gen2 \
@@ -119,17 +105,17 @@ gcloud functions deploy $SERVICE_NAME \
   --trigger-http \
   --region=$REGION \
   --set-env-vars BUCKET=$BUCKET2 \
-  --entry-point Watermarker.Function \
-  --set-build-env-vars GOOGLE_BUILDABLE=image-v2/watermarker/csharp
+  --entry-point Labeler.Function \
+  --set-build-env-vars GOOGLE_BUILDABLE=image-v2/labeler/csharp
 ```
 
 Set the service URL in an env variable, we'll need later:
 
 ```sh
-WATERMARKER_URL=$(gcloud functions describe $SERVICE_NAME --region=$REGION --gen2 --format 'value(serviceConfig.uri)')
+LABELER_URL=$(gcloud functions describe $SERVICE_NAME --region=$REGION --gen2 --format 'value(serviceConfig.uri)')
 ```
 
-## Resizer
+## Deploy resizer service
 
 This Cloud Functions service receives the bucket and file information, resizes
 the image using [ImageSharp](https://github.com/SixLabors/ImageSharp) and saves
@@ -163,17 +149,19 @@ Set the service URL in an env variable, we'll need later:
 RESIZER_URL=$(gcloud functions describe $SERVICE_NAME --region=$REGION --gen2 --format 'value(serviceConfig.uri)')
 ```
 
-## Labeler
+## Deploy watermarker service
 
-This Cloud Functions service receives the bucket and file information, extracts
-labels of the image with Vision API and saves the labels to the output bucket.
+This Cloud Functions service receives the bucket, file and labels information, reads the
+file, adds the labels as watermark to the image using
+[ImageSharp](https://github.com/SixLabors/ImageSharp) and saves the image to the
+output bucket.
 
-The code of the service is in [labeler](../image-v2/labeler) folder.
+The code of the service is in [watermarker](../image-v2/watermarker) folder.
 
 Inside the top level [processing-pipelines](..) folder, deploy the service:
 
 ```sh
-SERVICE_NAME=labeler
+SERVICE_NAME=watermarker
 
 gcloud functions deploy $SERVICE_NAME \
   --gen2 \
@@ -182,48 +170,28 @@ gcloud functions deploy $SERVICE_NAME \
   --trigger-http \
   --region=$REGION \
   --set-env-vars BUCKET=$BUCKET2 \
-  --entry-point Labeler.Function \
-  --set-build-env-vars GOOGLE_BUILDABLE=image-v2/labeler/csharp
+  --entry-point Watermarker.Function \
+  --set-build-env-vars GOOGLE_BUILDABLE=image-v2/watermarker/csharp
 ```
 
 Set the service URL in an env variable, we'll need later:
 
 ```sh
-LABELER_URL=$(gcloud functions describe $SERVICE_NAME --region=$REGION --gen2 --format 'value(serviceConfig.uri)')
+WATERMARKER_URL=$(gcloud functions describe $SERVICE_NAME --region=$REGION --gen2 --format 'value(serviceConfig.uri)')
 ```
 
-## Filter
-
-This Cloud Functions service receives the bucket and file information,
-determines if the image is safe with Vision API and returns the result.
-
-The code of the service is in [filter](filter) folder.
-
-Inside the top level [processing-pipelines](..) folder, deploy the service:
-
-```sh
-SERVICE_NAME=filter
-
-gcloud functions deploy $SERVICE_NAME \
-  --gen2 \
-  --allow-unauthenticated \
-  --runtime dotnet3 \
-  --trigger-http \
-  --region=$REGION \
-  --entry-point Filter.Function \
-  --set-build-env-vars GOOGLE_BUILDABLE=image-v3/filter/csharp
-```
-
-Set the service URL in an env variable, we'll need later:
-
-```sh
-FILTER_URL=$(gcloud functions describe $SERVICE_NAME --region=$REGION --gen2 --format 'value(serviceConfig.uri)')
-```
-
-## Workflow
+## Define and deploy workflow
 
 Create a workflow to bring together Filter, Labeler, Resizer and Watermarker services.
 This workflow will be triggered by an Eventarc trigger.
+
+First, enable required services for Workflows:
+
+```sh
+gcloud services enable \
+  workflows.googleapis.com \
+  workflowexecutions.googleapis.com
+```
 
 ### Define
 
@@ -357,15 +325,64 @@ gcloud workflows deploy $WORKFLOW_NAME \
     --location=$REGION
 ```
 
-## Eventarc Trigger
+## Create trigger
 
 The trigger filters for new file creation events form the input Cloud Storage
 bucket and passes them onto Workflows.
 
+### One time setup
+
+First, enable required services for Eventarc:
+
+```sh
+gcloud services enable \
+ eventarc.googleapis.com
+```
+
+Create a service account that you will use in the Eventarc trigger.
+
+```sh
+SERVICE_ACCOUNT=eventarc-trigger-imageproc-sa
+
+gcloud iam service-accounts create $SERVICE_ACCOUNT \
+  --display-name="Eventarc trigger image processing service account"
+```
+
+Grant the `workflows.invoker` role, so the service account can be used to invoke
+Workflows from Eventarc:
+
+```sh
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --role roles/workflows.invoker \
+  --member serviceAccount:$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com
+```
+
+Grant `eventarc.eventReceiver` role, so the service account can be used in a
+Cloud Storage trigger:
+
+```sh
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --role roles/eventarc.eventReceiver \
+  --member serviceAccount:$SERVICE_ACCOUNT@$PROJECT_ID.iam.gserviceaccount.com
+```
+
+Grant the `pubsub.publisher` role to the Cloud Storage service account. This is
+needed for the Eventarc Cloud Storage trigger:
+
+```sh
+STORAGE_SERVICE_ACCOUNT="$(gsutil kms serviceaccount -p $PROJECT_ID)"
+
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member serviceAccount:$STORAGE_SERVICE_ACCOUNT \
+    --role roles/pubsub.publisher
+```
+
+### Create
+
 Create the trigger:
 
 ```sh
-TRIGGER_NAME=$APP-trigger
+TRIGGER_NAME=trigger-image-processing
 
 gcloud eventarc triggers create $TRIGGER_NAME \
   --location=$REGION \

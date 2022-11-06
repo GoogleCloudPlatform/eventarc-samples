@@ -106,20 +106,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Eventarc (preview)</summary>
-<p>
-
-* `google.cloud.eventarc.channel.v1.created`
-* `google.cloud.eventarc.channel.v1.deleted`
-* `google.cloud.eventarc.channel.v1.updated`
-* `google.cloud.eventarc.channelConnection.v1.created`
-* `google.cloud.eventarc.channelConnection.v1.deleted`
-* `google.cloud.eventarc.trigger.v1.created`
-* `google.cloud.eventarc.trigger.v1.deleted`
-* `google.cloud.eventarc.trigger.v1.updated`
-
-</p>
-</details>
 <details><summary>Firebase Alerts (preview)</summary>
 <p>
 

@@ -24,7 +24,8 @@ namespace EventListGenerator
     class Program
     {
         private const string AUDITLOG_SERVICE_CATALOG_URL = "https://raw.githubusercontent.com/googleapis/google-cloudevents/master/json/audit/service_catalog.json";
-        private const string SERVICE_CATALOG_FILE = "services.json";
+        private const string DIRECT_SERVICE_CATALOG_FILE = "services.json";
+        private const string DIRECT_SERVICE_CATALOG_URL = $"https://raw.githubusercontent.com/GoogleCloudPlatform/eventarc-samples/main/eventarc-events/EventListGenerator/{DIRECT_SERVICE_CATALOG_FILE}";
         private const string HEADER_DIRECT = "Directly from a Google Cloud source";
         private const string HEADER_AUDITLOG = "Using Cloud Audit Logs";
         private const string HEADER_THIRDPARTY = "Using third-party sources";
@@ -38,13 +39,18 @@ namespace EventListGenerator
 
         private static readonly HttpClient client = new HttpClient();
 
-        static async Task Main()
+        static async Task Main(string[] args)
         {
-            await GenerateFile(false);
-            await GenerateFile(true);
+            bool localServiceCatalogFile = false;
+            if (args.Length > 0)
+            {
+                bool.TryParse(args[0], out localServiceCatalogFile);
+            }
+            await GenerateFile(false, localServiceCatalogFile);
+            await GenerateFile(true, localServiceCatalogFile);
         }
 
-        private async static Task GenerateFile(bool devsite)
+        private async static Task GenerateFile(bool devsite, bool localServiceCatalogFile = false)
         {
             Directory.CreateDirectory(OUTPUT_FOLDER);
 
@@ -52,9 +58,10 @@ namespace EventListGenerator
             using StreamWriter file = new(filePath);
 
             AddHeader(file, devsite);
-            AddServices(HEADER_DIRECT, file, devsite);
+            Console.WriteLine($"Using local service catalog file? {localServiceCatalogFile}");
+            await AddServices(HEADER_DIRECT, file, devsite, localServiceCatalogFile);
             await AddAuditLogServicesAsync(file, devsite);
-            AddServices(HEADER_THIRDPARTY, file, devsite);
+            await AddServices(HEADER_THIRDPARTY, file, devsite, localServiceCatalogFile);
 
             // Important to close the stream before trying to do anything else
             file.Close();
@@ -105,7 +112,7 @@ namespace EventListGenerator
                 service.WriteToStream(file, devsite);
             });
         }
-        private static void AddServices(string title, StreamWriter file, bool devsite)
+        private static async Task AddServices(string title, StreamWriter file, bool devsite, bool localServiceCatalogFile)
         {
             if (devsite)
             {
@@ -117,8 +124,18 @@ namespace EventListGenerator
                 file.WriteLine($"\n### {title}");
             }
 
-            var jsonString = File.ReadAllText(SERVICE_CATALOG_FILE);
-            var services = JsonSerializer.Deserialize<Services>(jsonString);
+            Services services;
+            if (localServiceCatalogFile)
+            {
+                var jsonString = File.ReadAllText(DIRECT_SERVICE_CATALOG_FILE);
+                services = JsonSerializer.Deserialize<Services>(jsonString);
+            }
+            else
+            {
+                var stream = await client.GetStreamAsync(DIRECT_SERVICE_CATALOG_URL);
+                services = await JsonSerializer.DeserializeAsync<Services>(stream);
+            }
+
             var filteredServices = title == HEADER_DIRECT ? services.direct : services.thirdParty;
             var orderedServices = filteredServices.OrderBy(service => service.displayName);
 

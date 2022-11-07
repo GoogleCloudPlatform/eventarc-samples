@@ -13,10 +13,18 @@ The list has 2 formats:
 
 ## Run locally
 
-Generate the GitHub and DevSite friendly formats to output folder:
+Generate the GitHub and DevSite friendly formats to output folder using
+`service.json` checked into GitHub:
 
 ```sh
 dotnet run
+```
+
+Generate the GitHub and DevSite friendly formats to output folder using
+`service.json` locally:
+
+```sh
+dotnet run true
 ```
 
 ## Run in a container

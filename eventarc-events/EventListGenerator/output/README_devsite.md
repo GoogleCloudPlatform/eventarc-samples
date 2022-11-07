@@ -85,17 +85,6 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.storage.object.v1.finalized`
 - `google.cloud.storage.object.v1.metadataUpdated`
 
-### Eventarc (preview)
-
-- `google.cloud.eventarc.channel.v1.created`
-- `google.cloud.eventarc.channel.v1.deleted`
-- `google.cloud.eventarc.channel.v1.updated`
-- `google.cloud.eventarc.channelConnection.v1.created`
-- `google.cloud.eventarc.channelConnection.v1.deleted`
-- `google.cloud.eventarc.trigger.v1.created`
-- `google.cloud.eventarc.trigger.v1.deleted`
-- `google.cloud.eventarc.trigger.v1.updated`
-
 ### Firebase Alerts (preview)
 
 - `google.firebase.firebasealerts.alerts.v1.published`

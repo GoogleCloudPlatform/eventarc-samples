@@ -93,11 +93,11 @@ for more details on how to setup SendGrid.
 ### Service
 
 The code of the service is in
-[notifier](../processing-pipelines/bigquery/notifier)
+[notifier](notifier)
 folder.
 
 Inside the
-[notifier/python](../processing-pipelines/bigquery/notifier/python)
+[notifier/python](notifier/python)
 folder, build and push the container image:
 
 ```sh

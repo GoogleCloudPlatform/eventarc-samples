@@ -318,7 +318,7 @@ sed -i -e "s|WATERMARKER_URL|${WATERMARKER_URL}|" workflow.yaml
 Deploy the workflow:
 
 ```sh
-WORKFLOW_NAME=$APP-workflow
+WORKFLOW_NAME=$PROJECT_ID-workflow
 
 gcloud workflows deploy $WORKFLOW_NAME \
     --source=workflow.yaml \

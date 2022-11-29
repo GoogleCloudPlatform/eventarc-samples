@@ -21,6 +21,22 @@
       ]
     },
     {
+      "displayName": "API Gateway",
+      "preview": true,
+      "events": [
+        "google.cloud.apigateway.gateway.v1.created",
+        "google.cloud.apigateway.gateway.v1.updated",
+        "google.cloud.apigateway.gateway.v1.deleted",
+        "google.cloud.apigateway.api.v1.created",
+        "google.cloud.apigateway.api.v1.updated",
+        "google.cloud.apigateway.api.v1.deleted",
+        "google.cloud.apigateway.apiConfig.v1.created",
+        "google.cloud.apigateway.apiConfig.v1.updated",
+        "google.cloud.apigateway.apiConfig.v1.deleted"
+
+      ]
+    },
+    {
       "displayName": "BeyondCorp",
       "preview": true,
       "events": [
@@ -40,6 +56,27 @@
       ]
     },
     {
+      "displayName": "Certificate Manager",
+      "preview": true,
+      "events": [
+        "google.cloud.certificatemanager.certificate.v1.created",
+        "google.cloud.certificatemanager.certificate.v1.updated",
+        "google.cloud.certificatemanager.certificate.v1.deleted",
+        "google.cloud.certificatemanager.certificateMap.v1.created",
+        "google.cloud.certificatemanager.certificateMap.v1.updated",
+        "google.cloud.certificatemanager.certificateMap.v1.deleted",
+        "google.cloud.certificatemanager.certificateMapEntry.v1.created",
+        "google.cloud.certificatemanager.certificateMapEntry.v1.updated",
+        "google.cloud.certificatemanager.certificateMapEntry.v1.deleted",
+        "google.cloud.certificatemanager.dnsAuthorization.v1.created",
+        "google.cloud.certificatemanager.dnsAuthorization.v1.updated",
+        "google.cloud.certificatemanager.dnsAuthorization.v1.deleted",
+        "google.cloud.certificatemanager.certificateIssuanceConfig.v1.created",
+        "google.cloud.certificatemanager.certificateIssuanceConfig.v1.deleted"
+
+      ]
+    },
+    {
       "displayName": "Cloud Data Fusion",
       "preview": true,
       "events": [
@@ -48,6 +85,23 @@
         "google.cloud.datafusion.instance.v1.created",
         "google.cloud.datafusion.instance.v1.updated",
         "google.cloud.datafusion.instance.v1.deleted"
+      ]
+    },
+    {
+      "displayName": "Datastream",
+      "preview": true,
+      "events": [
+        "google.cloud.datastream.connectionProfile.v1.created",
+        "google.cloud.datastream.connectionProfile.v1.updated",
+        "google.cloud.datastream.connectionProfile.v1.deleted",
+        "google.cloud.datastream.stream.v1.created",
+        "google.cloud.datastream.stream.v1.updated",
+        "google.cloud.datastream.stream.v1.deleted",
+        "google.cloud.datastream.privateConnection.v1.created",
+        "google.cloud.datastream.privateConnection.v1.deleted",
+        "google.cloud.datastream.route.v1.created",
+        "google.cloud.datastream.route.v1.deleted"
+
       ]
     },
     {
@@ -93,6 +147,18 @@
         "google.cloud.memcache.instance.v1.created",
         "google.cloud.memcache.instance.v1.updated",
         "google.cloud.memcache.instance.v1.deleted"
+      ]
+    },
+    {
+      "displayName": "Database Migration",
+      "preview": true,
+      "events": [
+        "google.cloud.clouddms.migrationJob.v1.created",
+        "google.cloud.clouddms.migrationJob.v1.updated",
+        "google.cloud.clouddms.migrationJob.v1.deleted",
+        "google.cloud.clouddms.connectionProfile.v1.created",
+        "google.cloud.clouddms.connectionProfile.v1.updated",
+        "google.cloud.clouddms.connectionProfile.v1.deleted"
       ]
     },
     {

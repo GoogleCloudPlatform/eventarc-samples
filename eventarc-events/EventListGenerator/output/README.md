@@ -9,6 +9,21 @@ The following is a list of the events supported by Eventarc.
 Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud IoT events will also be deprecated at that time. Contact your Google Cloud account team for more information.
 
 ### Directly from a Google Cloud source
+<details><summary>API Gateway (preview)</summary>
+<p>
+
+* `google.cloud.apigateway.api.v1.created`
+* `google.cloud.apigateway.api.v1.deleted`
+* `google.cloud.apigateway.api.v1.updated`
+* `google.cloud.apigateway.apiConfig.v1.created`
+* `google.cloud.apigateway.apiConfig.v1.deleted`
+* `google.cloud.apigateway.apiConfig.v1.updated`
+* `google.cloud.apigateway.gateway.v1.created`
+* `google.cloud.apigateway.gateway.v1.deleted`
+* `google.cloud.apigateway.gateway.v1.updated`
+
+</p>
+</details>
 <details><summary>Apigee Registry (preview)</summary>
 <p>
 
@@ -45,6 +60,26 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.beyondcorp.clientconnectorservices.clientConnectorService.v1.updated`
 * `google.cloud.beyondcorp.clientgateways.clientGateway.v1.created`
 * `google.cloud.beyondcorp.clientgateways.clientGateway.v1.deleted`
+
+</p>
+</details>
+<details><summary>Certificate Manager (preview)</summary>
+<p>
+
+* `google.cloud.certificatemanager.certificate.v1.created`
+* `google.cloud.certificatemanager.certificate.v1.deleted`
+* `google.cloud.certificatemanager.certificate.v1.updated`
+* `google.cloud.certificatemanager.certificateIssuanceConfig.v1.created`
+* `google.cloud.certificatemanager.certificateIssuanceConfig.v1.deleted`
+* `google.cloud.certificatemanager.certificateMap.v1.created`
+* `google.cloud.certificatemanager.certificateMap.v1.deleted`
+* `google.cloud.certificatemanager.certificateMap.v1.updated`
+* `google.cloud.certificatemanager.certificateMapEntry.v1.created`
+* `google.cloud.certificatemanager.certificateMapEntry.v1.deleted`
+* `google.cloud.certificatemanager.certificateMapEntry.v1.updated`
+* `google.cloud.certificatemanager.dnsAuthorization.v1.created`
+* `google.cloud.certificatemanager.dnsAuthorization.v1.deleted`
+* `google.cloud.certificatemanager.dnsAuthorization.v1.updated`
 
 </p>
 </details>
@@ -103,6 +138,34 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.storage.object.v1.deleted`
 * `google.cloud.storage.object.v1.finalized`
 * `google.cloud.storage.object.v1.metadataUpdated`
+
+</p>
+</details>
+<details><summary>Database Migration (preview)</summary>
+<p>
+
+* `google.cloud.clouddms.connectionProfile.v1.created`
+* `google.cloud.clouddms.connectionProfile.v1.deleted`
+* `google.cloud.clouddms.connectionProfile.v1.updated`
+* `google.cloud.clouddms.migrationJob.v1.created`
+* `google.cloud.clouddms.migrationJob.v1.deleted`
+* `google.cloud.clouddms.migrationJob.v1.updated`
+
+</p>
+</details>
+<details><summary>Datastream (preview)</summary>
+<p>
+
+* `google.cloud.datastream.connectionProfile.v1.created`
+* `google.cloud.datastream.connectionProfile.v1.deleted`
+* `google.cloud.datastream.connectionProfile.v1.updated`
+* `google.cloud.datastream.privateConnection.v1.created`
+* `google.cloud.datastream.privateConnection.v1.deleted`
+* `google.cloud.datastream.route.v1.created`
+* `google.cloud.datastream.route.v1.deleted`
+* `google.cloud.datastream.stream.v1.created`
+* `google.cloud.datastream.stream.v1.deleted`
+* `google.cloud.datastream.stream.v1.updated`
 
 </p>
 </details>

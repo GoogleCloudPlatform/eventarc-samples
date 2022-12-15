@@ -1,6 +1,9 @@
-# Publisher sample - C#
+# Publisher sample - C# client library
 
-Example invocation:
+### Publish
+
+Run [publish.sh](publish.sh) to publish to the channel from C# client library
+with the right event type and attributes.
 
 ```sh
 PROJECT_ID=$(gcloud config get-value project)

@@ -14,9 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PROJECT_ID=$(gcloud config get-value project)
-REGION=us-central1
-CHANNEL_NAME=hello-custom-events-channel
+source config.sh
 
 echo "Publish to the channel $CHANNEL_NAME from curl with the right event type and attributes"
 
@@ -43,6 +41,6 @@ curl -H "Authorization: Bearer $(gcloud auth print-access-token)" \
       }' \
   https://eventarcpublishing.googleapis.com/v1/projects/$PROJECT_ID/locations/$REGION/channels/$CHANNEL_NAME:publishEvents
 
-SERVICE_NAME=hello
-echo "Check the logs of $SERVICE_NAME service to see the received custom event"
+echo "Wait 10 seconds and read the logs of $SERVICE_NAME service to see the received custom event"
+sleep 10
 gcloud logging read "resource.type=cloud_run_revision AND resource.labels.service_name=$SERVICE_NAME" --limit 5

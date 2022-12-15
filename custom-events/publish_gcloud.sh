@@ -14,15 +14,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-CHANNEL_NAME=hello-custom-events-channel
+source config.sh
+
 echo "Publish to the channel $CHANNEL_NAME from gcloud with the right event type and attributes"
 gcloud eventarc channels publish $CHANNEL_NAME \
   --event-id=12345 \
   --event-type=mycompany.myorg.myproject.v1.myevent \
   --event-attributes=someattribute=somevalue \
   --event-source=gcloud \
-  --event-data="{\"message\" : \"Hello World from gcloud\"}"
+  --event-data="{\"message\" : \"Hello World from gcloud\"}" \
+  --location=$REGION
 
-SERVICE_NAME=hello
-echo "Check the logs of $SERVICE_NAME service to see the received custom event"
+echo "Wait 10 seconds and read the logs of $SERVICE_NAME service to see the received custom event"
+sleep 10
 gcloud logging read "resource.type=cloud_run_revision AND resource.labels.service_name=$SERVICE_NAME" --limit 5

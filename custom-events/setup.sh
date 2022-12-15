@@ -14,14 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-echo "Get the project id"
-PROJECT_ID=$(gcloud config get-value project)
-PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
-
-echo "Set the Eventarc location and Cloud Run region"
-REGION=us-central1
-gcloud config set eventarc/location $REGION
-gcloud config set run/region $REGION
+source config.sh
 
 echo "Enable required services"
 gcloud services enable  \
@@ -29,15 +22,14 @@ gcloud services enable  \
   eventarcpublishing.googleapis.com \
   run.googleapis.com
 
-echo "Create a channel"
-CHANNEL_NAME=hello-custom-events-channel
+echo "Create channel: $CHANNEL_NAME"
 gcloud eventarc channels create $CHANNEL_NAME
 
-echo "Deploy the hello service"
-SERVICE_NAME=hello
+echo "Deploy the service: $SERVICE_NAME"
 gcloud run deploy $SERVICE_NAME \
+  --allow-unauthenticated \
   --image=gcr.io/cloudrun/hello \
-  --allow-unauthenticated
+  --region=$REGION
 
 echo "Create a trigger using the channel, routing to the hello service with custom event filters"
 gcloud eventarc triggers create hello-custom-events-trigger \
@@ -46,4 +38,5 @@ gcloud eventarc triggers create hello-custom-events-trigger \
   --destination-run-region=$REGION \
   --event-filters="type=mycompany.myorg.myproject.v1.myevent" \
   --event-filters="someattribute=somevalue" \
+  --location=$REGION \
   --service-account=${PROJECT_NUMBER}-compute@developer.gserviceaccount.com

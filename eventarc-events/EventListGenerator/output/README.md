@@ -2491,7 +2491,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Cloud Deployment Manager</summary>
+<details><summary>Cloud Deploy</summary>
 <p>
 
 `clouddeploy.googleapis.com`
@@ -3803,7 +3803,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Cloud Memcache</summary>
+<details><summary>Cloud Memorystore for Memcached</summary>
 <p>
 
 `memcache.googleapis.com`

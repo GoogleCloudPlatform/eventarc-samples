@@ -2479,7 +2479,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `ListDebuggees`
 - `SetBreakpoint`
 
-### Cloud Deployment Manager
+### Cloud Deploy
 
 #### `serviceName`
 
@@ -3811,7 +3811,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.longrunning.Operations.GetOperation`
 - `google.longrunning.Operations.ListOperations`
 
-### Cloud Memcache
+### Cloud Memorystore for Memcached
 
 #### `serviceName`
 

@@ -10,7 +10,7 @@ services, Cloud Functions, Workflows and GKE services).
 This repository contains a collection of samples for Eventarc for various use
 cases.
 
-Here is the [the list of events supported by Eventarc](eventarc-events).
+Here is the [the list of events supported by Eventarc](eventarc-events/EventListGenerator/output/).
 
 ## Slides
 

@@ -84,7 +84,7 @@ resource "google_eventarc_trigger" "trigger_pubsub_gke" {
       service   = "hello-gke"
     }
   }
-  service_account = google_service_account.eventarc_gke_trigger_sa.id
+  service_account = google_service_account.eventarc_gke_trigger_sa.email
 
   depends_on = [google_service_account.eventarc_gke_trigger_sa, google_project_iam_binding.project_binding_pubsub_subscriber]
 }

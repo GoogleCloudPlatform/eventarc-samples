@@ -58,6 +58,8 @@ that explains Eventarc.
 * [Cross project eventing](cross-project-eventing)
 * [Custom events samples](custom-events)
 * [Cloud IoT Events](cloudiot-events)
+* Eventarc and Google Workspace
+  * [Triggering Eventarc from Google Sheets via a custom channel](workspace-integration/sheets-to-eventarc-custom/)
 
 -------
 

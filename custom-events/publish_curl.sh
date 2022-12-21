@@ -20,7 +20,6 @@ echo "Publish to the channel $CHANNEL_NAME from curl with the right event type a
 
 curl -H "Authorization: Bearer $(gcloud auth print-access-token)" \
   -H "Content-Type: application/json" \
-  -H "X-Goog-User-Project: $PROJECT_ID" \
   -X POST \
   -d '{
        "events": [

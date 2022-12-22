@@ -61,7 +61,12 @@ def main():
 
   timestamp = timestamp_pb2.Timestamp()
   timestamp.GetCurrentTime()
-  event.attributes['time'].CopyFrom(event.CloudEventAttributeValue(ce_timestamp=timestamp))
+  event.attributes['time'].CopyFrom(
+    event.CloudEventAttributeValue(ce_timestamp=timestamp))
+
+  # Note: someattribute and somevalue have to match with the trigger!
+  event.attributes['someattribute'].CopyFrom(
+      event.CloudEventAttributeValue(ce_string='somevalue'))
 
   logger.debug('Prepared event which will be send to publishing backend:')
   logger.debug(event)

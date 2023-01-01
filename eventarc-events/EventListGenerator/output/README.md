@@ -225,7 +225,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 </details>
 
 ### Using Cloud Audit Logs
-<details><summary>Access  Approval</summary>
+<details><summary>Access Approval</summary>
 <p>
 
 `accessapproval.googleapis.com`

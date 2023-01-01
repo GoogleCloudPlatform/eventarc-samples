@@ -176,7 +176,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
-### Access  Approval
+### Access Approval
 
 #### `serviceName`
 

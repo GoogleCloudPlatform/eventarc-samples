@@ -33,7 +33,7 @@ const publishEventToChannel = async (channel, event) => {
     // Construct publish request.
     const request = {
         channel: channel,
-        // Prepare text event reather than proto representation.
+        // Prepare text event rather than proto representation.
         // Since NodeJS CloudEvents SDK doesn't have method to transform
         // the object to protobuf it's easier to send the text representation.
         textEvents: [

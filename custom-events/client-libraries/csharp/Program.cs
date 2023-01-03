@@ -14,8 +14,10 @@
 // [START eventarc_custom_publish_csharp]
 using Google.Cloud.Eventarc.Publishing.V1;
 using CloudNative.CloudEvents;
-using CloudNative.CloudEvents.SystemTextJson;
 //using CloudNative.CloudEvents.Protobuf;
+using CloudNative.CloudEvents.SystemTextJson;
+using System.Net.Mime;
+using Newtonsoft.Json;
 
 var commandArgs = Environment.GetCommandLineArgs();
 var ProjectId = commandArgs[1]; // "events-atamel";
@@ -35,13 +37,13 @@ var cloudEventAttributes = new[]
 
 var cloudEvent = new CloudEvent(cloudEventAttributes)
 {
-    Id = "12345",
+    Id = Guid.NewGuid().ToString(),
     // Note: Type has to match with the trigger!
     Type = "mycompany.myorg.myproject.v1.myevent",
     Source = new Uri("urn:csharp/client/library"),
-    Subject = "test-event-subject",
-    DataContentType = "application/json",
-    Data = "{\"message\": \"Hello World from latest C# client library\"}",
+    //Subject = "test-event-subject",
+    DataContentType = MediaTypeNames.Application.Json,
+    Data = JsonConvert.SerializeObject(new { Message = "Hello World from C#"}),
     Time = DateTimeOffset.UtcNow,
     // Note: someattribute and somevalue have to match with the trigger!
     ["someattribute"] = "somevalue",

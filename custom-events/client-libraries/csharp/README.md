@@ -1,4 +1,4 @@
-# Publisher sample - C# client library
+# Publisher sample - C#
 
 ## Publish
 

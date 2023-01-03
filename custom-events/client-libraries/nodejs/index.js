@@ -2,33 +2,31 @@ const { CloudEvent } = require('cloudevents');
 const { PublisherClient } = require('@google-cloud/eventarc-publishing');
 
 /**
- * Builds CloudEvent for sending to Eventarc Channel.
- * 
- * @param {Record<string, any>} payload object that will be added in the event.
+ * Builds a CloudEvent to publish to an Eventarc channel.
+ *
  * @returns Fully constructed CloudEvent
  */
-const BuildCloudEvent = (
-    payload
- ) => {
+const BuildCloudEvent = () => {
    return new CloudEvent({
-     type: "custom.type",
+     type: "mycompany.myorg.myproject.v1.myevent",
      source: "//event/from/nodejs",
-     data: payload,
+     data: {
+        message: "Hello World from Node.js"
+     },
      datacontenttype: "application/json",
      time: new Date().toISOString(),
-     extsourcelang: 'javascript'
+     // Note: someattribute and somevalue have to match with the trigger!
+     someattribute: 'somevalue'
      });
  }
 
 /**
- * Invokes Eventarc Publisher client on specified channel with the event.
- * @param {string} channel 
- * @param {CloudEvent} event 
+ * Publish event to the channel with the Eventarc publisher client.
+ *
+ * @param {string} channel
+ * @param {CloudEvent} event
  */
-const callPublishEvents = async (
-    channel,
-    event
-) => {
+const publishEventToChannel = async (channel, event) => {
     // Instantiates a client with default credentials and options.
     const publishingClient = new PublisherClient();
 
@@ -42,26 +40,24 @@ const callPublishEvents = async (
             JSON.stringify(event)
         ]
     };
-    console.log("Costructed events for sending. ",request);
+    console.log("Constructed the request with the event: ", request);
 
-    // Run request
+    // Publish event
     try {
         const response = await publishingClient.publishEvents(request);
-        console.log("Received response. ", response);
+        console.log("Received response: ", response);
     } catch (e) {
-        console.error("Received error from publishing API. ", e);
+        console.error("Received error from publishing API: ", e);
     }
 }
 
 const arguments = process.argv.slice(2);
 const channel = arguments[0];
 if (!channel) {
-    console.error("Missing channel name, please pass it in the argument.")
+    console.error("Missing channel, please pass it in the argument in the form of projects/$PROJECT_ID/locations/$REGION/channels/$CHANNEL_NAME")
     return;
 }
 
-const event = BuildCloudEvent({
-    message1: "Data"
-});
+const event = BuildCloudEvent();
 
-callPublishEvents(channel, event);
+publishEventToChannel(channel, event);

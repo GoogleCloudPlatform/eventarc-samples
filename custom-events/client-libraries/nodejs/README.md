@@ -1,23 +1,20 @@
-## Eventarc Publisher NodeJS sample
+# Publisher sample - Node.js
 
-This Directory contains an example on how to use Eventarc Publisher Library with CloudEvents.
+This is a sample on how to use Eventarc publisher library with
+CloudEvents SDK to publish an event to a custom channel using Node.js.
 
-### Configure package
+Install dependencies:
 
-Configure the sample.
-
-```
+```sh
 npm install
 ```
 
-### Running the code
+Publish:
 
-To run the sample invoke the following command.
+```sh
+PROJECT_ID=$(gcloud config get-value project)
+REGION=us-central1
+CHANNEL_NAME=hello-custom-events-channel
 
+npm run invoke projects/$PROJECT_ID/locations/$REGION/channels/$CHANNEL_NAME
 ```
-npm run invoke CHANNEL_NAME
-```
-
-### What's next?
-
-Hack around and have fun

@@ -41,7 +41,6 @@ var cloudEvent = new CloudEvent(cloudEventAttributes)
     // Note: Type has to match with the trigger!
     Type = "mycompany.myorg.myproject.v1.myevent",
     Source = new Uri("urn:csharp/client/library"),
-    //Subject = "test-event-subject",
     DataContentType = MediaTypeNames.Application.Json,
     Data = JsonConvert.SerializeObject(new { Message = "Hello World from C#"}),
     Time = DateTimeOffset.UtcNow,

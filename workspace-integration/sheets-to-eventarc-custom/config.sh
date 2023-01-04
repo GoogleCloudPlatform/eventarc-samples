@@ -21,4 +21,4 @@ export REGION=us-central1
 export CHANNEL_NAME=channel-sheets-custom
 export SERVICE_NAME=hello
 export TRIGGER_NAME=trigger-sheets-custom
-export EVENT_TYPE=mycompany.myorg.myproject.v1.onopen
+export EVENT_TYPE=mycompany.myorg.myproject.v1.onedit

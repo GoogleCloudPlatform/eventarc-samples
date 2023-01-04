@@ -4,24 +4,29 @@ const REGION = "us-central1";
 const CHANNEL_NAME = "channel-sheets-custom";
 const PUBLISH_URL = "https://eventarcpublishing.googleapis.com/v1/projects/" + PROJECT_ID
   + "/locations/" + REGION + "/channels/" + CHANNEL_NAME + ":publishEvents";
-const EVENT_TYPE = "mycompany.myorg.myproject.v1.onopen";
+const EVENT_TYPE = "mycompany.myorg.myproject.v1.onedit";
 
-function onOpenHandler(e) {
+function onEditHandler(editEvent) {
   // Uncomment for debugging
-  // e = {}; e.user = "foo@bar.com";
+  //e = {}; e.user = "foo@bar.com";
 
-  Logger.log("Document opened by user: " + e.user);
-  publishEvent(e.user);
+  Logger.log("Document edited by user: " + editEvent.user);
+  Logger.log(editEvent.range.getA1Notation());
+  Logger.log(editEvent.oldValue);
+  Logger.log(editEvent.value);
+
+  publishEvent(editEvent);
 }
 
-function publishEvent(user) {
+function publishEvent(editEvent) {
 
   const headers = {
-    // Assumes the Sheets user has the permissions to publish Eventarc events (eg. also the owner of the Google Cloud project)
+    // Assumes the Sheets user has the 'roles/eventarc.publisher' role to
+    // publish Eventarc events (eg. the owner of the Google Cloud project)
     "Authorization": "Bearer " + ScriptApp.getOAuthToken()
   };
 
-  const event = getEvent(user);
+  const event = getEvent(editEvent);
   const payload = wrapIntoEvents(event);
 
   const params = {
@@ -36,7 +41,7 @@ function publishEvent(user) {
   Logger.log("Received response code: " + response.getResponseCode() + " from URL: " + PUBLISH_URL);
 }
 
-function getEvent(user) {
+function getEvent(editEvent) {
   const event = {
     "@type": "type.googleapis.com/io.cloudevents.v1.CloudEvent",
     "attributes": {
@@ -46,7 +51,8 @@ function getEvent(user) {
     "specVersion": "1.0",
     "id": Utilities.getUuid(),
     "source": "google_sheets",
-    "textData": '{"user": "' + user + '"}',
+    "textData": '{"user": "' + editEvent.user + '", "range": "' + editEvent.range.getA1Notation() 
+        + '", "oldValue": "' + editEvent.oldValue + '", "newValue": "' + editEvent.value + '"}',
     "type": EVENT_TYPE
   };
 

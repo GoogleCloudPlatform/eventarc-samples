@@ -17,7 +17,7 @@ channel in Eventarc. More specifically:
 1. Eventarc receives the custom event from the channel and passes to a Cloud Run
    service that simply logs the received event with the user id.
 
-TODO: Add an architecture diagram
+![Architecture](images/architecture.png)
 
 ## Setup Eventarc
 

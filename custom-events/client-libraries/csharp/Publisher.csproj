@@ -11,7 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Google.Cloud.Eventarc.Publishing.V1" Version="2.0.0-beta02" />
     <PackageReference Include="CloudNative.CloudEvents" Version="2.5.1" />
-    <!-- <PackageReference Include="CloudNative.CloudEvents.Protobuf" Version="2.5.1" /> -->
+    <PackageReference Include="CloudNative.CloudEvents.Protobuf" Version="2.5.1" />
     <PackageReference Include="CloudNative.CloudEvents.SystemTextJson" Version="2.5.1" />
   </ItemGroup>
 

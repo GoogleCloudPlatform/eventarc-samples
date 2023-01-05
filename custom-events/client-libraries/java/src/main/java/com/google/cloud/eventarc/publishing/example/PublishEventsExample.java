@@ -39,9 +39,6 @@ import java.util.logging.Logger;
 public class PublishEventsExample {
 
   static Logger LOGGER = Logger.getLogger(PublishEventsExample.class.getName());
-  // Controls the way of sending events to Eventarc. 'true' for using text format
-  // 'false' for proto format.
-  static final boolean useTextEvent = false;
 
   /**
    * CustomMessage represents a payload delivered as a content of the CloudEvent.
@@ -54,32 +51,27 @@ public class PublishEventsExample {
     public String message;
   }
 
-  private void SendEventUsingTextFormat(String channelName, CloudEvent event) {
+  private PublishEventsRequest GetPublishEventsRequestWithTextFormat(String channelName, CloudEvent event) {
+
     byte[] serializedEvent = EventFormatProvider.getInstance()
         .resolveFormat(JsonFormat.CONTENT_TYPE)
         .serialize(event);
-    String stringizedEvent = new String(serializedEvent);
+    String textEvent = new String(serializedEvent);
 
     PublishEventsRequest request = PublishEventsRequest.newBuilder()
         .setChannel(channelName)
-        .addTextEvents(stringizedEvent)
+        .addTextEvents(textEvent)
         .build();
-    LOGGER.log(Level.INFO, "Publishing message in Eventarc");
-    try {
-      // Create a client with credentials provided by the system.
-      PublisherClient client = PublisherClient.create();
-      PublishEventsResponse response = client.publishEvents(request);
-      LOGGER.log(Level.INFO, String.format("Message published successfully.\nReceived response: %s",
-          response.toString()));
-    } catch (Exception ex) {
-      LOGGER.log(Level.SEVERE, "An exception occurred while publishing", ex);
-    }
+
+    return request;
   }
 
-  private void SendEventUsingProtoFormat(String channelName, CloudEvent event) throws Exception {
+  private PublishEventsRequest GetPublishEventsRequestWithProtoFormat(String channelName, CloudEvent event) throws Exception {
+
     byte[] serializedEvent = EventFormatProvider.getInstance()
         .resolveFormat(ProtobufFormat.PROTO_CONTENT_TYPE)
         .serialize(event);
+
     io.cloudevents.v1.proto.CloudEvent protoEvent = io.cloudevents.v1.proto.CloudEvent.parseFrom(serializedEvent);
     Any wrappedEvent = Any.pack(protoEvent);
 
@@ -87,9 +79,38 @@ public class PublishEventsExample {
         .setChannel(channelName)
         .addEvents(wrappedEvent)
         .build();
-    LOGGER.log(Level.INFO, "Publishing message in Eventarc");
+
+    return request;
+  }
+
+  public void PublishEvent(String channelName, boolean useTextEvent) throws Exception {
+
+    CustomMessage eventData = new CustomMessage("Hello world from Java");
+
+    LOGGER.log(Level.INFO, "Building CloudEvent");
+
+    ObjectMapper objectMapper = new ObjectMapper();
+    CloudEvent event = new CloudEventBuilder()
+        .withId(UUID.randomUUID().toString())
+        .withSource(URI.create("//custom/from/java"))
+        // Note: Type has to match with the trigger!
+        .withType("mycompany.myorg.myproject.v1.myevent")
+        .withTime(OffsetDateTime.now())
+        // Note: someattribute and somevalue have to match with the trigger!
+        .withExtension("someattribute", "somevalue")
+        .withExtension("extsourcelang", "java")
+        .withData("application/json",
+            JsonCloudEventData.wrap(objectMapper.valueToTree(eventData)))
+        .build();
+
+
+    PublishEventsRequest request = useTextEvent ?
+      GetPublishEventsRequestWithTextFormat(channelName, event) :
+      GetPublishEventsRequestWithProtoFormat(channelName, event);
+
+    LOGGER.log(Level.INFO, "Publishing message to Eventarc");
+
     try {
-      // Create a client with credentials provided by the system.
       PublisherClient client = PublisherClient.create();
       PublishEventsResponse response = client.publishEvents(request);
       LOGGER.log(Level.INFO, String.format("Message published successfully.\nReceived response: %s",
@@ -99,39 +120,20 @@ public class PublishEventsExample {
     }
   }
 
-  public void SendPublishEvent(String projectId, String region, String channel) throws Exception {
-
-    CustomMessage message = new CustomMessage("Hello world from Java client library");
-
-    LOGGER.log(Level.INFO, "Building CloudEvent");
-
-    ObjectMapper objectMapper = new ObjectMapper();
-    CloudEvent event = new CloudEventBuilder()
-        .withId(UUID.randomUUID().toString())
-        .withSource(URI.create("//custom/from/java"))
-        .withType("mycompany.myorg.myproject.v1.myevent")
-        .withTime(OffsetDateTime.now())
-        .withExtension("extsourcelang", "java")
-        .withData("application/json",
-            JsonCloudEventData.wrap(objectMapper.valueToTree(message)))
-        .build();
-
-    String channelName = "projects/" + projectId + "/locations/" + region + "/channels/" + channel;
-
-    if (useTextEvent) {
-      SendEventUsingTextFormat(channelName, event);
-    } else {
-      SendEventUsingProtoFormat(channelName, event);
-    }
-  }
-
   public static void main(String[] args) throws Exception {
     String projectId = args[0];
     String region = args[1];
     String channel = args[2];
-    System.out.println("ProjectId: " + projectId + " Region: " + region + " Channel: " + channel);
+    // Controls the format of events sent to Eventarc.
+    // 'true' for using text format.
+    // 'false' for proto (preferred) format.
+    boolean useTextEvent = args.length > 3 ? Boolean.parseBoolean(args[3]) : false;
 
-    new PublishEventsExample().SendPublishEvent(projectId, region, channel);
+    String channelName = "projects/" + projectId + "/locations/" + region + "/channels/" + channel;
+    System.out.println("Channel: " + channelName);
+    System.out.println("useTextEvent: " + useTextEvent);
+
+    new PublishEventsExample().PublishEvent(channelName, useTextEvent);
   }
 }
 // [END eventarc_custom_publish_java]

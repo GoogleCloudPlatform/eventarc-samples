@@ -56,8 +56,8 @@ that explains Eventarc.
   * [Terraform with Eventarc and Workflows](terraform/eventarc-workflows)
   * [Trigger Kubernetes services with Eventarc events (Terraform)](terraform/eventarc-gke/trigger-gke-eventarc-events/)
 * [Cross project eventing](cross-project-eventing)
-* [Custom events samples](custom-events)
 * [Cloud IoT Events](cloudiot-events)
+* [Eventarc custom event publishing samples](custom-events)
 * Eventarc and Google Workspace
   * [Triggering Eventarc from Google Sheets via a custom channel](workspace-integration/sheets-to-eventarc-custom/)
 

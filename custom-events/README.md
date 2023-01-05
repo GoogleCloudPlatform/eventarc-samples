@@ -1,4 +1,4 @@
-# Eventarc Custom Events Sample
+# Eventarc custom event publishing samples
 
 > **Note:** Eventarc Custom Events is an experimental feature in *preview*.
 > Only allow-listed projects can currently take advantage of it. Please contact
@@ -37,4 +37,9 @@ the right event type and attributes.
 ### Publish from client libraries
 
 You can also publish events from client libraries. Check
-[client-libraries](client-libraries) for different languages.
+[client-libraries](client-libraries) for different languages:
+
+* [Publisher sample - C#](client-libraries/csharp)
+* [Publisher sample - Java](client-libraries/java)
+* [Publisher sample - Node.js](client-libraries/nodejs)
+* [Publisher sample - Python](client-libraries/python)

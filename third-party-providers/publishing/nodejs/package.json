@@ -1,0 +1,16 @@
+{
+  "name": "eventarc-custom-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "invoke": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/eventarc-publishing": "^2.3.0",
+    "cloudevents": "^6.0.2",
+    "google-gax": "^3.5.2"
+  }
+}

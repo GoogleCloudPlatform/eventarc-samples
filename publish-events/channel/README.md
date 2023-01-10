@@ -1,6 +1,6 @@
-# Eventarc custom event publishing samples
+# Publish custom events to a channel
 
-> **Note:** Eventarc Custom Events is an experimental feature in *preview*.
+> **Note:** Eventarc custom events is an experimental feature in *preview*.
 > Only allow-listed projects can currently take advantage of it. Please contact
 > eventarc@google.com to get your project allow-listed before attempting this sample.
 

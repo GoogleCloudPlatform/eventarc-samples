@@ -14,25 +14,31 @@
 // [START eventarc_third_party_publish_csharp]
 using Google.Cloud.Eventarc.Publishing.V1;
 using CloudNative.CloudEvents;
-//using CloudNative.CloudEvents.Protobuf;
+using CloudNative.CloudEvents.Protobuf;
 using CloudNative.CloudEvents.SystemTextJson;
 using System.Net.Mime;
 using Newtonsoft.Json;
+using Google.Protobuf.WellKnownTypes;
 
 var commandArgs = Environment.GetCommandLineArgs();
-var ProjectId = commandArgs[1]; // "events-atamel";
-var Region = commandArgs[2];    // "us-central1";
-var ChannelConnection = commandArgs[3];   // "hello-channel-connection";
-Console.WriteLine($"ProjectId: {ProjectId}, Region: {Region}, Channel: {ChannelConnection}");
+var ProjectId = commandArgs[1];
+var Region = commandArgs[2];
+var ChannelConnection = commandArgs[3];
+// Controls the format of events sent to Eventarc.
+// 'true' for using text format.
+// 'false' for proto (preferred) format.
+bool UseTextEvent = commandArgs.Length > 4 ? bool.TryParse(commandArgs[4], out UseTextEvent) : false;
+
+var FullChannelName = $"projects/{ProjectId}/locations/{Region}/channels/{ChannelConnection}";
+Console.WriteLine($"Channel: {FullChannelName}");
+Console.WriteLine($"UseTextEvent: {UseTextEvent}");
 
 var publisherClient = await PublisherClient.CreateAsync();
 
 //Construct the CloudEvent and set necessary attributes.
 var cloudEventAttributes = new[]
 {
-    CloudEventAttribute.CreateExtension("someattribute", CloudEventAttributeType.String),
-    CloudEventAttribute.CreateExtension("temperature", CloudEventAttributeType.Integer),
-    CloudEventAttribute.CreateExtension("weather", CloudEventAttributeType.String),
+    CloudEventAttribute.CreateExtension("someattribute", CloudEventAttributeType.String)
 };
 
 var cloudEvent = new CloudEvent(cloudEventAttributes)
@@ -45,25 +51,36 @@ var cloudEvent = new CloudEvent(cloudEventAttributes)
     Data = JsonConvert.SerializeObject(new { Message = "Hello World from C#"}),
     Time = DateTimeOffset.UtcNow,
     // Note: someattribute and somevalue have to match with the client trigger!
-    ["someattribute"] = "somevalue",
-    ["temperature"] = 5,
-    ["weather"] = "sunny"
+    ["someattribute"] = "somevalue"
 };
 
-// Convert the CloudEvent to proto
-// var cloudEventProto = new ProtobufEventFormatter().ConvertToProto(cloudEvent);
+PublishChannelConnectionEventsRequest request;
 
-// Convert the CloudEvent to JSON
-var formatter = new JsonEventFormatter();
-var cloudEventJson = formatter.ConvertToJsonElement(cloudEvent).ToString();
-Console.WriteLine($"Sending CloudEvent: {cloudEventJson}");
-
-var request = new PublishChannelConnectionEventsRequest
+if (UseTextEvent)
 {
-    ChannelConnection = $"projects/{ProjectId}/locations/{Region}/channels/{ChannelConnection}",
-    // Events = { Any.Pack(cloudEventProto) },
-    TextEvents = { cloudEventJson }
-};
+    // Convert the CloudEvent to JSON
+    var formatter = new JsonEventFormatter();
+    var cloudEventJson = formatter.ConvertToJsonElement(cloudEvent).ToString();
+    Console.WriteLine($"Sending CloudEvent: {cloudEventJson}");
+    request = new PublishChannelConnectionEventsRequest
+    {
+        ChannelConnection = FullChannelName,
+        TextEvents = { cloudEventJson }
+    };
+}
+else
+{
+    // Convert the CloudEvent to Proto
+    var formatter = new ProtobufEventFormatter();
+    var cloudEventProto = formatter.ConvertToProto(cloudEvent);
+    Console.WriteLine($"Sending CloudEvent: {cloudEventProto}");
+    request = new PublishChannelConnectionEventsRequest
+    {
+        ChannelConnection = FullChannelName,
+        Events = { Any.Pack(cloudEventProto) }
+    };
+}
+
 var response = await publisherClient.PublishChannelConnectionEventsAsync(request);
 Console.WriteLine("Event published!");
 // [END eventarc_third_party_publish_csharp]

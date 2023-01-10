@@ -18,7 +18,7 @@ Make sure your project id is set in `gcloud`:
 gcloud config set project PROJECT_ID
 ```
 
-## Create a channel, a service and a trigger
+## Create a channel, a service, and a trigger
 
 Run [setup.sh](setup.sh) to do create a channel to publish events to, to deploy a Cloud
 Run service to receive events and to create a trigger to connect channel to the

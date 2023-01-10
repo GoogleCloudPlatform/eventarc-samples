@@ -61,6 +61,7 @@ that explains Eventarc.
   * [Triggering Eventarc from Google Sheets via a custom channel](workspace-integration/sheets-to-eventarc-custom/)
 * Publish custom events
   * [Publish custom events to a channel](publish-events/channel)
+  * [Publish custom events to a channel-connection as a third-party provider](publish-events/channel-connection)
 
 -------
 

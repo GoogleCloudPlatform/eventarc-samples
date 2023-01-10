@@ -1,0 +1,2 @@
+cloudevents >= 1.0.0
+google-cloud-eventarc-publishing >= 0.5.0

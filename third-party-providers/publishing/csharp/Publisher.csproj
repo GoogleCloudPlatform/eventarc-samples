@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>third_party</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Cloud.Eventarc.Publishing.V1" Version="2.0.0-beta02" />
+    <PackageReference Include="CloudNative.CloudEvents" Version="2.5.1" />
+    <!-- <PackageReference Include="CloudNative.CloudEvents.Protobuf" Version="2.5.1" /> -->
+    <PackageReference Include="CloudNative.CloudEvents.SystemTextJson" Version="2.5.1" />
+  </ItemGroup>
+
+</Project>

@@ -245,10 +245,12 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.identity.accesscontextmanager.v1.AccessContextManager.CommitServicePerimeters`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.CreateAccessLevel`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.CreateAccessPolicy`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.CreateAuthorizedOrgsDesc`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.CreateGcpUserAccessBinding`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.CreateServicePerimeter`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.DeleteAccessLevel`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.DeleteAccessPolicy`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.DeleteAuthorizedOrgsDesc`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.DeleteGcpUserAccessBinding`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.DeleteServicePerimeter`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.GetAccessLevel`
@@ -258,12 +260,14 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.identity.accesscontextmanager.v1.AccessContextManager.GetServicePerimeter`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.ListAccessLevels`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.ListAccessPolicies`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.ListAuthorizedOrgsDescs`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.ListGcpUserAccessBindings`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.ListServicePerimeters`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.ReplaceAccessLevels`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.ReplaceServicePerimeters`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.UpdateAccessLevel`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.UpdateAccessPolicy`
+* `google.identity.accesscontextmanager.v1.AccessContextManager.UpdateAuthorizedOrgsDesc`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.UpdateGcpUserAccessBinding`
 * `google.identity.accesscontextmanager.v1.AccessContextManager.UpdateServicePerimeter`
 * `google.identity.accesscontextmanager.v1beta.AccessContextManager.CreateAccessLevel`
@@ -877,6 +881,8 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.alloydb.v1.AlloyDBAdmin.DeleteCluster`
 * `google.cloud.alloydb.v1.AlloyDBAdmin.DeleteInstance`
 * `google.cloud.alloydb.v1.AlloyDBAdmin.FailoverInstance`
+* `google.cloud.alloydb.v1.AlloyDBAdmin.GetCluster`
+* `google.cloud.alloydb.v1.AlloyDBAdmin.ListBackups`
 * `google.cloud.alloydb.v1.AlloyDBAdmin.ListClusters`
 * `google.cloud.alloydb.v1.AlloyDBAdmin.RestartInstance`
 * `google.cloud.alloydb.v1.AlloyDBAdmin.RestoreCluster`
@@ -1257,6 +1263,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.apigee.v1.SecurityProfileService.DeleteSecurityProfileEnvironmentAssociation`
 * `google.cloud.apigee.v1.SecurityProfileService.ListSecurityProfileRevisions`
 * `google.cloud.apigee.v1.SecurityProfileService.ListSecurityProfiles`
+* `google.cloud.apigee.v1.SecurityReportService.CreateHostSecurityReport`
 * `google.cloud.apigee.v1.SecurityReportService.CreateSecurityReport`
 * `google.cloud.apigee.v1.SecurityReportService.GetSecurityReport`
 * `google.cloud.apigee.v1.SecurityReportService.GetSecurityReportResultView`
@@ -1349,8 +1356,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `apphosting.admin.proto.GooglerSettings.SetGooglerSettings`
 * `apphosting.admin.proto.MemcacheConfigService.SetMemcacheConfig`
 * `com.google.appengine.legacy.conf_updated`
-* `com.google.appengine.legacy.cron_created`
-* `com.google.appengine.legacy.cron_deleted`
 * `com.google.appengine.legacy.index_created`
 * `com.google.appengine.legacy.queue_updated`
 * `google.appengine.v1.Applications.CreateApplication`
@@ -1405,6 +1410,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 `artifactregistry.googleapis.com`
 
+* `Apt-ContentsByHashMethods`
 * `Apt-DistRoot`
 * `Apt-ViewArchIndexFile`
 * `Apt-ViewIndexFile`
@@ -1503,6 +1509,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.DeleteRepository`
 * `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.DeleteTag`
 * `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.DeleteVersion`
+* `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.DownloadFile`
 * `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.GetFile`
 * `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.GetIamPolicy`
 * `google.devtools.artifactregistry.v1beta2.ArtifactRegistry.GetPackage`
@@ -1590,12 +1597,15 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.baremetalsolution.v2.BareMetalSolution.GetProvisioningConfig`
 * `google.cloud.baremetalsolution.v2.BareMetalSolution.GetVolume`
 * `google.cloud.baremetalsolution.v2.BareMetalSolution.GetVolumeSnapshot`
+* `google.cloud.baremetalsolution.v2.BareMetalSolution.ListInstanceQuotas`
 * `google.cloud.baremetalsolution.v2.BareMetalSolution.ListInstances`
 * `google.cloud.baremetalsolution.v2.BareMetalSolution.ListLuns`
+* `google.cloud.baremetalsolution.v2.BareMetalSolution.ListNetworkQuotas`
 * `google.cloud.baremetalsolution.v2.BareMetalSolution.ListNetworkUsage`
 * `google.cloud.baremetalsolution.v2.BareMetalSolution.ListNetworks`
 * `google.cloud.baremetalsolution.v2.BareMetalSolution.ListNfsShares`
 * `google.cloud.baremetalsolution.v2.BareMetalSolution.ListSSHKeys`
+* `google.cloud.baremetalsolution.v2.BareMetalSolution.ListStorageQuotas`
 * `google.cloud.baremetalsolution.v2.BareMetalSolution.ListVolumeSnapshots`
 * `google.cloud.baremetalsolution.v2.BareMetalSolution.ListVolumes`
 * `google.cloud.baremetalsolution.v2.BareMetalSolution.ResetInstance`
@@ -1658,7 +1668,10 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.beyondcorp.clientgateways.v1.ClientGatewaysService.DeleteClientGateway`
 * `google.cloud.beyondcorp.clientgateways.v1.ClientGatewaysService.GetClientGateway`
 * `google.cloud.beyondcorp.clientgateways.v1.ClientGatewaysService.ListClientGateways`
+* `google.longrunning.Operations.CancelOperation`
+* `google.longrunning.Operations.DeleteOperation`
 * `google.longrunning.Operations.GetOperation`
+* `google.longrunning.Operations.ListOperations`
 
 </p>
 </details>
@@ -1966,6 +1979,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.automl.v1.AutoMl.DeleteModel`
 * `google.cloud.automl.v1.AutoMl.DeployModel`
 * `google.cloud.automl.v1.AutoMl.ExportModel`
+* `google.cloud.automl.v1.AutoMl.GetAnnotationSpec`
 * `google.cloud.automl.v1.AutoMl.GetDataset`
 * `google.cloud.automl.v1.AutoMl.GetModel`
 * `google.cloud.automl.v1.AutoMl.ImportData`
@@ -1995,6 +2009,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.automl.v1beta1.AutoMl.GetDataset`
 * `google.cloud.automl.v1beta1.AutoMl.GetExample`
 * `google.cloud.automl.v1beta1.AutoMl.GetModel`
+* `google.cloud.automl.v1beta1.AutoMl.GetModelEvaluation`
 * `google.cloud.automl.v1beta1.AutoMl.GetProject`
 * `google.cloud.automl.v1beta1.AutoMl.GetTableSpec`
 * `google.cloud.automl.v1beta1.AutoMl.ImportData`
@@ -2163,6 +2178,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.devtools.cloudbuild.v1.CloudBuild.ListWorkerPools`
 * `google.devtools.cloudbuild.v1.CloudBuild.ProcessAppManifestCallback`
 * `google.devtools.cloudbuild.v1.CloudBuild.RemoveBitbucketServerConnectedRepository`
+* `google.devtools.cloudbuild.v1.CloudBuild.RemoveGitLabConnectedRepository`
 * `google.devtools.cloudbuild.v1.CloudBuild.RetryBuild`
 * `google.devtools.cloudbuild.v1.CloudBuild.RunBuildTrigger`
 * `google.devtools.cloudbuild.v1.CloudBuild.UpdateBitbucketServerConfig`
@@ -2193,12 +2209,14 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.devtools.cloudbuild.v2.RepositoryManager.DeleteConnection`
 * `google.devtools.cloudbuild.v2.RepositoryManager.DeleteRepository`
 * `google.devtools.cloudbuild.v2.RepositoryManager.FetchLinkableRepositories`
+* `google.devtools.cloudbuild.v2.RepositoryManager.FetchReadWriteToken`
 * `google.devtools.cloudbuild.v2.RepositoryManager.GetConnection`
 * `google.devtools.cloudbuild.v2.RepositoryManager.GetRepository`
 * `google.devtools.cloudbuild.v2.RepositoryManager.ListConnections`
 * `google.devtools.cloudbuild.v2.RepositoryManager.ListRepositories`
 * `google.devtools.cloudbuild.v2.RepositoryManager.UpdateConnection`
 * `google.devtools.cloudbuild.v2.RepositoryManagerInternal.ConstructAppManifest`
+* `google.devtools.cloudbuild.v2.RepositoryManagerInternal.FetchGitHubInstallations`
 * `google.devtools.cloudbuild.v2.RepositoryManagerInternal.ProcessGitHubAppCreationCallback`
 * `google.devtools.cloudbuild.v2.RepositoryManagerInternal.ProcessGitHubInstallationCallback`
 * `google.devtools.cloudbuild.v2.RepositoryManagerInternal.ProcessGitHubOAuthCallback`
@@ -2215,6 +2233,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.orchestration.airflow.service.v1.Environments.DeleteEnvironment`
 * `google.cloud.orchestration.airflow.service.v1.Environments.GetEnvironment`
 * `google.cloud.orchestration.airflow.service.v1.Environments.ListEnvironments`
+* `google.cloud.orchestration.airflow.service.v1.Environments.SaveSnapshot`
 * `google.cloud.orchestration.airflow.service.v1.Environments.UpdateEnvironment`
 * `google.cloud.orchestration.airflow.service.v1.ImageVersions.ListImageVersions`
 * `google.cloud.orchestration.airflow.service.v1beta1.Environments.CheckUpgrade`
@@ -2250,6 +2269,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.datacatalog.v1.DataCatalog.GetEntryGroup`
 * `google.cloud.datacatalog.v1.DataCatalog.GetIamPolicy`
 * `google.cloud.datacatalog.v1.DataCatalog.GetTagTemplate`
+* `google.cloud.datacatalog.v1.DataCatalog.ImportEntries`
 * `google.cloud.datacatalog.v1.DataCatalog.ListEntries`
 * `google.cloud.datacatalog.v1.DataCatalog.ListEntryGroups`
 * `google.cloud.datacatalog.v1.DataCatalog.ListTags`
@@ -2581,6 +2601,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 `dialogflow.googleapis.com`
 
+* `google.cloud.dialogflow.aam.v2beta1.AamAdminTool.DisplayPrebuiltTaxonomyImportCards`
 * `google.cloud.dialogflow.aam.v2beta1.AamAdminTool.DisplayStats`
 * `google.cloud.dialogflow.aam.v2beta1.AamDatasets.CreateAamDataset`
 * `google.cloud.dialogflow.aam.v2beta1.AamDatasets.DeleteAamDataset`
@@ -2599,6 +2620,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.dialogflow.aam.v2beta1.AamLabels.MarkLabelsReviewed`
 * `google.cloud.dialogflow.aam.v2beta1.AamTasks.CompleteAamTask`
 * `google.cloud.dialogflow.aam.v2beta1.AamTasks.GenerateAamTranscriptTask`
+* `google.cloud.dialogflow.aam.v2beta1.AamTopicClusters.ListAamTopicClusters`
 * `google.cloud.dialogflow.aam.v2beta1.AamTranscripts.ListFlowLabeledAamTranscripts`
 * `google.cloud.dialogflow.v2.Agents.DeleteAgent`
 * `google.cloud.dialogflow.v2.Agents.ExportAgent`
@@ -2740,6 +2762,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.dialogflow.v2beta1.Conversations.CompleteConversation`
 * `google.cloud.dialogflow.v2beta1.Conversations.CreateCallMatcher`
 * `google.cloud.dialogflow.v2beta1.Conversations.CreateConversation`
+* `google.cloud.dialogflow.v2beta1.Conversations.DeactivateConversation`
 * `google.cloud.dialogflow.v2beta1.Conversations.ExportMessages`
 * `google.cloud.dialogflow.v2beta1.Conversations.GetConversation`
 * `google.cloud.dialogflow.v2beta1.Conversations.ListConversations`
@@ -2807,6 +2830,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.dialogflow.v2beta1.Intents.ListIntents`
 * `google.cloud.dialogflow.v2beta1.Intents.SearchKnowledgeBaseIntent`
 * `google.cloud.dialogflow.v2beta1.Intents.UpdateIntent`
+* `google.cloud.dialogflow.v2beta1.IssueModelService.BatchDeleteIssueModelingEntries`
 * `google.cloud.dialogflow.v2beta1.IssueModelService.ListIssueModelingEntries`
 * `google.cloud.dialogflow.v2beta1.KnowledgeBases.CreateKnowledgeBase`
 * `google.cloud.dialogflow.v2beta1.KnowledgeBases.DeleteKnowledgeBase`
@@ -3237,7 +3261,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.healthcare.v1.fhir.FhirStoreService.ImportResources`
 * `google.cloud.healthcare.v1.fhir.FhirStoreService.ListFhirStores`
 * `google.cloud.healthcare.v1.fhir.FhirStoreService.UpdateFhirStore`
-* `google.cloud.healthcare.v1.fhir.rest.FhirService.ConditionalUpdateResource`
 * `google.cloud.healthcare.v1.fhir.rest.FhirService.CreateResource`
 * `google.cloud.healthcare.v1.fhir.rest.FhirService.DeleteResource`
 * `google.cloud.healthcare.v1.fhir.rest.FhirService.DeleteResourceVersions`
@@ -3457,7 +3480,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.iam.admin.v1.PatchServiceAccount`
 * `google.iam.admin.v1.QueryGrantableRoles`
 * `google.iam.admin.v1.SetIAMPolicy`
-* `google.iam.admin.v1.SignJwt`
 * `google.iam.admin.v1.TestIAMPermissions`
 * `google.iam.admin.v1.UndeleteRole`
 * `google.iam.admin.v1.UndeleteServiceAccount`
@@ -3910,6 +3932,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.monitoring.v3.ServiceMonitoringService.UpdateService`
 * `google.monitoring.v3.ServiceMonitoringService.UpdateServiceLevelObjective`
 * `google.monitoring.v3.SnoozeService.CreateSnooze`
+* `google.monitoring.v3.SnoozeService.GetSnooze`
 * `google.monitoring.v3.SnoozeService.ListSnoozes`
 * `google.monitoring.v3.SnoozeService.UpdateSnooze`
 * `google.monitoring.v3.TimeSeriesFilterService.FormatTimeSeriesFilter`
@@ -4565,6 +4588,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.location.Locations.GetLocation`
 * `google.cloud.location.Locations.ListLocations`
 * `google.cloud.translation.v3.TranslationService.BatchSearchTranslationMemoryEntries`
+* `google.cloud.translation.v3.TranslationService.BatchTransferResources`
 * `google.cloud.translation.v3.TranslationService.BatchTranslateDocument`
 * `google.cloud.translation.v3.TranslationService.BatchTranslateText`
 * `google.cloud.translation.v3.TranslationService.BatchUpdateTranslationMemoryEntries`
@@ -4675,6 +4699,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.vision.v1p3beta1.ProductSearch.ListProducts`
 * `google.cloud.vision.v1p3beta1.ProductSearch.ListProductsInProductSet`
 * `google.cloud.vision.v1p3beta1.ProductSearch.ListReferenceImages`
+* `google.cloud.vision.v1p3beta1.ProductSearch.UpdateProductSet`
 * `google.cloud.vision.v1p4beta1.ImageAnnotator.AsyncBatchAnnotateFiles`
 * `google.cloud.vision.v1p4beta1.ImageAnnotator.AsyncBatchAnnotateImages`
 * `google.cloud.vision.v1p4beta1.ImageAnnotator.BatchAnnotateFiles`
@@ -4697,6 +4722,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.vision.v1p4beta1.ProductSearch.PurgeProducts`
 * `google.cloud.vision.v1p4beta1.ProductSearch.RemoveProductFromProductSet`
 * `google.cloud.vision.v1p4beta1.ProductSearch.UpdateProduct`
+* `google.cloud.vision.v1p4beta1.ProductSearch.UpdateProductSet`
 
 </p>
 </details>
@@ -5417,11 +5443,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `compute.healthChecks.delete`
 * `compute.healthChecks.insert`
 * `compute.healthChecks.update`
-* `compute.httpHealthChecks.delete`
-* `compute.httpHealthChecks.insert`
-* `compute.httpHealthChecks.update`
-* `compute.httpsHealthChecks.delete`
-* `compute.httpsHealthChecks.insert`
 * `compute.images.insert`
 * `compute.instanceGroupManagers.delete`
 * `compute.instanceGroupManagers.insert`
@@ -5703,6 +5724,8 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `v1.compute.machineTypes.list`
 * `v1.compute.networkEdgeSecurityServices.aggregatedList`
 * `v1.compute.networkEdgeSecurityServices.delete`
+* `v1.compute.networkEdgeSecurityServices.get`
+* `v1.compute.networkEdgeSecurityServices.insert`
 * `v1.compute.networkEndpointGroups.aggregatedList`
 * `v1.compute.networkEndpointGroups.attachNetworkEndpoints`
 * `v1.compute.networkEndpointGroups.delete`
@@ -5717,6 +5740,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `v1.compute.networkFirewallPolicies.cloneRules`
 * `v1.compute.networkFirewallPolicies.delete`
 * `v1.compute.networkFirewallPolicies.get`
+* `v1.compute.networkFirewallPolicies.getAssociation`
 * `v1.compute.networkFirewallPolicies.getIamPolicy`
 * `v1.compute.networkFirewallPolicies.getRule`
 * `v1.compute.networkFirewallPolicies.insert`
@@ -5871,6 +5895,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `v1.compute.regionNetworkFirewallPolicies.cloneRules`
 * `v1.compute.regionNetworkFirewallPolicies.delete`
 * `v1.compute.regionNetworkFirewallPolicies.get`
+* `v1.compute.regionNetworkFirewallPolicies.getAssociation`
 * `v1.compute.regionNetworkFirewallPolicies.getIamPolicy`
 * `v1.compute.regionNetworkFirewallPolicies.insert`
 * `v1.compute.regionNetworkFirewallPolicies.list`
@@ -5890,8 +5915,10 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `v1.compute.regionOperations.wait`
 * `v1.compute.regionOperationsAdmin.get`
 * `v1.compute.regionSecurityPolicies.delete`
+* `v1.compute.regionSecurityPolicies.get`
 * `v1.compute.regionSecurityPolicies.insert`
 * `v1.compute.regionSecurityPolicies.list`
+* `v1.compute.regionSecurityPolicies.patch`
 * `v1.compute.regionSslCertificates.delete`
 * `v1.compute.regionSslCertificates.get`
 * `v1.compute.regionSslCertificates.insert`
@@ -6091,6 +6118,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `v1.compute.zoneOperations.wait`
 * `v1.compute.zoneOperationsAdmin.get`
 * `v1.compute.zoneOperationsAdmin.wait`
+* `v1.compute.zoneQueuedResources.cancel`
 * `v1.compute.zoneQueuedResources.insert`
 * `v1.compute.zones.get`
 * `v1.compute.zones.list`
@@ -6443,6 +6471,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 `discoveryengine.googleapis.com`
 
 * `google.longrunning.Operations.GetOperation`
+* `google.longrunning.Operations.ListOperations`
 
 </p>
 </details>
@@ -6938,6 +6967,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.admin.AdminService.deleteGmailSetting`
 * `google.admin.AdminService.deleteGroup`
 * `google.admin.AdminService.deleteLdapApplication`
+* `google.admin.AdminService.deleteLdapApplicationCertificate`
 * `google.admin.AdminService.deleteLdapApplicationCredentials`
 * `google.admin.AdminService.deleteManagedConfiguration`
 * `google.admin.AdminService.deleteProfilePhoto`
@@ -6979,6 +7009,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.admin.AdminService.mailRoutingDestinationAdded`
 * `google.admin.AdminService.mailRoutingDestinationRemoved`
 * `google.admin.AdminService.meetInteropCreateGateway`
+* `google.admin.AdminService.meetInteropDeleteGateway`
 * `google.admin.AdminService.meetInteropModifyGateway`
 * `google.admin.AdminService.migrationSetup`
 * `google.admin.AdminService.migrationSpeedUpdate`
@@ -7228,6 +7259,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 `k8s.io`
 
+* `io.k8s.authorization.rbac.v1.clustergroups.create`
 * `io.k8s.authorization.rbac.v1.clusterrolebindings.create`
 * `io.k8s.authorization.rbac.v1.clusterrolebindings.delete`
 * `io.k8s.authorization.rbac.v1.clusterrolebindings.deletecollection`
@@ -7245,11 +7277,22 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `io.k8s.authorization.rbac.v1.clusterroles.update`
 * `io.k8s.authorization.rbac.v1.clusterroles.watch`
 * `io.k8s.authorization.rbac.v1.configmaps.create`
+* `io.k8s.authorization.rbac.v1.constrainttemplates.create`
+* `io.k8s.authorization.rbac.v1.cronjobs.create`
+* `io.k8s.authorization.rbac.v1.customresourcedefinitions.create`
+* `io.k8s.authorization.rbac.v1.daemonsets.create`
 * `io.k8s.authorization.rbac.v1.deployments.create`
+* `io.k8s.authorization.rbac.v1.deployments.delete`
 * `io.k8s.authorization.rbac.v1.gitrepos.create`
 * `io.k8s.authorization.rbac.v1.horizontalpodautoscalers.create`
+* `io.k8s.authorization.rbac.v1.iampartialpolicies.create`
+* `io.k8s.authorization.rbac.v1.ingressroutes.create`
+* `io.k8s.authorization.rbac.v1.jobs.create`
 * `io.k8s.authorization.rbac.v1.jobs.delete`
+* `io.k8s.authorization.rbac.v1.microservices.create`
+* `io.k8s.authorization.rbac.v1.namespaces.create`
 * `io.k8s.authorization.rbac.v1.networkpolicies.create`
+* `io.k8s.authorization.rbac.v1.poddisruptionbudgets.delete`
 * `io.k8s.authorization.rbac.v1.rolebindings.create`
 * `io.k8s.authorization.rbac.v1.rolebindings.delete`
 * `io.k8s.authorization.rbac.v1.rolebindings.deletecollection`
@@ -7267,40 +7310,59 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `io.k8s.authorization.rbac.v1.roles.update`
 * `io.k8s.authorization.rbac.v1.roles.watch`
 * `io.k8s.authorization.rbac.v1.secrets.create`
+* `io.k8s.authorization.rbac.v1.secrets.delete`
 * `io.k8s.authorization.rbac.v1.serviceaccounts.create`
+* `io.k8s.authorization.rbac.v1.serviceaccounts.delete`
 * `io.k8s.authorization.rbac.v1.servicemonitors.create`
 * `io.k8s.authorization.rbac.v1.services.create`
+* `io.k8s.authorization.rbac.v1.services.delete`
+* `io.k8s.authorization.rbac.v1.statefulsets.create`
+* `io.k8s.authorization.rbac.v1.verticalpodautoscalers.create`
+* `io.k8s.authorization.rbac.v1.verticalpodautoscalers.delete`
 * `io.k8s.authorization.rbac.v1beta1.clusterrolebindings.create`
 * `io.k8s.authorization.rbac.v1beta1.clusterrolebindings.delete`
+* `io.k8s.authorization.rbac.v1beta1.clusterrolebindings.get`
 * `io.k8s.authorization.rbac.v1beta1.clusterrolebindings.list`
 * `io.k8s.authorization.rbac.v1beta1.clusterrolebindings.patch`
 * `io.k8s.authorization.rbac.v1beta1.clusterrolebindings.update`
 * `io.k8s.authorization.rbac.v1beta1.clusterrolebindings.watch`
 * `io.k8s.authorization.rbac.v1beta1.clusterroles.create`
 * `io.k8s.authorization.rbac.v1beta1.clusterroles.delete`
+* `io.k8s.authorization.rbac.v1beta1.clusterroles.get`
 * `io.k8s.authorization.rbac.v1beta1.clusterroles.list`
 * `io.k8s.authorization.rbac.v1beta1.clusterroles.patch`
 * `io.k8s.authorization.rbac.v1beta1.clusterroles.update`
 * `io.k8s.authorization.rbac.v1beta1.clusterroles.watch`
 * `io.k8s.authorization.rbac.v1beta1.rolebindings.create`
 * `io.k8s.authorization.rbac.v1beta1.rolebindings.delete`
+* `io.k8s.authorization.rbac.v1beta1.rolebindings.deletecollection`
+* `io.k8s.authorization.rbac.v1beta1.rolebindings.get`
 * `io.k8s.authorization.rbac.v1beta1.rolebindings.list`
 * `io.k8s.authorization.rbac.v1beta1.rolebindings.patch`
 * `io.k8s.authorization.rbac.v1beta1.rolebindings.update`
+* `io.k8s.authorization.rbac.v1beta1.rolebindings.watch`
 * `io.k8s.authorization.rbac.v1beta1.roles.create`
 * `io.k8s.authorization.rbac.v1beta1.roles.delete`
+* `io.k8s.authorization.rbac.v1beta1.roles.deletecollection`
+* `io.k8s.authorization.rbac.v1beta1.roles.get`
+* `io.k8s.authorization.rbac.v1beta1.roles.list`
 * `io.k8s.authorization.rbac.v1beta1.roles.patch`
 * `io.k8s.authorization.rbac.v1beta1.roles.update`
+* `io.k8s.authorization.rbac.v1beta1.roles.watch`
 * `io.k8s.core.v1.namespaces.create`
 * `io.k8s.core.v1.namespaces.delete`
+* `io.k8s.core.v1.namespaces.deletecollection`
+* `io.k8s.core.v1.namespaces.finalize.create`
 * `io.k8s.core.v1.namespaces.finalize.update`
 * `io.k8s.core.v1.namespaces.get`
 * `io.k8s.core.v1.namespaces.list`
 * `io.k8s.core.v1.namespaces.patch`
+* `io.k8s.core.v1.namespaces.post`
 * `io.k8s.core.v1.namespaces.proxy`
 * `io.k8s.core.v1.namespaces.status.update`
 * `io.k8s.core.v1.namespaces.update`
 * `io.k8s.core.v1.namespaces.watch`
+* `io.k8s.core.v1.namespacesexternal-ingress-nginx.update`
 
 </p>
 </details>
@@ -7345,6 +7407,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.vmmigration.v1.VmMigration.GetDatacenterConnector`
 * `google.cloud.vmmigration.v1.VmMigration.GetGroup`
 * `google.cloud.vmmigration.v1.VmMigration.GetMigratingVm`
+* `google.cloud.vmmigration.v1.VmMigration.GetReplicationCycle`
 * `google.cloud.vmmigration.v1.VmMigration.GetSource`
 * `google.cloud.vmmigration.v1.VmMigration.GetTargetPrivateCloud`
 * `google.cloud.vmmigration.v1.VmMigration.GetTargetProject`
@@ -7354,6 +7417,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.vmmigration.v1.VmMigration.ListDatacenterConnectors`
 * `google.cloud.vmmigration.v1.VmMigration.ListGroups`
 * `google.cloud.vmmigration.v1.VmMigration.ListMigratingVms`
+* `google.cloud.vmmigration.v1.VmMigration.ListReplicationCycles`
 * `google.cloud.vmmigration.v1.VmMigration.ListSources`
 * `google.cloud.vmmigration.v1.VmMigration.ListTargetPrivateClouds`
 * `google.cloud.vmmigration.v1.VmMigration.ListTargetProjects`
@@ -7406,6 +7470,8 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.networkconnectivity.v1.HubService.UpdateSpoke`
 * `google.cloud.networkconnectivity.v1.PolicyBasedRoutingService.CreatePolicyBasedRoute`
 * `google.cloud.networkconnectivity.v1.PolicyBasedRoutingService.DeletePolicyBasedRoute`
+* `google.cloud.networkconnectivity.v1.PolicyBasedRoutingService.GetPolicyBasedRoute`
+* `google.cloud.networkconnectivity.v1.PolicyBasedRoutingService.ListPolicyBasedRoutes`
 * `google.longrunning.Operations.CancelOperation`
 * `google.longrunning.Operations.DeleteOperation`
 * `google.longrunning.Operations.GetOperation`
@@ -7457,6 +7523,9 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.networksecurity.v1.NetworkSecurity.UpdateAuthorizationPolicy`
 * `google.cloud.networksecurity.v1.NetworkSecurity.UpdateClientTlsPolicy`
 * `google.cloud.networksecurity.v1.NetworkSecurity.UpdateServerTlsPolicy`
+* `google.cloud.networksecurity.v1beta1.AddressGroupService.AddAddressGroupItems`
+* `google.cloud.networksecurity.v1beta1.AddressGroupService.CreateAddressGroup`
+* `google.cloud.networksecurity.v1beta1.AddressGroupService.RemoveAddressGroupItems`
 * `google.cloud.networksecurity.v1beta1.NetworkSecurity.CreateAuthorizationPolicy`
 * `google.cloud.networksecurity.v1beta1.NetworkSecurity.CreateClientTlsPolicy`
 * `google.cloud.networksecurity.v1beta1.NetworkSecurity.CreateServerTlsPolicy`
@@ -7469,6 +7538,9 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.networksecurity.v1beta1.NetworkSecurity.UpdateAuthorizationPolicy`
 * `google.cloud.networksecurity.v1beta1.NetworkSecurity.UpdateClientTlsPolicy`
 * `google.cloud.networksecurity.v1beta1.NetworkSecurity.UpdateServerTlsPolicy`
+* `google.cloud.networksecurity.v1beta1.OrganizationAddressGroupService.AddAddressGroupItems`
+* `google.cloud.networksecurity.v1beta1.OrganizationAddressGroupService.CreateAddressGroup`
+* `google.cloud.networksecurity.v1beta1.OrganizationAddressGroupService.DeleteAddressGroup`
 * `google.longrunning.Operations.CancelOperation`
 * `google.longrunning.Operations.DeleteOperation`
 * `google.longrunning.Operations.GetOperation`
@@ -7540,8 +7612,10 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.networkservices.v1beta1.NetworkServices.CreateHttpRoute`
 * `google.cloud.networkservices.v1beta1.NetworkServices.CreateMesh`
 * `google.cloud.networkservices.v1beta1.NetworkServices.CreateServiceBinding`
+* `google.cloud.networkservices.v1beta1.NetworkServices.CreateTcpRoute`
 * `google.cloud.networkservices.v1beta1.NetworkServices.CreateTlsRoute`
 * `google.cloud.networkservices.v1beta1.NetworkServices.DeleteEndpointPolicy`
+* `google.cloud.networkservices.v1beta1.NetworkServices.DeleteGateway`
 * `google.cloud.networkservices.v1beta1.NetworkServices.DeleteMesh`
 * `google.cloud.networkservices.v1beta1.NetworkServices.DeleteServiceBinding`
 * `google.cloud.networkservices.v1beta1.NetworkServices.GetEndpointPolicy`
@@ -7653,7 +7727,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.recommendationengine.v1beta1.CatalogService.CreateCatalogItem`
 * `google.cloud.recommendationengine.v1beta1.CatalogService.DeleteCatalogItem`
 * `google.cloud.recommendationengine.v1beta1.CatalogService.GetCatalogItem`
-* `google.cloud.recommendationengine.v1beta1.CatalogService.GetCatalogItemsWithItemGroupId`
 * `google.cloud.recommendationengine.v1beta1.CatalogService.ImportCatalogItems`
 * `google.cloud.recommendationengine.v1beta1.CatalogService.ListCatalogItems`
 * `google.cloud.recommendationengine.v1beta1.CatalogService.UpdateCatalogItem`
@@ -7811,12 +7884,14 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.securitycenter.v1.SecurityCenter.CreateSource`
 * `google.cloud.securitycenter.v1.SecurityCenter.DeleteMuteConfig`
 * `google.cloud.securitycenter.v1.SecurityCenter.DeleteNotificationConfig`
+* `google.cloud.securitycenter.v1.SecurityCenter.DeleteResourceValueConfig`
 * `google.cloud.securitycenter.v1.SecurityCenter.GetBigQueryExport`
 * `google.cloud.securitycenter.v1.SecurityCenter.GetFindingResponse`
 * `google.cloud.securitycenter.v1.SecurityCenter.GetIamPolicy`
 * `google.cloud.securitycenter.v1.SecurityCenter.GetMuteConfig`
 * `google.cloud.securitycenter.v1.SecurityCenter.GetNotificationConfig`
 * `google.cloud.securitycenter.v1.SecurityCenter.GetOrganizationSettings`
+* `google.cloud.securitycenter.v1.SecurityCenter.GetResourceValueConfig`
 * `google.cloud.securitycenter.v1.SecurityCenter.GetSource`
 * `google.cloud.securitycenter.v1.SecurityCenter.GroupAssets`
 * `google.cloud.securitycenter.v1.SecurityCenter.GroupFindings`
@@ -7836,6 +7911,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.securitycenter.v1.SecurityCenter.UpdateMuteConfig`
 * `google.cloud.securitycenter.v1.SecurityCenter.UpdateNotificationConfig`
 * `google.cloud.securitycenter.v1.SecurityCenter.UpdateOrganizationSettings`
+* `google.cloud.securitycenter.v1.SecurityCenter.UpdateResourceValueConfig`
 * `google.cloud.securitycenter.v1.SecurityCenter.UpdateSecurityMarks`
 * `google.cloud.securitycenter.v1.SecurityCenter.UpdateSource`
 * `google.cloud.securitycenter.v1beta1.SecurityCenter.CreateFinding`
@@ -8172,6 +8248,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.vmwareengine.v1.VmwareEngine.UpdateNetworkPolicy`
 * `google.cloud.vmwareengine.v1.VmwareEngine.UpdatePrivateCloud`
 * `google.cloud.vmwareengine.v1.VmwareEngine.UpdateVmwareEngineNetwork`
+* `google.longrunning.Operations.DeleteOperation`
 * `google.vmwareengine.authorize`
 
 </p>
@@ -8185,6 +8262,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.websecurityscanner.v1.WebSecurityScanner.DeleteScanConfig`
 * `google.cloud.websecurityscanner.v1.WebSecurityScanner.GetScanRun`
 * `google.cloud.websecurityscanner.v1.WebSecurityScanner.ListScanConfigs`
+* `google.cloud.websecurityscanner.v1.WebSecurityScanner.ListScanRuns`
 * `google.cloud.websecurityscanner.v1.WebSecurityScanner.StartScanRun`
 * `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.CreateScanConfig`
 * `google.cloud.websecurityscanner.v1beta.WebSecurityScanner.DeleteScanConfig`

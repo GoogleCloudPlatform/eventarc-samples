@@ -1,0 +1,7 @@
+main:
+  params: [event]
+  steps:
+  - logStep:
+      call: sys.log
+      args:
+        data: ${event}

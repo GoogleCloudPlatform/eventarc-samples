@@ -166,7 +166,7 @@ uid: a56069cd-abd1-42d0-9511-823f6949bc9e
 updateTime: '2023-01-19T09:14:24.975138277Z'
 ```
 
-## Create a notification in CloudGuard
+## Create a notification handler in CloudGuard
 
 Next, you need to set up a notification handler to watch for specific access
 events in Check Point CloudGuard and forward notification of these events to
@@ -193,17 +193,8 @@ curl -v --request POST \
 EOF
 ```
 
-Once notification is created, you need to associate it with a ruleset:
-
-1. Log into [Check Point portal](https://portal.checkpoint.com)
-1. Select `Posture management` > `Continuous posture`.
-1. Select the checkbox next to one of the rulesets (eg. `GCP CIS Foundations
-   v.1.3.0`) and click `Edit` on the top. This opens up a notifications list.
-1. Select the checkbox next to the notification you created earlier
-   (`cloudguard-channel-notification`) and click `Save`.
-
-Now, every time there's a security event in this ruleset, it'll send a
-notification to the notification handler we created.
+You will associate the notification handler with a ruleset later, once Eventarc
+trigger is set up.
 
 ## Deploy a workflow as event receiver
 
@@ -258,6 +249,21 @@ gcloud eventarc triggers create $TRIGGER_NAME \
   --service-account=$PROJECT_NUMBER-compute@developer.gserviceaccount.com
 ```
 
+## Associate notification handler with a ruleset in CloudGuard
+
+The final step is to associate the notification handler it with a ruleset:
+
+1. Log into [Check Point portal](https://portal.checkpoint.com)
+1. Select `Posture management` > `Continuous posture`.
+1. Select the checkbox next to one of the rulesets (eg. `GCP GDPR Readiness`)
+   and click `Edit` on the top. This opens up a notifications list.
+1. Select the checkbox next to the notification you created earlier
+   (`cloudguard-channel-notification`) and click `Save`.
+
+Now, every time there's a security event in this ruleset, it'll send an
+event to the notification handler we created which in turn will pass the event
+to the Eventarc channel.
+
 ## Test
 
 You can now test the entire configuration by accessing Check Point CloudGuard to
@@ -266,7 +272,7 @@ CloudGuard is routed to the workflow that logs the received event.
 
 1. Log into [Check Point portal](https://portal.checkpoint.com)
 1. Select `Posture management` > `Continuous posture`.
-1. Click on one of the rulesets (eg. `GCP CIS Foundations v.1.3.0`) where we
+1. Click on one of the rulesets (eg. `GCP GDPR Readiness`) where we
    set the notification handler earlier.
 1. Click `Run assessment`, select your Google Cloud project and click `Run`.
 
@@ -277,6 +283,21 @@ event for Eventarc. You can verify that workflow was executed by the received ev
 gcloud workflows executions list $WORKFLOW_NAME
 ```
 
-You can also check the logs of workflow to see the details of the received event.
+You can also see that the event is input to the workflow execution:
+
+```log
+{
+  ...
+  "datacontenttype": "application/json",
+  "id": "10|Finding|-77|your-project-id|xImOEMo/O6J+dvXvsakVTQ|eventarc-channel-us-central1-your-channel-id-047",
+  "severity": "High",
+  "source": "//cloudguard",
+  "specversion": "1.0",
+  "subject": "CloudGuard Security Alert",
+  "time": "2023-01-20T10:00:39.430146800Z",
+  "title": "Ensure PubSub service is encrypted, with customer managed encryption keys.",
+  "type": "cloudguard.v1.event"
+}
+```
 
 **Note**: There seems to be a bug on event generation and you might not see events sometimes.

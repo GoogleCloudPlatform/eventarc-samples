@@ -255,12 +255,14 @@ The final step is to associate the notification handler it with a ruleset:
 
 1. Log into [Check Point portal](https://portal.checkpoint.com)
 1. Select `Posture management` > `Continuous posture`.
-1. Select the checkbox next to one of the rulesets (eg. `GCP GDPR Readiness`)
-   and click `Edit` on the top. This opens up a notifications list.
+1. Add a ruleset, if you don't have any (eg. `GCP CloudGuard Best Practices` is
+   a good one to try)
+1. Select the checkbox next the ruleset  and click `Edit` on the top. This opens
+   up a notifications list.
 1. Select the checkbox next to the notification you created earlier
    (`cloudguard-channel-notification`) and click `Save`.
 
-Now, every time there's a security event in this ruleset, it'll send an
+Now, every time there's a security event in this ruleset, it should send an
 event to the notification handler we created which in turn will pass the event
 to the Eventarc channel.
 
@@ -272,7 +274,7 @@ CloudGuard is routed to the workflow that logs the received event.
 
 1. Log into [Check Point portal](https://portal.checkpoint.com)
 1. Select `Posture management` > `Continuous posture`.
-1. Click on one of the rulesets (eg. `GCP GDPR Readiness`) where we
+1. Click on the ruleset (`GCP CloudGuard Best Practices`) where we
    set the notification handler earlier.
 1. Click `Run assessment`, select your Google Cloud project and click `Run`.
 

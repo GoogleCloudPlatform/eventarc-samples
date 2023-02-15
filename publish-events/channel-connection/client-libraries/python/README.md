@@ -14,9 +14,9 @@ Publish:
 ```sh
 PROJECT_ID=$(gcloud config get-value project)
 REGION=us-central1
-CHANNEL_CONNECTION_ID=hello-channel-connection
+CHANNEL_NAME=hello-channel-connection
 
 python3 publish.py \
-    --channel projects/$PROJECT_ID/locations/$REGION/channelConnections/$CHANNEL_CONNECTION_ID \
+    --channel projects/$PROJECT_ID/locations/$REGION/channelConnections/$CHANNEL_NAME \
     --log=DEBUG
 ```

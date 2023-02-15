@@ -99,7 +99,7 @@ public class PublishEventsExample {
     }
   }
 
-  public void SendPublishEvent(String projectId, String region, String channelConnection) throws Exception {
+  public void SendPublishEvent(String channelName, boolean useTextEvent) throws Exception {
 
     CustomMessage message = new CustomMessage("Hello world from Java client library");
 
@@ -116,8 +116,6 @@ public class PublishEventsExample {
             JsonCloudEventData.wrap(objectMapper.valueToTree(message)))
         .build();
 
-    String channelName = "projects/" + projectId + "/locations/" + region + "/channelConnections/" + channelConnection;
-
     if (useTextEvent) {
       SendEventUsingTextFormat(channelName, event);
     } else {
@@ -129,9 +127,16 @@ public class PublishEventsExample {
     String projectId = args[0];
     String region = args[1];
     String channelConnection = args[2];
-    System.out.println("ProjectId: " + projectId + " Region: " + region + " ChannelConnection: " + channelConnection);
+    // Controls the format of events sent to Eventarc.
+    // 'true' for using text format.
+    // 'false' for proto (preferred) format.
+    boolean useTextEvent = args.length > 3 ? Boolean.parseBoolean(args[3]) : false;
 
-    new PublishEventsExample().SendPublishEvent(projectId, region, channelConnection);
+    String channelName = "projects/" + projectId + "/locations/" + region + "/channelConnections/" + channelConnection;
+    System.out.println("Channel: " + channelName);
+    System.out.println("useTextEvent: " + useTextEvent);
+
+    new PublishEventsExample().SendPublishEvent(channelName, useTextEvent);
   }
 }
 // [END eventarc_third_party_publish_java]

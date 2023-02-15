@@ -1,11 +1,17 @@
 # Third party publisher sample - Java
 
-Example invocation:
+Publish in proto (default) event format:
 
 ```sh
 PROJECT_ID=$(gcloud config get-value project)
 REGION=us-central1
-CHANNEL_CONNECTION_ID=hello-channel-connection
+CHANNEL_NAME=hello-channel-connection
 
-./gradlew run --args="$PROJECT_ID $REGION $CHANNEL_CONNECTION_ID"
+./gradlew run --args="$PROJECT_ID $REGION $CHANNEL_NAME"
+```
+
+Publish in text event format:
+
+```sh
+./gradlew run --args="$PROJECT_ID $REGION $CHANNEL_NAME true"
 ```

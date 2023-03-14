@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+# [START terraform_eventarc_configure_serviceaccount]
 variable "project_id" {
   type = string
 }
@@ -67,6 +68,9 @@ resource "google_project_iam_binding" "project_binding_monitoring_metricWriter" 
   depends_on = [google_service_account.eventarc_gke_trigger_sa]
 }
 
+# [END terraform_eventarc_configure_serviceaccount]
+# [START terraform_eventarc_create_pubsub_trigger]
+
 # Create a Pub/Sub trigger
 resource "google_eventarc_trigger" "trigger_pubsub_gke" {
   name     = "trigger-pubsub-gke"
@@ -88,3 +92,4 @@ resource "google_eventarc_trigger" "trigger_pubsub_gke" {
 
   depends_on = [google_service_account.eventarc_gke_trigger_sa, google_project_iam_binding.project_binding_pubsub_subscriber]
 }
+# [END terraform_eventarc_create_pubsub_trigger]

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+# [START terraform_eventarc_enableapi]
 variable "project_id" {
   type = string
 }
@@ -53,3 +54,4 @@ resource "google_container_cluster" "gke_cluster" {
     google_project_service.container
   ]
 }
+# [END terraform_eventarc_enableapi]

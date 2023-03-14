@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+# [START terraform_eventarc_gke_initialize]
 variable "project_id" {
   type = string
 }
@@ -103,3 +104,4 @@ resource "google_project_iam_binding" "serviceAccountAdmin" {
     google_project_service.eventarc
   ]
 }
+# [END terraform_eventarc_gke_initialize]

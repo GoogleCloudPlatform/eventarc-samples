@@ -72,7 +72,7 @@ resource "google_workflows_workflow" "workflows_example" {
   name            = "pubsub-workflow-tf"
   region          = var.region
   description     = "A sample workflow"
-  service_account = google_service_account.eventarc_workflows_service_account.id
+  service_account = google_service_account.eventarc_workflows_service_account.email
   # Imported main workflow YAML file
   source_contents = templatefile("${path.module}/workflow.yaml",{})
 
@@ -92,7 +92,7 @@ resource "google_eventarc_trigger" "trigger-pubsub-tf" {
   }
 
 
-  service_account = google_service_account.eventarc_workflows_service_account.id
+  service_account = google_service_account.eventarc_workflows_service_account.email
 
   depends_on = [google_project_service.pubsub, google_project_service.eventarc, google_service_account.eventarc_workflows_service_account]
 }

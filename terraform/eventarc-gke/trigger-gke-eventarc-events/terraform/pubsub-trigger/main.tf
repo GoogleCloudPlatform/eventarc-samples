@@ -41,7 +41,7 @@ resource "google_service_account" "eventarc_gke_trigger_sa" {
   display_name = "Evenarc GKE Trigger Service Account"
 }
 
-# Add right roles to the service account
+# Add required roles to the service account
 # The SA must be granted the following roles:
 # * roles/pubsub.subscriber
 # * roles/monitoring.metricWriter

@@ -82,6 +82,10 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.datafusion.instance.v1.deleted`
 - `google.cloud.datafusion.instance.v1.updated`
 
+### Cloud Dataflow (preview)
+
+- `google.cloud.dataflow.job.v1beta3.statusChanged`
+
 ### Cloud Functions (preview)
 
 - `google.cloud.functions.function.v2.created`

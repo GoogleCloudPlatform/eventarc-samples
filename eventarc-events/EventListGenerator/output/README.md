@@ -94,6 +94,13 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
+<details><summary>Cloud Dataflow (preview)</summary>
+<p>
+
+* `google.cloud.dataflow.job.v1beta3.statusChanged`
+
+</p>
+</details>
 <details><summary>Cloud Functions (preview)</summary>
 <p>
 

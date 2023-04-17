@@ -101,6 +101,16 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
+<details><summary>Cloud Firestore (preview)</summary>
+<p>
+
+* `google.cloud.firestore.document.v1.created`
+* `google.cloud.firestore.document.v1.deleted`
+* `google.cloud.firestore.document.v1.updated`
+* `google.cloud.firestore.document.v1.written`
+
+</p>
+</details>
 <details><summary>Cloud Functions (preview)</summary>
 <p>
 

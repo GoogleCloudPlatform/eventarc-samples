@@ -221,6 +221,16 @@
         "google.cloud.workflows.workflow.v1.updated",
         "google.cloud.workflows.workflow.v1.deleted"
       ]
+    },
+    {
+      "displayName": "Cloud Firestore",
+      "preview": true,
+      "events": [
+        "google.cloud.firestore.document.v1.written",
+        "google.cloud.firestore.document.v1.created",
+        "google.cloud.firestore.document.v1.updated",
+        "google.cloud.firestore.document.v1.deleted"
+      ]
     }
   ],
   "thirdParty": [

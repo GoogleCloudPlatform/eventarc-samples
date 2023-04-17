@@ -86,6 +86,13 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 - `google.cloud.dataflow.job.v1beta3.statusChanged`
 
+### Cloud Firestore (preview)
+
+- `google.cloud.firestore.document.v1.created`
+- `google.cloud.firestore.document.v1.deleted`
+- `google.cloud.firestore.document.v1.updated`
+- `google.cloud.firestore.document.v1.written`
+
 ### Cloud Functions (preview)
 
 - `google.cloud.functions.function.v2.created`

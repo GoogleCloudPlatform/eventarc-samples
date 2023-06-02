@@ -177,6 +177,13 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 - `google.firebase.testlab.testMatrix.v1.completed`
 
+### Transcoder (preview)
+
+- `google.cloud.video.transcoder.job.v1.created`
+- `google.cloud.video.transcoder.job.v1.deleted`
+- `google.cloud.video.transcoder.jobTemplate.v1.created`
+- `google.cloud.video.transcoder.jobTemplate.v1.deleted`
+
 ### Workflows (preview)
 
 - `google.cloud.workflows.workflow.v1.created`

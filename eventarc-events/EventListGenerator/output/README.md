@@ -231,6 +231,16 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
+<details><summary>Transcoder (preview)</summary>
+<p>
+
+* `google.cloud.video.transcoder.job.v1.created`
+* `google.cloud.video.transcoder.job.v1.deleted`
+* `google.cloud.video.transcoder.jobTemplate.v1.created`
+* `google.cloud.video.transcoder.jobTemplate.v1.deleted`
+
+</p>
+</details>
 <details><summary>Workflows (preview)</summary>
 <p>
 

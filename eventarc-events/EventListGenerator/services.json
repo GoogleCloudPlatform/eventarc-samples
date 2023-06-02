@@ -231,6 +231,16 @@
         "google.cloud.firestore.document.v1.updated",
         "google.cloud.firestore.document.v1.deleted"
       ]
+    },
+    {
+      "displayName": "Transcoder",
+      "preview": true,
+      "events": [
+        "google.cloud.video.transcoder.job.v1.created",
+        "google.cloud.video.transcoder.job.v1.deleted",
+        "google.cloud.video.transcoder.jobTemplate.v1.created",
+        "google.cloud.video.transcoder.jobTemplate.v1.deleted"
+      ]
     }
   ],
   "thirdParty": [

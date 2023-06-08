@@ -241,6 +241,57 @@
         "google.cloud.video.transcoder.jobTemplate.v1.created",
         "google.cloud.video.transcoder.jobTemplate.v1.deleted"
       ]
+    },
+    {
+      "displayName": "Backup for GKE",
+      "preview": true,
+      "events": [
+        "google.cloud.gkebackup.backupPlan.v1.created",
+        "google.cloud.gkebackup.backupPlan.v1.updated",
+        "google.cloud.gkebackup.backupPlan.v1.deleted",
+        "google.cloud.gkebackup.backup.v1.created",
+        "google.cloud.gkebackup.backup.v1.updated",
+        "google.cloud.gkebackup.backup.v1.deleted",
+        "google.cloud.gkebackup.restorePlan.v1.created",
+        "google.cloud.gkebackup.restorePlan.v1.updated",
+        "google.cloud.gkebackup.restorePlan.v1.deleted",
+        "google.cloud.gkebackup.restore.v1.created",
+        "google.cloud.gkebackup.restore.v1.updated",
+        "google.cloud.gkebackup.restore.v1.deleted"
+      ]
+    },
+    {
+      "displayName": "Cloud Dataplex",
+      "preview": true,
+      "events": [
+        "google.cloud.dataplex.dataTaxonomy.v1.created",
+        "google.cloud.dataplex.dataTaxonomy.v1.updated",
+        "google.cloud.dataplex.dataTaxonomy.v1.deleted",
+        "google.cloud.dataplex.dataAttributeBinding.v1.created",
+        "google.cloud.dataplex.dataAttributeBinding.v1.updated",
+        "google.cloud.dataplex.dataAttributeBinding.v1.deleted",
+        "google.cloud.dataplex.dataAttribute.v1.created",
+        "google.cloud.dataplex.dataAttribute.v1.updated",
+        "google.cloud.dataplex.dataAttribute.v1.deleted",
+        "google.cloud.dataplex.dataScan.v1.created",
+        "google.cloud.dataplex.dataScan.v1.updated",
+        "google.cloud.dataplex.dataScan.v1.deleted",
+        "google.cloud.dataplex.lake.v1.created",
+        "google.cloud.dataplex.lake.v1.updated",
+        "google.cloud.dataplex.lake.v1.deleted",
+        "google.cloud.dataplex.zone.v1.created",
+        "google.cloud.dataplex.zone.v1.updated",
+        "google.cloud.dataplex.zone.v1.deleted",
+        "google.cloud.dataplex.asset.v1.created",
+        "google.cloud.dataplex.asset.v1.updated",
+        "google.cloud.dataplex.asset.v1.deleted",
+        "google.cloud.dataplex.task.v1.created",
+        "google.cloud.dataplex.task.v1.updated",
+        "google.cloud.dataplex.task.v1.deleted",
+        "google.cloud.dataplex.environment.v1.created",
+        "google.cloud.dataplex.environment.v1.updated",
+        "google.cloud.dataplex.environment.v1.deleted"
+      ]
     }
   ],
   "thirdParty": [

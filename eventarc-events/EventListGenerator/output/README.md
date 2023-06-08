@@ -44,6 +44,24 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
+<details><summary>Backup for GKE (preview)</summary>
+<p>
+
+* `google.cloud.gkebackup.backup.v1.created`
+* `google.cloud.gkebackup.backup.v1.deleted`
+* `google.cloud.gkebackup.backup.v1.updated`
+* `google.cloud.gkebackup.backupPlan.v1.created`
+* `google.cloud.gkebackup.backupPlan.v1.deleted`
+* `google.cloud.gkebackup.backupPlan.v1.updated`
+* `google.cloud.gkebackup.restore.v1.created`
+* `google.cloud.gkebackup.restore.v1.deleted`
+* `google.cloud.gkebackup.restore.v1.updated`
+* `google.cloud.gkebackup.restorePlan.v1.created`
+* `google.cloud.gkebackup.restorePlan.v1.deleted`
+* `google.cloud.gkebackup.restorePlan.v1.updated`
+
+</p>
+</details>
 <details><summary>BeyondCorp (preview)</summary>
 <p>
 
@@ -98,6 +116,39 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 <p>
 
 * `google.cloud.dataflow.job.v1beta3.statusChanged`
+
+</p>
+</details>
+<details><summary>Cloud Dataplex (preview)</summary>
+<p>
+
+* `google.cloud.dataplex.asset.v1.created`
+* `google.cloud.dataplex.asset.v1.deleted`
+* `google.cloud.dataplex.asset.v1.updated`
+* `google.cloud.dataplex.dataAttribute.v1.created`
+* `google.cloud.dataplex.dataAttribute.v1.deleted`
+* `google.cloud.dataplex.dataAttribute.v1.updated`
+* `google.cloud.dataplex.dataAttributeBinding.v1.created`
+* `google.cloud.dataplex.dataAttributeBinding.v1.deleted`
+* `google.cloud.dataplex.dataAttributeBinding.v1.updated`
+* `google.cloud.dataplex.dataScan.v1.created`
+* `google.cloud.dataplex.dataScan.v1.deleted`
+* `google.cloud.dataplex.dataScan.v1.updated`
+* `google.cloud.dataplex.dataTaxonomy.v1.created`
+* `google.cloud.dataplex.dataTaxonomy.v1.deleted`
+* `google.cloud.dataplex.dataTaxonomy.v1.updated`
+* `google.cloud.dataplex.environment.v1.created`
+* `google.cloud.dataplex.environment.v1.deleted`
+* `google.cloud.dataplex.environment.v1.updated`
+* `google.cloud.dataplex.lake.v1.created`
+* `google.cloud.dataplex.lake.v1.deleted`
+* `google.cloud.dataplex.lake.v1.updated`
+* `google.cloud.dataplex.task.v1.created`
+* `google.cloud.dataplex.task.v1.deleted`
+* `google.cloud.dataplex.task.v1.updated`
+* `google.cloud.dataplex.zone.v1.created`
+* `google.cloud.dataplex.zone.v1.deleted`
+* `google.cloud.dataplex.zone.v1.updated`
 
 </p>
 </details>

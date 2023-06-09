@@ -133,6 +133,10 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 ### Cloud Firestore (preview)
 
+- `google.cloud.datastore.entity.v1.created`
+- `google.cloud.datastore.entity.v1.deleted`
+- `google.cloud.datastore.entity.v1.updated`
+- `google.cloud.datastore.entity.v1.written`
 - `google.cloud.firestore.document.v1.created`
 - `google.cloud.firestore.document.v1.deleted`
 - `google.cloud.firestore.document.v1.updated`

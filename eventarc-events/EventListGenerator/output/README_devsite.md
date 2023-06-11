@@ -2574,20 +2574,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.longrunning.Operations.GetOperation`
 - `google.longrunning.Operations.ListOperations`
 
-### Cloud Debugger
-
-#### `serviceName`
-
-- `clouddebugger.googleapis.com`
-
-#### `methodName`
-
-- `DeleteBreakpoint`
-- `GetBreakpoint`
-- `ListBreakpoints`
-- `ListDebuggees`
-- `SetBreakpoint`
-
 ### Cloud Deploy
 
 #### `serviceName`

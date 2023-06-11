@@ -2602,19 +2602,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Cloud Debugger</summary>
-<p>
-
-`clouddebugger.googleapis.com`
-
-* `DeleteBreakpoint`
-* `GetBreakpoint`
-* `ListBreakpoints`
-* `ListDebuggees`
-* `SetBreakpoint`
-
-</p>
-</details>
 <details><summary>Cloud Deploy</summary>
 <p>
 

@@ -155,6 +155,10 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 <details><summary>Cloud Firestore (preview)</summary>
 <p>
 
+* `google.cloud.datastore.entity.v1.created`
+* `google.cloud.datastore.entity.v1.deleted`
+* `google.cloud.datastore.entity.v1.updated`
+* `google.cloud.datastore.entity.v1.written`
 * `google.cloud.firestore.document.v1.created`
 * `google.cloud.firestore.document.v1.deleted`
 * `google.cloud.firestore.document.v1.updated`
@@ -2595,19 +2599,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.longrunning.Operations.DeleteOperation`
 * `google.longrunning.Operations.GetOperation`
 * `google.longrunning.Operations.ListOperations`
-
-</p>
-</details>
-<details><summary>Cloud Debugger</summary>
-<p>
-
-`clouddebugger.googleapis.com`
-
-* `DeleteBreakpoint`
-* `GetBreakpoint`
-* `ListBreakpoints`
-* `ListDebuggees`
-* `SetBreakpoint`
 
 </p>
 </details>

@@ -133,6 +133,10 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 ### Cloud Firestore (preview)
 
+- `google.cloud.datastore.entity.v1.created`
+- `google.cloud.datastore.entity.v1.deleted`
+- `google.cloud.datastore.entity.v1.updated`
+- `google.cloud.datastore.entity.v1.written`
 - `google.cloud.firestore.document.v1.created`
 - `google.cloud.firestore.document.v1.deleted`
 - `google.cloud.firestore.document.v1.updated`
@@ -2569,20 +2573,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.longrunning.Operations.DeleteOperation`
 - `google.longrunning.Operations.GetOperation`
 - `google.longrunning.Operations.ListOperations`
-
-### Cloud Debugger
-
-#### `serviceName`
-
-- `clouddebugger.googleapis.com`
-
-#### `methodName`
-
-- `DeleteBreakpoint`
-- `GetBreakpoint`
-- `ListBreakpoints`
-- `ListDebuggees`
-- `SetBreakpoint`
 
 ### Cloud Deploy
 

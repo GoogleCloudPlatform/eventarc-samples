@@ -106,9 +106,15 @@ docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 .
 docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:v1
 ```
 
+Alternatively, using CloudBuild (with the defaults):
+
+```sh
+gcloud builds submit
+```
+
 Deploy the service while passing in `TO_EMAILS` to email address where you want
 to send the notification and `SENDGRID_API_KEY` with your send SendGrid API Key.
-Optionally, FROM_EMAIL address can passed to overwrite the default FROM email, if 
+Optionally, `FROM_EMAIL` address can passed to overwrite the default FROM email, if 
 required by SendGrid to pass the sender identity verification:
 
 ```sh
@@ -162,6 +168,12 @@ docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 .
 docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:v1
 ```
 
+Alternatively, using CloudBuild (with the defaults):
+
+```sh
+gcloud builds submit
+```
+
 Deploy the service while passing in `BUCKET` with the bucket you created earlier.
 
 ```sh
@@ -208,6 +220,12 @@ folder, build and push the container image:
 SERVICE_NAME=query-runner
 docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:v1 -f bigquery/$SERVICE_NAME/csharp/Dockerfile .
 docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:v1
+```
+
+Alternatively, using CloudBuild (with the defaults):
+
+```sh
+gcloud builds submit
 ```
 
 Deploy the service while passing in `PROJECT_ID` with your actual project id.

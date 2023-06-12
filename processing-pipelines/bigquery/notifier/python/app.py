@@ -23,8 +23,8 @@ from google.cloud import storage
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
-def read_config(var):
-    value = os.environ.get(var)
+def read_config(var, default_value=None):
+    value = os.environ.get(var) or default_value
     if value is None:
        raise Exception(f'{var} cannot be None')
     return value
@@ -32,6 +32,7 @@ def read_config(var):
 bucket_expected = read_config('BUCKET')
 to_emails = read_config('TO_EMAILS')
 sendgrid_api_key = read_config('SENDGRID_API_KEY')
+from_email = read_config('FROM_EMAIL', 'noreply@bigquery-pipeline.com')
 
 app = Flask(__name__)
 
@@ -77,7 +78,7 @@ def notify(bucket, name):
     app.logger.info(f"Sending email to '{to_emails}''")
 
     message = Mail(
-        from_email='noreply@bigquery-pipeline.com',
+        from_email=from_email,
         to_emails=to_emails,
         subject='A new chart from BigQuery Pipeline',
         html_content=f'<html><p>A new chart is available for you to view: <a href="{image_url}">{image_url}</a></p><img src="{image_url}"></img></html>')
@@ -87,6 +88,7 @@ def notify(bucket, name):
         response = sg.send(message)
         app.logger.info(f"Email status code {response.status_code}")
     except Exception as e:
+        app.logger.error(f"Exception in sending email: {e}")
         print(e)
 
 def pretty_print_POST(req):

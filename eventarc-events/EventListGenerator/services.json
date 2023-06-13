@@ -77,7 +77,7 @@
       ]
     },
     {
-      "displayName": "Cloud Dataflow",
+      "displayName": "Dataflow",
       "preview": true,
       "events": [
         "google.cloud.dataflow.job.v1beta3.statusChanged"

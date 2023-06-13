@@ -112,13 +112,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Cloud Dataflow (preview)</summary>
-<p>
-
-* `google.cloud.dataflow.job.v1beta3.statusChanged`
-
-</p>
-</details>
 <details><summary>Cloud Dataplex (preview)</summary>
 <p>
 
@@ -222,6 +215,13 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.clouddms.migrationJob.v1.created`
 * `google.cloud.clouddms.migrationJob.v1.deleted`
 * `google.cloud.clouddms.migrationJob.v1.updated`
+
+</p>
+</details>
+<details><summary>Dataflow (preview)</summary>
+<p>
+
+* `google.cloud.dataflow.job.v1beta3.statusChanged`
 
 </p>
 </details>
@@ -885,80 +885,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>AI Platform Notebooks</summary>
-<p>
-
-`notebooks.googleapis.com`
-
-* `GetIamPolicy`
-* `SetIamPolicy`
-* `google.cloud.notebooks.v1.ManagedNotebookService.CreateRuntime`
-* `google.cloud.notebooks.v1.ManagedNotebookService.DeleteRuntime`
-* `google.cloud.notebooks.v1.ManagedNotebookService.DiagnoseRuntime`
-* `google.cloud.notebooks.v1.ManagedNotebookService.GetRuntime`
-* `google.cloud.notebooks.v1.ManagedNotebookService.ListRuntimes`
-* `google.cloud.notebooks.v1.ManagedNotebookService.ResetRuntime`
-* `google.cloud.notebooks.v1.ManagedNotebookService.StartRuntime`
-* `google.cloud.notebooks.v1.ManagedNotebookService.StopRuntime`
-* `google.cloud.notebooks.v1.ManagedNotebookService.SwitchRuntime`
-* `google.cloud.notebooks.v1.ManagedNotebookService.UpdateRuntime`
-* `google.cloud.notebooks.v1.ManagedNotebookService.UpgradeRuntime`
-* `google.cloud.notebooks.v1.NotebookService.CreateEnvironment`
-* `google.cloud.notebooks.v1.NotebookService.CreateExecution`
-* `google.cloud.notebooks.v1.NotebookService.CreateInstance`
-* `google.cloud.notebooks.v1.NotebookService.CreateSchedule`
-* `google.cloud.notebooks.v1.NotebookService.DeleteEnvironment`
-* `google.cloud.notebooks.v1.NotebookService.DeleteExecution`
-* `google.cloud.notebooks.v1.NotebookService.DeleteInstance`
-* `google.cloud.notebooks.v1.NotebookService.DeleteSchedule`
-* `google.cloud.notebooks.v1.NotebookService.DiagnoseInstance`
-* `google.cloud.notebooks.v1.NotebookService.GetEnvironment`
-* `google.cloud.notebooks.v1.NotebookService.GetExecution`
-* `google.cloud.notebooks.v1.NotebookService.GetInstance`
-* `google.cloud.notebooks.v1.NotebookService.GetInstanceHealth`
-* `google.cloud.notebooks.v1.NotebookService.GetSchedule`
-* `google.cloud.notebooks.v1.NotebookService.IsInstanceUpgradeable`
-* `google.cloud.notebooks.v1.NotebookService.ListEnvironments`
-* `google.cloud.notebooks.v1.NotebookService.ListExecutions`
-* `google.cloud.notebooks.v1.NotebookService.ListInstances`
-* `google.cloud.notebooks.v1.NotebookService.ListSchedules`
-* `google.cloud.notebooks.v1.NotebookService.RegisterInstance`
-* `google.cloud.notebooks.v1.NotebookService.ResetInstance`
-* `google.cloud.notebooks.v1.NotebookService.RollbackInstance`
-* `google.cloud.notebooks.v1.NotebookService.SetInstanceAccelerator`
-* `google.cloud.notebooks.v1.NotebookService.SetInstanceLabels`
-* `google.cloud.notebooks.v1.NotebookService.SetInstanceMachineType`
-* `google.cloud.notebooks.v1.NotebookService.StartInstance`
-* `google.cloud.notebooks.v1.NotebookService.StopInstance`
-* `google.cloud.notebooks.v1.NotebookService.UpdateInstanceConfig`
-* `google.cloud.notebooks.v1.NotebookService.UpdateInstanceMetadataItems`
-* `google.cloud.notebooks.v1.NotebookService.UpdateShieldedInstanceConfig`
-* `google.cloud.notebooks.v1.NotebookService.UpgradeInstance`
-* `google.cloud.notebooks.v1beta1.NotebookService.CreateEnvironment`
-* `google.cloud.notebooks.v1beta1.NotebookService.CreateInstance`
-* `google.cloud.notebooks.v1beta1.NotebookService.DeleteEnvironment`
-* `google.cloud.notebooks.v1beta1.NotebookService.DeleteInstance`
-* `google.cloud.notebooks.v1beta1.NotebookService.GetEnvironment`
-* `google.cloud.notebooks.v1beta1.NotebookService.GetInstance`
-* `google.cloud.notebooks.v1beta1.NotebookService.IsInstanceUpgradeable`
-* `google.cloud.notebooks.v1beta1.NotebookService.ListEnvironments`
-* `google.cloud.notebooks.v1beta1.NotebookService.ListInstances`
-* `google.cloud.notebooks.v1beta1.NotebookService.RegisterInstance`
-* `google.cloud.notebooks.v1beta1.NotebookService.ResetInstance`
-* `google.cloud.notebooks.v1beta1.NotebookService.SetInstanceAccelerator`
-* `google.cloud.notebooks.v1beta1.NotebookService.SetInstanceLabels`
-* `google.cloud.notebooks.v1beta1.NotebookService.SetInstanceMachineType`
-* `google.cloud.notebooks.v1beta1.NotebookService.StartInstance`
-* `google.cloud.notebooks.v1beta1.NotebookService.StopInstance`
-* `google.cloud.notebooks.v1beta1.NotebookService.UpgradeInstance`
-* `google.longrunning.Operations.CancelOperation`
-* `google.longrunning.Operations.DeleteOperation`
-* `google.longrunning.Operations.GetOperation`
-* `google.longrunning.Operations.ListOperations`
-
-</p>
-</details>
-<details><summary>alloydb.googleapis.com</summary>
+<details><summary>AlloyDB</summary>
 <p>
 
 `alloydb.googleapis.com`
@@ -7493,69 +7420,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Migrate for Compute Engine</summary>
-<p>
-
-`vmmigration.googleapis.com`
-
-* `google.cloud.vmmigration.v1.VmMigration.AddGroupMigration`
-* `google.cloud.vmmigration.v1.VmMigration.CancelCloneJob`
-* `google.cloud.vmmigration.v1.VmMigration.CancelCutoverJob`
-* `google.cloud.vmmigration.v1.VmMigration.CreateCloneJob`
-* `google.cloud.vmmigration.v1.VmMigration.CreateCutoverJob`
-* `google.cloud.vmmigration.v1.VmMigration.CreateDatacenterConnector`
-* `google.cloud.vmmigration.v1.VmMigration.CreateGroup`
-* `google.cloud.vmmigration.v1.VmMigration.CreateMigratingVm`
-* `google.cloud.vmmigration.v1.VmMigration.CreateSource`
-* `google.cloud.vmmigration.v1.VmMigration.CreateTargetPrivateCloud`
-* `google.cloud.vmmigration.v1.VmMigration.CreateTargetProject`
-* `google.cloud.vmmigration.v1.VmMigration.CreateUtilizationReport`
-* `google.cloud.vmmigration.v1.VmMigration.DeleteDatacenterConnector`
-* `google.cloud.vmmigration.v1.VmMigration.DeleteGroup`
-* `google.cloud.vmmigration.v1.VmMigration.DeleteMigratingVm`
-* `google.cloud.vmmigration.v1.VmMigration.DeleteSource`
-* `google.cloud.vmmigration.v1.VmMigration.DeleteTargetPrivateCloud`
-* `google.cloud.vmmigration.v1.VmMigration.DeleteTargetProject`
-* `google.cloud.vmmigration.v1.VmMigration.DeleteUtilizationReport`
-* `google.cloud.vmmigration.v1.VmMigration.FetchInventory`
-* `google.cloud.vmmigration.v1.VmMigration.FinalizeMigration`
-* `google.cloud.vmmigration.v1.VmMigration.GetCloneJob`
-* `google.cloud.vmmigration.v1.VmMigration.GetCutoverJob`
-* `google.cloud.vmmigration.v1.VmMigration.GetDatacenterConnector`
-* `google.cloud.vmmigration.v1.VmMigration.GetGroup`
-* `google.cloud.vmmigration.v1.VmMigration.GetMigratingVm`
-* `google.cloud.vmmigration.v1.VmMigration.GetReplicationCycle`
-* `google.cloud.vmmigration.v1.VmMigration.GetSource`
-* `google.cloud.vmmigration.v1.VmMigration.GetTargetPrivateCloud`
-* `google.cloud.vmmigration.v1.VmMigration.GetTargetProject`
-* `google.cloud.vmmigration.v1.VmMigration.GetUtilizationReport`
-* `google.cloud.vmmigration.v1.VmMigration.ListCloneJobs`
-* `google.cloud.vmmigration.v1.VmMigration.ListCutoverJobs`
-* `google.cloud.vmmigration.v1.VmMigration.ListDatacenterConnectors`
-* `google.cloud.vmmigration.v1.VmMigration.ListGroups`
-* `google.cloud.vmmigration.v1.VmMigration.ListMigratingVms`
-* `google.cloud.vmmigration.v1.VmMigration.ListReplicationCycles`
-* `google.cloud.vmmigration.v1.VmMigration.ListSources`
-* `google.cloud.vmmigration.v1.VmMigration.ListTargetPrivateClouds`
-* `google.cloud.vmmigration.v1.VmMigration.ListTargetProjects`
-* `google.cloud.vmmigration.v1.VmMigration.ListUtilizationReports`
-* `google.cloud.vmmigration.v1.VmMigration.PauseMigration`
-* `google.cloud.vmmigration.v1.VmMigration.RemoveGroupMigration`
-* `google.cloud.vmmigration.v1.VmMigration.ResumeMigration`
-* `google.cloud.vmmigration.v1.VmMigration.StartMigration`
-* `google.cloud.vmmigration.v1.VmMigration.UpdateGroup`
-* `google.cloud.vmmigration.v1.VmMigration.UpdateMigratingVm`
-* `google.cloud.vmmigration.v1.VmMigration.UpdateSource`
-* `google.cloud.vmmigration.v1.VmMigration.UpdateTargetPrivateCloud`
-* `google.cloud.vmmigration.v1.VmMigration.UpdateTargetProject`
-* `google.cloud.vmmigration.v1.VmMigration.UpgradeAppliance`
-* `google.longrunning.Operations.CancelOperation`
-* `google.longrunning.Operations.DeleteOperation`
-* `google.longrunning.Operations.GetOperation`
-* `google.longrunning.Operations.ListOperations`
-
-</p>
-</details>
 <details><summary>migrationcenter.googleapis.com</summary>
 <p>
 
@@ -7748,6 +7612,79 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.networkservices.v1beta1.NetworkServices.UpdateGateway`
 * `google.longrunning.Operations.CancelOperation`
 * `google.longrunning.Operations.GetOperation`
+
+</p>
+</details>
+<details><summary>Notebooks</summary>
+<p>
+
+`notebooks.googleapis.com`
+
+* `GetIamPolicy`
+* `SetIamPolicy`
+* `google.cloud.notebooks.v1.ManagedNotebookService.CreateRuntime`
+* `google.cloud.notebooks.v1.ManagedNotebookService.DeleteRuntime`
+* `google.cloud.notebooks.v1.ManagedNotebookService.DiagnoseRuntime`
+* `google.cloud.notebooks.v1.ManagedNotebookService.GetRuntime`
+* `google.cloud.notebooks.v1.ManagedNotebookService.ListRuntimes`
+* `google.cloud.notebooks.v1.ManagedNotebookService.ResetRuntime`
+* `google.cloud.notebooks.v1.ManagedNotebookService.StartRuntime`
+* `google.cloud.notebooks.v1.ManagedNotebookService.StopRuntime`
+* `google.cloud.notebooks.v1.ManagedNotebookService.SwitchRuntime`
+* `google.cloud.notebooks.v1.ManagedNotebookService.UpdateRuntime`
+* `google.cloud.notebooks.v1.ManagedNotebookService.UpgradeRuntime`
+* `google.cloud.notebooks.v1.NotebookService.CreateEnvironment`
+* `google.cloud.notebooks.v1.NotebookService.CreateExecution`
+* `google.cloud.notebooks.v1.NotebookService.CreateInstance`
+* `google.cloud.notebooks.v1.NotebookService.CreateSchedule`
+* `google.cloud.notebooks.v1.NotebookService.DeleteEnvironment`
+* `google.cloud.notebooks.v1.NotebookService.DeleteExecution`
+* `google.cloud.notebooks.v1.NotebookService.DeleteInstance`
+* `google.cloud.notebooks.v1.NotebookService.DeleteSchedule`
+* `google.cloud.notebooks.v1.NotebookService.DiagnoseInstance`
+* `google.cloud.notebooks.v1.NotebookService.GetEnvironment`
+* `google.cloud.notebooks.v1.NotebookService.GetExecution`
+* `google.cloud.notebooks.v1.NotebookService.GetInstance`
+* `google.cloud.notebooks.v1.NotebookService.GetInstanceHealth`
+* `google.cloud.notebooks.v1.NotebookService.GetSchedule`
+* `google.cloud.notebooks.v1.NotebookService.IsInstanceUpgradeable`
+* `google.cloud.notebooks.v1.NotebookService.ListEnvironments`
+* `google.cloud.notebooks.v1.NotebookService.ListExecutions`
+* `google.cloud.notebooks.v1.NotebookService.ListInstances`
+* `google.cloud.notebooks.v1.NotebookService.ListSchedules`
+* `google.cloud.notebooks.v1.NotebookService.RegisterInstance`
+* `google.cloud.notebooks.v1.NotebookService.ResetInstance`
+* `google.cloud.notebooks.v1.NotebookService.RollbackInstance`
+* `google.cloud.notebooks.v1.NotebookService.SetInstanceAccelerator`
+* `google.cloud.notebooks.v1.NotebookService.SetInstanceLabels`
+* `google.cloud.notebooks.v1.NotebookService.SetInstanceMachineType`
+* `google.cloud.notebooks.v1.NotebookService.StartInstance`
+* `google.cloud.notebooks.v1.NotebookService.StopInstance`
+* `google.cloud.notebooks.v1.NotebookService.UpdateInstanceConfig`
+* `google.cloud.notebooks.v1.NotebookService.UpdateInstanceMetadataItems`
+* `google.cloud.notebooks.v1.NotebookService.UpdateShieldedInstanceConfig`
+* `google.cloud.notebooks.v1.NotebookService.UpgradeInstance`
+* `google.cloud.notebooks.v1beta1.NotebookService.CreateEnvironment`
+* `google.cloud.notebooks.v1beta1.NotebookService.CreateInstance`
+* `google.cloud.notebooks.v1beta1.NotebookService.DeleteEnvironment`
+* `google.cloud.notebooks.v1beta1.NotebookService.DeleteInstance`
+* `google.cloud.notebooks.v1beta1.NotebookService.GetEnvironment`
+* `google.cloud.notebooks.v1beta1.NotebookService.GetInstance`
+* `google.cloud.notebooks.v1beta1.NotebookService.IsInstanceUpgradeable`
+* `google.cloud.notebooks.v1beta1.NotebookService.ListEnvironments`
+* `google.cloud.notebooks.v1beta1.NotebookService.ListInstances`
+* `google.cloud.notebooks.v1beta1.NotebookService.RegisterInstance`
+* `google.cloud.notebooks.v1beta1.NotebookService.ResetInstance`
+* `google.cloud.notebooks.v1beta1.NotebookService.SetInstanceAccelerator`
+* `google.cloud.notebooks.v1beta1.NotebookService.SetInstanceLabels`
+* `google.cloud.notebooks.v1beta1.NotebookService.SetInstanceMachineType`
+* `google.cloud.notebooks.v1beta1.NotebookService.StartInstance`
+* `google.cloud.notebooks.v1beta1.NotebookService.StopInstance`
+* `google.cloud.notebooks.v1beta1.NotebookService.UpgradeInstance`
+* `google.longrunning.Operations.CancelOperation`
+* `google.longrunning.Operations.DeleteOperation`
+* `google.longrunning.Operations.GetOperation`
+* `google.longrunning.Operations.ListOperations`
 
 </p>
 </details>
@@ -8239,7 +8176,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>visionai.googleapis.com</summary>
+<details><summary>Vision AI</summary>
 <p>
 
 `visionai.googleapis.com`
@@ -8314,6 +8251,69 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.visionai.v1.Warehouse.UpdateCorpus`
 * `google.cloud.visionai.v1.Warehouse.UpdateDataSchema`
 * `google.cloud.visionai.v1.Warehouse.UpdateSearchConfig`
+* `google.longrunning.Operations.DeleteOperation`
+* `google.longrunning.Operations.GetOperation`
+* `google.longrunning.Operations.ListOperations`
+
+</p>
+</details>
+<details><summary>VM Migration</summary>
+<p>
+
+`vmmigration.googleapis.com`
+
+* `google.cloud.vmmigration.v1.VmMigration.AddGroupMigration`
+* `google.cloud.vmmigration.v1.VmMigration.CancelCloneJob`
+* `google.cloud.vmmigration.v1.VmMigration.CancelCutoverJob`
+* `google.cloud.vmmigration.v1.VmMigration.CreateCloneJob`
+* `google.cloud.vmmigration.v1.VmMigration.CreateCutoverJob`
+* `google.cloud.vmmigration.v1.VmMigration.CreateDatacenterConnector`
+* `google.cloud.vmmigration.v1.VmMigration.CreateGroup`
+* `google.cloud.vmmigration.v1.VmMigration.CreateMigratingVm`
+* `google.cloud.vmmigration.v1.VmMigration.CreateSource`
+* `google.cloud.vmmigration.v1.VmMigration.CreateTargetPrivateCloud`
+* `google.cloud.vmmigration.v1.VmMigration.CreateTargetProject`
+* `google.cloud.vmmigration.v1.VmMigration.CreateUtilizationReport`
+* `google.cloud.vmmigration.v1.VmMigration.DeleteDatacenterConnector`
+* `google.cloud.vmmigration.v1.VmMigration.DeleteGroup`
+* `google.cloud.vmmigration.v1.VmMigration.DeleteMigratingVm`
+* `google.cloud.vmmigration.v1.VmMigration.DeleteSource`
+* `google.cloud.vmmigration.v1.VmMigration.DeleteTargetPrivateCloud`
+* `google.cloud.vmmigration.v1.VmMigration.DeleteTargetProject`
+* `google.cloud.vmmigration.v1.VmMigration.DeleteUtilizationReport`
+* `google.cloud.vmmigration.v1.VmMigration.FetchInventory`
+* `google.cloud.vmmigration.v1.VmMigration.FinalizeMigration`
+* `google.cloud.vmmigration.v1.VmMigration.GetCloneJob`
+* `google.cloud.vmmigration.v1.VmMigration.GetCutoverJob`
+* `google.cloud.vmmigration.v1.VmMigration.GetDatacenterConnector`
+* `google.cloud.vmmigration.v1.VmMigration.GetGroup`
+* `google.cloud.vmmigration.v1.VmMigration.GetMigratingVm`
+* `google.cloud.vmmigration.v1.VmMigration.GetReplicationCycle`
+* `google.cloud.vmmigration.v1.VmMigration.GetSource`
+* `google.cloud.vmmigration.v1.VmMigration.GetTargetPrivateCloud`
+* `google.cloud.vmmigration.v1.VmMigration.GetTargetProject`
+* `google.cloud.vmmigration.v1.VmMigration.GetUtilizationReport`
+* `google.cloud.vmmigration.v1.VmMigration.ListCloneJobs`
+* `google.cloud.vmmigration.v1.VmMigration.ListCutoverJobs`
+* `google.cloud.vmmigration.v1.VmMigration.ListDatacenterConnectors`
+* `google.cloud.vmmigration.v1.VmMigration.ListGroups`
+* `google.cloud.vmmigration.v1.VmMigration.ListMigratingVms`
+* `google.cloud.vmmigration.v1.VmMigration.ListReplicationCycles`
+* `google.cloud.vmmigration.v1.VmMigration.ListSources`
+* `google.cloud.vmmigration.v1.VmMigration.ListTargetPrivateClouds`
+* `google.cloud.vmmigration.v1.VmMigration.ListTargetProjects`
+* `google.cloud.vmmigration.v1.VmMigration.ListUtilizationReports`
+* `google.cloud.vmmigration.v1.VmMigration.PauseMigration`
+* `google.cloud.vmmigration.v1.VmMigration.RemoveGroupMigration`
+* `google.cloud.vmmigration.v1.VmMigration.ResumeMigration`
+* `google.cloud.vmmigration.v1.VmMigration.StartMigration`
+* `google.cloud.vmmigration.v1.VmMigration.UpdateGroup`
+* `google.cloud.vmmigration.v1.VmMigration.UpdateMigratingVm`
+* `google.cloud.vmmigration.v1.VmMigration.UpdateSource`
+* `google.cloud.vmmigration.v1.VmMigration.UpdateTargetPrivateCloud`
+* `google.cloud.vmmigration.v1.VmMigration.UpdateTargetProject`
+* `google.cloud.vmmigration.v1.VmMigration.UpgradeAppliance`
+* `google.longrunning.Operations.CancelOperation`
 * `google.longrunning.Operations.DeleteOperation`
 * `google.longrunning.Operations.GetOperation`
 * `google.longrunning.Operations.ListOperations`

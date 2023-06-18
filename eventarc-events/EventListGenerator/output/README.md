@@ -885,7 +885,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>AlloyDB</summary>
+<details><summary>AlloyDB for PostgreSQL</summary>
 <p>
 
 `alloydb.googleapis.com`
@@ -1640,7 +1640,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>batch.googleapis.com</summary>
+<details><summary>Batch</summary>
 <p>
 
 `batch.googleapis.com`
@@ -3841,39 +3841,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.longrunning.Operations.DeleteOperation`
 * `google.longrunning.Operations.GetOperation`
 * `google.longrunning.Operations.ListOperations`
-
-</p>
-</details>
-<details><summary>Cloud Memorystore for Redis</summary>
-<p>
-
-`redis.googleapis.com`
-
-* `google.cloud.redis.v1.CloudRedis.CreateInstance`
-* `google.cloud.redis.v1.CloudRedis.DeleteInstance`
-* `google.cloud.redis.v1.CloudRedis.ExportInstance`
-* `google.cloud.redis.v1.CloudRedis.FailoverInstance`
-* `google.cloud.redis.v1.CloudRedis.GetInstance`
-* `google.cloud.redis.v1.CloudRedis.GetInstanceAuthString`
-* `google.cloud.redis.v1.CloudRedis.ImportInstance`
-* `google.cloud.redis.v1.CloudRedis.ListInstances`
-* `google.cloud.redis.v1.CloudRedis.RescheduleMaintenance`
-* `google.cloud.redis.v1.CloudRedis.UpdateInstance`
-* `google.cloud.redis.v1.CloudRedis.UpgradeInstance`
-* `google.cloud.redis.v1.Intance.Get`
-* `google.cloud.redis.v1beta1.CloudRedis.CreateInstance`
-* `google.cloud.redis.v1beta1.CloudRedis.DeleteInstance`
-* `google.cloud.redis.v1beta1.CloudRedis.ExportInstance`
-* `google.cloud.redis.v1beta1.CloudRedis.FailoverInstance`
-* `google.cloud.redis.v1beta1.CloudRedis.GetInstance`
-* `google.cloud.redis.v1beta1.CloudRedis.GetInstanceAuthString`
-* `google.cloud.redis.v1beta1.CloudRedis.ImportInstance`
-* `google.cloud.redis.v1beta1.CloudRedis.ListInstances`
-* `google.cloud.redis.v1beta1.CloudRedis.RescheduleMaintenance`
-* `google.cloud.redis.v1beta1.CloudRedis.UpdateInstance`
-* `google.cloud.redis.v1beta1.CloudRedis.UpgradeInstance`
-* `google.longrunning.Operations.CancelOperation`
-* `google.longrunning.Operations.DeleteOperation`
 
 </p>
 </details>
@@ -6730,6 +6697,39 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.gkehub.v1beta1.GkeHubMembershipService.ListMemberships`
 * `google.cloud.gkehub.v1beta1.GkeHubMembershipService.UpdateMembership`
 * `google.cloud.gkehub.v1beta1.GkeHubMembershipService.ValidateExclusivity`
+* `google.longrunning.Operations.CancelOperation`
+* `google.longrunning.Operations.DeleteOperation`
+
+</p>
+</details>
+<details><summary>Google Cloud Memorystore for Redis</summary>
+<p>
+
+`redis.googleapis.com`
+
+* `google.cloud.redis.v1.CloudRedis.CreateInstance`
+* `google.cloud.redis.v1.CloudRedis.DeleteInstance`
+* `google.cloud.redis.v1.CloudRedis.ExportInstance`
+* `google.cloud.redis.v1.CloudRedis.FailoverInstance`
+* `google.cloud.redis.v1.CloudRedis.GetInstance`
+* `google.cloud.redis.v1.CloudRedis.GetInstanceAuthString`
+* `google.cloud.redis.v1.CloudRedis.ImportInstance`
+* `google.cloud.redis.v1.CloudRedis.ListInstances`
+* `google.cloud.redis.v1.CloudRedis.RescheduleMaintenance`
+* `google.cloud.redis.v1.CloudRedis.UpdateInstance`
+* `google.cloud.redis.v1.CloudRedis.UpgradeInstance`
+* `google.cloud.redis.v1.Intance.Get`
+* `google.cloud.redis.v1beta1.CloudRedis.CreateInstance`
+* `google.cloud.redis.v1beta1.CloudRedis.DeleteInstance`
+* `google.cloud.redis.v1beta1.CloudRedis.ExportInstance`
+* `google.cloud.redis.v1beta1.CloudRedis.FailoverInstance`
+* `google.cloud.redis.v1beta1.CloudRedis.GetInstance`
+* `google.cloud.redis.v1beta1.CloudRedis.GetInstanceAuthString`
+* `google.cloud.redis.v1beta1.CloudRedis.ImportInstance`
+* `google.cloud.redis.v1beta1.CloudRedis.ListInstances`
+* `google.cloud.redis.v1beta1.CloudRedis.RescheduleMaintenance`
+* `google.cloud.redis.v1beta1.CloudRedis.UpdateInstance`
+* `google.cloud.redis.v1beta1.CloudRedis.UpgradeInstance`
 * `google.longrunning.Operations.CancelOperation`
 * `google.longrunning.Operations.DeleteOperation`
 

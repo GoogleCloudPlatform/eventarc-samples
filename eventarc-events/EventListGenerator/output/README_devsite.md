@@ -824,7 +824,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.iam.v1.IAMPolicy.GetIamPolicy`
 - `google.iam.v1.IAMPolicy.SetIamPolicy`
 
-### AlloyDB
+### AlloyDB for PostgreSQL
 
 #### `serviceName`
 
@@ -1588,7 +1588,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.baremetalsolution.v2.BareMetalSolution.UpdateSnapshotSchedulePolicy`
 - `google.cloud.baremetalsolution.v2.BareMetalSolution.UpdateVolume`
 
-### batch.googleapis.com
+### Batch
 
 #### `serviceName`
 
@@ -3835,40 +3835,6 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.longrunning.Operations.DeleteOperation`
 - `google.longrunning.Operations.GetOperation`
 - `google.longrunning.Operations.ListOperations`
-
-### Cloud Memorystore for Redis
-
-#### `serviceName`
-
-- `redis.googleapis.com`
-
-#### `methodName`
-
-- `google.cloud.redis.v1.CloudRedis.CreateInstance`
-- `google.cloud.redis.v1.CloudRedis.DeleteInstance`
-- `google.cloud.redis.v1.CloudRedis.ExportInstance`
-- `google.cloud.redis.v1.CloudRedis.FailoverInstance`
-- `google.cloud.redis.v1.CloudRedis.GetInstance`
-- `google.cloud.redis.v1.CloudRedis.GetInstanceAuthString`
-- `google.cloud.redis.v1.CloudRedis.ImportInstance`
-- `google.cloud.redis.v1.CloudRedis.ListInstances`
-- `google.cloud.redis.v1.CloudRedis.RescheduleMaintenance`
-- `google.cloud.redis.v1.CloudRedis.UpdateInstance`
-- `google.cloud.redis.v1.CloudRedis.UpgradeInstance`
-- `google.cloud.redis.v1.Intance.Get`
-- `google.cloud.redis.v1beta1.CloudRedis.CreateInstance`
-- `google.cloud.redis.v1beta1.CloudRedis.DeleteInstance`
-- `google.cloud.redis.v1beta1.CloudRedis.ExportInstance`
-- `google.cloud.redis.v1beta1.CloudRedis.FailoverInstance`
-- `google.cloud.redis.v1beta1.CloudRedis.GetInstance`
-- `google.cloud.redis.v1beta1.CloudRedis.GetInstanceAuthString`
-- `google.cloud.redis.v1beta1.CloudRedis.ImportInstance`
-- `google.cloud.redis.v1beta1.CloudRedis.ListInstances`
-- `google.cloud.redis.v1beta1.CloudRedis.RescheduleMaintenance`
-- `google.cloud.redis.v1beta1.CloudRedis.UpdateInstance`
-- `google.cloud.redis.v1beta1.CloudRedis.UpgradeInstance`
-- `google.longrunning.Operations.CancelOperation`
-- `google.longrunning.Operations.DeleteOperation`
 
 ### Cloud Monitoring
 
@@ -6764,6 +6730,40 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 - `google.cloud.gkehub.v1beta1.GkeHubMembershipService.ListMemberships`
 - `google.cloud.gkehub.v1beta1.GkeHubMembershipService.UpdateMembership`
 - `google.cloud.gkehub.v1beta1.GkeHubMembershipService.ValidateExclusivity`
+- `google.longrunning.Operations.CancelOperation`
+- `google.longrunning.Operations.DeleteOperation`
+
+### Google Cloud Memorystore for Redis
+
+#### `serviceName`
+
+- `redis.googleapis.com`
+
+#### `methodName`
+
+- `google.cloud.redis.v1.CloudRedis.CreateInstance`
+- `google.cloud.redis.v1.CloudRedis.DeleteInstance`
+- `google.cloud.redis.v1.CloudRedis.ExportInstance`
+- `google.cloud.redis.v1.CloudRedis.FailoverInstance`
+- `google.cloud.redis.v1.CloudRedis.GetInstance`
+- `google.cloud.redis.v1.CloudRedis.GetInstanceAuthString`
+- `google.cloud.redis.v1.CloudRedis.ImportInstance`
+- `google.cloud.redis.v1.CloudRedis.ListInstances`
+- `google.cloud.redis.v1.CloudRedis.RescheduleMaintenance`
+- `google.cloud.redis.v1.CloudRedis.UpdateInstance`
+- `google.cloud.redis.v1.CloudRedis.UpgradeInstance`
+- `google.cloud.redis.v1.Intance.Get`
+- `google.cloud.redis.v1beta1.CloudRedis.CreateInstance`
+- `google.cloud.redis.v1beta1.CloudRedis.DeleteInstance`
+- `google.cloud.redis.v1beta1.CloudRedis.ExportInstance`
+- `google.cloud.redis.v1beta1.CloudRedis.FailoverInstance`
+- `google.cloud.redis.v1beta1.CloudRedis.GetInstance`
+- `google.cloud.redis.v1beta1.CloudRedis.GetInstanceAuthString`
+- `google.cloud.redis.v1beta1.CloudRedis.ImportInstance`
+- `google.cloud.redis.v1beta1.CloudRedis.ListInstances`
+- `google.cloud.redis.v1beta1.CloudRedis.RescheduleMaintenance`
+- `google.cloud.redis.v1beta1.CloudRedis.UpdateInstance`
+- `google.cloud.redis.v1beta1.CloudRedis.UpgradeInstance`
 - `google.longrunning.Operations.CancelOperation`
 - `google.longrunning.Operations.DeleteOperation`
 

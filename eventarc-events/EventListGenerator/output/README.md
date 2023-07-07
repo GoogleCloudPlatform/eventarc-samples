@@ -9,6 +9,21 @@ The following is a list of the events supported by Eventarc.
 Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud IoT events will also be deprecated at that time. Contact your Google Cloud account team for more information.
 
 ### Directly from a Google Cloud source
+<details><summary>AlloyDB for PostgreSQL (preview)</summary>
+<p>
+
+* `google.cloud.alloydb.backup.v1.created`
+* `google.cloud.alloydb.backup.v1.deleted`
+* `google.cloud.alloydb.backup.v1.updated`
+* `google.cloud.alloydb.cluster.v1.created`
+* `google.cloud.alloydb.cluster.v1.deleted`
+* `google.cloud.alloydb.cluster.v1.updated`
+* `google.cloud.alloydb.instance.v1.created`
+* `google.cloud.alloydb.instance.v1.deleted`
+* `google.cloud.alloydb.instance.v1.updated`
+
+</p>
+</details>
 <details><summary>API Gateway (preview)</summary>
 <p>
 
@@ -225,6 +240,22 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
+<details><summary>Dataproc Metastore (preview)</summary>
+<p>
+
+* `google.cloud.metastore.backup.v1.created`
+* `google.cloud.metastore.backup.v1.deleted`
+* `google.cloud.metastore.federation.v1.created`
+* `google.cloud.metastore.federation.v1.deleted`
+* `google.cloud.metastore.federation.v1.updated`
+* `google.cloud.metastore.metadataImport.v1.created`
+* `google.cloud.metastore.metadataImport.v1.updated`
+* `google.cloud.metastore.service.v1.created`
+* `google.cloud.metastore.service.v1.deleted`
+* `google.cloud.metastore.service.v1.updated`
+
+</p>
+</details>
 <details><summary>Datastream (preview)</summary>
 <p>
 
@@ -286,6 +317,80 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
+<details><summary>GKE Hub (preview)</summary>
+<p>
+
+* `google.cloud.gkehub.feature.v1.created`
+* `google.cloud.gkehub.feature.v1.deleted`
+* `google.cloud.gkehub.feature.v1.updated`
+* `google.cloud.gkehub.membership.v1.created`
+* `google.cloud.gkehub.membership.v1.deleted`
+* `google.cloud.gkehub.membership.v1.updated`
+* `google.cloud.gkehub.membershipBinding.v1.created`
+* `google.cloud.gkehub.membershipBinding.v1.deleted`
+* `google.cloud.gkehub.membershipBinding.v1.updated`
+* `google.cloud.gkehub.scope.v1.created`
+* `google.cloud.gkehub.scope.v1.deleted`
+
+</p>
+</details>
+<details><summary>Google Cloud Memorystore for Redis (preview)</summary>
+<p>
+
+* `google.cloud.redis.instance.v1.created`
+* `google.cloud.redis.instance.v1.deleted`
+* `google.cloud.redis.instance.v1.updated`
+
+</p>
+</details>
+<details><summary>Network Connectivity (preview)</summary>
+<p>
+
+* `google.cloud.networkconnectivity.hub.v1.created`
+* `google.cloud.networkconnectivity.hub.v1.deleted`
+* `google.cloud.networkconnectivity.hub.v1.updated`
+* `google.cloud.networkconnectivity.serviceClass.v1.deleted`
+* `google.cloud.networkconnectivity.serviceClass.v1.updated`
+* `google.cloud.networkconnectivity.serviceConnectionMap.v1.created`
+* `google.cloud.networkconnectivity.serviceConnectionMap.v1.deleted`
+* `google.cloud.networkconnectivity.serviceConnectionMap.v1.updated`
+* `google.cloud.networkconnectivity.serviceConnectionPolicy.v1.created`
+* `google.cloud.networkconnectivity.serviceConnectionPolicy.v1.deleted`
+* `google.cloud.networkconnectivity.serviceConnectionPolicy.v1.updated`
+* `google.cloud.networkconnectivity.serviceConnectionToken.v1.created`
+* `google.cloud.networkconnectivity.serviceConnectionToken.v1.deleted`
+* `google.cloud.networkconnectivity.spoke.v1.created`
+* `google.cloud.networkconnectivity.spoke.v1.deleted`
+* `google.cloud.networkconnectivity.spoke.v1.updated`
+
+</p>
+</details>
+<details><summary>Network Management (preview)</summary>
+<p>
+
+* `google.cloud.networkmanagement.connectivityTest.v1.created`
+* `google.cloud.networkmanagement.connectivityTest.v1.deleted`
+* `google.cloud.networkmanagement.connectivityTest.v1.updated`
+
+</p>
+</details>
+<details><summary>Notebooks (preview)</summary>
+<p>
+
+* `google.cloud.notebooks.environment.v1.created`
+* `google.cloud.notebooks.environment.v1.deleted`
+* `google.cloud.notebooks.execution.v1.created`
+* `google.cloud.notebooks.execution.v1.deleted`
+* `google.cloud.notebooks.instance.v1.created`
+* `google.cloud.notebooks.instance.v1.deleted`
+* `google.cloud.notebooks.runtime.v1.created`
+* `google.cloud.notebooks.runtime.v1.deleted`
+* `google.cloud.notebooks.runtime.v1.updated`
+* `google.cloud.notebooks.schedule.v1.created`
+* `google.cloud.notebooks.schedule.v1.deleted`
+
+</p>
+</details>
 <details><summary>Transcoder (preview)</summary>
 <p>
 
@@ -293,6 +398,63 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.video.transcoder.job.v1.deleted`
 * `google.cloud.video.transcoder.jobTemplate.v1.created`
 * `google.cloud.video.transcoder.jobTemplate.v1.deleted`
+
+</p>
+</details>
+<details><summary>Vision AI (preview)</summary>
+<p>
+
+* `google.cloud.visionai.analysis.v1.created`
+* `google.cloud.visionai.analysis.v1.deleted`
+* `google.cloud.visionai.analysis.v1.updated`
+* `google.cloud.visionai.application.v1.created`
+* `google.cloud.visionai.application.v1.deleted`
+* `google.cloud.visionai.application.v1.updated`
+* `google.cloud.visionai.cluster.v1.created`
+* `google.cloud.visionai.cluster.v1.deleted`
+* `google.cloud.visionai.cluster.v1.updated`
+* `google.cloud.visionai.draft.v1.created`
+* `google.cloud.visionai.draft.v1.deleted`
+* `google.cloud.visionai.draft.v1.updated`
+* `google.cloud.visionai.event.v1.created`
+* `google.cloud.visionai.event.v1.deleted`
+* `google.cloud.visionai.event.v1.updated`
+* `google.cloud.visionai.process.v1.created`
+* `google.cloud.visionai.process.v1.deleted`
+* `google.cloud.visionai.process.v1.updated`
+* `google.cloud.visionai.processor.v1.created`
+* `google.cloud.visionai.processor.v1.deleted`
+* `google.cloud.visionai.processor.v1.updated`
+* `google.cloud.visionai.series.v1.created`
+* `google.cloud.visionai.series.v1.deleted`
+* `google.cloud.visionai.series.v1.updated`
+* `google.cloud.visionai.stream.v1.created`
+* `google.cloud.visionai.stream.v1.deleted`
+* `google.cloud.visionai.stream.v1.updated`
+
+</p>
+</details>
+<details><summary>VM Migration (preview)</summary>
+<p>
+
+* `google.cloud.vmmigration.cloneJob.v1.created`
+* `google.cloud.vmmigration.cutoverJob.v1.created`
+* `google.cloud.vmmigration.datacenterConnector.v1.created`
+* `google.cloud.vmmigration.datacenterConnector.v1.deleted`
+* `google.cloud.vmmigration.group.v1.created`
+* `google.cloud.vmmigration.group.v1.deleted`
+* `google.cloud.vmmigration.group.v1.updated`
+* `google.cloud.vmmigration.migratingVm.v1.created`
+* `google.cloud.vmmigration.migratingVm.v1.deleted`
+* `google.cloud.vmmigration.migratingVm.v1.updated`
+* `google.cloud.vmmigration.source.v1.created`
+* `google.cloud.vmmigration.source.v1.deleted`
+* `google.cloud.vmmigration.source.v1.updated`
+* `google.cloud.vmmigration.targetProject.v1.created`
+* `google.cloud.vmmigration.targetProject.v1.deleted`
+* `google.cloud.vmmigration.targetProject.v1.updated`
+* `google.cloud.vmmigration.utilizationReport.v1.created`
+* `google.cloud.vmmigration.utilizationReport.v1.deleted`
 
 </p>
 </details>

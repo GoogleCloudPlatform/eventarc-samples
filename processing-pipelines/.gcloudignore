@@ -4,7 +4,6 @@
 # obj directories) may be uploaded.
 
 .gcloudignore
-bigquery/
 image/
 bin/
 obj/

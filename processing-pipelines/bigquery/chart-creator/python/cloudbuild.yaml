@@ -1,0 +1,17 @@
+steps:
+- # Build event_handler image
+  name: gcr.io/cloud-builders/docker:latest
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/chart-creator:${_TAG}', '.']
+  id: build
+
+- # Push the container image to Container Registry
+  name: gcr.io/cloud-builders/docker
+  args: ['push', 'gcr.io/$PROJECT_ID/chart-creator:${_TAG}']
+  waitFor: [build]
+  id: push
+
+images: [
+  'gcr.io/$PROJECT_ID/chart-creator:${_TAG}'
+]
+substitutions:
+  _TAG: v1

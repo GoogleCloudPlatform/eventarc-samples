@@ -1,6 +1,21 @@
 {
   "direct": [
     {
+      "displayName": "AlloyDB for PostgreSQL",
+      "preview": true,
+      "events": [
+        "google.cloud.alloydb.cluster.v1.created",
+        "google.cloud.alloydb.cluster.v1.updated",
+        "google.cloud.alloydb.cluster.v1.deleted",
+        "google.cloud.alloydb.instance.v1.created",
+        "google.cloud.alloydb.instance.v1.updated",
+        "google.cloud.alloydb.instance.v1.deleted",
+        "google.cloud.alloydb.backup.v1.created",
+        "google.cloud.alloydb.backup.v1.updated",
+        "google.cloud.alloydb.backup.v1.deleted"
+      ]
+    },
+    {
       "displayName": "Apigee Registry",
       "preview": true,
       "events": [
@@ -77,10 +92,26 @@
       ]
     },
     {
-      "displayName": "Cloud Dataflow",
+      "displayName": "Dataflow",
       "preview": true,
       "events": [
         "google.cloud.dataflow.job.v1beta3.statusChanged"
+      ]
+    },
+    {
+      "displayName": "Dataproc Metastore",
+      "preview": true,
+      "events": [
+            "google.cloud.metastore.federation.v1.created",
+            "google.cloud.metastore.federation.v1.updated",
+            "google.cloud.metastore.federation.v1.deleted",
+            "google.cloud.metastore.service.v1.created",
+            "google.cloud.metastore.service.v1.updated",
+            "google.cloud.metastore.service.v1.deleted",
+            "google.cloud.metastore.metadataImport.v1.created",
+            "google.cloud.metastore.metadataImport.v1.updated",
+            "google.cloud.metastore.backup.v1.created",
+            "google.cloud.metastore.backup.v1.deleted"
       ]
     },
     {
@@ -202,6 +233,137 @@
       ]
     },
     {
+      "displayName": "GKE Hub",
+      "preview": true,
+      "events": [
+        "google.cloud.gkehub.membership.v1.created",
+        "google.cloud.gkehub.feature.v1.created",
+        "google.cloud.gkehub.membership.v1.deleted",
+        "google.cloud.gkehub.feature.v1.deleted",
+        "google.cloud.gkehub.membership.v1.updated",
+        "google.cloud.gkehub.feature.v1.updated",
+        "google.cloud.gkehub.scope.v1.created",
+        "google.cloud.gkehub.scope.v1.deleted",
+        "google.cloud.gkehub.membershipBinding.v1.created",
+        "google.cloud.gkehub.membershipBinding.v1.updated",
+        "google.cloud.gkehub.membershipBinding.v1.deleted"
+      ]
+    },
+    {
+      "displayName": "Google Cloud Memorystore for Redis",
+      "preview": true,
+      "events": [
+        "google.cloud.redis.instance.v1.created",
+        "google.cloud.redis.instance.v1.updated",
+        "google.cloud.redis.instance.v1.deleted"
+      ]
+    },
+    {
+      "displayName": "Network Connectivity",
+      "preview": true,
+      "events": [
+        "google.cloud.networkconnectivity.serviceConnectionMap.v1.created",
+        "google.cloud.networkconnectivity.serviceConnectionMap.v1.updated",
+        "google.cloud.networkconnectivity.serviceConnectionMap.v1.deleted",
+        "google.cloud.networkconnectivity.serviceConnectionPolicy.v1.created",
+        "google.cloud.networkconnectivity.serviceConnectionPolicy.v1.updated",
+        "google.cloud.networkconnectivity.serviceConnectionPolicy.v1.deleted",
+        "google.cloud.networkconnectivity.serviceClass.v1.updated",
+        "google.cloud.networkconnectivity.serviceClass.v1.deleted",
+        "google.cloud.networkconnectivity.serviceConnectionToken.v1.created",
+        "google.cloud.networkconnectivity.serviceConnectionToken.v1.deleted",
+        "google.cloud.networkconnectivity.hub.v1.created",
+        "google.cloud.networkconnectivity.hub.v1.updated",
+        "google.cloud.networkconnectivity.hub.v1.deleted",
+        "google.cloud.networkconnectivity.spoke.v1.created",
+        "google.cloud.networkconnectivity.spoke.v1.updated",
+        "google.cloud.networkconnectivity.spoke.v1.deleted"
+      ]
+    },
+    {
+      "displayName": "Network Management",
+      "preview": true,
+      "events": [
+        "google.cloud.networkmanagement.connectivityTest.v1.created",
+        "google.cloud.networkmanagement.connectivityTest.v1.updated",
+        "google.cloud.networkmanagement.connectivityTest.v1.deleted"
+      ]
+    },
+    {
+      "displayName": "Notebooks",
+      "preview": true,
+      "events": [
+        "google.cloud.notebooks.runtime.v1.created",
+        "google.cloud.notebooks.runtime.v1.updated",
+        "google.cloud.notebooks.runtime.v1.deleted",
+        "google.cloud.notebooks.instance.v1.created",
+        "google.cloud.notebooks.instance.v1.deleted",
+        "google.cloud.notebooks.environment.v1.created",
+        "google.cloud.notebooks.environment.v1.deleted",
+        "google.cloud.notebooks.schedule.v1.deleted",
+        "google.cloud.notebooks.schedule.v1.created",
+        "google.cloud.notebooks.execution.v1.deleted",
+        "google.cloud.notebooks.execution.v1.created"
+      ]
+    },
+    {
+      "displayName": "Vision AI",
+      "preview": true,
+      "events": [
+        "google.cloud.visionai.analysis.v1.created",
+        "google.cloud.visionai.analysis.v1.updated",
+        "google.cloud.visionai.analysis.v1.deleted",
+        "google.cloud.visionai.process.v1.created",
+        "google.cloud.visionai.process.v1.updated",
+        "google.cloud.visionai.process.v1.deleted",
+        "google.cloud.visionai.application.v1.created",
+        "google.cloud.visionai.application.v1.updated",
+        "google.cloud.visionai.application.v1.deleted",
+        "google.cloud.visionai.draft.v1.created",
+        "google.cloud.visionai.draft.v1.updated",
+        "google.cloud.visionai.draft.v1.deleted",
+        "google.cloud.visionai.processor.v1.created",
+        "google.cloud.visionai.processor.v1.updated",
+        "google.cloud.visionai.processor.v1.deleted",
+        "google.cloud.visionai.cluster.v1.created",
+        "google.cloud.visionai.cluster.v1.updated",
+        "google.cloud.visionai.cluster.v1.deleted",
+        "google.cloud.visionai.stream.v1.created",
+        "google.cloud.visionai.stream.v1.updated",
+        "google.cloud.visionai.stream.v1.deleted",
+        "google.cloud.visionai.event.v1.created",
+        "google.cloud.visionai.event.v1.updated",
+        "google.cloud.visionai.event.v1.deleted",
+        "google.cloud.visionai.series.v1.created",
+        "google.cloud.visionai.series.v1.updated",
+        "google.cloud.visionai.series.v1.deleted"
+      ]
+    },
+    {
+      "displayName": "VM Migration",
+      "preview": true,
+      "events": [
+        "google.cloud.vmmigration.source.v1.created",
+        "google.cloud.vmmigration.source.v1.updated",
+        "google.cloud.vmmigration.source.v1.deleted",
+        "google.cloud.vmmigration.utilizationReport.v1.created",
+        "google.cloud.vmmigration.utilizationReport.v1.deleted",
+        "google.cloud.vmmigration.datacenterConnector.v1.created",
+        "google.cloud.vmmigration.datacenterConnector.v1.deleted",
+        "google.cloud.vmmigration.migratingVm.v1.created",
+        "google.cloud.vmmigration.migratingVm.v1.updated",
+        "google.cloud.vmmigration.migratingVm.v1.deleted",
+        "google.cloud.vmmigration.cloneJob.v1.created",
+        "google.cloud.vmmigration.cutoverJob.v1.created",
+        "google.cloud.vmmigration.group.v1.created",
+        "google.cloud.vmmigration.group.v1.updated",
+        "google.cloud.vmmigration.group.v1.deleted",
+        "google.cloud.vmmigration.targetProject.v1.created",
+        "google.cloud.vmmigration.targetProject.v1.updated",
+        "google.cloud.vmmigration.targetProject.v1.deleted"
+      ]
+    },
+    {
       "displayName": "Workflows",
       "preview": true,
       "events": [
@@ -214,6 +376,10 @@
       "displayName": "Cloud Firestore",
       "preview": true,
       "events": [
+        "google.cloud.datastore.entity.v1.written",
+        "google.cloud.datastore.entity.v1.created",
+        "google.cloud.datastore.entity.v1.updated",
+        "google.cloud.datastore.entity.v1.deleted",
         "google.cloud.firestore.document.v1.written",
         "google.cloud.firestore.document.v1.created",
         "google.cloud.firestore.document.v1.updated",
@@ -228,6 +394,57 @@
         "google.cloud.video.transcoder.job.v1.deleted",
         "google.cloud.video.transcoder.jobTemplate.v1.created",
         "google.cloud.video.transcoder.jobTemplate.v1.deleted"
+      ]
+    },
+    {
+      "displayName": "Backup for GKE",
+      "preview": true,
+      "events": [
+        "google.cloud.gkebackup.backupPlan.v1.created",
+        "google.cloud.gkebackup.backupPlan.v1.updated",
+        "google.cloud.gkebackup.backupPlan.v1.deleted",
+        "google.cloud.gkebackup.backup.v1.created",
+        "google.cloud.gkebackup.backup.v1.updated",
+        "google.cloud.gkebackup.backup.v1.deleted",
+        "google.cloud.gkebackup.restorePlan.v1.created",
+        "google.cloud.gkebackup.restorePlan.v1.updated",
+        "google.cloud.gkebackup.restorePlan.v1.deleted",
+        "google.cloud.gkebackup.restore.v1.created",
+        "google.cloud.gkebackup.restore.v1.updated",
+        "google.cloud.gkebackup.restore.v1.deleted"
+      ]
+    },
+    {
+      "displayName": "Cloud Dataplex",
+      "preview": true,
+      "events": [
+        "google.cloud.dataplex.dataTaxonomy.v1.created",
+        "google.cloud.dataplex.dataTaxonomy.v1.updated",
+        "google.cloud.dataplex.dataTaxonomy.v1.deleted",
+        "google.cloud.dataplex.dataAttributeBinding.v1.created",
+        "google.cloud.dataplex.dataAttributeBinding.v1.updated",
+        "google.cloud.dataplex.dataAttributeBinding.v1.deleted",
+        "google.cloud.dataplex.dataAttribute.v1.created",
+        "google.cloud.dataplex.dataAttribute.v1.updated",
+        "google.cloud.dataplex.dataAttribute.v1.deleted",
+        "google.cloud.dataplex.dataScan.v1.created",
+        "google.cloud.dataplex.dataScan.v1.updated",
+        "google.cloud.dataplex.dataScan.v1.deleted",
+        "google.cloud.dataplex.lake.v1.created",
+        "google.cloud.dataplex.lake.v1.updated",
+        "google.cloud.dataplex.lake.v1.deleted",
+        "google.cloud.dataplex.zone.v1.created",
+        "google.cloud.dataplex.zone.v1.updated",
+        "google.cloud.dataplex.zone.v1.deleted",
+        "google.cloud.dataplex.asset.v1.created",
+        "google.cloud.dataplex.asset.v1.updated",
+        "google.cloud.dataplex.asset.v1.deleted",
+        "google.cloud.dataplex.task.v1.created",
+        "google.cloud.dataplex.task.v1.updated",
+        "google.cloud.dataplex.task.v1.deleted",
+        "google.cloud.dataplex.environment.v1.created",
+        "google.cloud.dataplex.environment.v1.updated",
+        "google.cloud.dataplex.environment.v1.deleted"
       ]
     }
   ],

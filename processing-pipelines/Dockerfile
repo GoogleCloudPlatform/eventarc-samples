@@ -4,10 +4,10 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build
 WORKDIR /app
 
 # Copy local code to the container image.
-COPY bigquery/query-runner ./bigquery/query-runner
+COPY bigquery/query-runner ./bigquery/query-runner/
 
 # Copy common library
-COPY common ./common
+COPY common ./common/
 
 # Install production dependencies
 # Restore as distinct layers

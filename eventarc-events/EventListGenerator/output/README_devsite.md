@@ -156,15 +156,6 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.functions.function.v2.deleted`
 - `google.cloud.functions.function.v2.updated`
 
-### Cloud IoT (preview)
-
-- `google.cloud.iot.v1.DeviceManager.CreateDevice`
-- `google.cloud.iot.v1.DeviceManager.CreateDeviceRegistry`
-- `google.cloud.iot.v1.DeviceManager.DeleteDevice`
-- `google.cloud.iot.v1.DeviceManager.DeleteDeviceRegistry`
-- `google.cloud.iot.v1.DeviceManager.UpdateDevice`
-- `google.cloud.iot.v1.DeviceManager.UpdateDeviceRegistry`
-
 ### Cloud Memorystore for Memcached (preview)
 
 - `google.cloud.memcache.instance.v1.created`

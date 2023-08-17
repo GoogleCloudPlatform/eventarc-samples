@@ -183,18 +183,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Cloud IoT (preview)</summary>
-<p>
-
-* `google.cloud.iot.v1.DeviceManager.CreateDevice`
-* `google.cloud.iot.v1.DeviceManager.CreateDeviceRegistry`
-* `google.cloud.iot.v1.DeviceManager.DeleteDevice`
-* `google.cloud.iot.v1.DeviceManager.DeleteDeviceRegistry`
-* `google.cloud.iot.v1.DeviceManager.UpdateDevice`
-* `google.cloud.iot.v1.DeviceManager.UpdateDeviceRegistry`
-
-</p>
-</details>
 <details><summary>Cloud Memorystore for Memcached (preview)</summary>
 <p>
 

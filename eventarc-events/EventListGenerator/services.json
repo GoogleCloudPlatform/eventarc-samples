@@ -167,18 +167,6 @@
       ]
     },
     {
-      "displayName": "Cloud IoT",
-      "preview": true,
-      "events": [
-        "google.cloud.iot.v1.DeviceManager.CreateDevice",
-        "google.cloud.iot.v1.DeviceManager.UpdateDevice",
-        "google.cloud.iot.v1.DeviceManager.DeleteDevice",
-        "google.cloud.iot.v1.DeviceManager.CreateDeviceRegistry",
-        "google.cloud.iot.v1.DeviceManager.UpdateDeviceRegistry",
-        "google.cloud.iot.v1.DeviceManager.DeleteDeviceRegistry"
-      ]
-    },
-    {
       "displayName": "Cloud Memorystore for Memcached",
       "preview": true,
       "events": [

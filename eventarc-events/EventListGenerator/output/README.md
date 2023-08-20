@@ -3903,40 +3903,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Cloud IoT</summary>
-<p>
-
-`cloudiot.googleapis.com`
-
-* `google.cloud.iot.v1.DeviceManager.AddDeviceToGroup`
-* `google.cloud.iot.v1.DeviceManager.BatchGetGroupMembershipsForDevice`
-* `google.cloud.iot.v1.DeviceManager.BindDeviceToGateway`
-* `google.cloud.iot.v1.DeviceManager.CreateDevice`
-* `google.cloud.iot.v1.DeviceManager.CreateDeviceRegistry`
-* `google.cloud.iot.v1.DeviceManager.CreateGroup`
-* `google.cloud.iot.v1.DeviceManager.DeleteDevice`
-* `google.cloud.iot.v1.DeviceManager.DeleteDeviceRegistry`
-* `google.cloud.iot.v1.DeviceManager.DeleteGroup`
-* `google.cloud.iot.v1.DeviceManager.GetDevice`
-* `google.cloud.iot.v1.DeviceManager.GetDeviceRegistry`
-* `google.cloud.iot.v1.DeviceManager.GetGroup`
-* `google.cloud.iot.v1.DeviceManager.GetIamPolicy`
-* `google.cloud.iot.v1.DeviceManager.ListDeviceConfigVersions`
-* `google.cloud.iot.v1.DeviceManager.ListDeviceIdsForGateway`
-* `google.cloud.iot.v1.DeviceManager.ListDeviceRegistries`
-* `google.cloud.iot.v1.DeviceManager.ListDeviceStates`
-* `google.cloud.iot.v1.DeviceManager.ListDevices`
-* `google.cloud.iot.v1.DeviceManager.ListGroups`
-* `google.cloud.iot.v1.DeviceManager.ModifyCloudToDeviceConfig`
-* `google.cloud.iot.v1.DeviceManager.RemoveDeviceFromGroup`
-* `google.cloud.iot.v1.DeviceManager.SendCommandToDevice`
-* `google.cloud.iot.v1.DeviceManager.SetIamPolicy`
-* `google.cloud.iot.v1.DeviceManager.UnbindDeviceFromGateway`
-* `google.cloud.iot.v1.DeviceManager.UpdateDevice`
-* `google.cloud.iot.v1.DeviceManager.UpdateDeviceRegistry`
-
-</p>
-</details>
 <details><summary>Cloud Key Management Service (KMS)</summary>
 <p>
 

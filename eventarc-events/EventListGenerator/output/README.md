@@ -260,7 +260,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Eventarc</summary>
+<details><summary>Eventarc (preview)</summary>
 <p>
 
 * `google.cloud.eventarc.channel.v1.created`

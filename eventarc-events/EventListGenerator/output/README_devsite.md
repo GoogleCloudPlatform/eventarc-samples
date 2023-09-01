@@ -212,7 +212,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.datastream.stream.v1.deleted`
 - `google.cloud.datastream.stream.v1.updated`
 
-### Eventarc
+### Eventarc (preview)
 
 - `google.cloud.eventarc.channel.v1.created`
 - `google.cloud.eventarc.channel.v1.deleted`

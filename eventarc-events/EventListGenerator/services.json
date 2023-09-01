@@ -177,7 +177,6 @@
     },
     {
       "displayName": "Eventarc",
-      "preview": true,
       "events": [
         "google.cloud.eventarc.trigger.v1.created",
         "google.cloud.eventarc.trigger.v1.updated",

@@ -24,7 +24,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.alloydb.instance.v1.deleted`
 - `google.cloud.alloydb.instance.v1.updated`
 
-### API Gateway (preview)
+### API Gateway
 
 - `google.cloud.apigateway.api.v1.created`
 - `google.cloud.apigateway.api.v1.deleted`
@@ -36,7 +36,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.apigateway.gateway.v1.deleted`
 - `google.cloud.apigateway.gateway.v1.updated`
 
-### Apigee Registry (preview)
+### Apigee Registry
 
 - `google.cloud.apigeeregistry.api.v1.created`
 - `google.cloud.apigeeregistry.api.v1.deleted`
@@ -68,7 +68,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.gkebackup.restorePlan.v1.deleted`
 - `google.cloud.gkebackup.restorePlan.v1.updated`
 
-### BeyondCorp (preview)
+### BeyondCorp
 
 - `google.cloud.beyondcorp.appconnections.appConnection.v1.created`
 - `google.cloud.beyondcorp.appconnections.appConnection.v1.deleted`
@@ -84,7 +84,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.beyondcorp.clientgateways.clientGateway.v1.created`
 - `google.cloud.beyondcorp.clientgateways.clientGateway.v1.deleted`
 
-### Certificate Manager (preview)
+### Certificate Manager
 
 - `google.cloud.certificatemanager.certificate.v1.created`
 - `google.cloud.certificatemanager.certificate.v1.deleted`
@@ -101,7 +101,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.certificatemanager.dnsAuthorization.v1.deleted`
 - `google.cloud.certificatemanager.dnsAuthorization.v1.updated`
 
-### Cloud Data Fusion (preview)
+### Cloud Data Fusion
 
 - `google.cloud.datafusion.dnsPeering.v1.created`
 - `google.cloud.datafusion.dnsPeering.v1.deleted`
@@ -150,13 +150,13 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.firestore.document.v1.updated`
 - `google.cloud.firestore.document.v1.written`
 
-### Cloud Functions (preview)
+### Cloud Functions
 
 - `google.cloud.functions.function.v2.created`
 - `google.cloud.functions.function.v2.deleted`
 - `google.cloud.functions.function.v2.updated`
 
-### Cloud Memorystore for Memcached (preview)
+### Cloud Memorystore for Memcached
 
 - `google.cloud.memcache.instance.v1.created`
 - `google.cloud.memcache.instance.v1.deleted`
@@ -173,7 +173,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.storage.object.v1.finalized`
 - `google.cloud.storage.object.v1.metadataUpdated`
 
-### Database Migration (preview)
+### Database Migration
 
 - `google.cloud.clouddms.connectionProfile.v1.created`
 - `google.cloud.clouddms.connectionProfile.v1.deleted`
@@ -199,7 +199,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.metastore.service.v1.deleted`
 - `google.cloud.metastore.service.v1.updated`
 
-### Datastream (preview)
+### Datastream
 
 - `google.cloud.datastream.connectionProfile.v1.created`
 - `google.cloud.datastream.connectionProfile.v1.deleted`
@@ -212,7 +212,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.datastream.stream.v1.deleted`
 - `google.cloud.datastream.stream.v1.updated`
 
-### Eventarc (preview)
+### Eventarc
 
 - `google.cloud.eventarc.channel.v1.created`
 - `google.cloud.eventarc.channel.v1.deleted`
@@ -301,7 +301,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.notebooks.schedule.v1.created`
 - `google.cloud.notebooks.schedule.v1.deleted`
 
-### Transcoder (preview)
+### Transcoder
 
 - `google.cloud.video.transcoder.job.v1.created`
 - `google.cloud.video.transcoder.job.v1.deleted`
@@ -359,7 +359,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.vmmigration.utilizationReport.v1.created`
 - `google.cloud.vmmigration.utilizationReport.v1.deleted`
 
-### Workflows (preview)
+### Workflows
 
 - `google.cloud.workflows.workflow.v1.created`
 - `google.cloud.workflows.workflow.v1.deleted`

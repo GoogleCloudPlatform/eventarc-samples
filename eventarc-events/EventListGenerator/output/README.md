@@ -24,7 +24,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>API Gateway (preview)</summary>
+<details><summary>API Gateway</summary>
 <p>
 
 * `google.cloud.apigateway.api.v1.created`
@@ -39,7 +39,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Apigee Registry (preview)</summary>
+<details><summary>Apigee Registry</summary>
 <p>
 
 * `google.cloud.apigeeregistry.api.v1.created`
@@ -77,7 +77,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>BeyondCorp (preview)</summary>
+<details><summary>BeyondCorp</summary>
 <p>
 
 * `google.cloud.beyondcorp.appconnections.appConnection.v1.created`
@@ -96,7 +96,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Certificate Manager (preview)</summary>
+<details><summary>Certificate Manager</summary>
 <p>
 
 * `google.cloud.certificatemanager.certificate.v1.created`
@@ -116,7 +116,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Cloud Data Fusion (preview)</summary>
+<details><summary>Cloud Data Fusion</summary>
 <p>
 
 * `google.cloud.datafusion.dnsPeering.v1.created`
@@ -174,7 +174,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Cloud Functions (preview)</summary>
+<details><summary>Cloud Functions</summary>
 <p>
 
 * `google.cloud.functions.function.v2.created`
@@ -183,7 +183,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Cloud Memorystore for Memcached (preview)</summary>
+<details><summary>Cloud Memorystore for Memcached</summary>
 <p>
 
 * `google.cloud.memcache.instance.v1.created`
@@ -209,7 +209,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Database Migration (preview)</summary>
+<details><summary>Database Migration</summary>
 <p>
 
 * `google.cloud.clouddms.connectionProfile.v1.created`
@@ -244,7 +244,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Datastream (preview)</summary>
+<details><summary>Datastream</summary>
 <p>
 
 * `google.cloud.datastream.connectionProfile.v1.created`
@@ -260,7 +260,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Eventarc (preview)</summary>
+<details><summary>Eventarc</summary>
 <p>
 
 * `google.cloud.eventarc.channel.v1.created`
@@ -379,7 +379,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Transcoder (preview)</summary>
+<details><summary>Transcoder</summary>
 <p>
 
 * `google.cloud.video.transcoder.job.v1.created`
@@ -446,7 +446,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Workflows (preview)</summary>
+<details><summary>Workflows</summary>
 <p>
 
 * `google.cloud.workflows.workflow.v1.created`

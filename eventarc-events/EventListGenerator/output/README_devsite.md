@@ -12,7 +12,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
-### AlloyDB for PostgreSQL (preview)
+### AlloyDB for PostgreSQL
 
 - `google.cloud.alloydb.backup.v1.created`
 - `google.cloud.alloydb.backup.v1.deleted`
@@ -53,7 +53,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.apigeeregistry.instance.v1.created`
 - `google.cloud.apigeeregistry.instance.v1.deleted`
 
-### Backup for GKE (preview)
+### Backup for GKE
 
 - `google.cloud.gkebackup.backup.v1.created`
 - `google.cloud.gkebackup.backup.v1.deleted`
@@ -109,7 +109,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.datafusion.instance.v1.deleted`
 - `google.cloud.datafusion.instance.v1.updated`
 
-### Cloud Dataplex (preview)
+### Cloud Dataplex
 
 - `google.cloud.dataplex.asset.v1.created`
 - `google.cloud.dataplex.asset.v1.deleted`
@@ -182,11 +182,11 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.clouddms.migrationJob.v1.deleted`
 - `google.cloud.clouddms.migrationJob.v1.updated`
 
-### Dataflow (preview)
+### Dataflow
 
 - `google.cloud.dataflow.job.v1beta3.statusChanged`
 
-### Dataproc Metastore (preview)
+### Dataproc Metastore
 
 - `google.cloud.metastore.backup.v1.created`
 - `google.cloud.metastore.backup.v1.deleted`
@@ -223,7 +223,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.eventarc.trigger.v1.deleted`
 - `google.cloud.eventarc.trigger.v1.updated`
 
-### Firebase Alerts (preview)
+### Firebase Alerts
 
 - `google.firebase.firebasealerts.alerts.v1.published`
 
@@ -234,15 +234,15 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.firebase.database.ref.v1.updated`
 - `google.firebase.database.ref.v1.written`
 
-### Firebase Remote Config (preview)
+### Firebase Remote Config
 
 - `google.firebase.remoteconfig.remoteConfig.v1.updated`
 
-### Firebase Test Lab (preview)
+### Firebase Test Lab
 
 - `google.firebase.testlab.testMatrix.v1.completed`
 
-### GKE Hub (preview)
+### GKE Hub
 
 - `google.cloud.gkehub.feature.v1.created`
 - `google.cloud.gkehub.feature.v1.deleted`
@@ -256,13 +256,13 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.gkehub.scope.v1.created`
 - `google.cloud.gkehub.scope.v1.deleted`
 
-### Google Cloud Memorystore for Redis (preview)
+### Google Cloud Memorystore for Redis
 
 - `google.cloud.redis.instance.v1.created`
 - `google.cloud.redis.instance.v1.deleted`
 - `google.cloud.redis.instance.v1.updated`
 
-### Network Connectivity (preview)
+### Network Connectivity
 
 - `google.cloud.networkconnectivity.hub.v1.created`
 - `google.cloud.networkconnectivity.hub.v1.deleted`
@@ -281,13 +281,13 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.networkconnectivity.spoke.v1.deleted`
 - `google.cloud.networkconnectivity.spoke.v1.updated`
 
-### Network Management (preview)
+### Network Management
 
 - `google.cloud.networkmanagement.connectivityTest.v1.created`
 - `google.cloud.networkmanagement.connectivityTest.v1.deleted`
 - `google.cloud.networkmanagement.connectivityTest.v1.updated`
 
-### Notebooks (preview)
+### Notebooks
 
 - `google.cloud.notebooks.environment.v1.created`
 - `google.cloud.notebooks.environment.v1.deleted`
@@ -308,7 +308,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.video.transcoder.jobTemplate.v1.created`
 - `google.cloud.video.transcoder.jobTemplate.v1.deleted`
 
-### Vision AI (preview)
+### Vision AI
 
 - `google.cloud.visionai.analysis.v1.created`
 - `google.cloud.visionai.analysis.v1.deleted`
@@ -338,7 +338,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.visionai.stream.v1.deleted`
 - `google.cloud.visionai.stream.v1.updated`
 
-### VM Migration (preview)
+### VM Migration
 
 - `google.cloud.vmmigration.cloneJob.v1.created`
 - `google.cloud.vmmigration.cutoverJob.v1.created`

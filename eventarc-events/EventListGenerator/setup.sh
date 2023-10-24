@@ -51,7 +51,7 @@ gcloud iam service-accounts create $SERVICE_ACCOUNT --display-name="Eventarc eve
 # gsutil iam ch allUsers:objectViewer gs://$BUCKET_NAME
 
 echo "Create a Cloud Run job"
-gcloud beta run jobs create $APP \
+gcloud run jobs create $APP \
   --image=$REGION-docker.pkg.dev/$PROJECT_ID/containers/$APP \
   --tasks=1 \
   --task-timeout=5m \

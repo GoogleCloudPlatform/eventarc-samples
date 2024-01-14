@@ -2,7 +2,6 @@
   "direct": [
     {
       "displayName": "AlloyDB for PostgreSQL",
-      "preview": true,
       "events": [
         "google.cloud.alloydb.cluster.v1.created",
         "google.cloud.alloydb.cluster.v1.updated",
@@ -17,7 +16,6 @@
     },
     {
       "displayName": "Apigee Registry",
-      "preview": true,
       "events": [
         "google.cloud.apigeeregistry.api.v1.created",
         "google.cloud.apigeeregistry.api.v1.updated",
@@ -37,7 +35,6 @@
     },
     {
       "displayName": "API Gateway",
-      "preview": true,
       "events": [
         "google.cloud.apigateway.gateway.v1.created",
         "google.cloud.apigateway.gateway.v1.updated",
@@ -53,7 +50,6 @@
     },
     {
       "displayName": "BeyondCorp",
-      "preview": true,
       "events": [
         "google.cloud.beyondcorp.appconnections.appConnection.v1.created",
         "google.cloud.beyondcorp.appconnections.appConnection.v1.updated",
@@ -72,7 +68,6 @@
     },
     {
       "displayName": "Certificate Manager",
-      "preview": true,
       "events": [
         "google.cloud.certificatemanager.certificate.v1.created",
         "google.cloud.certificatemanager.certificate.v1.updated",
@@ -93,14 +88,12 @@
     },
     {
       "displayName": "Dataflow",
-      "preview": true,
       "events": [
         "google.cloud.dataflow.job.v1beta3.statusChanged"
       ]
     },
     {
       "displayName": "Dataproc Metastore",
-      "preview": true,
       "events": [
             "google.cloud.metastore.federation.v1.created",
             "google.cloud.metastore.federation.v1.updated",
@@ -116,7 +109,6 @@
     },
     {
       "displayName": "Cloud Data Fusion",
-      "preview": true,
       "events": [
         "google.cloud.datafusion.dnsPeering.v1.created",
         "google.cloud.datafusion.dnsPeering.v1.deleted",
@@ -127,7 +119,6 @@
     },
     {
       "displayName": "Datastream",
-      "preview": true,
       "events": [
         "google.cloud.datastream.connectionProfile.v1.created",
         "google.cloud.datastream.connectionProfile.v1.updated",
@@ -144,7 +135,6 @@
     },
     {
       "displayName": "Cloud Functions",
-      "preview": true,
       "events": [
         "google.cloud.functions.function.v2.created",
         "google.cloud.functions.function.v2.updated",
@@ -168,7 +158,6 @@
     },
     {
       "displayName": "Cloud Memorystore for Memcached",
-      "preview": true,
       "events": [
         "google.cloud.memcache.instance.v1.created",
         "google.cloud.memcache.instance.v1.updated",
@@ -177,7 +166,6 @@
     },
     {
       "displayName": "Database Migration",
-      "preview": true,
       "events": [
         "google.cloud.clouddms.migrationJob.v1.created",
         "google.cloud.clouddms.migrationJob.v1.updated",
@@ -203,7 +191,6 @@
     },
     {
       "displayName": "Firebase Alerts",
-      "preview": true,
       "events": [
         "google.firebase.firebasealerts.alerts.v1.published"
       ]
@@ -220,21 +207,18 @@
     },
     {
       "displayName": "Firebase Remote Config",
-      "preview": true,
       "events": [
         "google.firebase.remoteconfig.remoteConfig.v1.updated"
       ]
     },
     {
       "displayName": "Firebase Test Lab",
-      "preview": true,
       "events": [
         "google.firebase.testlab.testMatrix.v1.completed"
       ]
     },
     {
       "displayName": "GKE Hub",
-      "preview": true,
       "events": [
         "google.cloud.gkehub.membership.v1.created",
         "google.cloud.gkehub.feature.v1.created",
@@ -251,7 +235,6 @@
     },
     {
       "displayName": "Google Cloud Memorystore for Redis",
-      "preview": true,
       "events": [
         "google.cloud.redis.instance.v1.created",
         "google.cloud.redis.instance.v1.updated",
@@ -260,7 +243,6 @@
     },
     {
       "displayName": "Network Connectivity",
-      "preview": true,
       "events": [
         "google.cloud.networkconnectivity.serviceConnectionMap.v1.created",
         "google.cloud.networkconnectivity.serviceConnectionMap.v1.updated",
@@ -282,7 +264,6 @@
     },
     {
       "displayName": "Network Management",
-      "preview": true,
       "events": [
         "google.cloud.networkmanagement.connectivityTest.v1.created",
         "google.cloud.networkmanagement.connectivityTest.v1.updated",
@@ -291,7 +272,6 @@
     },
     {
       "displayName": "Notebooks",
-      "preview": true,
       "events": [
         "google.cloud.notebooks.runtime.v1.created",
         "google.cloud.notebooks.runtime.v1.updated",
@@ -308,7 +288,6 @@
     },
     {
       "displayName": "Vision AI",
-      "preview": true,
       "events": [
         "google.cloud.visionai.analysis.v1.created",
         "google.cloud.visionai.analysis.v1.updated",
@@ -341,7 +320,6 @@
     },
     {
       "displayName": "VM Migration",
-      "preview": true,
       "events": [
         "google.cloud.vmmigration.source.v1.created",
         "google.cloud.vmmigration.source.v1.updated",
@@ -365,7 +343,6 @@
     },
     {
       "displayName": "Workflows",
-      "preview": true,
       "events": [
         "google.cloud.workflows.workflow.v1.created",
         "google.cloud.workflows.workflow.v1.updated",
@@ -396,7 +373,6 @@
     },
     {
       "displayName": "Transcoder",
-      "preview": true,
       "events": [
         "google.cloud.video.transcoder.job.v1.created",
         "google.cloud.video.transcoder.job.v1.deleted",
@@ -406,7 +382,6 @@
     },
     {
       "displayName": "Backup for GKE",
-      "preview": true,
       "events": [
         "google.cloud.gkebackup.backupPlan.v1.created",
         "google.cloud.gkebackup.backupPlan.v1.updated",
@@ -424,7 +399,6 @@
     },
     {
       "displayName": "Cloud Dataplex",
-      "preview": true,
       "events": [
         "google.cloud.dataplex.dataTaxonomy.v1.created",
         "google.cloud.dataplex.dataTaxonomy.v1.updated",

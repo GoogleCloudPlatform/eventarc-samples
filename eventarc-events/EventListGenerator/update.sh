@@ -25,7 +25,7 @@ echo "Build and publish the container image"
 gcloud builds submit -t $REGION-docker.pkg.dev/$PROJECT_ID/containers/$APP
 
 echo "Update the Cloud Run job to use the new image"
-gcloud beta run jobs update $APP \
+gcloud run jobs update $APP \
   --image=$REGION-docker.pkg.dev/$PROJECT_ID/containers/$APP \
   --tasks=1 \
   --task-timeout=5m \

@@ -1,5 +1,5 @@
 /**
- * Copyright 2022 Google LLC
+ * Copyright 2023 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,44 +14,37 @@
  * limitations under the License.
  */
 
-# [START terraform_eventarc_enableapi]
-variable "project_id" {
-  type = string
-}
-
-variable "region" {
-  type = string
-}
-
-variable "cluster_name" {
-  type = string
-}
-
-# Needed for API enablement
-provider "google" {
-  project = var.project_id
-  region  = var.region
-}
-
-# Enable required services for GKE
+# [START terraform_eventarc_gke_enableapis]
+# Enable GKE API
 resource "google_project_service" "container" {
   service            = "container.googleapis.com"
   disable_on_destroy = false
 }
 
+# Enable Eventarc API
+resource "google_project_service" "eventarc" {
+  service            = "eventarc.googleapis.com"
+  disable_on_destroy = false
+}
+
+# Enable Pub/Sub API
+resource "google_project_service" "pubsub" {
+  service            = "pubsub.googleapis.com"
+  disable_on_destroy = false
+}
+# [END terraform_eventarc_gke_enableapis]
+
+
+# [START gke_terraform_eventarc_cluster]
 # Create an auto-pilot GKE cluster
 resource "google_container_cluster" "gke_cluster" {
-  name     = var.cluster_name
-  location = var.region
+  name     = "eventarc-cluster"
+  location = "us-central1"
 
   enable_autopilot = true
-
-  # Needed due to this bug: https://github.com/hashicorp/terraform-provider-google/issues/10782
-  ip_allocation_policy {
-  }
 
   depends_on = [
     google_project_service.container
   ]
 }
-# [END terraform_eventarc_enableapi]
+# [END gke_terraform_eventarc_cluster]

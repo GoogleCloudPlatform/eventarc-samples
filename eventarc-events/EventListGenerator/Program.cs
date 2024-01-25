@@ -73,7 +73,7 @@ namespace EventListGenerator
         private static void AddHeader(StreamWriter file, bool devsite)
         {
             file.WriteLine("# Events supported by Eventarc\n");
-            file.WriteLine("The following is a list of the events supported by Eventarc.\n");
+            file.WriteLine("The following is a list of the event types supported by Eventarc.\n");
             file.WriteLine($"- [{HEADER_DIRECT}]"
                 + (devsite ?
                 "(/eventarc/docs/reference/supported-events#directly-from-a-google-cloud-source)" :
@@ -96,7 +96,7 @@ namespace EventListGenerator
             if (devsite)
             {
                 file.WriteLine($"\n## {HEADER_AUDITLOG}\n");
-                file.WriteLine("These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [All trigger targets](/eventarc/docs/targets.md).\n");
+                file.WriteLine("These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [Event providers and destinations](/eventarc/docs/event-providers-targets).\n");
             }
             else
             {
@@ -117,7 +117,7 @@ namespace EventListGenerator
             if (devsite)
             {
                 file.WriteLine($"\n## {title}\n");
-                file.WriteLine("For more information, see [All trigger targets](/eventarc/docs/targets.md).");
+                file.WriteLine("For more information, see [Event providers and destinations](/eventarc/docs/event-providers-targets).");
             }
             else
             {

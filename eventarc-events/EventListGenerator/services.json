@@ -351,7 +351,6 @@
     },
     {
       "displayName": "Cloud Firestore",
-      "preview": true,
       "events": [
         "google.cloud.datastore.entity.v1.written",
         "google.cloud.datastore.entity.v1.written.withAuthContext",

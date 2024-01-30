@@ -1,6 +1,6 @@
 # Events supported by Eventarc
 
-The following is a list of the events supported by Eventarc.
+The following is a list of the event types supported by Eventarc.
 
 - [Directly from a Google Cloud source](#directly-from-a-google-cloud-source)
 - [Using Cloud Audit Logs](#using-cloud-audit-logs)
@@ -160,7 +160,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Cloud Firestore (preview)</summary>
+<details><summary>Cloud Firestore</summary>
 <p>
 
 * `google.cloud.datastore.entity.v1.created`

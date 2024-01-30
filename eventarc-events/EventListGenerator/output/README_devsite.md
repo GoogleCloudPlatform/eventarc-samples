@@ -142,13 +142,21 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 ### Cloud Firestore (preview)
 
 - `google.cloud.datastore.entity.v1.created`
+- `google.cloud.datastore.entity.v1.created.withAuthContext`
 - `google.cloud.datastore.entity.v1.deleted`
+- `google.cloud.datastore.entity.v1.deleted.withAuthContext`
 - `google.cloud.datastore.entity.v1.updated`
+- `google.cloud.datastore.entity.v1.updated.withAuthContext`
 - `google.cloud.datastore.entity.v1.written`
+- `google.cloud.datastore.entity.v1.written.withAuthContext`
 - `google.cloud.firestore.document.v1.created`
+- `google.cloud.firestore.document.v1.created.withAuthContext`
 - `google.cloud.firestore.document.v1.deleted`
+- `google.cloud.firestore.document.v1.deleted.withAuthContext`
 - `google.cloud.firestore.document.v1.updated`
+- `google.cloud.firestore.document.v1.updated.withAuthContext`
 - `google.cloud.firestore.document.v1.written`
+- `google.cloud.firestore.document.v1.written.withAuthContext`
 
 ### Cloud Functions
 

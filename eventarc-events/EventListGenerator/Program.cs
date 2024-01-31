@@ -88,7 +88,7 @@ namespace EventListGenerator
                 "(/eventarc/docs/reference/supported-events#using-third-party-sources)" :
                 "(#using-third-party-sources)"));
 
-            file.WriteLine("\nNote: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud IoT events will also be deprecated at that time. Contact your Google Cloud account team for more information.");
+            file.WriteLine("\nNote: Google Cloud IoT Core was retired on August 16, 2023, and Cloud IoT events were deprecated at that time. Contact your Google Cloud account team for more information.");
         }
 
         private static async Task AddAuditLogServicesAsync(StreamWriter file, bool devsite)
@@ -96,7 +96,7 @@ namespace EventListGenerator
             if (devsite)
             {
                 file.WriteLine($"\n## {HEADER_AUDITLOG}\n");
-                file.WriteLine("These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [Event providers and destinations](/eventarc/docs/event-providers-targets).\n");
+                file.WriteLine("These `serviceName` and `methodName` values can be used to create the filters for Eventarc triggers. For more information, see [Event providers and destinations](/eventarc/docs/event-providers-targets).\n");
             }
             else
             {

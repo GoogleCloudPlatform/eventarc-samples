@@ -1,6 +1,6 @@
 # Events supported by Eventarc
 
-The following is a list of the event types supported by Eventarc.
+The following is a list of the events supported by Eventarc.
 
 - [Directly from a Google Cloud source](/eventarc/docs/reference/supported-events#directly-from-a-google-cloud-source)
 - [Using Cloud Audit Logs](/eventarc/docs/reference/supported-events#using-cloud-audit-logs)
@@ -10,7 +10,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 ## Directly from a Google Cloud source
 
-For more information, see [Event providers and destinations](/eventarc/docs/event-providers-targets).
+For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 ### AlloyDB for PostgreSQL
 
@@ -375,7 +375,7 @@ For more information, see [Event providers and destinations](/eventarc/docs/even
 
 ## Using Cloud Audit Logs
 
-These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [Event providers and destinations](/eventarc/docs/event-providers-targets).
+These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 ### Access Approval
 
@@ -9029,7 +9029,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 ## Using third-party sources
 
-For more information, see [Event providers and destinations](/eventarc/docs/event-providers-targets).
+For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 ### Check Point CloudGuard (preview)
 

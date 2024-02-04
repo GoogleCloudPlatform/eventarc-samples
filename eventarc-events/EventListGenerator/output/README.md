@@ -1,6 +1,6 @@
 # Events supported by Eventarc
 
-The following is a list of the event types supported by Eventarc.
+The following is a list of the events supported by Eventarc.
 
 - [Directly from a Google Cloud source](#directly-from-a-google-cloud-source)
 - [Using Cloud Audit Logs](#using-cloud-audit-logs)

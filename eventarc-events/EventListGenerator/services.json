@@ -51,27 +51,31 @@
 
       ]
     },
-    {
-      "displayName": "API Gateway",
-      "preview": true,
-      "events": [
-        "google.cloud.apigateway.gateway.v1.created",
-        "google.cloud.apigateway.gateway.v1.updated",
-        "google.cloud.apigateway.gateway.v1.deleted",
-        "google.cloud.apigateway.api.v1.created",
-        "google.cloud.apigateway.api.v1.updated",
-        "google.cloud.apigateway.api.v1.deleted",
-        "google.cloud.apigateway.apiConfig.v1.created",
-        "google.cloud.apigateway.apiConfig.v1.updated",
-        "google.cloud.apigateway.apiConfig.v1.deleted"
-        
-      ]
-    },
-    {
+    {   
       "displayName": "Batch",
       "events": [
         "google.cloud.batch.job.v1.created",
         "google.cloud.batch.job.v1.deleted"
+      ]
+    },
+    {
+      "displayName": "BeyondCorp",
+      "preview": true,
+      "events": [
+        "google.cloud.beyondcorp.appconnections.appConnection.v1.created",
+        "google.cloud.beyondcorp.appconnections.appConnection.v1.updated",
+        "google.cloud.beyondcorp.appconnections.appConnection.v1.deleted",
+        "google.cloud.beyondcorp.appconnectors.appConnector.v1.created",
+        "google.cloud.beyondcorp.appconnectors.appConnector.v1.updated",
+        "google.cloud.beyondcorp.appconnectors.appConnector.v1.deleted",
+        "google.cloud.beyondcorp.appgateways.appGateway.v1.created",
+        "google.cloud.beyondcorp.appgateways.appGateway.v1.deleted",
+        "google.cloud.beyondcorp.clientconnectorservices.clientConnectorService.v1.created",
+        "google.cloud.beyondcorp.clientconnectorservices.clientConnectorService.v1.updated",
+        "google.cloud.beyondcorp.clientconnectorservices.clientConnectorService.v1.deleted",
+        "google.cloud.beyondcorp.clientgateways.clientGateway.v1.created",
+        "google.cloud.beyondcorp.clientgateways.clientGateway.v1.deleted"
+
       ]
     },
     {

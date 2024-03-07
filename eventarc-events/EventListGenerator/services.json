@@ -56,6 +56,14 @@
       ]
     },
     {
+      "displayName": "Batch",
+      "events": [
+        "google.cloud.batch.job.v1.created",
+        "google.cloud.batch.job.v1.deleted"
+        
+      ]
+    },
+    {
       "displayName": "BeyondCorp",
       "events": [
         "google.cloud.beyondcorp.appconnections.appConnection.v1.created",
@@ -276,6 +284,34 @@
         "google.cloud.networkmanagement.connectivityTest.v1.created",
         "google.cloud.networkmanagement.connectivityTest.v1.updated",
         "google.cloud.networkmanagement.connectivityTest.v1.deleted"
+      ]
+    },
+    { 
+      "displayName": "Network Services",
+      "events": [
+        "google.cloud.networkservices.endpointPolicy.v1.created",
+        "google.cloud.networkservices.endpointPolicy.v1.deleted",
+        "google.cloud.networkservices.endpointPolicy.v1.updated",
+        "google.cloud.networkservices.gateway.v1.created",
+        "google.cloud.networkservices.gateway.v1.deleted",
+        "google.cloud.networkservices.gateway.v1.updated",
+        "google.cloud.networkservices.grpcRoute.v1.created",
+        "google.cloud.networkservices.grpcRoute.v1.deleted",
+        "google.cloud.networkservices.grpcRoute.v1.updated",
+        "google.cloud.networkservices.httpRoute.v1.created",
+        "google.cloud.networkservices.httpRoute.v1.deleted",
+        "google.cloud.networkservices.httpRoute.v1.updated",
+        "google.cloud.networkservices.mesh.v1.created",
+        "google.cloud.networkservices.mesh.v1.deleted",
+        "google.cloud.networkservices.mesh.v1.updated",
+        "google.cloud.networkservices.tcpRoute.v1.created",
+        "google.cloud.networkservices.tcpRoute.v1.deleted",
+        "google.cloud.networkservices.tcpRoute.v1.updated",
+        "google.cloud.networkservices.tlsRoute.v1.created",
+        "google.cloud.networkservices.tlsRoute.v1.deleted",
+        "google.cloud.networkservices.tlsRoute.v1.updated",
+        "google.cloud.networkservices.serviceBinding.v1.created",
+        "google.cloud.networkservices.serviceBinding.v1.deleted"
       ]
     },
     {

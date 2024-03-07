@@ -1,12 +1,12 @@
 # Events supported by Eventarc
 
-The following is a list of the events supported by Eventarc.
+The following is a list of the event types supported by Eventarc.
 
 - [Directly from a Google Cloud source](#directly-from-a-google-cloud-source)
 - [Using Cloud Audit Logs](#using-cloud-audit-logs)
 - [Using third-party sources](#using-third-party-sources)
 
-Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud IoT events will also be deprecated at that time. Contact your Google Cloud account team for more information.
+Note: Google Cloud IoT Core was retired on August 16, 2023, and Cloud IoT events were deprecated at that time. Contact your Google Cloud account team for more information.
 
 ### Directly from a Google Cloud source
 <details><summary>AlloyDB for PostgreSQL</summary>
@@ -74,6 +74,14 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.gkebackup.restorePlan.v1.created`
 * `google.cloud.gkebackup.restorePlan.v1.deleted`
 * `google.cloud.gkebackup.restorePlan.v1.updated`
+
+</p>
+</details>
+<details><summary>Batch</summary>
+<p>
+
+* `google.cloud.batch.job.v1.created`
+* `google.cloud.batch.job.v1.deleted`
 
 </p>
 </details>
@@ -375,6 +383,35 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 * `google.cloud.networkmanagement.connectivityTest.v1.created`
 * `google.cloud.networkmanagement.connectivityTest.v1.deleted`
 * `google.cloud.networkmanagement.connectivityTest.v1.updated`
+
+</p>
+</details>
+<details><summary>Network Services</summary>
+<p>
+
+* `google.cloud.networkservices.endpointPolicy.v1.created`
+* `google.cloud.networkservices.endpointPolicy.v1.deleted`
+* `google.cloud.networkservices.endpointPolicy.v1.updated`
+* `google.cloud.networkservices.gateway.v1.created`
+* `google.cloud.networkservices.gateway.v1.deleted`
+* `google.cloud.networkservices.gateway.v1.updated`
+* `google.cloud.networkservices.grpcRoute.v1.created`
+* `google.cloud.networkservices.grpcRoute.v1.deleted`
+* `google.cloud.networkservices.grpcRoute.v1.updated`
+* `google.cloud.networkservices.httpRoute.v1.created`
+* `google.cloud.networkservices.httpRoute.v1.deleted`
+* `google.cloud.networkservices.httpRoute.v1.updated`
+* `google.cloud.networkservices.mesh.v1.created`
+* `google.cloud.networkservices.mesh.v1.deleted`
+* `google.cloud.networkservices.mesh.v1.updated`
+* `google.cloud.networkservices.serviceBinding.v1.created`
+* `google.cloud.networkservices.serviceBinding.v1.deleted`
+* `google.cloud.networkservices.tcpRoute.v1.created`
+* `google.cloud.networkservices.tcpRoute.v1.deleted`
+* `google.cloud.networkservices.tcpRoute.v1.updated`
+* `google.cloud.networkservices.tlsRoute.v1.created`
+* `google.cloud.networkservices.tlsRoute.v1.deleted`
+* `google.cloud.networkservices.tlsRoute.v1.updated`
 
 </p>
 </details>

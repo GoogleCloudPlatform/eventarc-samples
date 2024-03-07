@@ -1,16 +1,16 @@
 # Events supported by Eventarc
 
-The following is a list of the events supported by Eventarc.
+The following is a list of the event types supported by Eventarc.
 
 - [Directly from a Google Cloud source](/eventarc/docs/reference/supported-events#directly-from-a-google-cloud-source)
 - [Using Cloud Audit Logs](/eventarc/docs/reference/supported-events#using-cloud-audit-logs)
 - [Using third-party sources](/eventarc/docs/reference/supported-events#using-third-party-sources)
 
-Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud IoT events will also be deprecated at that time. Contact your Google Cloud account team for more information.
+Note: Google Cloud IoT Core was retired on August 16, 2023, and Cloud IoT events were deprecated at that time. Contact your Google Cloud account team for more information.
 
 ## Directly from a Google Cloud source
 
-For more information, see [All trigger targets](/eventarc/docs/targets.md).
+For more information, see [Event providers and destinations](/eventarc/docs/event-providers-targets).
 
 ### AlloyDB for PostgreSQL
 
@@ -67,6 +67,11 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.gkebackup.restorePlan.v1.created`
 - `google.cloud.gkebackup.restorePlan.v1.deleted`
 - `google.cloud.gkebackup.restorePlan.v1.updated`
+
+### Batch
+
+- `google.cloud.batch.job.v1.created`
+- `google.cloud.batch.job.v1.deleted`
 
 ### Batch
 
@@ -300,6 +305,32 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.networkmanagement.connectivityTest.v1.deleted`
 - `google.cloud.networkmanagement.connectivityTest.v1.updated`
 
+### Network Services
+
+- `google.cloud.networkservices.endpointPolicy.v1.created`
+- `google.cloud.networkservices.endpointPolicy.v1.deleted`
+- `google.cloud.networkservices.endpointPolicy.v1.updated`
+- `google.cloud.networkservices.gateway.v1.created`
+- `google.cloud.networkservices.gateway.v1.deleted`
+- `google.cloud.networkservices.gateway.v1.updated`
+- `google.cloud.networkservices.grpcRoute.v1.created`
+- `google.cloud.networkservices.grpcRoute.v1.deleted`
+- `google.cloud.networkservices.grpcRoute.v1.updated`
+- `google.cloud.networkservices.httpRoute.v1.created`
+- `google.cloud.networkservices.httpRoute.v1.deleted`
+- `google.cloud.networkservices.httpRoute.v1.updated`
+- `google.cloud.networkservices.mesh.v1.created`
+- `google.cloud.networkservices.mesh.v1.deleted`
+- `google.cloud.networkservices.mesh.v1.updated`
+- `google.cloud.networkservices.serviceBinding.v1.created`
+- `google.cloud.networkservices.serviceBinding.v1.deleted`
+- `google.cloud.networkservices.tcpRoute.v1.created`
+- `google.cloud.networkservices.tcpRoute.v1.deleted`
+- `google.cloud.networkservices.tcpRoute.v1.updated`
+- `google.cloud.networkservices.tlsRoute.v1.created`
+- `google.cloud.networkservices.tlsRoute.v1.deleted`
+- `google.cloud.networkservices.tlsRoute.v1.updated`
+
 ### Notebooks
 
 - `google.cloud.notebooks.environment.v1.created`
@@ -380,7 +411,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 ## Using Cloud Audit Logs
 
-These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [All trigger targets](/eventarc/docs/targets.md).
+These `serviceName` and `methodName` values can be used to create the filters for Eventarc triggers. For more information, see [Event providers and destinations](/eventarc/docs/event-providers-targets).
 
 ### Access Approval
 
@@ -9034,7 +9065,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 ## Using third-party sources
 
-For more information, see [All trigger targets](/eventarc/docs/targets.md).
+For more information, see [Event providers and destinations](/eventarc/docs/event-providers-targets).
 
 ### Check Point CloudGuard (preview)
 

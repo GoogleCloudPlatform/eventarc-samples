@@ -91,41 +91,15 @@ for Eventarc, initialize Eventarc GKE destinations.
 Plan for changes with your project id and region:
 
 ```sh
-terraform plan -var="project_id=eventarc-terraform" -var="region=us-central1"
+terraform plan
 ```
 
 Apply changes:
 
 ```sh
-terraform apply -var="project_id=eventarc-terraform" -var="region=us-central1"
+terraform apply
 ```
 
-## Create a Pub/Sub trigger
-
-### Create a trigger
-
-Go to [terraform/pubsub-trigger](terraform/pubsub-trigger) folder and initialize Terraform:
-
-```sh
-cd terraform/pubsub-trigger
-terraform init
-```
-
-Take a look at  [main.tf](./terraform/pubsub-trigger/main.tf). It creates a
-service account for Eventarc triggers and creates a Pub/Sub trigger to the
-deployed GKE service.
-
-Plan for changes with your project id and region:
-
-```sh
-terraform plan -var="project_id=eventarc-terraform" -var="region=us-central1" -var="cluster_name=eventarc-cluster"
-```
-
-Apply changes:
-
-```sh
-terraform apply -var="project_id=eventarc-terraform" -var="region=us-central1" -var="cluster_name=eventarc-cluster"
-```
 
 **Note**: If the trigger creation takes a long time and fails with Terraform
 (there seems to be a bug around this), you can run

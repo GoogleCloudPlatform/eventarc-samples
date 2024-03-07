@@ -9,7 +9,7 @@ The following is a list of the events supported by Eventarc.
 Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud IoT events will also be deprecated at that time. Contact your Google Cloud account team for more information.
 
 ### Directly from a Google Cloud source
-<details><summary>AlloyDB for PostgreSQL (preview)</summary>
+<details><summary>AlloyDB for PostgreSQL</summary>
 <p>
 
 * `google.cloud.alloydb.backup.v1.created`
@@ -24,7 +24,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>API Gateway (preview)</summary>
+<details><summary>API Gateway</summary>
 <p>
 
 * `google.cloud.apigateway.api.v1.created`
@@ -39,7 +39,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Apigee Registry (preview)</summary>
+<details><summary>Apigee Registry</summary>
 <p>
 
 * `google.cloud.apigeeregistry.api.v1.created`
@@ -59,7 +59,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Backup for GKE (preview)</summary>
+<details><summary>Backup for GKE</summary>
 <p>
 
 * `google.cloud.gkebackup.backup.v1.created`
@@ -77,7 +77,15 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>BeyondCorp (preview)</summary>
+<details><summary>Batch</summary>
+<p>
+
+* `google.cloud.batch.job.v1.created`
+* `google.cloud.batch.job.v1.deleted`
+
+</p>
+</details>
+<details><summary>BeyondCorp</summary>
 <p>
 
 * `google.cloud.beyondcorp.appconnections.appConnection.v1.created`
@@ -96,7 +104,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Certificate Manager (preview)</summary>
+<details><summary>Certificate Manager</summary>
 <p>
 
 * `google.cloud.certificatemanager.certificate.v1.created`
@@ -116,7 +124,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Cloud Data Fusion (preview)</summary>
+<details><summary>Cloud Data Fusion</summary>
 <p>
 
 * `google.cloud.datafusion.dnsPeering.v1.created`
@@ -127,7 +135,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Cloud Dataplex (preview)</summary>
+<details><summary>Cloud Dataplex</summary>
 <p>
 
 * `google.cloud.dataplex.asset.v1.created`
@@ -160,21 +168,29 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Cloud Firestore (preview)</summary>
+<details><summary>Cloud Firestore</summary>
 <p>
 
 * `google.cloud.datastore.entity.v1.created`
+* `google.cloud.datastore.entity.v1.created.withAuthContext`
 * `google.cloud.datastore.entity.v1.deleted`
+* `google.cloud.datastore.entity.v1.deleted.withAuthContext`
 * `google.cloud.datastore.entity.v1.updated`
+* `google.cloud.datastore.entity.v1.updated.withAuthContext`
 * `google.cloud.datastore.entity.v1.written`
+* `google.cloud.datastore.entity.v1.written.withAuthContext`
 * `google.cloud.firestore.document.v1.created`
+* `google.cloud.firestore.document.v1.created.withAuthContext`
 * `google.cloud.firestore.document.v1.deleted`
+* `google.cloud.firestore.document.v1.deleted.withAuthContext`
 * `google.cloud.firestore.document.v1.updated`
+* `google.cloud.firestore.document.v1.updated.withAuthContext`
 * `google.cloud.firestore.document.v1.written`
+* `google.cloud.firestore.document.v1.written.withAuthContext`
 
 </p>
 </details>
-<details><summary>Cloud Functions (preview)</summary>
+<details><summary>Cloud Functions</summary>
 <p>
 
 * `google.cloud.functions.function.v2.created`
@@ -183,7 +199,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Cloud Memorystore for Memcached (preview)</summary>
+<details><summary>Cloud Memorystore for Memcached</summary>
 <p>
 
 * `google.cloud.memcache.instance.v1.created`
@@ -209,7 +225,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Database Migration (preview)</summary>
+<details><summary>Database Migration</summary>
 <p>
 
 * `google.cloud.clouddms.connectionProfile.v1.created`
@@ -221,14 +237,14 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Dataflow (preview)</summary>
+<details><summary>Dataflow</summary>
 <p>
 
 * `google.cloud.dataflow.job.v1beta3.statusChanged`
 
 </p>
 </details>
-<details><summary>Dataproc Metastore (preview)</summary>
+<details><summary>Dataproc Metastore</summary>
 <p>
 
 * `google.cloud.metastore.backup.v1.created`
@@ -244,7 +260,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Datastream (preview)</summary>
+<details><summary>Datastream</summary>
 <p>
 
 * `google.cloud.datastream.connectionProfile.v1.created`
@@ -274,7 +290,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Firebase Alerts (preview)</summary>
+<details><summary>Firebase Alerts</summary>
 <p>
 
 * `google.firebase.firebasealerts.alerts.v1.published`
@@ -291,21 +307,21 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Firebase Remote Config (preview)</summary>
+<details><summary>Firebase Remote Config</summary>
 <p>
 
 * `google.firebase.remoteconfig.remoteConfig.v1.updated`
 
 </p>
 </details>
-<details><summary>Firebase Test Lab (preview)</summary>
+<details><summary>Firebase Test Lab</summary>
 <p>
 
 * `google.firebase.testlab.testMatrix.v1.completed`
 
 </p>
 </details>
-<details><summary>GKE Hub (preview)</summary>
+<details><summary>GKE Hub</summary>
 <p>
 
 * `google.cloud.gkehub.feature.v1.created`
@@ -322,7 +338,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Google Cloud Memorystore for Redis (preview)</summary>
+<details><summary>Google Cloud Memorystore for Redis</summary>
 <p>
 
 * `google.cloud.redis.instance.v1.created`
@@ -331,7 +347,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Network Connectivity (preview)</summary>
+<details><summary>Network Connectivity</summary>
 <p>
 
 * `google.cloud.networkconnectivity.hub.v1.created`
@@ -353,7 +369,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Network Management (preview)</summary>
+<details><summary>Network Management</summary>
 <p>
 
 * `google.cloud.networkmanagement.connectivityTest.v1.created`
@@ -362,7 +378,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Notebooks (preview)</summary>
+<details><summary>Notebooks</summary>
 <p>
 
 * `google.cloud.notebooks.environment.v1.created`
@@ -379,7 +395,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Transcoder (preview)</summary>
+<details><summary>Transcoder</summary>
 <p>
 
 * `google.cloud.video.transcoder.job.v1.created`
@@ -389,7 +405,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Vision AI (preview)</summary>
+<details><summary>Vision AI</summary>
 <p>
 
 * `google.cloud.visionai.analysis.v1.created`
@@ -422,7 +438,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>VM Migration (preview)</summary>
+<details><summary>VM Migration</summary>
 <p>
 
 * `google.cloud.vmmigration.cloneJob.v1.created`
@@ -446,7 +462,7 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 
 </p>
 </details>
-<details><summary>Workflows (preview)</summary>
+<details><summary>Workflows</summary>
 <p>
 
 * `google.cloud.workflows.workflow.v1.created`

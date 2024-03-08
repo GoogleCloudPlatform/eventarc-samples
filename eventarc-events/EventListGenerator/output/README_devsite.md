@@ -73,11 +73,6 @@ For more information, see [Event providers and destinations](/eventarc/docs/even
 - `google.cloud.batch.job.v1.created`
 - `google.cloud.batch.job.v1.deleted`
 
-### Batch
-
-- `google.cloud.batch.job.v1.created`
-- `google.cloud.batch.job.v1.deleted`
-
 ### BeyondCorp
 
 - `google.cloud.beyondcorp.appconnections.appConnection.v1.created`

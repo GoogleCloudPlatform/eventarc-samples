@@ -85,14 +85,6 @@ Note: Google Cloud IoT Core was retired on August 16, 2023, and Cloud IoT events
 
 </p>
 </details>
-<details><summary>Batch</summary>
-<p>
-
-* `google.cloud.batch.job.v1.created`
-* `google.cloud.batch.job.v1.deleted`
-
-</p>
-</details>
 <details><summary>BeyondCorp</summary>
 <p>
 

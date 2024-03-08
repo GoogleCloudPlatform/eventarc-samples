@@ -116,6 +116,26 @@
       ]
     },
     {
+      "displayName": "Cloud Deploy",
+      "events": [
+        "google.cloud.datafusion.dnsPeering.v1.created",
+        "google.cloud.deploy.deliveryPipeline.v1.created",
+        "google.cloud.deploy.deliveryPipeline.v1.updated",
+        "google.cloud.deploy.deliveryPipeline.v1.deleted",
+        "google.cloud.deploy.target.v1.created",
+        "google.cloud.deploy.target.v1.updated",
+        "google.cloud.deploy.target.v1.deleted",
+        "google.cloud.deploy.customTargetType.v1.created",
+        "google.cloud.deploy.customTargetType.v1.updated",
+        "google.cloud.deploy.customTargetType.v1.deleted",
+        "google.cloud.deploy.release.v1.created",
+        "google.cloud.deploy.rollout.v1.created",
+        "google.cloud.deploy.automation.v1.created",
+        "google.cloud.deploy.automation.v1.updated",
+        "google.cloud.deploy.automation.v1.deleted"
+      ]
+    },
+    {
       "displayName": "Cloud Data Fusion",
       "events": [
         "google.cloud.datafusion.dnsPeering.v1.created",

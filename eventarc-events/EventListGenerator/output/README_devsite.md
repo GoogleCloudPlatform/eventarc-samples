@@ -1,16 +1,16 @@
 # Events supported by Eventarc
 
-The following is a list of the events supported by Eventarc.
+The following is a list of the event types supported by Eventarc.
 
 - [Directly from a Google Cloud source](/eventarc/docs/reference/supported-events#directly-from-a-google-cloud-source)
 - [Using Cloud Audit Logs](/eventarc/docs/reference/supported-events#using-cloud-audit-logs)
 - [Using third-party sources](/eventarc/docs/reference/supported-events#using-third-party-sources)
 
-Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud IoT events will also be deprecated at that time. Contact your Google Cloud account team for more information.
+Note: Google Cloud IoT Core was retired on August 16, 2023, and Cloud IoT events were deprecated at that time. Contact your Google Cloud account team for more information.
 
 ## Directly from a Google Cloud source
 
-For more information, see [All trigger targets](/eventarc/docs/targets.md).
+For more information, see [Event providers and destinations](/eventarc/docs/event-providers-targets).
 
 ### AlloyDB for PostgreSQL
 
@@ -143,6 +143,24 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 - `google.cloud.dataplex.zone.v1.created`
 - `google.cloud.dataplex.zone.v1.deleted`
 - `google.cloud.dataplex.zone.v1.updated`
+
+### Cloud Deploy
+
+- `google.cloud.datafusion.dnsPeering.v1.created`
+- `google.cloud.deploy.automation.v1.created`
+- `google.cloud.deploy.automation.v1.deleted`
+- `google.cloud.deploy.automation.v1.updated`
+- `google.cloud.deploy.customTargetType.v1.created`
+- `google.cloud.deploy.customTargetType.v1.deleted`
+- `google.cloud.deploy.customTargetType.v1.updated`
+- `google.cloud.deploy.deliveryPipeline.v1.created`
+- `google.cloud.deploy.deliveryPipeline.v1.deleted`
+- `google.cloud.deploy.deliveryPipeline.v1.updated`
+- `google.cloud.deploy.release.v1.created`
+- `google.cloud.deploy.rollout.v1.created`
+- `google.cloud.deploy.target.v1.created`
+- `google.cloud.deploy.target.v1.deleted`
+- `google.cloud.deploy.target.v1.updated`
 
 ### Cloud Firestore
 
@@ -406,7 +424,7 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 ## Using Cloud Audit Logs
 
-These `serviceName` and `methodName values` can be used to create the filters for Eventarc triggers. For more information, see [All trigger targets](/eventarc/docs/targets.md).
+These `serviceName` and `methodName` values can be used to create the filters for Eventarc triggers. For more information, see [Event providers and destinations](/eventarc/docs/event-providers-targets).
 
 ### Access Approval
 
@@ -9060,7 +9078,7 @@ These `serviceName` and `methodName values` can be used to create the filters fo
 
 ## Using third-party sources
 
-For more information, see [All trigger targets](/eventarc/docs/targets.md).
+For more information, see [Event providers and destinations](/eventarc/docs/event-providers-targets).
 
 ### Check Point CloudGuard (preview)
 

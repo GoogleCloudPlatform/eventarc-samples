@@ -146,7 +146,6 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 ### Cloud Deploy
 
-- `google.cloud.datafusion.dnsPeering.v1.created`
 - `google.cloud.deploy.automation.v1.created`
 - `google.cloud.deploy.automation.v1.deleted`
 - `google.cloud.deploy.automation.v1.updated`

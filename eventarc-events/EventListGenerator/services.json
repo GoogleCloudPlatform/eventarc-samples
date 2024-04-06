@@ -118,7 +118,6 @@
     {
       "displayName": "Cloud Deploy",
       "events": [
-        "google.cloud.datafusion.dnsPeering.v1.created",
         "google.cloud.deploy.deliveryPipeline.v1.created",
         "google.cloud.deploy.deliveryPipeline.v1.updated",
         "google.cloud.deploy.deliveryPipeline.v1.deleted",

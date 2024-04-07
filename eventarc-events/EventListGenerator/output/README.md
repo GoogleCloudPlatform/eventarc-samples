@@ -171,7 +171,6 @@ Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud
 <details><summary>Cloud Deploy</summary>
 <p>
 
-* `google.cloud.datafusion.dnsPeering.v1.created`
 * `google.cloud.deploy.automation.v1.created`
 * `google.cloud.deploy.automation.v1.deleted`
 * `google.cloud.deploy.automation.v1.updated`

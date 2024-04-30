@@ -235,6 +235,18 @@ Note: Google Cloud IoT Core was retired on August 16, 2023, and Cloud IoT events
 
 </p>
 </details>
+<details><summary>Cloud Speech-to-Text</summary>
+<p>
+
+* `google.cloud.speech.customClass.v1.created`
+* `google.cloud.speech.customClass.v1.deleted`
+* `google.cloud.speech.customClass.v1.updated`
+* `google.cloud.speech.phraseSet.v1.created`
+* `google.cloud.speech.phraseSet.v1.deleted`
+* `google.cloud.speech.phraseSet.v1.updated`
+
+</p>
+</details>
 <details><summary>Cloud Storage</summary>
 <p>
 

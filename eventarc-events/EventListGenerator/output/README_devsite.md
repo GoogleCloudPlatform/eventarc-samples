@@ -196,6 +196,15 @@ For more information, see [All trigger targets](/eventarc/docs/targets.md).
 
 - `google.cloud.pubsub.topic.v1.messagePublished`
 
+### Cloud Speech-to-Text
+
+- `google.cloud.speech.phraseSet.v1.created`
+- `google.cloud.speech.phraseSet.v1.deleted`
+- `google.cloud.speech.phraseSet.v1.updated`
+- `google.cloud.speech.customClass.v1.created`
+- `google.cloud.speech.customClass.v1.deleted`
+- `google.cloud.speech.customClass.v1.updated`
+
 ### Cloud Storage
 
 - `google.cloud.storage.object.v1.archived`

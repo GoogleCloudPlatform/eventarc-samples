@@ -1,12 +1,12 @@
 # Events supported by Eventarc
 
-The following is a list of the events supported by Eventarc.
+The following is a list of the event types supported by Eventarc.
 
 - [Directly from a Google Cloud source](#directly-from-a-google-cloud-source)
 - [Using Cloud Audit Logs](#using-cloud-audit-logs)
 - [Using third-party sources](#using-third-party-sources)
 
-Note: Since Google Cloud IoT Core is being retired on August 16, 2023, the Cloud IoT events will also be deprecated at that time. Contact your Google Cloud account team for more information.
+Note: Google Cloud IoT Core was retired on August 16, 2023, and Cloud IoT events were deprecated at that time. Contact your Google Cloud account team for more information.
 
 ### Directly from a Google Cloud source
 <details><summary>AlloyDB for PostgreSQL</summary>

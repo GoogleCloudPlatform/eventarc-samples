@@ -39,6 +39,35 @@ Note: Google Cloud IoT Core was retired on August 16, 2023, and Cloud IoT events
 
 </p>
 </details>
+<details><summary>Apigee API hub</summary>
+<p>
+
+* `google.cloud.apihub.api.v1.created`
+* `google.cloud.apihub.api.v1.deleted`
+* `google.cloud.apihub.api.v1.updated`
+* `google.cloud.apihub.apiHubInstance.v1.created`
+* `google.cloud.apihub.attribute.v1.created`
+* `google.cloud.apihub.dependency.v1.created`
+* `google.cloud.apihub.dependency.v1.deleted`
+* `google.cloud.apihub.dependency.v1.updated`
+* `google.cloud.apihub.deployment.v1.created`
+* `google.cloud.apihub.deployment.v1.deleted`
+* `google.cloud.apihub.deployment.v1.updated`
+* `google.cloud.apihub.externalApi.v1.created`
+* `google.cloud.apihub.externalApi.v1.deleted`
+* `google.cloud.apihub.externalApi.v1.updated`
+* `google.cloud.apihub.hostProjectRegistration.v1.created`
+* `google.cloud.apihub.runtimeProjectAttachment.v1.created`
+* `google.cloud.apihub.runtimeProjectAttachment.v1.deleted`
+* `google.cloud.apihub.spec.v1.created`
+* `google.cloud.apihub.spec.v1.deleted`
+* `google.cloud.apihub.spec.v1.updated`
+* `google.cloud.apihub.version.v1.created`
+* `google.cloud.apihub.version.v1.deleted`
+* `google.cloud.apihub.version.v1.updated`
+
+</p>
+</details>
 <details><summary>Apigee Registry</summary>
 <p>
 

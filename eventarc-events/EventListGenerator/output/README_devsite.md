@@ -36,6 +36,32 @@ For more information, see [Event providers and destinations](/eventarc/docs/even
 - `google.cloud.apigateway.gateway.v1.deleted`
 - `google.cloud.apigateway.gateway.v1.updated`
 
+### Apigee API hub
+
+- `google.cloud.apihub.api.v1.created`
+- `google.cloud.apihub.api.v1.deleted`
+- `google.cloud.apihub.api.v1.updated`
+- `google.cloud.apihub.apiHubInstance.v1.created`
+- `google.cloud.apihub.attribute.v1.created`
+- `google.cloud.apihub.dependency.v1.created`
+- `google.cloud.apihub.dependency.v1.deleted`
+- `google.cloud.apihub.dependency.v1.updated`
+- `google.cloud.apihub.deployment.v1.created`
+- `google.cloud.apihub.deployment.v1.deleted`
+- `google.cloud.apihub.deployment.v1.updated`
+- `google.cloud.apihub.externalApi.v1.created`
+- `google.cloud.apihub.externalApi.v1.deleted`
+- `google.cloud.apihub.externalApi.v1.updated`
+- `google.cloud.apihub.hostProjectRegistration.v1.created`
+- `google.cloud.apihub.runtimeProjectAttachment.v1.created`
+- `google.cloud.apihub.runtimeProjectAttachment.v1.deleted`
+- `google.cloud.apihub.spec.v1.created`
+- `google.cloud.apihub.spec.v1.deleted`
+- `google.cloud.apihub.spec.v1.updated`
+- `google.cloud.apihub.version.v1.created`
+- `google.cloud.apihub.version.v1.deleted`
+- `google.cloud.apihub.version.v1.updated`
+
 ### Apigee Registry
 
 - `google.cloud.apigeeregistry.api.v1.created`

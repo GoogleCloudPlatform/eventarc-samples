@@ -11,7 +11,7 @@
   <ItemGroup>
     <PackageReference Include="CloudNative.CloudEvents.AspNetCore" Version="2.1.0" />
     <PackageReference Include="Google.Cloud.Storage.V1" Version="3.5.0" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-rc0001" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="2.1.11" />
   </ItemGroup>
 
 </Project>

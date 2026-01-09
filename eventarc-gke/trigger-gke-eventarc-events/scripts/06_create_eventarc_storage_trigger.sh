@@ -17,11 +17,11 @@
 source config.sh
 
 echo "Create a bucket with name $BUCKET_NAME"
-gsutil mb -l $REGION gs://$BUCKET_NAME
+gcloud storage buckets create --location=$REGION gs://$BUCKET_NAME
 
 echo "Add pubsub.publisher role to the Cloud Storage service account"
 # This is needed for Cloud Storage triggers
-SERVICE_ACCOUNT_STORAGE=$(gsutil kms serviceaccount -p $PROJECT_ID)
+SERVICE_ACCOUNT_STORAGE=$(gcloud storage service-agent --project=$PROJECT_ID)
 gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member serviceAccount:$SERVICE_ACCOUNT_STORAGE \
     --role roles/pubsub.publisher

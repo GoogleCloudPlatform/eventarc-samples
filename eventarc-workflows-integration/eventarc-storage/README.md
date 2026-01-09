@@ -70,7 +70,7 @@ First, create a bucket:
 ```sh
 BUCKET=$PROJECT_ID-eventarc-workflows
 
-gsutil mb -l us-central1 gs://$BUCKET
+gcloud storage buckets create gs://$BUCKET --location=us-central1
 ```
 
 Create an Eventarc Cloud Storage trigger:
@@ -93,7 +93,7 @@ Create a file in the bucket to trigger the workflow:
 
 ```sh
 echo "Hello World" > random.txt
-gsutil cp random.txt gs://$BUCKET/random.txt
+gcloud storage cp random.txt gs://$BUCKET/random.txt
 ```
 
 In the logs, you should see that the workflow received the Cloud Storage event.

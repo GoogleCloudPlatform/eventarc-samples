@@ -86,20 +86,20 @@ In the first project, create a bucket to listen events from:
 gcloud config set project [YOUR-PROJECT1]
 PROJECT1=$(gcloud config get-value project)
 BUCKET=$PROJECT1-cross-project
-gsutil mb -l $REGION gs://$BUCKET
+gcloud storage buckets create gs://$BUCKET --location=$REGION
 ```
 
 Create a Pub/Sub notification for the bucket in the first project to the topic in the second project:
 
 ```sh
-gsutil notification create -t projects/$PROJECT2/topics/$TOPIC -f json gs://$BUCKET
+gcloud storage buckets notifications create gs://$BUCKET --topic=projects/$PROJECT2/topics/$TOPIC --payload-format=json
 ```
 
 Now, upload a file to the bucket:
 
 ```sh
 echo "Hello World" > random.txt
-gsutil cp random.txt gs://$BUCKET/random.txt
+gcloud storage cp random.txt gs://$BUCKET/random.txt
 ```
 
 In the second project, check the logs of the Cloud Run service, you should see

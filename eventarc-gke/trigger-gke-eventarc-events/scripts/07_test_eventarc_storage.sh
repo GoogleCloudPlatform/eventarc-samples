@@ -18,5 +18,5 @@ source config.sh
 
 echo "Create and upload random.txt to $BUCKET_NAME"
 echo "Hello World" > random.txt
-gsutil cp random.txt gs://$BUCKET_NAME/random.txt
+gcloud storage cp random.txt gs://$BUCKET_NAME/random.txt
 rm random.txt

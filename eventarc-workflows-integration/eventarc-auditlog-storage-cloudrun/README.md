@@ -86,14 +86,14 @@ Create a bucket:
 ```sh
 BUCKET=$(gcloud config get-value core/project)-eventarc-workflows
 
-gsutil mb -l $(gcloud config get-value run/region) gs://${BUCKET}
+gcloud storage buckets create gs://${BUCKET} --location=$(gcloud config get-value run/region)
 ```
 
 Create a file in the bucket:
 
 ```sh
 echo "Hello World" > random.txt
-gsutil cp random.txt gs://${BUCKET}/random.txt
+gcloud storage cp random.txt gs://${BUCKET}/random.txt
 ```
 
 In the logs, you should see that Workflow received the Cloud Storage event.

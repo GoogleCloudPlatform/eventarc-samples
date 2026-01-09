@@ -80,7 +80,7 @@ Grant the `pubsub.publisher` role to the Cloud Storage service account. This is
 needed for the Eventarc Cloud Storage trigger:
 
 ```sh
-SERVICE_ACCOUNT="$(gsutil kms serviceaccount -p ${PROJECT_NUMBER})"
+SERVICE_ACCOUNT="$(gcloud storage service-agent --project ${PROJECT_NUMBER})"
 
 gcloud projects add-iam-policy-binding ${PROJECT_NUMBER} \
     --member serviceAccount:${SERVICE_ACCOUNT} \
@@ -103,8 +103,8 @@ Create 2 unique storage buckets to save pre and post processed images.
 ```sh
 BUCKET1=$PROJECT_ID-images-input
 BUCKET2=$PROJECT_ID-images-output
-gsutil mb -l $REGION gs://$BUCKET1
-gsutil mb -l $REGION gs://$BUCKET2
+gcloud storage buckets create gs://$BUCKET1 --location $REGION
+gcloud storage buckets create gs://$BUCKET2 --location $REGION
 ```
 
 ## Watermarker
@@ -329,14 +329,14 @@ gcloud eventarc triggers create $TRIGGER_NAME \
 To test the pipeline, upload an image to the input bucket:
 
 ```sh
-gsutil cp beach.jpg gs://$BUCKET1
+gcloud storage cp beach.jpg gs://$BUCKET1
 ```
 
 After a minute or so, you should see resized, watermarked and labelled image in
 the output bucket:
 
 ```sh
-gsutil ls gs://$BUCKET2
+gcloud storage ls gs://$BUCKET2
 
 gs://events-atamel-images-output/beach-400x400-watermark.jpeg
 gs://events-atamel-images-output/beach-400x400.png

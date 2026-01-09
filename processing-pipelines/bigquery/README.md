@@ -77,9 +77,9 @@ service:
 
 ```sh
 BUCKET=$PROJECT_ID-charts
-gsutil mb -l $REGION gs://$BUCKET
-gsutil uniformbucketlevelaccess set on gs://$BUCKET
-gsutil iam ch allUsers:objectViewer gs://$BUCKET
+gcloud storage buckets create --location=$REGION gs://$BUCKET
+gcloud storage buckets update --uniform-bucket-level-access gs://$BUCKET
+gcloud storage buckets add-iam-policy-binding gs://$BUCKET --member=allUsers --role=objectViewer
 ```
 
 ## Notifier
@@ -325,7 +325,7 @@ gcloud scheduler jobs run cre-scheduler-uk
 After a minute or so, you should see 2 charts in the bucket:
 
 ```sh
-gsutil ls gs://$BUCKET
+gcloud storage ls gs://$BUCKET
 
 gs://events-atamel-charts/chart-cyprus.png
 gs://events-atamel-charts/chart-unitedkingdom.png

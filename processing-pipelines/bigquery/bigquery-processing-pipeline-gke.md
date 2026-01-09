@@ -97,9 +97,9 @@ the charts in the bucket are all public:
 
 ```sh
 export BUCKET="$(gcloud config get-value core/project)-charts-gke"
-gsutil mb gs://${BUCKET}
-gsutil uniformbucketlevelaccess set on gs://${BUCKET}
-gsutil iam ch allUsers:objectViewer gs://${BUCKET}
+gcloud storage buckets create gs://${BUCKET}
+gcloud storage buckets update --uniform-bucket-level-access gs://${BUCKET}
+gcloud storage buckets add-iam-policy-binding gs://${BUCKET} --member=allUsers --role=objectViewer
 ```
 
 ## Setup Cloud Storage for events
@@ -323,7 +323,7 @@ gcloud scheduler jobs run cre-scheduler-714c0b82-c441-42f4-8f99-0e2eac9a5869
 After a minute or so, you should see 2 charts in the bucket:
 
 ```sh
-gsutil ls gs://${BUCKET}
+gcloud storage ls gs://${BUCKET}
 
 gs://events-atamel-charts/chart-cyprus.png
 gs://events-atamel-charts/chart-unitedkingdom.png

@@ -82,8 +82,8 @@ the bucket is in the same region as your Cloud Run service:
 ```sh
 BUCKET1=$PROJECT_ID-images-input
 BUCKET2=$PROJECT_ID-images-output
-gsutil mb -l $REGION gs://$BUCKET1
-gsutil mb -l $REGION gs://$BUCKET2
+gcloud storage buckets create gs://$BUCKET1 --location=$REGION
+gcloud storage buckets create gs://$BUCKET2 --location=$REGION
 ```
 
 ## Watermark
@@ -294,14 +294,14 @@ trigger-labeler
 You can upload an image to the input storage bucket:
 
 ```sh
-gsutil cp ../pictures/beach.jpg gs://$BUCKET1
+gcloud storage cp ../pictures/beach.jpg gs://$BUCKET1
 ```
 
 After a minute or so, you should see resized, watermarked and labelled image in
 the output bucket:
 
 ```sh
-gsutil ls gs://$BUCKET2
+gcloud storage ls gs://$BUCKET2
 
 gs://events-atamel-images-output/beach-400x400-watermark.jpeg
 gs://events-atamel-images-output/beach-400x400.png

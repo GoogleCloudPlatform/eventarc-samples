@@ -46,9 +46,9 @@ gcloud iam service-accounts create $SERVICE_ACCOUNT --display-name="Eventarc eve
 
 # echo "Create a public bucket to store events lists"
 # BUCKET_NAME=$PROJECT_ID-$APP
-# gsutil mb -l EU gs://$BUCKET_NAME
-# gsutil uniformbucketlevelaccess set on gs://$BUCKET_NAME
-# gsutil iam ch allUsers:objectViewer gs://$BUCKET_NAME
+# gcloud storage buckets create --location=EU gs://$BUCKET_NAME
+# gcloud storage buckets update --uniform-bucket-level-access gs://$BUCKET_NAME
+# gcloud storage buckets add-iam-policy-binding gs://$BUCKET_NAME --member=allUsers --role=roles/storage.objectViewer
 
 echo "Create a Cloud Run job"
 gcloud run jobs create $APP \

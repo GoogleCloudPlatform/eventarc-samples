@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Cymbal Storefront</title>
+    <link rel="stylesheet" href="static/style.css" />
+    <link rel="icon" type="image/png" href="static/images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <main class="checkout-container">
+      <div class="checkout-content">
+        <h1>Checkout</h1>
+
+        <form action="create-order" method="POST" class="checkout-form">
+          <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div class="product-item">
+              <div
+                class="product-thumb"
+                style="background-image: url(&quot;static/images/pump.png&quot;)"
+              ></div>
+              <div class="product-details">
+                <h3>{{ product }}</h3>
+                <p>Color: {{ color }}</p>
+                <p>Size: {{ size }}</p>
+                <p>
+                  Quantity:
+                  <input
+                    type="number"
+                    name="quantity"
+                    value="{{ quantity }}"
+                    min="1"
+                    class="quantity-input"
+                  />
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>Shipping Address</h2>
+            <input type="text" name="address" value="{{ address }}" class="address-input" />
+          </div>
+
+          <div class="form-section">
+            <h2>Customer Notes</h2>
+            <textarea
+              name="user_note"
+              placeholder="Add any special instructions here..."
+            ></textarea>
+          </div>
+
+          <!-- Hidden fields to pass prefilled values -->
+          <input type="hidden" name="product" value="{{ product }}" />
+          <input type="hidden" name="color" value="{{ color }}" />
+          <input type="hidden" name="size" value="{{ size }}" />
+
+          <button type="submit" class="place-order-btn">Place Order</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

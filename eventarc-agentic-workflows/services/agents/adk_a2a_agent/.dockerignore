@@ -1,0 +1,13 @@
+# Ignore local environment files
+**/.env
+.env
+
+# Ignore virtual environments and cache
+env/
+venv/
+__pycache__/
+*.pyc
+.adk/
+
+# Ignore git history
+.git/

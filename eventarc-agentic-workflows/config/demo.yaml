@@ -1,0 +1,282 @@
+# =========================================================================================
+# UNIVERSAL AGENT CONFIGURATION (demo.yaml)
+# =========================================================================================
+# This file is the central source of truth for the Agentic Workflows architecture.
+# The Terraform pipeline and local Python runners (run_local.py) read this file to
+# dynamically provision Cloud Run services, Docker containers, and Eventarc pipelines.
+#
+# SCHEMA DEFINITION:
+# project: <string>                            # (Optional) Default GCP project for resources in this file.
+# artifact_registry_project: <string>          # (Optional) GCP project where the Artifact Registry resides.
+# eventarc_bus: <string>                       # (Optional) Full resource name of the Eventarc message bus.
+# region: <string>                             # (Optional) Default GCP region for resources in this file.
+#
+# services:                                    # (Required) Root container for all agents/services.
+#   <agent-name>:                              # (Required) The unique ID of the agent (use hyphens, e.g., 'billing-agent').
+#     src_dir: <string>                        # (Required) Path to the agent's source code (e.g., 'agents/adk_agent').
+#     url: <string>                            # (Optional) Path prefix for the service (e.g., 'store'). Sets URL_PREFIX environment variable.
+#     labels:                                  # (Optional) Labels to apply to the service and related resources.
+#       <KEY>: <VALUE>                         # Example: env: "demo"
+#     env_vars:                                # (Optional) Custom environment variables injected into the container.
+#       <KEY>: <VALUE>                         # Example: LOG_LEVEL: "DEBUG"
+#       AGENT_DESCRIPTION: <string>            # Recommended for agents: short description.
+#       AGENT_INSTRUCTION: <string>            # Recommended for agents: system instructions/prompt.
+#
+#     model_armor:                             # (Optional) Configures GCP Model Armor protections for the agent's LLM inputs.
+#       pi_and_jailbreak: <string>             # (Optional) Confidence level to block (e.g., "LOW_AND_ABOVE", "MEDIUM", "HIGH").
+#       malicious_uri: <string>                # (Optional) Set to "ENABLED" to block requests containing known malicious URLs.
+#
+#     min_instances: <integer>                 # (Optional) Minimum number of container instances to keep warm.
+#     max_instances: <integer>                 # (Optional) Maximum number of container instances.
+#
+#     pipeline:                                # (Optional) If omitted, the agent deploys 'headless' without Eventarc routing.
+#       labels:                                # (Optional) Labels to apply to the pipeline and enrollment. Inherits service labels if omitted. Empty list [] removes labels.
+#         <KEY>: <VALUE>
+#       enrollment_cel_expression: <string>    # (Required) The CEL expression to filter incoming Eventarc messages.
+#
+#       input_payload_format:                  # (Optional) Defines the event payload format to enable Eventarc Mediation parsing.
+#         type: <string>                       # 'json', 'avro', or 'protobuf'.
+#         schema_definition: <string>          # (Required if avro/protobuf) The schema definition string.
+#
+#       transformation: <string>               # (Optional) A CEL expression to mutate/filter the payload before delivery.
+#
+#       destination:                           # (Optional) Defines the destination configuration.
+#         http:                                # (Optional) HTTP destination settings.
+#           a2a:                               # (Optional) Generates the ADK JSON-RPC payload automatically.
+#             prompt: <string>                 # (Required) A CEL expression defining the user prompt.
+#
+#           message_binding_template: <string> # (Optional) Full manual JSON template. Use this OR 'a2a', not both.
+#
+# pipelines:                                   # (Optional) Root container for standalone Eventarc pipelines.
+#   <pipeline-name>:                           # (Required) Unique ID of the pipeline.
+#     region: <string>                         # (Optional) Region where the pipeline resides.
+#     labels:                                  # (Optional) Labels to apply to the pipeline and enrollment.
+#       <KEY>: <VALUE>
+#     enrollment_cel_expression: <string>      # (Required) CEL expression to filter incoming messages.
+#     input_payload_format: ...                # See service pipeline for details.
+#     transformation: <string>                 # See service pipeline for details.
+#     destination:                             # (Required) Defines the destination configuration.
+#       http:                                  # (Required) HTTP destination settings.
+#         uri: <string>                        # Destination URI (takes precedence over cr_service if both provided).
+#         cr_service: <string>                 # Target an external Cloud Run service by name (replaces uri).
+#         project: <string>                    # (Optional) Target project for the destination service.
+#         region: <string>                     # (Optional) Target region for the destination service.
+#         a2a: ...                             # See service pipeline.
+#         message_binding_template: <string>   # See service pipeline.
+# =========================================================================================
+
+project: "${project_id}"
+artifact_registry_project: "${project_id}"
+region: "${region}"
+
+services:
+  # =========================================================================================
+  # Storefront Service
+  # =========================================================================================
+  store:
+    url: "store"
+    src_dir: "services/store"
+    min_instances: 1
+    env_vars:
+      STARTUP_MODE: "ui"
+      EVENTARC_ATTR_ENV: "demo"
+      EVENTARC_ATTR_SOURCESERVICECOLOR: "#EF6C00"
+      EVENTARC_ATTR_SOURCESERVICEINFO: "HTTP • Web UI • Node.js"
+
+  # =========================================================================================
+  # Fulfillment Planning Agent
+  # =========================================================================================
+  fulfillment-planning:
+    src_dir: "services/agents/adk_a2a_agent"
+    min_instances: 1
+    model_armor:
+      pi_and_jailbreak: "LOW_AND_ABOVE"
+      malicious_uri: "ENABLED"
+    env_vars:
+      AGENT_DESCRIPTION: "Handles order fulfillment planning."
+      EVENTARC_ATTR_ENV: "demo"
+      EVENTARC_ATTR_SOURCESERVICEINFO: "A2A • ADK • Python"
+      AGENT_INSTRUCTION: |
+        You are a fulfillment planning expert. Analyze the incoming text request and extract the event metadata and order information. A valid order will contain an order id, a shipping address, an optional user note, and an array of items.
+
+        PROCESS THE ORDER
+        Proceed with one of the following scenarios:
+
+        SCENARIO A: Valid Order
+        If the request contains valid order details, create a shipment plan. For each item in the order:
+        - If the quantity is > 200, split the plan for that item into a 'internal' shipment (exactly 200 items) and a 'third_party' shipment (the remainder). 
+        - Otherwise, the entire quantity for that item is a 'internal' shipment.
+
+        Calculate the total cost of the order. Assume each item has a base cost of $100. Multiply the total quantity of all items by $100. Add a shipping fee of $10 if there are any internal shipments, and $25 if there are any third-party shipments.
+
+        You MUST output the data payload EXACTLY matching this JSON schema:
+        {
+          "order_id": "<extracted_order_id>",
+          "shipping_address": "<extracted_shipping_address>",
+          "total_cost": <calculated_total_cost>,
+          "shipment_plan": [
+            {
+              "type": "internal",
+              "item_name": "<product_name>",
+              "quantity": <integer>
+            },
+            {
+              "type": "third_party",
+              "item_name": "<product_name>",
+              "quantity": <integer>
+            }
+          ]
+        }
+
+        CRITICAL ROUTING INSTRUCTION:
+        When calling `emit_business_event` for the final plan, you MUST set the `attributes` parameter to signal downstream routing:
+        - "has_internal": "true" (if there are any internal shipments) or "false"
+        - "has_third_party": "true" (if there are any third_party shipments) or "false"
+
+        - Call `emit_business_event` with type "fulfillment.plan.created", the strict JSON payload above as the data, and the routing attributes.
+
+        SCENARIO B: Invalid Order
+        If the request is missing an order ID, shipping address, or items, reject it.
+        - Call `emit_business_event` with type "error.fulfillment.request" and EXACTLY this data payload: {"error": "Invalid order format. Missing required order_id, shipping_address, or items."}
+    pipeline:
+      enrollment_cel_expression: |
+        message.type == 'order.created' && 
+        message.env == 'demo'
+      input_payload_format:
+        type: "json"
+      destination:
+        http:
+          a2a:
+            prompt: |
+              "\n" +
+              "Create a fulfillment plan for the following order:\n" +
+              "------------------\n" +
+              "Order ID: " + message.data.order_id + "\n" +
+              "Address: " + message.data.shipping_address + "\n" +
+              "Items: " + message.data.items.toJsonString() + "\n" +
+              "Notes: " + message.data.user_note + "\n"
+
+  # =========================================================================================
+  # Internal Shipment Agent
+  # =========================================================================================
+  internal-shipment:
+    src_dir: "services/agents/adk_mcp_agent"
+    min_instances: 1
+    env_vars:
+      AGENT_DESCRIPTION: "Processes internal warehouse fulfillment."
+      EVENTARC_ATTR_ENV: "demo"
+      EVENTARC_ATTR_SOURCESERVICECOLOR: "#009688"
+      EVENTARC_ATTR_SOURCESERVICEINFO: "MCP • ADK • Python"
+      AGENT_INSTRUCTION: |
+        You are the Internal Shipment Manager. You receive fulfillment plans containing ONLY internal shipment items.
+        Your job is to process this plan and generate a warehouse picking list.
+
+        PROCESS THE SHIPMENT
+        Process the shipment plan.
+        - Call `emit_business_event` with:
+          - type: "shipment.internal.processed"
+          - data: A JSON object containing the `order_id` and a `status` of "Picking sequence generated for internal warehouse."
+    pipeline:
+      enrollment_cel_expression: |
+        message.type == 'fulfillment.plan.created' && 
+        message.has_internal == 'true' && 
+        message.env == 'demo'
+      input_payload_format:
+        type: "json"
+      transformation: |
+        message.setField("data.shipment_plan", message.data.shipment_plan.filter(p, p.type == 'internal'))
+      destination:
+        http:
+          message_binding_template: |-
+            {
+              "headers": headers.merge({
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "x-envoy-upstream-rq-timeout-ms": "600000"
+              }),
+              "body": {
+                "jsonrpc": "2.0",
+                "id": message.id,
+                "method": "tools/call",
+                "params": {
+                  "name": "run_agent",
+                  "arguments": {
+                    "prompt": "Process this internal shipment plan: " + message.data.toJsonString()
+                  }
+                }
+              }
+            }
+
+  payment-processing:
+    src_dir: "services/agents/adk_mcp_agent"
+    min_instances: 1
+    env_vars:
+      AGENT_DESCRIPTION: "Processes payments for orders."
+      AGENT_INSTRUCTION: |
+        You are a payment processing agent.
+        You receive order details.
+        Your job is to process the payment for the order.
+        Assume the payment is always successful for now.
+        After processing, you MUST publish an event of type 'order.paid' to the bus.
+        Use the `emit_business_event` tool to publish the event.
+        The data should contain the order_id and status: 'success'.
+      EVENTARC_ATTR_ENV: "demo"
+      EVENTARC_ATTR_SOURCESERVICECOLOR: "#FF5722"
+      EVENTARC_ATTR_SOURCESERVICEINFO: "MCP • ADK • Python"
+    pipeline:
+      enrollment_cel_expression: |
+        message.type == 'order.created' && 
+        message.env == 'demo'
+      input_payload_format:
+        type: "json"
+      destination:
+        http:
+          message_binding_template: |-
+            {
+              "headers": headers.merge({
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "x-envoy-upstream-rq-timeout-ms": "600000"
+              }),
+              "body": {
+                "jsonrpc": "2.0",
+                "id": message.id,
+                "method": "tools/call",
+                "params": {
+                  "name": "run_agent",
+                  "arguments": {
+                    "prompt": "Process payment for the following order: " + message.data.toJsonString()
+                  }
+                }
+              }
+            }
+
+pipelines:
+  third-party-shipment:
+    enrollment_cel_expression: |
+      message.type == 'fulfillment.plan.created' && 
+      message.has_third_party == 'true' && 
+      message.env == 'demo'
+    input_payload_format:
+      type: "json"
+    transformation: |
+      message.setField("data.shipment_plan", message.data.shipment_plan.filter(p, p.type == 'third_party'))
+    destination:
+      http:
+        cr_service: "third-party-shipment"
+        project: "${external_project_id}"
+        message_binding_template: |-
+          {
+            "body": {
+              "carrier_request": {
+                "reference_id": message.data.order_id,
+                "consignment": {
+                  "address": message.data.shipping_address,
+                  "parcels": message.data.shipment_plan.map(p, {
+                    "description": p.item_name,
+                    "count": p.quantity
+                  })
+                }
+              }
+            }
+          }

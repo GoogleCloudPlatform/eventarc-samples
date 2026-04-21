@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+.terraform/
+terraform.tfvars
+
+# Tools
+.adk/
+.docker/
+*.evalset.json
+
+# OS
+.DS_Store

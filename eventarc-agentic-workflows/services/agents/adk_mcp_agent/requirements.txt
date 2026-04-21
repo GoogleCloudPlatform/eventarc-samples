@@ -1,0 +1,6 @@
+google-adk>=1.6.1
+google-cloud-eventarc-publishing
+mcp
+fastapi
+uvicorn
+google-cloud-modelarmor>=0.1.0

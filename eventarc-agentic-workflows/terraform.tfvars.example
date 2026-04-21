@@ -1,0 +1,8 @@
+workspace_projects = {
+  demo     = "your-main-project-id"
+  external = "your-external-project-id"
+}
+region           = "us-central1"
+bucket           = "your-tfstate-bucket"
+bus_id           = "agentic-workflows"
+artifact_repo_id = "your-artifact-repo-id"

@@ -282,7 +282,7 @@ UI, running evaluations, and manually invoking agents.
 
 <details>
 
-**<summary>Local Development Setup</summary>**
+<summary><b>Local Development Setup</b></summary>
 
 Run the following commands in the root of the repository to set up the
 development environment:
@@ -302,7 +302,7 @@ pip install -r requirements-dev.txt
 
 <details>
 
-**<summary>Running an Agent Locally</summary>**
+<summary><b>Running an Agent Locally</b></summary>
 
 The following commands run an agent locally. You must specify the configuration
 file name (without extension) and the service name in the format
@@ -332,7 +332,7 @@ python3 scripts/run_local.py config/demo/fulfillment-planning
 
 <details>
 
-**<summary>Testing an Agent</summary>**
+<summary><b>Testing an Agent</b></summary>
 
 To test, first run the agent in the Web UI (see command above), record the
 scenarios you want to exercise, and then save the evaluation set file under the
@@ -351,7 +351,7 @@ python3 scripts/run_local.py config/demo/fulfillment-planning --eval
 
 <details>
 
-**<summary>Event Simulation</summary>**
+<summary><b>Event Simulation</b></summary>
 
 The `log-events` service includes a simulation mode that sends a predefined set
 of events for testing purposes. To run the simulation locally using the Docker
@@ -377,7 +377,7 @@ in the Cloud Run service configuration.
 
 <details>
 
-**<summary>Calling the Agent</summary>**
+<summary><b>Calling the Agent</b></summary>
 
 You can invoke endpoints on the agent by using `curl`.
 

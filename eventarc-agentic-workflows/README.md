@@ -5,7 +5,8 @@ This repository contains a sample project demonstrating how to deploy and manage
 workflows on Google Cloud Platform, as shown at
 [Google Cloud Next 2026](https://www.googlecloudevents.com/next-vegas/).
 
-![The log-events service showing the flow of events through the Eventarc MessageBus.](log-events.png)
+![The log-events service showing the flow of events through the Eventarc
+MessageBus.](log-events.png)
 
 ## 1. Prerequisites
 
@@ -25,6 +26,7 @@ To deploy this sample (on Linux/macOS), you need:
 
 *   **Docker**: Follow the
     [official Docker installation instructions](https://docs.docker.com/get-docker/).
+    A modern version of Docker supporting **Docker Buildx** is required.
 
 *   **Python**: Ensure [Python 3.x](https://www.python.org/downloads/) is
     installed.

@@ -220,13 +220,13 @@ services:
   # Internal Shipment Agent
   # =========================================================================================
   internal-shipment:
-    src_dir: "services/agents/adk_mcp_agent"
+    src_dir: "services/agents/langchain_mcp_agent"
     min_instances: 1
     env_vars:
       AGENT_DESCRIPTION: "Processes internal warehouse fulfillment."
       EVENTARC_ATTR_ENV: "demo"
       EVENTARC_ATTR_SOURCESERVICECOLOR: "#009688"
-      EVENTARC_ATTR_SOURCESERVICEINFO: "MCP • ADK • Python"
+      EVENTARC_ATTR_SOURCESERVICEINFO: "LangChain • ADK • Python"
       AGENT_INSTRUCTION: |
         You are the Internal Shipment Manager. You receive fulfillment plans containing ONLY internal shipment items.
         Your job is to process this plan and generate a warehouse picking list.

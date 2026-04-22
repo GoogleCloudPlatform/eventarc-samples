@@ -213,7 +213,7 @@ resource "terraform_data" "service_build_push" {
     command = <<EOT
       # linux/amd64 platform is necessary for cross-platform builds to be compatible with Cloud Run.
       if [ -f "${each.value.src_dir}/docker-compose.yaml" ]; then
-        (cd ${each.value.src_dir} && BUILDX_BAKE_ENTITLEMENTS_FS=0 docker buildx bake --set target.platform=linux/amd64 --set *.tags=${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${data.terraform_remote_state.infra.outputs.demo_repo_name}/${each.key}:${local.service_hashes[each.key]})
+        (cd ${each.value.src_dir} && BUILDX_BAKE_ENTITLEMENTS_FS=0 docker buildx bake --set *.platform=linux/amd64 --set *.tags=${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${data.terraform_remote_state.infra.outputs.demo_repo_name}/${each.key}:${local.service_hashes[each.key]})
       else
         docker buildx build --platform linux/amd64 -t ${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${data.terraform_remote_state.infra.outputs.demo_repo_name}/${each.key}:${local.service_hashes[each.key]} ${each.value.src_dir}
       fi

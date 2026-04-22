@@ -1,6 +1,6 @@
 (function () {
   const events = [
-    // 1. store -> order.created (Event 8 in user list)
+    // 1. store -> order.created
     {
       'source': 'store',
       'type': 'order.created',
@@ -10,8 +10,8 @@
       'env': 'demo',
       'xgooglemessageuid': '578aeff8-31de-40c1-8543-be4d2442e0c9',
       'specversion': '1.0',
-      'sourceservicecolor': '#9C27B0',
-      'sourceserviceinfo': 'Web UI • HTTP • Node.js',
+      'sourceservicecolor': '#EF6C00',
+      'sourceserviceinfo': 'HTTP • Web UI • Node.js',
       'data': {
         'order_id': 'ORD-5596E6',
         'shipping_address': '123 Main St, Toronto',
@@ -24,7 +24,7 @@
         ],
       },
     },
-    // 2. payment-processing -> log.request.received (Event 7 in user list)
+    // 2. payment-processing -> log.request.received
     {
       'source': 'payment-processing',
       'type': 'log.request.received',
@@ -33,34 +33,17 @@
       'specversion': '1.0',
       'env': 'demo',
       'sourceservicecolor': '#FF5722',
-      'sourceserviceinfo': 'LangChain • MCP • Python',
+      'sourceserviceinfo': 'MCP • ADK • Python',
       'id': '187f2f51-e2f7-49ce-a437-b4e6c43b5dc8',
       'time': '2026-04-15T23:07:13.762Z',
       'data': {
         'original_event_id': '806df26f-8988-4bb7-9aa8-3f28a062ae95',
         'original_event_source': 'store',
         'raw_request':
-          'POST / HTTP/1.1\nhost: payment-processing-xyow2zkm4q-uc.a.run.app\naccept: application/json\ncontent-type: application/json\ncontent-length: 359\nuser-agent: Google-mts-convoy\nce-specversion: 1.0\nce-type: order.created\nce-sourceservicecolor: #9C27B0\nce-time: 2026-04-16T03:07:12.727731Z\nce-xgooglemessageuid: 578aeff8-31de-40c1-8543-be4d2442e0c9\nce-env: demo\nce-source: store\nce-id: 806df26f-8988-4bb7-9aa8-3f28a062ae95\n\n{\n  "id": "806df26f-8988-4bb7-9aa8-3f28a062ae95",\n  "method": "tools/call",\n  "jsonrpc": "2.0",\n  "params": {\n    "name": "run_agent",\n    "arguments": {\n      "prompt": "Process payment for the following order: {\\"shipping_address\\":\\"123 Main St, Toronto\\",\\"user_note\\":\\"\\",\\"items\\":[{\\"quantity\\":515,\\"item_name\\":\\"Stiletto Pump (Scarlet Red, Size 8)\\"}],\\"order_id\\":\\"ORD-5596E6\\"}"\n    }\n  }\n}',
+          'POST / HTTP/1.1\nhost: payment-processing-xyow2zkm4q-uc.a.run.app\naccept: application/json\ncontent-type: application/json\ncontent-length: 359\nuser-agent: Google-mts-convoy\nce-specversion: 1.0\nce-type: order.created\nce-sourceservicecolor: #EF6C00\nce-time: 2026-04-16T03:07:12.727731Z\nce-xgooglemessageuid: 578aeff8-31de-40c1-8543-be4d2442e0c9\nce-env: demo\nce-source: store\nce-id: 806df26f-8988-4bb7-9aa8-3f28a062ae95\n\n{\n  "id": "806df26f-8988-4bb7-9aa8-3f28a062ae95",\n  "method": "tools/call",\n  "jsonrpc": "2.0",\n  "params": {\n    "name": "run_agent",\n    "arguments": {\n      "prompt": "Process payment for the following order: {\\"shipping_address\\":\\"123 Main St, Toronto\\",\\"user_note\\":\\"\\",\\"items\\":[{\\"quantity\\":515,\\"item_name\\":\\"Stiletto Pump (Scarlet Red, Size 8)\\"}],\\"order_id\\":\\"ORD-5596E6\\"}"\n    }\n  }\n}',
       },
     },
-    // 3. fulfillment-planning -> log.request.received (Event 6 in user list)
-    {
-      'source': 'fulfillment-planning',
-      'type': 'log.request.received',
-      'datacontenttype': 'application/json',
-      'xgooglemessageuid': '8c108022-ceea-48c5-a1af-43f138febba0',
-      'specversion': '1.0',
-      'id': 'c8585fbc-b4bb-4ec5-8e8c-52f7b3f4dab1',
-      'env': 'demo',
-      'time': '2026-04-15T23:07:13.666Z',
-      'data': {
-        'original_event_id': '806df26f-8988-4bb7-9aa8-3f28a062ae95',
-        'original_event_source': 'store',
-        'raw_request':
-          'POST / HTTP/1.1\nhost: fulfillment-planning-xyow2zkm4q-uc.a.run.app\ncontent-type: application/json\na2a-version: 1.0\ncontent-length: 448\nuser-agent: Google-mts-convoy\nce-source: store\nce-env: demo\nce-type: order.created\nce-sourceservicecolor: #9C27B0\nce-xgooglemessageuid: 578aeff8-31de-40c1-8543-be4d2442e0c9\nce-id: 806df26f-8988-4bb7-9aa8-3f28a062ae95\nce-specversion: 1.0\nce-time: 2026-04-16T03:07:12.727731Z\n\n{\n  "id": "806df26f-8988-4bb7-9aa8-3f28a062ae95",\n  "jsonrpc": "2.0",\n  "method": "message/send",\n  "params": {\n    "message": {\n      "parts": [\n        {\n          "text": "\\nCreate a fulfillment plan for the following order:\\n------------------\\nOrder ID: ORD-5596E6\\nAddress: 123 Main St, Toronto\\nItems: [{\\"quantity\\":515,\\"item_name\\":\\"Stiletto Pump (Scarlet Red, Size 8)\\"}]\\nNotes: \\n"\n        }\n      ],\n      "role": "user",\n      "messageId": "806df26f-8988-4bb7-9aa8-3f28a062ae95"\n    },\n    "configuration": {\n      "blocking": true\n    }\n  }\n}',
-      },
-    },
-    // 4. payment-processing -> order.paid (Event 5 in user list)
+    // 3. payment-processing -> order.paid
     {
       'source': 'payment-processing',
       'type': 'order.paid',
@@ -74,30 +57,40 @@
       'data': {
         'status': 'success',
         'order_id': 'ORD-5596E6',
+        'shipping_address': '123 Main St, Toronto',
+        'user_note': '',
+        'items': [
+          {
+            'item_name': 'Stiletto Pump (Scarlet Red, Size 8)',
+            'quantity': 515,
+          },
+        ],
       },
     },
-    // 5. internal-shipment -> log.request.received (Event 4 in user list)
+    // 4. fulfillment-planning -> log.request.received
     {
-      'source': 'internal-shipment',
+      'source': 'fulfillment-planning',
       'type': 'log.request.received',
       'datacontenttype': 'application/json',
-      'time': '2026-04-15T23:07:17.597Z',
-      'id': '80f897ea-2980-464c-9053-78b21961418c',
-      'env': 'demo',
-      'xgooglemessageuid': '17a92915-9cd3-4012-8ed0-ea489b935b3f',
+      'sourceserviceinfo': 'A2A • ADK • Python',
+      'xgooglemessageuid': '8c108022-ceea-48c5-a1af-43f138febba0',
       'specversion': '1.0',
+      'id': 'c8585fbc-b4bb-4ec5-8e8c-52f7b3f4dab1',
+      'env': 'demo',
+      'time': '2026-04-15T23:07:15.500Z',
       'data': {
-        'original_event_id': 'dd3d0841-eba6-4607-85aa-a69941a7967d',
-        'original_event_source': 'fulfillment-planning',
+        'original_event_id': '6eff9622-4f26-45e0-808b-678c984d33e7',
+        'original_event_source': 'payment-processing',
         'raw_request':
-          'POST / HTTP/1.1\nhost: internal-shipment-xyow2zkm4q-uc.a.run.app\ncontent-type: application/json\na2a-version: 1.0\ncontent-length: 477\nuser-agent: Google-mts-convoy\nce-source: fulfillment-planning\nce-has_internal: true\nce-specversion: 1.0\nce-env: demo\nce-id: dd3d0841-eba6-4607-85aa-a69941a7967d\nce-has_third_party: true\nce-type: fulfillment.plan.created\nce-xgooglemessageuid: c0893d37-7b80-4ed3-a4648789bb03832e\nce-time: 2026-04-16T03:07:16.797919Z\n\n{\n  "params": {\n    "configuration": {\n      "blocking": true\n    },\n    "message": {\n      "messageId": "dd3d0841-eba6-4607-85aa-a69941a7967d",\n      "parts": [\n        {\n          "text": "Process this internal shipment plan: {\\"total_cost\\":51535,\\"order_id\\":\\"ORD-5596E6\\",\\"shipment_plan\\":[{\\"item_name\\":\\"Stiletto Pump (Scarlet Red, Size 8)\\",\\"quantity\\":200,\\"type\\":\\"internal\\"}],\\"shipping_address\\":\\"123 Main St, Toronto\\"}"\n        }\n      ],\n      "role": "user"\n    }\n  },\n  "jsonrpc": "2.0",\n  "id": "dd3d0841-eba6-4607-85aa-a69941a7967d",\n  "method": "message/send"\n}',
+          'POST / HTTP/1.1\nhost: fulfillment-planning-xyow2zkm4q-uc.a.run.app\ncontent-type: application/json\na2a-version: 1.0\ncontent-length: 448\nuser-agent: Google-mts-convoy\nce-source: payment-processing\nce-env: demo\nce-type: order.paid\nce-sourceservicecolor: #FF5722\nce-xgooglemessageuid: 578aeff8-31de-40c1-8543-be4d2442e0c9\nce-id: 6eff9622-4f26-45e0-808b-678c984d33e7\nce-specversion: 1.0\nce-time: 2026-04-16T03:07:12.727731Z\n\n{\n  "id": "6eff9622-4f26-45e0-808b-678c984d33e7",\n  "jsonrpc": "2.0",\n  "method": "message/send",\n  "params": {\n    "message": {\n      "parts": [\n        {\n          "text": "\\nCreate a fulfillment plan for the following order:\\n------------------\\nOrder ID: ORD-5596E6\\nAddress: 123 Main St, Toronto\\nItems: [{\\"quantity\\":515,\\"item_name\\":\\"Stiletto Pump (Scarlet Red, Size 8)\\"}]\\nNotes: \\n"\n        }\n      ],\n      "role": "user",\n      "messageId": "6eff9622-4f26-45e0-808b-678c984d33e7"\n    },\n    "configuration": {\n      "blocking": true\n    }\n  }\n}',
       },
     },
-    // 6. fulfillment-planning -> fulfillment.plan.created (Event 3 in user list)
+    // 5. fulfillment-planning -> fulfillment.plan.created
     {
       'source': 'fulfillment-planning',
       'type': 'fulfillment.plan.created',
       'datacontenttype': 'application/json',
+      'sourceserviceinfo': 'A2A • ADK • Python',
       'has_third_party': true,
       'xgooglemessageuid': 'c0893d37-7b80-4ed3-a4648789bb03832e',
       'has_internal': true,
@@ -123,27 +116,48 @@
         'shipping_address': '123 Main St, Toronto',
       },
     },
-    // 7. internal-shipment -> shipment.internal.processed (Event 2 in user list)
+    // 6. internal-shipment -> log.request.received
+    {
+      'source': 'internal-shipment',
+      'type': 'log.request.received',
+      'datacontenttype': 'application/json',
+      'sourceservicecolor': '#009688',
+      'sourceserviceinfo': 'MCP • ADK • Python',
+      'time': '2026-04-15T23:07:21.797Z',
+      'id': '80f897ea-2980-464c-9053-78b21961418c',
+      'env': 'demo',
+      'xgooglemessageuid': '17a92915-9cd3-4012-8ed0-ea489b935b3f',
+      'specversion': '1.0',
+      'data': {
+        'original_event_id': 'dd3d0841-eba6-4607-85aa-a69941a7967d',
+        'original_event_source': 'fulfillment-planning',
+        'raw_request':
+          'POST / HTTP/1.1\nhost: internal-shipment-xyow2zkm4q-uc.a.run.app\ncontent-type: application/json\na2a-version: 1.0\ncontent-length: 477\nuser-agent: Google-mts-convoy\nce-source: fulfillment-planning\nce-has_internal: true\nce-specversion: 1.0\nce-env: demo\nce-id: dd3d0841-eba6-4607-85aa-a69941a7967d\nce-has_third_party: true\nce-type: fulfillment.plan.created\nce-xgooglemessageuid: c0893d37-7b80-4ed3-a4648789bb03832e\nce-time: 2026-04-16T03:07:16.797919Z\n\n{\n  "params": {\n    "configuration": {\n      "blocking": true\n    },\n    "message": {\n      "messageId": "dd3d0841-eba6-4607-85aa-a69941a7967d",\n      "parts": [\n        {\n          "text": "Process this internal shipment plan: {\\"total_cost\\":51535,\\"order_id\\":\\"ORD-5596E6\\",\\"shipment_plan\\":[{\\"item_name\\":\\"Stiletto Pump (Scarlet Red, Size 8)\\",\\"quantity\\":200,\\"type\\":\\"internal\\"}],\\"shipping_address\\":\\"123 Main St, Toronto\\"}"\n        }\n      ],\n      "role": "user"\n    }\n  },\n  "jsonrpc": "2.0",\n  "id": "dd3d0841-eba6-4607-85aa-a69941a7967d",\n  "method": "message/send"\n}',
+      },
+    },
+    // 7. internal-shipment -> shipment.internal.processed
     {
       'source': 'internal-shipment',
       'type': 'shipment.internal.processed',
       'datacontenttype': 'application/json',
+      'sourceservicecolor': '#009688',
+      'sourceserviceinfo': 'MCP • ADK • Python',
       'specversion': '1.0',
       'xgooglemessageuid': 'a62a1c79-dd04-4887-a92f-fec8407a511e',
       'env': 'demo',
       'id': 'd457dfce-f397-48d2-97f7-650a02a4743a',
-      'time': '2026-04-15T23:07:19.171Z',
+      'time': '2026-04-15T23:07:23.371Z',
       'data': {
         'status': 'Picking sequence generated for internal warehouse.',
         'order_id': 'ORD-5596E6',
       },
     },
-    // 8. third-party-shipment -> log.request.received (Event 1 in user list)
+    // 8. third-party-shipment -> log.request.received
     {
       'source': 'third-party-shipment',
       'type': 'log.request.received',
       'datacontenttype': 'application/json',
-      'sourceservicecolor': '#009688',
+      'sourceservicecolor': '#607D8B',
       'sourceserviceinfo': 'External • REST',
       'specversion': '1.0',
       'xgooglemessageuid': '882d2bd2-59df-4467-a8c5-4f5a33d2a7f5',
@@ -185,6 +199,8 @@
       'source': 'internal-shipment',
       'type': 'inventory.updated',
       'datacontenttype': 'application/json',
+      'sourceservicecolor': '#009688',
+      'sourceserviceinfo': 'MCP • ADK • Python',
       'id': '926df26f-8988-4bb7-9aa8-3f28a062ae95',
       'time': '2026-04-15T23:07:42.345Z',
       'data': {
@@ -211,6 +227,8 @@
       'source': 'internal-shipment',
       'type': 'shipment.out_for_delivery',
       'datacontenttype': 'application/json',
+      'sourceservicecolor': '#009688',
+      'sourceserviceinfo': 'MCP • ADK • Python',
       'id': '946df26f-8988-4bb7-9aa8-3f28a062ae95',
       'time': '2026-04-15T23:07:45.567Z',
       'data': {'order_id': 'ORD-5596E6', 'carrier': 'DHL'},
@@ -256,6 +274,8 @@
       'source': 'internal-shipment',
       'type': 'shipment.delivered',
       'datacontenttype': 'application/json',
+      'sourceservicecolor': '#009688',
+      'sourceserviceinfo': 'MCP • ADK • Python',
       'id': '986df26f-8988-4bb7-9aa8-3f28a062ae95',
       'time': '2026-04-15T23:07:50.001Z',
       'data': {'order_id': 'ORD-5596E6', 'signature': 'John Doe'},

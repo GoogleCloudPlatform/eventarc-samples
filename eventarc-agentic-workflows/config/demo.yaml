@@ -84,6 +84,66 @@ services:
       EVENTARC_ATTR_SOURCESERVICEINFO: "HTTP • Web UI • Node.js"
 
   # =========================================================================================
+  # Payment Processing Agent
+  # =========================================================================================
+  payment-processing:
+    src_dir: "services/agents/adk_mcp_agent"
+    min_instances: 1
+    env_vars:
+      AGENT_DESCRIPTION: "Processes payments for orders."
+      AGENT_INSTRUCTION: |
+        You are a payment processing agent.
+        You receive order details.
+        Your job is to process the payment for the order.
+        Assume the payment is always successful for now.
+        After processing, you MUST publish an event of type 'order.paid' to the bus.
+        Use the `emit_business_event` tool to publish the event.
+
+        You MUST output the data payload EXACTLY matching this JSON schema:
+        {
+          "order_id": "<order_id>",
+          "status": "success",
+          "shipping_address": "<shipping_address>",
+          "items": [
+            {
+              "item_name": "<product_name>",
+              "quantity": <integer>
+            }
+          ],
+          "user_note": "<user_note>"
+        }
+      EVENTARC_ATTR_ENV: "demo"
+      EVENTARC_ATTR_SOURCESERVICECOLOR: "#FF5722"
+      EVENTARC_ATTR_SOURCESERVICEINFO: "MCP • ADK • Python"
+    pipeline:
+      enrollment_cel_expression: |
+        message.type == 'order.created' && 
+        message.env == 'demo'
+      input_payload_format:
+        type: "json"
+      destination:
+        http:
+          message_binding_template: |-
+            {
+              "headers": headers.merge({
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "x-envoy-upstream-rq-timeout-ms": "600000"
+              }),
+              "body": {
+                "jsonrpc": "2.0",
+                "id": message.id,
+                "method": "tools/call",
+                "params": {
+                  "name": "run_agent",
+                  "arguments": {
+                    "prompt": "Process payment for the following order: " + message.data.toJsonString()
+                  }
+                }
+              }
+            }
+
+  # =========================================================================================
   # Fulfillment Planning Agent
   # =========================================================================================
   fulfillment-planning:
@@ -140,7 +200,7 @@ services:
         - Call `emit_business_event` with type "error.fulfillment.request" and EXACTLY this data payload: {"error": "Invalid order format. Missing required order_id, shipping_address, or items."}
     pipeline:
       enrollment_cel_expression: |
-        message.type == 'order.created' && 
+        message.type == 'order.paid' && 
         message.env == 'demo'
       input_payload_format:
         type: "json"
@@ -202,50 +262,6 @@ services:
                   "name": "run_agent",
                   "arguments": {
                     "prompt": "Process this internal shipment plan: " + message.data.toJsonString()
-                  }
-                }
-              }
-            }
-
-  payment-processing:
-    src_dir: "services/agents/adk_mcp_agent"
-    min_instances: 1
-    env_vars:
-      AGENT_DESCRIPTION: "Processes payments for orders."
-      AGENT_INSTRUCTION: |
-        You are a payment processing agent.
-        You receive order details.
-        Your job is to process the payment for the order.
-        Assume the payment is always successful for now.
-        After processing, you MUST publish an event of type 'order.paid' to the bus.
-        Use the `emit_business_event` tool to publish the event.
-        The data should contain the order_id and status: 'success'.
-      EVENTARC_ATTR_ENV: "demo"
-      EVENTARC_ATTR_SOURCESERVICECOLOR: "#FF5722"
-      EVENTARC_ATTR_SOURCESERVICEINFO: "MCP • ADK • Python"
-    pipeline:
-      enrollment_cel_expression: |
-        message.type == 'order.created' && 
-        message.env == 'demo'
-      input_payload_format:
-        type: "json"
-      destination:
-        http:
-          message_binding_template: |-
-            {
-              "headers": headers.merge({
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                "x-envoy-upstream-rq-timeout-ms": "600000"
-              }),
-              "body": {
-                "jsonrpc": "2.0",
-                "id": message.id,
-                "method": "tools/call",
-                "params": {
-                  "name": "run_agent",
-                  "arguments": {
-                    "prompt": "Process payment for the following order: " + message.data.toJsonString()
                   }
                 }
               }

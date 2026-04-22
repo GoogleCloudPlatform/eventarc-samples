@@ -5,6 +5,8 @@ This repository contains a sample project demonstrating how to deploy and manage
 workflows on Google Cloud Platform, as shown at
 [Google Cloud Next 2026](https://www.googlecloudevents.com/next-vegas/).
 
+![The log-events service showing the flow of events through the Eventarc MessageBus.](log-events.png)
+
 ## 1. Prerequisites
 
 To deploy this sample (on Linux/macOS), you need:
@@ -221,7 +223,55 @@ order of deployment:
 Use the Storefront UI to place an order. Observe events as they flow through the
 Eventarc feed in the Live Event Feed UI.
 
-## 6. Local Development & Testing
+# Adding New Services and Agents
+
+The project structure supports adding arbitrary services and agents under the
+`services/` directory.
+
+## Adding a Generic Service
+
+You can add any service (not necessarily an ADK agent) under the `services/`
+directory. To add a new service:
+
+1.  Create a directory for your service under `services/` (e.g.,
+    `services/my_custom_service`).
+2.  Add a `Dockerfile` in that directory that describes how to build your
+    service.
+3.  If your service needs access to shared tools or other directories outside
+    its own folder during build, you can add a `docker-compose.yaml` file in the
+    service directory to define additional build contexts.
+4.  Update `demo.yaml` in the config directory to define the new service and
+    point `src_dir` to your new directory (e.g., `services/my_custom_service`).
+
+Example `docker-compose.yaml` (optional):
+
+```yaml
+services:
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      additional_contexts:
+        shared_tools: ../shared_tools
+```
+
+The build system will automatically use `docker buildx bake` if a
+`docker-compose.yaml` file is present in the service's `src_dir`, or fall back
+to `docker buildx build` if only a `Dockerfile` is present.
+
+## Adding a New ADK Agent
+
+To add a new ADK agent:
+
+1.  Create a directory under `services/agents/` (or use
+    `services/agents/adk_a2a_agent` as a template).
+2.  Ensure it has a `Dockerfile` and optionally a `docker-compose.yaml` as
+    described above.
+3.  Update `demo.yaml` in the config directory to define the new service and
+    point `src_dir` to your new directory (e.g.,
+    `services/agents/my_new_agent`).
+
+## Local Development & Testing
 
 This section is required only if you want to run agents locally, use the Web UI,
 or run evaluations.
@@ -299,7 +349,7 @@ container:
 2.  Navigate to `http://127.0.0.1:8081` in your browser (note that
     `run_local.py` maps port 8080 in container to 8081 on host).
 
-## 7. Operations
+## Operations
 
 ### Calling the Agent
 
@@ -378,54 +428,6 @@ python3 scripts/publish_order.py \
   --env "demo" \
   --note "Standard corporate delivery."
 ```
-
-# Adding New Services and Agents
-
-The project structure supports adding arbitrary services and agents under the
-`services/` directory.
-
-## Adding a Generic Service
-
-You can add any service (not necessarily an ADK agent) under the `services/`
-directory. To add a new service:
-
-1.  Create a directory for your service under `services/` (e.g.,
-    `services/my_custom_service`).
-2.  Add a `Dockerfile` in that directory that describes how to build your
-    service.
-3.  If your service needs access to shared tools or other directories outside
-    its own folder during build, you can add a `docker-compose.yaml` file in the
-    service directory to define additional build contexts.
-4.  Update `demo.yaml` in the config directory to define the new service and
-    point `src_dir` to your new directory (e.g., `services/my_custom_service`).
-
-Example `docker-compose.yaml` (optional):
-
-```yaml
-services:
-  agent:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      additional_contexts:
-        shared_tools: ../shared_tools
-```
-
-The build system will automatically use `docker buildx bake` if a
-`docker-compose.yaml` file is present in the service's `src_dir`, or fall back
-to `docker buildx build` if only a `Dockerfile` is present.
-
-## Adding a New ADK Agent
-
-To add a new ADK agent:
-
-1.  Create a directory under `services/agents/` (or use
-    `services/agents/adk_a2a_agent` as a template).
-2.  Ensure it has a `Dockerfile` and optionally a `docker-compose.yaml` as
-    described above.
-3.  Update `demo.yaml` in the config directory to define the new service and
-    point `src_dir` to your new directory (e.g.,
-    `services/agents/my_new_agent`).
 
 # Troubleshooting
 

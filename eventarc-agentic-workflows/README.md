@@ -8,6 +8,8 @@ workflows on Google Cloud Platform, as shown at
 ![The log-events service showing the flow of events through the Eventarc
 MessageBus.](log-events.png)
 
+# Demo Deployment & Execution
+
 ## 1. Prerequisites
 
 To deploy this sample (on Linux/macOS), you need:
@@ -220,7 +222,7 @@ order of deployment:
 
 2.  Navigate to http://127.0.0.1:8081
 
-### Running the demo
+### Make Orders & Observe Events
 
 Use the Storefront UI to place an order. Observe events as they flow through the
 Eventarc feed in the Live Event Feed UI.
@@ -273,12 +275,14 @@ To add a new ADK agent:
     point `src_dir` to your new directory (e.g.,
     `services/agents/my_new_agent`).
 
-## Local Development & Testing
+# Local Development & Testing
 
-This section is required only if you want to run agents locally, use the Web UI,
-or run evaluations.
+This optional section pertains to running agents locally, using the agent Web
+UI, running evaluations, and manually invoking agents.
 
-### Local Development Setup
+<details>
+
+<summary>Local Development Setup</summary>
 
 Run the following commands in the root of the repository to set up the
 development environment:
@@ -294,14 +298,18 @@ source .venv/bin/activate
 pip install -r requirements-dev.txt
 ```
 
-### Running an Agent Locally
+</details>
+
+<details>
+
+<summary>Running an Agent Locally</summary>
 
 The following commands run an agent locally. You must specify the configuration
 file name (without extension) and the service name in the format
 `dir/file/service`. In these examples, we assume the file is `config/demo.yaml`
 and the agent is `fulfillment-planning`.
 
-#### Agent in Web UI
+### Agent in Web UI
 
 ```bash
 python3 scripts/run_local.py config/demo/fulfillment-planning --web
@@ -311,7 +319,7 @@ Then choose agent "adk_a2a_agent" to chat with your agent. Please note your
 agent will not be listed in the list of agents. You need to pick "adk_a2a_agent"
 which is the name of the template used to generate the agent.
 
-#### Agent in a Docker container:
+### Agent in a Docker container
 
 To run the agent locally in a Docker container (the same that runs on Cloud
 Run), execute:
@@ -320,7 +328,11 @@ Run), execute:
 python3 scripts/run_local.py config/demo/fulfillment-planning
 ```
 
-### Testing an Agent
+</details>
+
+<details>
+
+<summary>Testing an Agent</summary>
 
 To test, first run the agent in the Web UI (see command above), record the
 scenarios you want to exercise, and then save the evaluation set file under the
@@ -335,7 +347,11 @@ To execute the tests, run:
 python3 scripts/run_local.py config/demo/fulfillment-planning --eval
 ```
 
-### Event Simulation
+</details>
+
+<details>
+
+<summary>Event Simulation</summary>
 
 The `log-events` service includes a simulation mode that sends a predefined set
 of events for testing purposes. To run the simulation locally using the Docker
@@ -351,21 +367,30 @@ container:
 2.  Navigate to `http://127.0.0.1:8081` in your browser (note that
     `run_local.py` maps port 8080 in container to 8081 on host).
 
-## Operations
+### Enabling Simulation on Cloud Run
 
-### Calling the Agent
+If you want to enable the `log-events` simulation on the deployed Cloud Run
+service, you need to set the `ENABLE_SIMULATION` environment variable to `true`
+in the Cloud Run service configuration.
+
+</details>
+
+<details>
+
+<summary>Calling the Agent</summary>
 
 You can invoke endpoints on the agent by using `curl`.
 
-To use the commands below, you need the URL of your deployed agent. You can
-retrieve it and set it as an environment variable with the following command
-(replace `fulfillment-planning` with your agent's name if different):
+To use the commands below, you need the URL of your deployed agent. For agents
+deployed on Cloud Run, you can retrieve it and set it as an environment variable
+with the following command (replace `fulfillment-planning` with your agent's
+name if different):
 
 ```bash
 export AGENT_URL=$(gcloud run services describe fulfillment-planning --region=$REGION --project=$PROJECT_ID --format='value(status.url)')
 ```
 
-#### Get the Agent Card
+### Get the Agent Card
 
 Retrieve the agent's card, which contains metadata and describes its
 capabilities.
@@ -376,7 +401,7 @@ curl -s -X GET \
   "${AGENT_URL}/.well-known/agent-card.json"
 ```
 
-#### Send Message to the Agent
+### Send Message to the Agent
 
 Send a direct message to the agent using the JSON-RPC protocol to simulate an
 event or direct interaction.
@@ -408,13 +433,7 @@ curl -s -X POST -H "Authorization: Bearer $(gcloud auth print-identity-token)" \
   }' | jq
 ```
 
-#### Enabling Simulation on Cloud Run
-
-If you want to enable the `log-events` simulation on the deployed Cloud Run
-service, you need to set the `ENABLE_SIMULATION` environment variable to `true`
-in the Cloud Run service configuration.
-
-#### Simulating Orders via Script
+### Simulating Orders via Script
 
 You can use the `publish_order.py` script to simulate order events directly
 without using the Storefront UI.
@@ -430,6 +449,8 @@ python3 scripts/publish_order.py \
   --env "demo" \
   --note "Standard corporate delivery."
 ```
+
+</details>
 
 # Troubleshooting
 

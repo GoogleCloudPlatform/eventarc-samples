@@ -1,4 +1,4 @@
-# adk-eventarc-tool
+# eventarc-agentic-workflows
 
 This repository contains a sample project demonstrating how to deploy and manage
 [**Eventarc**](https://docs.cloud.google.com/eventarc/docs)-driven agentic
@@ -53,6 +53,11 @@ are designed for Linux/macOS. To run them on Windows, it is recommended to use
     bucket   = "your-tfstate-bucket"
     bus_name = "agentic-workflows"
     ```
+
+The `bucket` above is a Cloud Storage bucket which is needed to hold the
+Terraform state. The state is stored in a folder named `terraform/state`. Bucket
+setup will follow in a later step (see
+[Setup Remote State Bucket](#setup-remote-state-bucket)).
 
 > [!NOTE]
 >
@@ -240,9 +245,9 @@ pip install -r requirements-dev.txt
 ### Running an Agent Locally
 
 The following commands run an agent locally. You must specify the configuration
-file name (without extension) and the service name in the format `dir/file/service`.
-In these examples, we assume the file is `config/demo.yaml` and the agent is
-`fulfillment-planning`.
+file name (without extension) and the service name in the format
+`dir/file/service`. In these examples, we assume the file is `config/demo.yaml`
+and the agent is `fulfillment-planning`.
 
 #### Agent in Web UI
 
@@ -391,8 +396,8 @@ directory. To add a new service:
 3.  If your service needs access to shared tools or other directories outside
     its own folder during build, you can add a `docker-compose.yaml` file in the
     service directory to define additional build contexts.
-4.  Update `demo.yaml` in the config directory to define the new service and point
-    `src_dir` to your new directory (e.g., `services/my_custom_service`).
+4.  Update `demo.yaml` in the config directory to define the new service and
+    point `src_dir` to your new directory (e.g., `services/my_custom_service`).
 
 Example `docker-compose.yaml` (optional):
 
@@ -418,8 +423,9 @@ To add a new ADK agent:
     `services/agents/adk_a2a_agent` as a template).
 2.  Ensure it has a `Dockerfile` and optionally a `docker-compose.yaml` as
     described above.
-3.  Update `demo.yaml` in the config directory to define the new service and point
-    `src_dir` to your new directory (e.g., `services/agents/my_new_agent`).
+3.  Update `demo.yaml` in the config directory to define the new service and
+    point `src_dir` to your new directory (e.g.,
+    `services/agents/my_new_agent`).
 
 # Troubleshooting
 

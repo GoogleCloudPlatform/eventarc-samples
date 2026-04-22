@@ -10,15 +10,6 @@ provider "google-beta" {
 
 data "google_project" "project" {}
 
-# Read common infrastructure state
-data "terraform_remote_state" "infra" {
-  backend = "gcs"
-  config = {
-    bucket = var.bucket
-    prefix = "terraform/state/infra"
-  }
-}
-
 locals {
   # 1. Parse the Universal YAML Config
   yaml_config = yamldecode(templatefile("${path.module}/${var.config_file}", {
@@ -26,13 +17,15 @@ locals {
     region              = var.region
     external_project_id = var.workspace_projects["external"]
   }))
-  services                  = local.yaml_config["services"]
-  standalone_pipelines      = lookup(local.yaml_config, "pipelines", {})
-  default_project           = lookup(local.yaml_config, "project", lookup(var.workspace_projects, terraform.workspace, var.workspace_projects["demo"]))
-  default_region            = lookup(local.yaml_config, "region", var.region)
-  artifact_registry_project = lookup(local.yaml_config, "artifact_registry_project", var.workspace_projects["demo"])
-  eventarc_bus              = lookup(local.yaml_config, "eventarc_bus", data.terraform_remote_state.infra.outputs.message_bus_name)
-  bus_project_extracted     = split("/", local.eventarc_bus)[1]
+  services                    = local.yaml_config["services"]
+  standalone_pipelines        = lookup(local.yaml_config, "pipelines", {})
+  default_project             = lookup(local.yaml_config, "project", lookup(var.workspace_projects, terraform.workspace, var.workspace_projects["demo"]))
+  default_region              = lookup(local.yaml_config, "region", var.region)
+  bus_name                    = lookup(local.yaml_config, "bus_name", "projects/${var.workspace_projects["demo"]}/locations/${var.region}/messageBuses/agentic-workflows")
+  bus_project_extracted       = split("/", local.bus_name)[1]
+  artifact_registry_repo_name = lookup(local.yaml_config, "artifact_registry_repo_name", "projects/${var.workspace_projects["demo"]}/locations/${var.region}/repositories/agentic-workflows-repo")
+  artifact_registry_project   = contains(split("/", local.artifact_registry_repo_name), "repositories") ? split("/", local.artifact_registry_repo_name)[1] : var.workspace_projects["demo"]
+  artifact_registry_repo_id   = contains(split("/", local.artifact_registry_repo_name), "repositories") ? split("/", local.artifact_registry_repo_name)[5] : local.artifact_registry_repo_name
 
   services_with_pipelines = {
     for k, v in local.services : k => v if lookup(v, "pipeline", null) != null
@@ -210,14 +203,14 @@ resource "terraform_data" "service_build_push" {
   triggers_replace = local.service_hashes[each.key]
 
   provisioner "local-exec" {
-    command = <<EOT
+    command     = <<EOT
       # linux/amd64 platform is necessary for cross-platform builds to be compatible with Cloud Run.
       if [ -f "${each.value.src_dir}/docker-compose.yaml" ]; then
-        (cd ${each.value.src_dir} && BUILDX_BAKE_ENTITLEMENTS_FS=0 docker buildx bake --set *.platform=linux/amd64 --set *.tags=${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${data.terraform_remote_state.infra.outputs.demo_repo_name}/${each.key}:${local.service_hashes[each.key]})
+        (cd ${each.value.src_dir} && BUILDX_BAKE_ENTITLEMENTS_FS=0 docker buildx bake --set *.platform=linux/amd64 --set *.tags=${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${local.artifact_registry_repo_id}/${each.key}:${local.service_hashes[each.key]})
       else
-        docker buildx build --platform linux/amd64 -t ${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${data.terraform_remote_state.infra.outputs.demo_repo_name}/${each.key}:${local.service_hashes[each.key]} ${each.value.src_dir}
+        docker buildx build --platform linux/amd64 -t ${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${local.artifact_registry_repo_id}/${each.key}:${local.service_hashes[each.key]} ${each.value.src_dir}
       fi
-      docker push ${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${data.terraform_remote_state.infra.outputs.demo_repo_name}/${each.key}:${local.service_hashes[each.key]}
+      docker push ${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${local.artifact_registry_repo_id}/${each.key}:${local.service_hashes[each.key]}
     EOT
     interpreter = ["bash", "-c"]
   }
@@ -257,11 +250,11 @@ resource "google_cloud_run_v2_service" "service" {
     labels = lookup(each.value, "labels", null) != null ? (length(each.value.labels) == 0 ? {} : each.value.labels) : {}
 
     containers {
-      image = "${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${data.terraform_remote_state.infra.outputs.demo_repo_name}/${each.key}:${local.service_hashes[each.key]}"
+      image = "${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${local.artifact_registry_repo_id}/${each.key}:${local.service_hashes[each.key]}"
 
       env {
         name  = "EVENTARC_BUS_NAME"
-        value = local.eventarc_bus
+        value = local.bus_name
       }
 
       env {
@@ -432,7 +425,7 @@ resource "google_eventarc_enrollment" "service_enrollment" {
   location      = each.value.region
   project       = each.value.project
   labels        = each.value.labels
-  message_bus   = data.terraform_remote_state.infra.outputs.message_bus_name
+  message_bus   = local.bus_name
   destination   = google_eventarc_pipeline.service_pipeline[each.key].id
   cel_match     = each.value.pipeline.enrollment_cel_expression
 }
@@ -473,7 +466,7 @@ resource "google_artifact_registry_repository_iam_member" "cloud_run_artifact_re
   for_each   = data.google_project.target_project
   project    = local.artifact_registry_project
   location   = var.region
-  repository = data.terraform_remote_state.infra.outputs.demo_repo_name
+  repository = local.artifact_registry_repo_id
   role       = "roles/artifactregistry.reader"
   member     = "serviceAccount:${google_project_service_identity.run_sa[each.key].email}"
 }

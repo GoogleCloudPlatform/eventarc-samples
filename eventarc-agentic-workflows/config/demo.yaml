@@ -7,9 +7,9 @@
 #
 # SCHEMA DEFINITION:
 # project: <string>                            # (Optional) Default GCP project for resources in this file.
-# artifact_registry_project: <string>          # (Optional) GCP project where the Artifact Registry resides.
-# eventarc_bus: <string>                       # (Optional) Full resource name of the Eventarc message bus.
 # region: <string>                             # (Optional) Default GCP region for resources in this file.
+# bus_name: <string>                           # (Optional) Full resource name of the Eventarc message bus.
+# artifact_registry_repo_name: <string>        # (Optional) Full resource name of the Artifact Registry repository.
 #
 # services:                                    # (Required) Root container for all agents/services.
 #   <agent-name>:                              # (Required) The unique ID of the agent (use hyphens, e.g., 'billing-agent').
@@ -66,8 +66,9 @@
 # =========================================================================================
 
 project: "${project_id}"
-artifact_registry_project: "${project_id}"
 region: "${region}"
+bus_name: "projects/${project_id}/locations/${region}/messageBuses/agentic-workflows"
+artifact_registry_repo_name: "projects/${project_id}/locations/${region}/repositories/agentic-workflows-repo"
 
 services:
   # =========================================================================================

@@ -1,12 +1,12 @@
-# eventarc-agentic-workflows
+# Eventarc Agentic Workflows
 
 This repository contains a sample project demonstrating how to deploy and manage
 [**Eventarc**](https://docs.cloud.google.com/eventarc/docs)-driven agentic
 workflows on Google Cloud Platform, as shown at
 [Google Cloud Next 2026](https://www.googlecloudevents.com/next-vegas/).
 
-![The log-events service showing the flow of events through the Eventarc
-MessageBus.](log-events.png)
+![The log-events service showing the flow of events through the Eventarc Message
+Bus.](log-events.png)
 
 # Demo Deployment & Execution
 
@@ -37,9 +37,111 @@ To deploy this sample (on Linux/macOS), you need:
 
 The deployment scripts and commands in this repository are written for Bash and
 are designed for Linux/macOS. To run them on Windows, it is recommended to use
-[**WSL (Windows Subsystem for Linux)**](https://learn.microsoft.com/en-us/windows/wsl/about).
+[WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/about).
 
-## 2. Configuration
+## 2. Project Setup (One-Time Execution)
+
+This demo is deployed over 2 GCP projects. Before deploying infrastructure, you
+need to create these projects and perform some one-time setup on each project.
+
+To make it easy to copy and paste the commands below, set these environment
+variables in your terminal (replace with your actual values):
+
+```bash
+export PROJECT_ID="your-main-project-id"
+export PROJECT_ID_EXT="your-external-project-id"
+export REGION="us-central1"
+export TFSTATE_BUCKET="your-tfstate-bucket"
+export BILLING_ACCOUNT_ID="YOUR_BILLING_ACCOUNT_ID" # e.g., 012345-567890-ABCDEF
+```
+
+The `$TFSTATE_BUCKET` above will be a Google Cloud Storage (GCS) bucket which is
+needed to hold the Terraform state. The state will be stored in a folder in the
+bucket, named `terraform/state`. Bucket creation itself will follow in a later
+step (see [Setup Remote State Bucket](#setup-remote-state-bucket)).
+
+> [!NOTE]
+>
+> The selected `$REGION` must be supported by Eventarc Advanced. See
+> [Eventarc locations](https://docs.cloud.google.com/eventarc/docs/locations)
+> for supported regions.
+
+### Main Project: `$PROJECT_ID`
+
+The principal deploying the configuration (e.g., your user account) needs
+permissions to create and manage service accounts, grant IAM roles, enable APIs,
+and create resources in the Main Project `$PROJECT_ID`. Broadly, **Project
+Owner** or **Project Editor** combined with **Project IAM Admin** is required to
+allow Terraform to:
+
+-   Enable required APIs (Eventarc, Cloud Run, Vertex AI, Model Armor).
+-   Create Service Accounts for agents and invokers.
+-   Grant IAM permissions (e.g., Eventarc Message Bus User, Vertex AI User,
+    Cloud Run Invoker).
+-   Create the Eventarc Message Bus, Artifact Registry, and Cloud Run services.
+
+If you already have a project, you can re-use it. If not, create the project and
+link a billing account as follows:
+
+```bash
+gcloud projects create $PROJECT_ID
+gcloud billing projects link $PROJECT_ID --billing-account=$BILLING_ACCOUNT_ID
+```
+
+> [!NOTE]
+>
+> The user who creates the project is automatically granted the Owner role. If
+> someone else created the project for you, ensure they grant you the **Editor**
+> and **Project IAM Admin** roles:
+>
+> ```bash
+> gcloud projects add-iam-policy-binding $PROJECT_ID --member="user:YOUR_EMAIL" --role="roles/editor"
+> gcloud projects add-iam-policy-binding $PROJECT_ID --member="user:YOUR_EMAIL" --role="roles/resourcemanager.projectIamAdmin"
+> ```
+
+### External Project: `$PROJECT_ID_EXT`
+
+Similar to the Main Project, you will need permissions to create resources and
+manage IAM in the project `$PROJECT_ID_EXT`. **Project Owner** or **Project
+Editor** with **Project IAM Admin** is required to allow Terraform to:
+
+-   Create Service Accounts for external services.
+-   Grant IAM permissions (e.g., Cloud Run Invoker).
+-   Deploy Cloud Run services and Eventarc Pipelines/Enrollments targeting them.
+
+As before, you are free to re-use an existing project. If not, create a new
+project and link a billing account:
+
+```bash
+gcloud projects create $PROJECT_ID_EXT
+gcloud billing projects link $PROJECT_ID_EXT --billing-account=$BILLING_ACCOUNT_ID
+```
+
+> [!NOTE]
+>
+> Similar to the Main Project, if you are not the owner, ensure you have the
+> **Editor** and **Project IAM Admin** roles granted.
+
+### Setup Remote State Bucket
+
+To share Terraform state across machines and prevent resource duplication
+conflicts, create a Google Cloud Storage (GCS) bucket in the Main Project to
+house the state file.
+
+```bash
+gcloud storage buckets create gs://$TFSTATE_BUCKET --project=$PROJECT_ID --location=$REGION
+```
+
+### Docker Authentication
+
+To pull and push images to Google Artifact Registry during deployment, configure
+Docker to authorize with the Artifact Registry:
+
+```bash
+gcloud auth configure-docker $REGION-docker.pkg.dev --project=$PROJECT_ID
+```
+
+## 3. Configuration
 
 1.  Copy the example configuration file:
 
@@ -55,79 +157,21 @@ are designed for Linux/macOS. To run them on Windows, it is recommended to use
       demo     = "your-main-project-id"
       external = "your-external-project-id"
     }
-    region   = "us-central1"
-    bucket   = "your-tfstate-bucket"
-    bus_name = "agentic-workflows"
+    region = "us-central1"
+    bucket = "your-tfstate-bucket"
     ```
-
-The `bucket` above is a Cloud Storage bucket which is needed to hold the
-Terraform state. The state is stored in a folder named `terraform/state`. Bucket
-setup will follow in a later step (see
-[Setup Remote State Bucket](#setup-remote-state-bucket)).
-
-> [!NOTE]
->
-> The selected `region` must be supported by Eventarc Advanced. See
-> [Eventarc locations](https://docs.cloud.google.com/eventarc/docs/locations)
-> for supported regions.
 
 ### Set Environment Variables
 
 To make it easy to copy and paste the commands below, and to run an agent
-locally (see [Local Development](#6-local-development--testing) section), you
-must set relevant environment variables.
+locally (see [Local Development](#local-development--testing) section), you must
+set relevant environment variables.
 
 You can source the `prep_env.sh` script, which extracts the necessary
 environment variables from `terraform.tfvars`:
 
 ```bash
 source prep_env.sh
-```
-
-## 3. Project Setup (One-Time Execution)
-
-This demo is deployed over 2 GCP projects. Before deploying infrastructure, you
-need to create these projects and perform some one-time setup on each project.
-
-### Project A (Main Project: `your-main-project-id`)
-
-The principal deploying the configuration (e.g., your user account) needs
-permissions to create and manage service accounts, grant IAM roles, enable APIs,
-and create resources. Broadly, **Project Owner** or **Project Editor** combined
-with **Project IAM Admin** is required to allow Terraform to:
-
--   Enable required APIs (Eventarc, Cloud Run, Vertex AI, Model Armor).
--   Create Service Accounts for agents and invokers.
--   Grant IAM permissions (e.g., Eventarc Message Bus User, Vertex AI User,
-    Cloud Run Invoker).
--   Create the Eventarc Message Bus, Artifact Registry, and Cloud Run services.
-
-### Project B (External Project: `your-main-project-id-ext`)
-
-Similar to Project A, you will need permissions to create resources and manage
-IAM in this project. **Project Owner** or **Project Editor** with **Project IAM
-Admin** is required to allow Terraform to:
-
--   Create Service Accounts for external services.
--   Grant IAM permissions (e.g., Cloud Run Invoker).
--   Deploy Cloud Run services and Eventarc pipelines/enrollments targeting them.
-
-### Setup Remote State Bucket
-
-To share Terraform state across machines and prevent resource duplication
-conflicts, create a Google Cloud Storage (GCS) bucket to house the state file.
-
-```bash
-gcloud storage buckets create gs://$TFSTATE_BUCKET --project=$PROJECT_ID --location=$REGION
-```
-
-### Docker Authentication
-
-To pull and push images to Google Artifact Registry during deployment, configure
-Docker to authorize with the Artifact Registry:
-
-```bash
-gcloud auth configure-docker $REGION-docker.pkg.dev --project=$PROJECT_ID
 ```
 
 ## 4. Deployment
@@ -200,6 +244,9 @@ order of deployment:
 </details>
 
 ## 5. Running the Demo
+
+Ensure you have [Set Environment Variables](#set-environment-variables) before
+running the commands below.
 
 ### Open the Live Event Feed
 
@@ -279,6 +326,9 @@ To add a new ADK agent:
 
 This optional section pertains to running agents locally, using the agent Web
 UI, running evaluations, and manually invoking agents.
+
+Ensure you have [Set Environment Variables](#set-environment-variables) before
+running the commands below.
 
 <details>
 
@@ -438,11 +488,12 @@ curl -s -X POST -H "Authorization: Bearer $(gcloud auth print-identity-token)" \
 You can use the `publish_order.py` script to simulate order events directly
 without using the Storefront UI.
 
-The following sample command sends a large order:
+The following sample command sends a large order. Specify the Message Bus full
+resource name deployed to the Main Project:
 
 ```bash
 python3 scripts/publish_order.py \
-  --bus_name "projects/$PROJECT_ID/locations/$REGION/messageBuses/$BUS_ID" \
+  --bus_name "<YOUR_BUS_NAME>" \
   --amount 15000 \
   --items "500x Enterprise Laptops" \
   --address "123 Main St, Toronto" \

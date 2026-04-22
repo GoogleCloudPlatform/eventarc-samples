@@ -22,6 +22,10 @@ locals {
       external_project_id = var.workspace_projects["external"]
     }))
   }
+  bus_name                    = try(coalesce([for f in var.config_files : lookup(local.yaml_configs[f], "bus_name", null)]...), "projects/${var.workspace_projects["demo"]}/locations/${var.region}/messageBuses/agentic-workflows")
+  bus_id                      = split("/", local.bus_name)[5]
+  artifact_registry_repo_name = try(coalesce([for f in var.config_files : lookup(local.yaml_configs[f], "artifact_registry_repo_name", null)]...), "projects/${var.workspace_projects["demo"]}/locations/${var.region}/repositories/agentic-workflows-repo")
+  artifact_registry_repo_id   = split("/", local.artifact_registry_repo_name)[5]
 
   # Merge all services from specified files, using file name + service name as key
   all_services = merge([
@@ -89,21 +93,13 @@ resource "google_project_service" "aiplatform_api" {
 
 resource "google_artifact_registry_repository" "demo_repo" {
   location      = var.region
-  repository_id = var.artifact_repo_id
+  repository_id = local.artifact_registry_repo_id
   format        = "DOCKER"
   depends_on    = [google_project_service.artifact_registry_api]
 }
 
 resource "google_eventarc_message_bus" "bus" {
-  message_bus_id = var.bus_id
+  message_bus_id = local.bus_id
   location       = var.region
   depends_on     = [google_project_service_identity.eventarc_sa]
-}
-
-output "message_bus_name" {
-  value = google_eventarc_message_bus.bus.name
-}
-
-output "demo_repo_name" {
-  value = google_artifact_registry_repository.demo_repo.name
 }

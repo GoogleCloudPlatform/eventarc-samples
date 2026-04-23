@@ -82,7 +82,8 @@ and create resources in the Main Project `$PROJECT_ID`. Broadly, **Project
 Owner** or **Project Editor** combined with **Project IAM Admin** is required to
 allow Terraform to:
 
--   Enable required APIs (Eventarc, Cloud Run, Vertex AI, Model Armor).
+-   Enable required APIs (Eventarc, Cloud Run, Agent Platform/Vertex AI,
+    Artifact Registry).
 -   Create Service Accounts for agents and invokers.
 -   Grant IAM permissions (e.g., Eventarc Message Bus User, Vertex AI User,
     Cloud Run Invoker).

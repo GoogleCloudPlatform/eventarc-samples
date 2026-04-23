@@ -49,11 +49,6 @@ locals {
 # 2. COMMON INFRASTRUCTURE
 # ------------------------------------------------------------------------------
 
-resource "google_project_service" "model_armor_api" {
-  service            = "modelarmor.googleapis.com"
-  disable_on_destroy = false
-}
-
 resource "google_project_service" "eventarc_api" {
   service            = "eventarc.googleapis.com"
   disable_on_destroy = false

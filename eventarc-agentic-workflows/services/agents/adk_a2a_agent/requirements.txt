@@ -1,3 +1,2 @@
 google-adk[a2a]>=1.6.1
 google-cloud-eventarc-publishing
-google-cloud-modelarmor>=0.1.0

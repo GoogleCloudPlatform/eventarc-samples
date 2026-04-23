@@ -12,7 +12,6 @@ from google.adk.runners import Runner
 from google.adk.sessions.in_memory_session_service import InMemorySessionService
 from shared_tools.eventarc import publish_to_eventarc
 from shared_tools.logging_middleware import AgentErrorHandlingMiddleware, RequestLoggingASGIMiddleware
-from shared_tools.model_armor_bouncer_plugin import ModelArmorBouncerPlugin
 
 warnings.filterwarnings(
     "ignore", category=UserWarning, message=r".*\[EXPERIMENTAL\].*"
@@ -26,7 +25,6 @@ AGENT_DESCRIPTION = os.getenv("AGENT_DESCRIPTION", "A generic ADK agent.")
 AGENT_INSTRUCTION = os.getenv(
     "AGENT_INSTRUCTION", "You are a helpful assistant."
 )
-ARMOR_TEMPLATE = os.getenv("MODEL_ARMOR_TEMPLATE")
 
 EDA_INSTRUCTION = (
     "CRITICAL INSTRUCTION: You are an autonomous agent operating EXCLUSIVELY in"
@@ -85,16 +83,6 @@ root_agent = Agent(
 
 # 4. Dynamically attach the plugin using Dependency Injection
 active_plugins = [LoggingPlugin()]
-
-
-if ARMOR_TEMPLATE:
-  active_plugins.append(
-      ModelArmorBouncerPlugin(
-          template_name=ARMOR_TEMPLATE,
-          service_name=SERVICE_NAME,
-          emit_event_fn=emit_business_event,
-      )
-  )
 
 # 5. App runner
 app_runner = Runner(

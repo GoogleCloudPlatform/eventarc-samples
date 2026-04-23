@@ -3,4 +3,3 @@ google-cloud-eventarc-publishing
 mcp
 fastapi
 uvicorn
-google-cloud-modelarmor>=0.1.0

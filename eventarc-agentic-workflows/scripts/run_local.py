@@ -95,14 +95,6 @@ def main():
 
   env_vars["ADK_SUPPRESS_EXPERIMENTAL_FEATURE_WARNINGS"] = "true"
 
-  # If model_armor exists, build the template resource string
-  if "model_armor" in config:
-    template_name = (
-        f"projects/{project_id}/locations/{region}/templates/{agent_name}-armor"
-    )
-    env_vars["MODEL_ARMOR_TEMPLATE"] = template_name
-    print(f"🛡️  Model Armor enabled using template: {template_name}")
-
   custom_envs = config.get("env_vars", {})
   for key, value in custom_envs.items():
     env_vars[key] = str(value)
@@ -198,11 +190,6 @@ def main():
           "-e",
           "GOOGLE_APPLICATION_CREDENTIALS=/gcp/application_default_credentials.json",
       ])
-
-    if "model_armor" in config:
-      run_cmd.extend(
-          ["-e", f"MODEL_ARMOR_TEMPLATE={env_vars['MODEL_ARMOR_TEMPLATE']}"]
-      )
 
     custom_envs = config.get("env_vars", {})
     for key, value in custom_envs.items():

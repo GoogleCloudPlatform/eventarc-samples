@@ -80,14 +80,6 @@ locals {
     }
   )
 
-  services_with_armor = {
-    for k, v in local.services : k => v.model_armor if lookup(v, "model_armor", null) != null
-  }
-
-  projects_needing_armor = distinct([
-    for k, v in local.services_with_armor : lookup(local.services[k], "project", local.default_project)
-  ])
-
   services_with_url = {
     for k, v in local.services : k => v if lookup(v, "url", null) != null
   }
@@ -134,13 +126,6 @@ data "google_cloud_run_v2_service" "external_service" {
   project  = lookup(each.value.destination.http, "project", local.default_project)
 }
 
-resource "google_project_service" "model_armor_api" {
-  for_each           = toset(local.projects_needing_armor)
-  project            = each.value
-  service            = "modelarmor.googleapis.com"
-  disable_on_destroy = false
-}
-
 resource "google_project_service" "cloud_run_api" {
   for_each           = data.google_project.target_project
   project            = each.key
@@ -160,39 +145,6 @@ resource "google_project_service" "aiplatform_api" {
   project            = each.key
   service            = "aiplatform.googleapis.com"
   disable_on_destroy = false
-}
-
-resource "google_model_armor_template" "service_armor" {
-  for_each    = local.services_with_armor
-  depends_on  = [google_project_service.model_armor_api]
-  project     = lookup(local.services[each.key], "project", local.default_project)
-  location    = lookup(local.services[each.key], "region", local.default_region)
-  template_id = "${each.key}-armor"
-
-  labels = lookup(local.services[each.key], "labels", null) != null ? (length(local.services[each.key].labels) == 0 ? {} : local.services[each.key].labels) : {}
-
-  template_metadata {
-    log_sanitize_operations = true
-    log_template_operations = true
-    enforcement_type        = "INSPECT_AND_BLOCK"
-  }
-
-  filter_config {
-    dynamic "pi_and_jailbreak_filter_settings" {
-      for_each = lookup(each.value, "pi_and_jailbreak", null) != null ? [lookup(each.value, "pi_and_jailbreak")] : []
-      content {
-        filter_enforcement = "ENABLED"
-        confidence_level   = pi_and_jailbreak_filter_settings.value
-      }
-    }
-
-    dynamic "malicious_uri_filter_settings" {
-      for_each = lookup(each.value, "malicious_uri", null) != null ? [lookup(each.value, "malicious_uri")] : []
-      content {
-        filter_enforcement = malicious_uri_filter_settings.value
-      }
-    }
-  }
 }
 
 # ------------------------------------------------------------------------------
@@ -282,14 +234,6 @@ resource "google_cloud_run_v2_service" "service" {
         content {
           name  = env.key
           value = env.value
-        }
-      }
-
-      dynamic "env" {
-        for_each = contains(keys(local.services_with_armor), each.key) ? [1] : []
-        content {
-          name  = "MODEL_ARMOR_TEMPLATE"
-          value = google_model_armor_template.service_armor[each.key].id
         }
       }
     }
@@ -445,20 +389,6 @@ resource "google_cloud_run_v2_service_iam_member" "ui_service_invoker" {
   name     = google_cloud_run_v2_service.service[each.key].name
   location = google_cloud_run_v2_service.service[each.key].location
   role     = "roles/run.invoker"
-  member   = "serviceAccount:${google_service_account.publisher_sa[each.key].email}"
-}
-
-resource "google_project_iam_member" "model_armor_user" {
-  for_each = local.services_with_armor
-  project  = lookup(local.services[each.key], "project", local.default_project)
-  role     = "roles/modelarmor.user"
-  member   = "serviceAccount:${google_service_account.publisher_sa[each.key].email}"
-}
-
-resource "google_project_iam_member" "model_armor_viewer" {
-  for_each = local.services_with_armor
-  project  = lookup(local.services[each.key], "project", local.default_project)
-  role     = "roles/modelarmor.viewer"
   member   = "serviceAccount:${google_service_account.publisher_sa[each.key].email}"
 }
 

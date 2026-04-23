@@ -22,10 +22,6 @@
 #       AGENT_DESCRIPTION: <string>            # Recommended for agents: short description.
 #       AGENT_INSTRUCTION: <string>            # Recommended for agents: system instructions/prompt.
 #
-#     model_armor:                             # (Optional) Configures GCP Model Armor protections for the agent's LLM inputs.
-#       pi_and_jailbreak: <string>             # (Optional) Confidence level to block (e.g., "LOW_AND_ABOVE", "MEDIUM", "HIGH").
-#       malicious_uri: <string>                # (Optional) Set to "ENABLED" to block requests containing known malicious URLs.
-#
 #     min_instances: <integer>                 # (Optional) Minimum number of container instances to keep warm.
 #     max_instances: <integer>                 # (Optional) Maximum number of container instances.
 #
@@ -150,9 +146,6 @@ services:
   fulfillment-planning:
     src_dir: "services/agents/adk_a2a_agent"
     min_instances: 1
-    model_armor:
-      pi_and_jailbreak: "LOW_AND_ABOVE"
-      malicious_uri: "ENABLED"
     env_vars:
       AGENT_DESCRIPTION: "Handles order fulfillment planning."
       EVENTARC_ATTR_ENV: "demo"

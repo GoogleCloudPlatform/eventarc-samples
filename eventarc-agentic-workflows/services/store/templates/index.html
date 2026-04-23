@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cymbal Storefront</title>
+    <link rel="stylesheet" href="static/style.css" />
+    <link rel="icon" type="image/png" href="static/images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">CYMBAL</div>
+      <nav class="nav-links">
+        <a href="#">NEW ARRIVALS</a>
+        <a href="#">SHOES</a>
+        <a href="#">HOODIES</a>
+        <a href="#">COLLECTIONS</a>
+        <a href="#">JOURNAL</a>
+        <a href="#">ABOUT US</a>
+      </nav>
+      <div class="nav-icons">
+        <i class="fas fa-search"></i>
+        <i class="far fa-user"></i>
+        <a href="checkout" class="cart-icon">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-count">1</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="split-view">
+        <div class="left-panel" style="background-image: url(&quot;static/images/hero.png&quot;)">
+          <!-- Image is background -->
+        </div>
+        <div class="right-panel">
+          <div class="ai-finder-container">
+            <span class="brand-tag">CYMBAL AI FINDER</span>
+            <h1>describe what you are looking for.</h1>
+            <div class="search-box">
+              <input type="text" value="A light grey hoodie and red high heels" readonly />
+            </div>
+          </div>
+
+          <div class="product-results">
+            <div class="product-card">
+              <div
+                class="product-image"
+                style="background-image: url(&quot;static/images/pullover.png&quot;)"
+              ></div>
+              <div class="product-info">
+                <h3>ESSENTIAL PULLOVER</h3>
+                <p class="color">light grey</p>
+                <p class="price">$220</p>
+              </div>
+            </div>
+            <div class="product-card">
+              <div
+                class="product-image"
+                style="background-image: url(&quot;static/images/pump.png&quot;)"
+              ></div>
+              <div class="product-info">
+                <h3>STILLETTO PUMP</h3>
+                <p class="color">scarlet red</p>
+                <p class="price">$450</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#">Contact</a>
+        <a href="#">FAQ</a>
+        <a href="#">Care</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="footer-tag">Google Cloud Next</div>
+      <div class="social-media">
+        <span>Social Media</span>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+      </div>
+    </footer>
+  </body>
+</html>

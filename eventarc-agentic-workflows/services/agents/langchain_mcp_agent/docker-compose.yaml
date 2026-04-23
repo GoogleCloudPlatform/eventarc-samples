@@ -1,0 +1,7 @@
+services:
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      additional_contexts:
+        shared_tools: ../../shared_tools

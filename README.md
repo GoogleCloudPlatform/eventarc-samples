@@ -62,6 +62,8 @@ that explains Eventarc.
   * [Publish custom events to a channel-connection as a third-party provider](publish-events/channel-connection)
 * Third-party providers
   * [Route Checkpoint CloudGuard Security Alerts to Google Cloud with Eventarc](/route-cloudguard-eventarc/)
+* Eventarc Agentic Workflows
+  * [Eventarc Agentic Workflows as seen at Google Cloud Next 2026](/eventarc-agentic-workflows)
 
 -------
 

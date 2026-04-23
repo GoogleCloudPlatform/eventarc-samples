@@ -1,0 +1,1136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventarc Observability Dashboard</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      /* --- GLOBAL LAYOUT --- */
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column; /* Stack top-bar and content */
+        height: 100vh;
+        font-family: "Inter", sans-serif;
+        overflow: hidden;
+        background-color: #f8f9fa;
+      }
+
+      /* --- TOP NAVIGATION BAR --- */
+      #top-bar {
+        background-color: #ffffff;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #e0e0e0;
+        z-index: 100;
+      }
+      #top-bar h1 {
+        margin: 0;
+        color: #202124;
+        font-size: 1.2rem;
+      }
+      .view-controls {
+        display: flex;
+        gap: 10px;
+      }
+      .view-btn {
+        background-color: #2a2a2a;
+        color: #fff;
+        border: 1px solid #444;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .view-btn.active {
+        background-color: #4285f4;
+        border-color: #4285f4;
+        font-weight: bold;
+      }
+      .view-btn:hover:not(.active) {
+        background-color: #444;
+      }
+
+      /* --- MAIN CONTENT AREA --- */
+      #main-content {
+        display: flex;
+        flex: 1;
+        min-height: 0;
+      }
+
+      /* --- LEFT PANE: GRAPH --- */
+      #graph-pane {
+        flex: 1;
+        min-width: 400px;
+        display: flex;
+        flex-direction: column;
+        background-color: #f8f9fa;
+        position: relative;
+      }
+      #controls {
+        background: white;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+      #topology-graph {
+        width: 100%;
+        display: block;
+      }
+      .node text {
+        font-size: 12px;
+        font-weight: bold;
+        pointer-events: none;
+      }
+      .event-text {
+        font-size: 10px;
+        fill: #333;
+      }
+      .service-text {
+        fill: white;
+      }
+      .node text.service-info {
+        font-size: 9px;
+        font-weight: normal;
+        fill: rgba(255, 255, 255, 0.7);
+        pointer-events: none;
+      }
+
+      #tooltip {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        pointer-events: none;
+        opacity: 0;
+        font-size: 12px;
+        color: #333;
+        z-index: 1000;
+        max-width: 500px;
+      }
+      #tooltip pre {
+        text-align: left;
+        font-size: 10px;
+        background: #eee;
+        padding: 8px;
+        border-radius: 4px;
+        max-height: 250px;
+        overflow: auto;
+        border: 1px solid #ddd;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+
+      /* --- THE RESIZER BAR --- */
+      .resizer {
+        width: 6px;
+        background-color: #333;
+        cursor: col-resize;
+        z-index: 20;
+        transition: background-color 0.2s;
+      }
+      .resizer:hover,
+      .resizer:active {
+        background-color: #4285f4;
+      }
+
+      /* --- RIGHT PANE: LOGS --- */
+      #log-pane {
+        width: 450px;
+        min-width: 250px;
+        background-color: #ffffff;
+        color: #202124;
+        padding: 1rem;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        border-left: 1px solid #e0e0e0;
+      }
+
+      @keyframes floatUpFade {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .event-container {
+        background-color: #f1f3f4;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        border-left: 4px solid #1e8e3e;
+        overflow-x: auto;
+        animation: floatUpFade 0.5s ease-out forwards;
+      }
+      .event-container.log-event {
+        border-left-color: #9aa0a6;
+      }
+      .event-container.error-event {
+        border-left-color: #d93025;
+      }
+      details {
+        margin-bottom: 1rem;
+      }
+      summary {
+        cursor: pointer;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        background-color: #e8eaed;
+        border-radius: 4px;
+        outline: none;
+        transition: background-color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #202124;
+      }
+      summary:hover {
+        background-color: #dadce0;
+      }
+      .metadata-list {
+        margin-top: 0.5rem;
+        padding-left: 1rem;
+        font-size: 0.85rem;
+        line-height: 1.6;
+      }
+      .metadata-key {
+        color: #1a73e8;
+        font-weight: bold;
+        margin-right: 0.5rem;
+      }
+      .metadata-value {
+        color: #202124;
+      }
+
+      /* --- COLLAPSIBLE LOG PAYLOAD STYLING --- */
+      #log-pane pre.log-payload {
+        color: #e8eaed;
+        font-size: 0.8rem;
+        background: #000;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 0;
+        border: 1px solid #333;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+
+        /* Truncation properties */
+        max-height: 120px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        transition: max-height 0.3s ease;
+      }
+
+      /* Subtle gradient fade at the bottom to indicate more content */
+      #log-pane pre.log-payload:not(.expanded)::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: linear-gradient(transparent, #000);
+        pointer-events: none; /* Allows clicks to pass through to the pre tag */
+      }
+
+      /* The expanded state */
+      #log-pane pre.log-payload.expanded {
+        max-height: 5000px; /* Arbitrary large number to fit any payload smoothly */
+      }
+
+      /* Animated Flowing Dashes for Consumed Links */
+      @keyframes dash-flow {
+        to {
+          stroke-dashoffset: -20;
+        }
+      }
+      .link-consumed {
+        stroke-dasharray: 5, 5;
+        animation: dash-flow 1s linear infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOP NAVIGATION BAR -->
+    <div id="top-bar">
+      <h1>Eventarc Observability</h1>
+      <div class="view-controls">
+        <button class="view-btn" id="btn-split" onclick="switchView('split')">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="12" y1="3" x2="12" y2="21"></line>
+          </svg>
+          Split View
+        </button>
+        <button class="view-btn active" id="btn-graph" onclick="switchView('graph')">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+          Graph Only
+        </button>
+        <button class="view-btn" id="btn-logs" onclick="switchView('logs')">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="8" y1="6" x2="21" y2="6"></line>
+            <line x1="8" y1="12" x2="21" y2="12"></line>
+            <line x1="8" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+          </svg>
+          Logs Only
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT AREA -->
+    <div id="main-content">
+      <!-- LEFT PANE -->
+      <div id="graph-pane">
+        <div id="controls">
+          <label for="time-slider"><span id="time-display">Waiting for events...</span></label
+          ><br /><br />
+          <input
+            type="range"
+            id="time-slider"
+            min="0"
+            max="0"
+            value="0"
+            step="1"
+            style="width: 100%"
+          />
+        </div>
+        <div id="graph-container" style="flex: 1; overflow: auto">
+          <svg id="topology-graph"></svg>
+        </div>
+        <div id="tooltip"></div>
+      </div>
+
+      <!-- RESIZER -->
+      <div class="resizer" id="dragMe"></div>
+
+      <!-- RIGHT PANE -->
+      <div id="log-pane">
+        <div id="feed"></div>
+      </div>
+    </div>
+
+    <script>
+      // ==========================================
+      // UI: VIEW SWITCHER LOGIC
+      // ==========================================
+      const graphPane = document.getElementById("graph-pane");
+      const logPane = document.getElementById("log-pane");
+      const resizer = document.getElementById("dragMe");
+      const btns = {
+        split: document.getElementById("btn-split"),
+        graph: document.getElementById("btn-graph"),
+        logs: document.getElementById("btn-logs"),
+      };
+
+      function formatReadableTime(isoString) {
+        if (!isoString) return "unknown time";
+        const d = new Date(isoString);
+        if (isNaN(d)) return "Invalid Date";
+
+        // Helper function to pad numbers with leading zeros
+        const pad = (num, places = 2) => String(num).padStart(places, "0");
+
+        // Format: YYYY-MM-DD
+        const datePart = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+
+        // Format: HH:MM:SS.mmm (24-hour time with milliseconds)
+        const timePart = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}.${pad(d.getMilliseconds(), 3)}`;
+
+        return `${datePart} ${timePart}`;
+      }
+
+      function switchView(viewMode) {
+        // Update button states
+        Object.values(btns).forEach((btn) => btn.classList.remove("active"));
+        btns[viewMode].classList.add("active");
+
+        if (viewMode === "split") {
+          graphPane.style.display = "flex";
+          logPane.style.display = "flex";
+          resizer.style.display = "block";
+          logPane.style.width = "450px"; // Restore default width
+        } else if (viewMode === "graph") {
+          graphPane.style.display = "flex";
+          logPane.style.display = "none";
+          resizer.style.display = "none";
+        } else if (viewMode === "logs") {
+          graphPane.style.display = "none";
+          logPane.style.display = "flex";
+          resizer.style.display = "none";
+          logPane.style.width = "100%"; // Expand to fill
+        }
+
+        // Recalculate physics boundaries after layout shift
+        if (viewMode === "split" || viewMode === "graph") {
+          setTimeout(updateD3Dimensions, 50); // Small delay to let DOM render
+        }
+      }
+
+      // ==========================================
+      // UI: DRAGGABLE RESIZER LOGIC
+      // ==========================================
+      let isResizing = false;
+      resizer.addEventListener("mousedown", function (e) {
+        isResizing = true;
+        document.body.style.cursor = "col-resize";
+        e.preventDefault();
+      });
+
+      document.addEventListener("mousemove", function (e) {
+        if (!isResizing) return;
+        const newRightWidth = document.body.clientWidth - e.clientX;
+        if (newRightWidth > 250 && newRightWidth < document.body.clientWidth - 400) {
+          logPane.style.width = `${newRightWidth}px`;
+          updateD3Dimensions();
+        }
+      });
+
+      document.addEventListener("mouseup", function () {
+        if (isResizing) {
+          isResizing = false;
+          document.body.style.cursor = "default";
+        }
+      });
+
+      window.addEventListener("resize", updateD3Dimensions);
+
+      // ==========================================
+      // D3 GRAPH STATE & SETUP
+      // ==========================================
+      const svg = d3.select("#topology-graph");
+      const tooltip = d3.select("#tooltip");
+
+      let nodes = [];
+      let links = [];
+      const pendingConsumers = new Map();
+
+      let globalStepCounter = 0;
+      let latestStep = 0;
+
+      let width = graphPane.clientWidth;
+      let height = graphPane.clientHeight - document.getElementById("controls").clientHeight;
+      let centerX = width / 2;
+      let centerY = height / 2;
+      let busWidth = 200;
+      const BUS_PADDING = 40; // Padding for bus height and margins
+      const EVENT_SPACING = 80; // Vertical spacing between events
+      let busHeight = height - BUS_PADDING;
+      let busTop = 20; // Fixed top edge of the bus
+
+      svg
+        .append("defs")
+        .append("marker")
+        .attr("id", "arrow")
+        .attr("viewBox", "0 -5 10 10")
+        .attr("refX", 8)
+        .attr("refY", 0)
+        .attr("markerWidth", 6)
+        .attr("markerHeight", 6)
+        .attr("orient", "auto")
+        .append("path")
+        .attr("fill", "#999")
+        .attr("d", "M0,-5L10,0L0,5");
+
+      const busBackground = svg.append("g").attr("class", "bus-area");
+
+      busBackground
+        .append("rect")
+        .attr("x", centerX - busWidth / 2)
+        .attr("y", centerY - busHeight / 2)
+        .attr("width", busWidth)
+        .attr("height", busHeight)
+        .attr("fill", "#F1F3F4")
+        .attr("stroke", "#DADCE0")
+        .attr("stroke-width", 1)
+        .attr("rx", 10);
+
+      busBackground
+        .append("text")
+        .attr("x", centerX)
+        .attr("y", centerY - busHeight / 2 + 25)
+        .attr("text-anchor", "middle")
+        .attr("fill", "#80868b")
+        .attr("font-size", "14px")
+        .attr("font-weight", "bold")
+        .text("EVENT BUS");
+
+      const linkGroup = svg.append("g").attr("class", "links");
+      const nodeGroup = svg.append("g").attr("class", "nodes");
+
+      const simulation = d3
+        .forceSimulation(nodes)
+        .velocityDecay(0.6)
+        .force(
+          "link",
+          d3
+            .forceLink(links)
+            .id((d) => d.id)
+            .distance(150)
+            .strength(0.1),
+        )
+
+        .force(
+          "x",
+          d3
+            .forceX((d) => d.targetX || centerX)
+            .strength((d) => (d.type === "service" ? 0.8 : 0.5)),
+        )
+        .force(
+          "y",
+          d3.forceY((d) => d.targetY || centerY).strength((d) => (d.type === "event" ? 1.0 : 0.5)),
+        )
+        .force(
+          "collide",
+          d3
+            .forceCollide()
+            .radius((d) => (d.type === "service" ? 75 : d.type === "event" ? 30 : 20))
+            .iterations(3),
+        )
+
+        .force("inertia", () => {
+          nodes.forEach((d) => {
+            if (d.type === "service") {
+              d.vx *= 0.1;
+              d.vy *= 0.1;
+            }
+          });
+        })
+        .on("tick", ticked);
+
+      function updateD3Dimensions() {
+        if (graphPane.style.display === "none") return;
+        width = graphPane.clientWidth;
+        height = graphPane.clientHeight - document.getElementById("controls").clientHeight;
+        centerX = width / 2;
+        centerY = height / 2;
+        busWidth = 200;
+        const eventNodes = nodes.filter((n) => n.type === "event");
+        const requiredHeight = eventNodes.length * EVENT_SPACING + 100;
+        busHeight = Math.max(height - BUS_PADDING, requiredHeight);
+
+        busBackground
+          .select("rect")
+          .attr("x", centerX - busWidth / 2)
+          .attr("y", busTop)
+          .attr("width", busWidth)
+          .attr("height", busHeight);
+
+        busBackground
+          .select("text")
+          .attr("x", centerX)
+          .attr("y", busTop + 25);
+
+        // Subtract 2px to avoid 1px rounding overflows that cause permanent scrollbars
+        svg.attr("height", busHeight + BUS_PADDING - 2);
+
+        // Update fixed X for services on resize
+        nodes.forEach((d) => {
+          if (d.type === "service") {
+            d.targetX =
+              d.side === "left" ? centerX - busWidth / 2 - 100 : centerX + busWidth / 2 + 100;
+            d.fx = d.targetX;
+          }
+        });
+
+        simulation.force("x", d3.forceX(centerX).strength(0.01));
+        simulation.force(
+          "y",
+          d3.forceY((d) => (d.type === "event" ? d.targetY || centerY : centerY)).strength(0.01),
+        );
+        simulation.alpha(0.3).restart();
+      }
+
+      function processCloudEventForGraph(cloudEvent) {
+        globalStepCounter++;
+        if (cloudEvent.type === "log.request.received") {
+          const originalEventId = cloudEvent.data && cloudEvent.data.original_event_id;
+          if (!originalEventId) return;
+          let eventNode = nodes.find((n) => n.id === originalEventId);
+          if (eventNode) {
+            processConsumerLink(eventNode, cloudEvent, globalStepCounter);
+          } else {
+            if (!pendingConsumers.has(originalEventId)) pendingConsumers.set(originalEventId, []);
+            pendingConsumers.get(originalEventId).push(cloudEvent);
+          }
+        } else {
+          let producerNode = nodes.find((n) => n.id === cloudEvent.source);
+          if (!producerNode) {
+            const serviceCount = nodes.filter((n) => n.type === "service").length;
+            const side = serviceCount % 2 === 0 ? "left" : "right";
+            const targetX =
+              side === "left" ? centerX - busWidth / 2 - 100 : centerX + busWidth / 2 + 100;
+            const targetY = busTop + 50 + serviceCount * 80;
+            producerNode = {
+              id: cloudEvent.source,
+              type: "service",
+              label: cloudEvent.source,
+              x: targetX,
+              y: targetY,
+              step: globalStepCounter,
+              side: side,
+              targetX: targetX,
+              targetY: targetY,
+              fx: targetX, // Fix X position to ensure consistent distance
+            };
+            nodes.push(producerNode);
+          }
+          if (cloudEvent.sourceservicecolor) {
+            producerNode.color = cloudEvent.sourceservicecolor;
+          }
+          if (cloudEvent.sourceserviceinfo) {
+            producerNode.info = cloudEvent.sourceserviceinfo;
+          }
+          const eventNodes = nodes.filter((n) => n.type === "event");
+          let newY;
+          if (eventNodes.length === 0) {
+            newY = busTop + 60;
+          } else {
+            const lastEvent = eventNodes[eventNodes.length - 1];
+            newY = lastEvent.y + EVENT_SPACING;
+          }
+          let eventNode = {
+            id: cloudEvent.id,
+            type: "event",
+            label: cloudEvent.type,
+            timestamp: new Date(cloudEvent.time).getTime(),
+            x: centerX,
+            y: newY,
+            step: globalStepCounter,
+            rawEvent: cloudEvent,
+            isError: cloudEvent.type.startsWith("error."),
+            targetX: centerX,
+            targetY: newY,
+            eventIndex: eventNodes.length, // Store index for ideal position calculation
+          };
+          nodes.push(eventNode);
+          links.push({
+            source: producerNode.id,
+            target: eventNode.id,
+            linkType: "produced",
+            rawEvent: cloudEvent,
+            step: globalStepCounter,
+          });
+
+          if (pendingConsumers.has(cloudEvent.id)) {
+            pendingConsumers
+              .get(cloudEvent.id)
+              .forEach((consumerEvent) =>
+                processConsumerLink(eventNode, consumerEvent, globalStepCounter),
+              );
+            pendingConsumers.delete(cloudEvent.id);
+          }
+        }
+        updateTimelineSteps();
+        updateGraph();
+      }
+
+      function processConsumerLink(eventNode, cloudEvent, step) {
+        let consumerNode = nodes.find((n) => n.id === cloudEvent.source);
+        if (!consumerNode) {
+          const serviceCount = nodes.filter((n) => n.type === "service").length;
+          const side = serviceCount % 2 === 0 ? "left" : "right";
+          const targetX =
+            side === "left" ? centerX - busWidth / 2 - 100 : centerX + busWidth / 2 + 100;
+          const targetY = busTop + 50 + serviceCount * 80;
+          consumerNode = {
+            id: cloudEvent.source,
+            type: "service",
+            label: cloudEvent.source,
+            x: targetX,
+            y: targetY,
+            step: step,
+            side: side,
+            targetX: targetX,
+            targetY: targetY,
+            fx: targetX, // Fix X position to ensure consistent distance
+          };
+          nodes.push(consumerNode);
+        }
+        if (cloudEvent.sourceservicecolor) {
+          consumerNode.color = cloudEvent.sourceservicecolor;
+        }
+        if (cloudEvent.sourceserviceinfo) {
+          consumerNode.info = cloudEvent.sourceserviceinfo;
+        }
+        links.push({
+          source: eventNode.id,
+          target: consumerNode.id,
+          linkType: "consumed",
+          rawEvent: cloudEvent,
+          step: step,
+        });
+      }
+
+      function updateGraph() {
+        const eventNodes = nodes.filter((n) => n.type === "event");
+        const requiredHeight = eventNodes.length * EVENT_SPACING + 100;
+        busHeight = Math.max(height - BUS_PADDING, requiredHeight);
+
+        busBackground.select("rect").attr("height", busHeight);
+
+        // Subtract 2px to avoid 1px rounding overflows that cause permanent scrollbars
+        svg.attr("height", busHeight + BUS_PADDING - 2);
+
+        // 1. Create hit-test lines (thick, transparent, handle clicks)
+        const hitLines = linkGroup
+          .selectAll("line.hit-line")
+          .data(links, (d) => `${d.source.id || d.source}-${d.target.id || d.target}`);
+        hitLines
+          .enter()
+          .append("line")
+          .attr("class", "hit-line")
+          .attr("stroke", "transparent")
+          .attr("stroke-width", 15)
+          .on("click", (event, d) => {
+            if (d.linkType !== "consumed") return;
+            event.stopPropagation();
+            const rawRequest =
+              d.rawEvent.data && d.rawEvent.data.raw_request
+                ? d.rawEvent.data.raw_request.replace(/\\n/g, "\n")
+                : "No raw request";
+            tooltip.html(`<strong>Message Consumed</strong><br/><pre>${rawRequest}</pre>`);
+
+            const rect = graphPane.getBoundingClientRect();
+            const tw = tooltip.node().offsetWidth;
+            const th = tooltip.node().offsetHeight;
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            let tx = x + 15;
+            if (tx + tw > rect.width) {
+              tx = x - tw - 15;
+              if (tx < 5) tx = rect.width - tw - 5;
+            }
+
+            let ty = y + 15;
+            if (ty + th > rect.height) {
+              ty = y - th - 15;
+              if (ty < 5) ty = rect.height - th - 5;
+            }
+
+            tooltip
+              .style("pointer-events", "auto")
+              .style("left", Math.max(5, tx) + "px")
+              .style("top", Math.max(5, ty) + "px")
+              .transition()
+              .duration(200)
+              .style("opacity", 1);
+          });
+        hitLines.exit().remove();
+
+        // 2. Create visible lines (thin, styled)
+        const visibleLines = linkGroup
+          .selectAll("line.visible-link")
+          .data(links, (d) => `${d.source.id || d.source}-${d.target.id || d.target}`);
+        visibleLines
+          .enter()
+          .append("line")
+          .attr(
+            "class",
+            (d) => `visible-link ${d.linkType === "consumed" ? "link-consumed" : "link-produced"}`,
+          )
+          .attr("stroke", "#999")
+          .attr("stroke-width", 2)
+          .attr("marker-end", "url(#arrow)");
+        visibleLines.exit().remove();
+
+        const nodeElements = nodeGroup.selectAll("g.node").data(nodes, (d) => d.id);
+        const nodeEnter = nodeElements
+          .enter()
+          .append("g")
+          .attr("class", "node")
+          .call(d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended))
+          .on("dblclick", (event, d) => {
+            d.fx = null;
+            d.fy = null;
+          })
+          .on("click", (event, d) => {
+            if (d.type !== "event") return; // Ignore service nodes
+            event.stopPropagation();
+            tooltip.html(
+              `<strong>Produced Event:</strong> ${d.label}<br/><strong>ID:</strong> ${d.id}<br/><strong>Time:</strong> ${formatReadableTime(d.rawEvent.time)}<br/><pre>${JSON.stringify(d.rawEvent, null, 2)}</pre>`,
+            );
+
+            const rect = graphPane.getBoundingClientRect();
+            const tw = tooltip.node().offsetWidth;
+            const th = tooltip.node().offsetHeight;
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            let tx = x + 15;
+            if (tx + tw > rect.width) {
+              tx = x - tw - 15;
+              if (tx < 5) tx = rect.width - tw - 5;
+            }
+
+            let ty = y + 15;
+            if (ty + th > rect.height) {
+              ty = y - th - 15;
+              if (ty < 5) ty = rect.height - th - 5;
+            }
+
+            tooltip
+              .style("pointer-events", "auto")
+              .style("left", Math.max(5, tx) + "px")
+              .style("top", Math.max(5, ty) + "px")
+              .transition()
+              .duration(200)
+              .style("opacity", 1);
+          });
+
+        nodeEnter.each(function (d) {
+          const el = d3.select(this);
+          if (d.type === "service") {
+            el.append("rect")
+              .attr("width", 140)
+              .attr("height", 80)
+              .attr("x", -70)
+              .attr("y", -40)
+              .attr("rx", 5);
+            el.append("text")
+              .attr("class", "service-text")
+              .text(d.label)
+              .attr("dy", 4)
+              .attr("text-anchor", "middle");
+            el.append("text")
+              .attr("class", "service-info")
+              .attr("dy", 28)
+              .attr("text-anchor", "middle");
+          } else {
+            el.append("circle").attr("r", 20);
+            const text = el
+              .append("text")
+              .attr("class", "event-text")
+              .text(d.label)
+              .attr("dy", 35)
+              .attr("text-anchor", "middle");
+
+            let bbox = { width: d.label.length * 7, height: 16, x: -d.label.length * 3.5, y: 22 };
+            try {
+              const measuredBBox = text.node().getBBox();
+              if (measuredBBox.width > 0) {
+                bbox = measuredBBox;
+              }
+            } catch (e) {
+              // ignore and use fallback
+            }
+
+            el.insert("rect", "text")
+              .attr("class", "event-text-bg")
+              .attr("x", bbox.x)
+              .attr("y", bbox.y)
+              .attr("width", bbox.width)
+              .attr("height", bbox.height)
+              .attr("fill", "#F1F3F4")
+              .attr("rx", 3);
+          }
+        });
+        nodeElements.exit().remove();
+
+        // Update all nodes
+        nodeGroup
+          .selectAll("g.node")
+          .filter((d) => d.type === "service")
+          .select("rect")
+          .attr("fill", (d) => d.color || "#4285F4");
+
+        nodeGroup
+          .selectAll("g.node")
+          .filter((d) => d.type === "service")
+          .select(".service-info")
+          .text((d) => d.info || "");
+
+        nodeGroup
+          .selectAll("g.node")
+          .filter((d) => d.type === "event")
+          .select("circle")
+          .attr("fill", (d) => (d.isError ? "#ea4335" : "#34A853"));
+
+        simulation.nodes(nodes);
+        simulation.force("link").links(links);
+        simulation.alpha(0.3).restart();
+        applyStepFrame(Number(document.getElementById("time-slider").value));
+      }
+
+      function getRectangleIntersection(rectNode, otherNode, padding) {
+        const w = 140 / 2 + padding; // Half width + padding
+        const h = 80 / 2 + padding; // Half height + padding
+
+        const dx = otherNode.x - rectNode.x;
+        const dy = otherNode.y - rectNode.y;
+
+        if (dx === 0 && dy === 0) return { x: rectNode.x, y: rectNode.y };
+
+        const t1 = Math.abs(w / dx);
+        const t2 = Math.abs(h / dy);
+
+        const t = Math.min(t1, t2);
+
+        return {
+          x: rectNode.x + dx * t,
+          y: rectNode.y + dy * t,
+        };
+      }
+
+      function ticked() {
+        linkGroup.selectAll("line").each(function (d) {
+          let x1 = d.source.x;
+          let y1 = d.source.y;
+          let x2 = d.target.x;
+          let y2 = d.target.y;
+
+          const dx = x2 - x1;
+          const dy = y2 - y1;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance === 0) return;
+
+          // Determine source point
+          if (d.source.type === "service") {
+            const pt = getRectangleIntersection(d.source, d.target, 5);
+            x1 = pt.x;
+            y1 = pt.y;
+          } else {
+            const ratio = 25 / distance;
+            x1 += dx * ratio;
+            y1 += dy * ratio;
+          }
+
+          // Determine target point
+          if (d.target.type === "service") {
+            const pt = getRectangleIntersection(d.target, d.source, 5);
+            x2 = pt.x;
+            y2 = pt.y;
+          } else {
+            const ratio = 25 / distance;
+            x2 -= dx * ratio;
+            y2 -= dy * ratio;
+          }
+
+          d3.select(this).attr("x1", x1).attr("y1", y1).attr("x2", x2).attr("y2", y2);
+        });
+
+        nodeGroup.selectAll("g.node").attr("transform", (d) => {
+          if (d.type === "event") {
+            d.x = centerX;
+            const idealY = busTop + 60 + (d.eventIndex || 0) * EVENT_SPACING;
+            d.y = Math.max(idealY, d.y); // Hard limit: cannot be higher than idealY
+            d.y = Math.max(busTop + 20, Math.min(busTop + busHeight - 20, d.y));
+          } else if (d.type === "service") {
+            if (d.side === "left") {
+              d.x = Math.max(80, Math.min(centerX - busWidth / 2 - 80, d.x));
+            } else {
+              d.x = Math.max(centerX + busWidth / 2 + 80, Math.min(width - 80, d.x));
+            }
+            d.y = Math.max(busTop, Math.min(busTop + busHeight, d.y));
+          }
+          return `translate(${d.x},${d.y})`;
+        });
+      }
+
+      const slider = document.getElementById("time-slider");
+      const timeDisplay = document.getElementById("time-display");
+
+      function updateTimelineSteps() {
+        const wasAtMax = Number(slider.value) >= latestStep;
+        latestStep = globalStepCounter;
+        slider.max = latestStep;
+        if (wasAtMax || slider.value == 0) slider.value = latestStep;
+        applyStepFrame(Number(slider.value));
+      }
+
+      slider.addEventListener("input", function () {
+        applyStepFrame(Number(this.value));
+      });
+
+      function applyStepFrame(currentStep) {
+        if (latestStep === 0) return;
+        timeDisplay.innerText = `Step ${currentStep} of ${latestStep}`;
+        nodeGroup
+          .selectAll("g.node")
+          .style("display", (d) => (d.step > currentStep ? "none" : "block"))
+          .attr("opacity", (d) => (d.step > currentStep ? 0 : 1));
+
+        nodeGroup
+          .selectAll("g.node")
+          .filter((d) => d.type === "event")
+          .select("circle")
+          .attr("fill", (d) => (d.isError ? "#ea4335" : "#34A853"));
+
+        linkGroup
+          .selectAll("line")
+          .style("display", (d) => (d.step > currentStep ? "none" : "block"))
+          .attr("opacity", (d) => (d.step > currentStep ? 0 : 1));
+      }
+
+      function dragstarted(event, d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+      }
+      function dragged(event, d) {
+        d.fx = event.x;
+        d.fy = event.y;
+      }
+      function dragended(event, d) {
+        if (!event.active) simulation.alphaTarget(0);
+      }
+
+      // ==========================================
+      // UI: APPEND LOG EVENT TO DOM
+      // ==========================================
+      const feed = document.getElementById("feed");
+
+      function appendLogEvent(cloudEvent) {
+        const eventBlock = document.createElement("div");
+        eventBlock.className = "event-container";
+
+        // Apply color coding based on event type ---
+        if (cloudEvent.type === "log.request.received") {
+          eventBlock.classList.add("log-event");
+        } else if (cloudEvent.type.startsWith("error.")) {
+          eventBlock.classList.add("error-event");
+        }
+
+        const details = document.createElement("details");
+        const summary = document.createElement("summary");
+
+        summary.innerHTML = `
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <div><span class="metadata-key">source:</span><span class="metadata-value">${cloudEvent.source || "unknown"}</span></div>
+                    <div><span class="metadata-key">type:</span><span class="metadata-value">${cloudEvent.type || "unknown"}</span></div>
+                </div>
+            `;
+        details.appendChild(summary);
+
+        const headerList = document.createElement("div");
+        headerList.className = "metadata-list";
+        for (const [key, value] of Object.entries(cloudEvent)) {
+          if (key !== "data" && key !== "source" && key !== "type") {
+            const item = document.createElement("div");
+            let displayValue = value;
+            if (key === "time") {
+              displayValue = formatReadableTime(value);
+            }
+            item.innerHTML = `<span class="metadata-key">${key}:</span><span class="metadata-value">${displayValue}</span>`;
+            headerList.appendChild(item);
+          }
+        }
+        details.appendChild(headerList);
+        eventBlock.appendChild(details);
+
+        // --- NEW: Implement Click-To-Expand Logic ---
+        const pre = document.createElement("pre");
+        pre.className = "log-payload";
+        pre.textContent =
+          typeof cloudEvent.data === "object" && cloudEvent.data !== null
+            ? JSON.stringify(cloudEvent.data, null, 2)
+            : cloudEvent.data;
+
+        // Toggle 'expanded' class on click
+        pre.addEventListener("click", function () {
+          this.classList.toggle("expanded");
+        });
+
+        eventBlock.appendChild(pre);
+        feed.prepend(eventBlock);
+      }
+
+      // ==========================================
+      // SINGLE SSE STREAM SUBSCRIPTION
+      // ==========================================
+      const base = window.location.pathname.endsWith("/")
+        ? window.location.pathname
+        : window.location.pathname + "/";
+      const evtSource = new EventSource(base + "stream");
+
+      evtSource.onmessage = function (event) {
+        const cloudEvent = JSON.parse(event.data);
+        processCloudEventForGraph(cloudEvent);
+        appendLogEvent(cloudEvent);
+      };
+
+      evtSource.onerror = function (err) {
+        console.error("EventSource failed:", err);
+      };
+
+      // Global click handler to hide tooltip
+      d3.select("body").on("click", () => {
+        tooltip.style("pointer-events", "none").transition().duration(300).style("opacity", 0);
+      });
+
+      // Click inside tooltip should not close it
+      tooltip.on("click", (event) => {
+        event.stopPropagation();
+      });
+
+      // Press Escape to close tooltip
+      d3.select(window).on("keydown", (event) => {
+        if (event.key === "Escape") {
+          tooltip.style("pointer-events", "none").transition().duration(300).style("opacity", 0);
+        }
+      });
+
+      // Initialize with-Graph View
+      setTimeout(() => {
+        switchView("graph");
+      }, 50);
+    </script>
+    <script src="simulation.js"></script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+workspace_projects = {
+  demo     = "your-main-project-id"
+  external = "your-external-project-id"
+}
+region = "us-central1"
+bucket = "your-tfstate-bucket"

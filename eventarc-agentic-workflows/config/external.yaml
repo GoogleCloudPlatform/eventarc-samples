@@ -1,0 +1,23 @@
+# =========================================================================================
+# EXTERNAL SERVICES CONFIGURATION (external.yaml)
+# =========================================================================================
+
+project: "${external_project_id}"
+region: "${region}"
+bus_name: "projects/${project_id}/locations/${region}/messageBuses/agentic-workflows"
+artifact_registry_repo_name: "projects/${project_id}/locations/${region}/repositories/agentic-workflows-repo"
+
+services:
+  third-party-shipment:
+    src_dir: "services/third_party_shipment"
+    min_instances: 1
+    env_vars:
+      EVENTARC_ATTR_SOURCESERVICECOLOR: "#707070"
+      EVENTARC_ATTR_SOURCESERVICEINFO: "REST • External"
+
+  log-events:
+    src_dir: "services/log_events"
+    url: "logs"
+    min_instances: 1
+    pipeline:
+      enrollment_cel_expression: "true"

@@ -1,0 +1,5 @@
+# requirements-dev.txt
+-r services/agents/adk_a2a_agent/requirements.txt
+pyyaml>=6.0.2
+python-dotenv==1.0.1
+google-adk[eval]

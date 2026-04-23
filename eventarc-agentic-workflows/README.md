@@ -30,7 +30,7 @@ To deploy this sample (on Linux/macOS), you need:
     [official Docker installation instructions](https://docs.docker.com/get-docker/).
     A modern version of Docker supporting **Docker Buildx** is required.
 
-*   **Python**: Ensure [Python 3.x](https://www.python.org/downloads/) is
+*   **Python**: Ensure [Python >=3.12](https://www.python.org/downloads/) is
     installed.
 
 ### Windows Compatibility

@@ -1,5 +1,5 @@
-# Use the official lightweight Node.js 20 image
-FROM node:20-alpine
+# Use the official lightweight Node.js 22 image
+FROM node:22-alpine
 
 # Create and change to the app directory
 WORKDIR /usr/src/app

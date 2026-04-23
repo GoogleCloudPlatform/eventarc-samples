@@ -180,15 +180,15 @@ def main():
         f"SERVICE_NAME={agent_name}",
         # Pass the Vertex variables to Docker
         "-e",
-        f"ADK_SUPPRESS_EXPERIMENTAL_FEATURE_WARNINGS={env_vars["ADK_SUPPRESS_EXPERIMENTAL_FEATURE_WARNINGS"]}",
+        f"ADK_SUPPRESS_EXPERIMENTAL_FEATURE_WARNINGS={env_vars['ADK_SUPPRESS_EXPERIMENTAL_FEATURE_WARNINGS']}",
         "-e",
-        f"EVENTARC_BUS_NAME={env_vars["EVENTARC_BUS_NAME"]}",
+        f"EVENTARC_BUS_NAME={env_vars['EVENTARC_BUS_NAME']}",
         "-e",
-        f"GOOGLE_GENAI_USE_VERTEXAI={env_vars["GOOGLE_GENAI_USE_VERTEXAI"]}",
+        f"GOOGLE_GENAI_USE_VERTEXAI={env_vars['GOOGLE_GENAI_USE_VERTEXAI']}",
         "-e",
-        f"GOOGLE_CLOUD_PROJECT={env_vars["GOOGLE_CLOUD_PROJECT"]}",
+        f"GOOGLE_CLOUD_PROJECT={env_vars['GOOGLE_CLOUD_PROJECT']}",
         "-e",
-        f"GOOGLE_CLOUD_REGION={env_vars["GOOGLE_CLOUD_REGION"]}",
+        f"GOOGLE_CLOUD_REGION={env_vars['GOOGLE_CLOUD_REGION']}",
     ]
 
     if gcloud_dir:

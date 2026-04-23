@@ -48,17 +48,22 @@ To make it easy to copy and paste the commands below, set these environment
 variables in your terminal (replace with your actual values):
 
 ```bash
-export PROJECT_ID="your-main-project-id"
-export PROJECT_ID_EXT="your-external-project-id"
-export REGION="us-central1"
-export TFSTATE_BUCKET="your-tfstate-bucket"
-export BILLING_ACCOUNT_ID="YOUR_BILLING_ACCOUNT_ID" # e.g., 012345-567890-ABCDEF
-```
+# These projects will be created in a later section, or you can re-use
+# existing projects.
+export PROJECT_ID=<your-main-project-id>
+export PROJECT_ID_EXT=<your-external-project-id>
 
-The `$TFSTATE_BUCKET` above will be a Google Cloud Storage (GCS) bucket which is
-needed to hold the Terraform state. The state will be stored in a folder in the
-bucket, named `terraform/state`. Bucket creation itself will follow in a later
-step (see [Setup Remote State Bucket](#setup-remote-state-bucket)).
+# This is the name of a Google Cloud Storage (GCS) bucket which will be
+# created in a later step. This bucket is needed to hold the Terraform state.
+export TFSTATE_BUCKET=<your-tfstate-bucket>
+
+# Resources in the demo will be created in this region.
+export REGION="us-central1"
+
+# New projects will need to be linked with a billing account.
+# Find with: gcloud billing accounts list
+export BILLING_ACCOUNT_ID=<your-billing-account-id> # e.g., 012345-567890-ABCDEF
+```
 
 > [!NOTE]
 >
@@ -146,15 +151,16 @@ gcloud auth configure-docker $REGION-docker.pkg.dev --project=$PROJECT_ID
     ```
 
 2.  Edit `terraform.tfvars` and replace the placeholders with your actual
-    project IDs, bucket name, and region, as configured earlier:
+    project IDs, bucket name, and region, as configured earlier in
+    [Project Setup](#2-project-setup-one-time-execution):
 
     ```hcl
     workspace_projects = {
-      demo     = "your-main-project-id"
-      external = "your-external-project-id"
+      demo     = <your-main-project-id>
+      external = <your-external-project-id>
     }
     region = "us-central1"
-    bucket = "your-tfstate-bucket"
+    bucket = <your-tfstate-bucket>
     ```
 
 ### Set Environment Variables

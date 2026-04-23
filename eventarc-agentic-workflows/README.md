@@ -185,6 +185,10 @@ demo stack using a single command:
 ./deploy.sh all
 ```
 
+> [!NOTE]
+>
+> Visit the [Troubleshooting](#troubleshooting) section in case you run into issues.
+
 <details>
 
 <summary>Step-by-step deployment</summary>

@@ -44,11 +44,12 @@ def main():
 
   try:
     with open(yaml_file, "r") as f:
-      agents_config = yaml.safe_load(f).get("services", {})
+      yaml_config = yaml.safe_load(f)
   except FileNotFoundError:
     print(f"❌ Error: {yaml_file} not found.")
     return
 
+  agents_config = yaml_config.get("services", {})
   if agent_name not in agents_config:
     print(f"❌ Error: Service '{agent_name}' not found in {yaml_file}.")
     return
@@ -71,10 +72,7 @@ def main():
   env_vars["GOOGLE_API_USE_MTLS_ENDPOINT"] = "never"
 
   if "PROJECT_ID" not in env_vars or "REGION" not in env_vars:
-    print(
-        "❌ Error: PROJECT_ID, REGION, and BUS_ID environment variables are"
-        " required."
-    )
+    print("❌ Error: PROJECT_ID and REGION environment variables are required.")
     return
 
   project_id = env_vars["PROJECT_ID"]
@@ -83,15 +81,23 @@ def main():
   env_vars["GOOGLE_CLOUD_REGION"] = region
 
   if "EVENTARC_BUS_NAME" not in env_vars:
-    if "BUS_ID" not in env_vars:
+    bus_name_template = yaml_config.get("bus_name")
+    if bus_name_template:
+      bus_name = bus_name_template.replace("${project_id}", project_id).replace(
+          "${region}", region
+      )
+      env_vars["EVENTARC_BUS_NAME"] = bus_name
+      print(f"ℹ️  Inferred EVENTARC_BUS_NAME from config: {bus_name}")
+    elif "BUS_ID" in env_vars:
+      env_vars["EVENTARC_BUS_NAME"] = (
+          f"projects/{project_id}/locations/{region}/messageBuses/{env_vars['BUS_ID']}"
+      )
+    else:
       print(
-          "❌ Error: EVENTARC_BUS_NAME or BUS_ID environment variables are"
-          " required."
+          "❌ Error: EVENTARC_BUS_NAME, BUS_ID environment variables, or"
+          " bus_name in config are required."
       )
       return
-    env_vars["EVENTARC_BUS_NAME"] = (
-        f"projects/{project_id}/locations/{region}/messageBuses/{env_vars['BUS_ID']}"
-    )
 
   env_vars["ADK_SUPPRESS_EXPERIMENTAL_FEATURE_WARNINGS"] = "true"
 

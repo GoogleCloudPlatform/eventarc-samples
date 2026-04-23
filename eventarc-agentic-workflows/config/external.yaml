@@ -3,8 +3,9 @@
 # =========================================================================================
 
 project: "${external_project_id}"
-artifact_registry_project: "${project_id}"
 region: "${region}"
+bus_name: "projects/${project_id}/locations/${region}/messageBuses/agentic-workflows"
+artifact_registry_repo_name: "projects/${project_id}/locations/${region}/repositories/agentic-workflows-repo"
 
 services:
   third-party-shipment:

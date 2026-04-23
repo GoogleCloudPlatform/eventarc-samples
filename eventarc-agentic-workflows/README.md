@@ -1,7 +1,7 @@
 # Eventarc Agentic Workflows
 
 This repository contains a sample project demonstrating how to deploy and manage
-[**Eventarc**](https://docs.cloud.google.com/eventarc/docs)-driven agentic
+[**Eventarc**](https://docs.cloud.google.com/eventarc/docs) driven agentic
 workflows on Google Cloud Platform, as shown at
 [Google Cloud Next 2026](https://www.googlecloudevents.com/next-vegas/).
 
@@ -68,6 +68,14 @@ step (see [Setup Remote State Bucket](#setup-remote-state-bucket)).
 
 ### Main Project: `$PROJECT_ID`
 
+If you already have a project, you can re-use it. If not, create the project and
+link a billing account as follows:
+
+```bash
+gcloud projects create $PROJECT_ID
+gcloud billing projects link $PROJECT_ID --billing-account=$BILLING_ACCOUNT_ID
+```
+
 The principal deploying the configuration (e.g., your user account) needs
 permissions to create and manage service accounts, grant IAM roles, enable APIs,
 and create resources in the Main Project `$PROJECT_ID`. Broadly, **Project
@@ -79,14 +87,6 @@ allow Terraform to:
 -   Grant IAM permissions (e.g., Eventarc Message Bus User, Vertex AI User,
     Cloud Run Invoker).
 -   Create the Eventarc Message Bus, Artifact Registry, and Cloud Run services.
-
-If you already have a project, you can re-use it. If not, create the project and
-link a billing account as follows:
-
-```bash
-gcloud projects create $PROJECT_ID
-gcloud billing projects link $PROJECT_ID --billing-account=$BILLING_ACCOUNT_ID
-```
 
 > [!NOTE]
 >
@@ -101,14 +101,6 @@ gcloud billing projects link $PROJECT_ID --billing-account=$BILLING_ACCOUNT_ID
 
 ### External Project: `$PROJECT_ID_EXT`
 
-Similar to the Main Project, you will need permissions to create resources and
-manage IAM in the project `$PROJECT_ID_EXT`. **Project Owner** or **Project
-Editor** with **Project IAM Admin** is required to allow Terraform to:
-
--   Create Service Accounts for external services.
--   Grant IAM permissions (e.g., Cloud Run Invoker).
--   Deploy Cloud Run services and Eventarc Pipelines/Enrollments targeting them.
-
 As before, you are free to re-use an existing project. If not, create a new
 project and link a billing account:
 
@@ -117,10 +109,13 @@ gcloud projects create $PROJECT_ID_EXT
 gcloud billing projects link $PROJECT_ID_EXT --billing-account=$BILLING_ACCOUNT_ID
 ```
 
-> [!NOTE]
->
-> Similar to the Main Project, if you are not the owner, ensure you have the
-> **Editor** and **Project IAM Admin** roles granted.
+Similar to the Main Project, you will need permissions to create resources and
+manage IAM in the project `$PROJECT_ID_EXT`. **Project Owner** or **Project
+Editor** with **Project IAM Admin** is required to allow Terraform to:
+
+-   Create Service Accounts for external services.
+-   Grant IAM permissions (e.g., Cloud Run Invoker).
+-   Deploy Cloud Run services and Eventarc Pipelines/Enrollments targeting them.
 
 ### Setup Remote State Bucket
 
@@ -150,7 +145,7 @@ gcloud auth configure-docker $REGION-docker.pkg.dev --project=$PROJECT_ID
     ```
 
 2.  Edit `terraform.tfvars` and replace the placeholders with your actual
-    project IDs and bucket name:
+    project IDs, bucket name, and region, as configured earlier:
 
     ```hcl
     workspace_projects = {
@@ -163,7 +158,7 @@ gcloud auth configure-docker $REGION-docker.pkg.dev --project=$PROJECT_ID
 
 ### Set Environment Variables
 
-To make it easy to copy and paste the commands below, and to run an agent
+To make it easy to copy and paste some commands below, and to run an agent
 locally (see [Local Development](#local-development--testing) section), you must
 set relevant environment variables.
 
@@ -176,9 +171,8 @@ source prep_env.sh
 
 ## 4. Deployment
 
-For deployment we use Terraform to deploy all components in the Demo.
-
-You can deploy the full demo stack using a single command:
+We use Terraform to deploy all components in the demo. You can deploy the full
+demo stack using a single command:
 
 ```bash
 ./deploy.sh all

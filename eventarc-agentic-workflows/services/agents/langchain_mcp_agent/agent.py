@@ -103,7 +103,9 @@ def run_agent(prompt: str) -> str:
   """
   logging.info(f"Received run_agent call with prompt: {prompt}")
   try:
-    result = agent_executor.invoke({"messages": [("user", prompt)]})
+    result = agent_executor.invoke(
+        {"messages": [("system", full_instruction), ("user", prompt)]}
+    )
     return result["messages"][-1].content
   except Exception as e:
     logging.error(f"Error running agent: {str(e)}")

@@ -4,5 +4,5 @@
 -r services/store/requirements.in
 -r services/third_party_shipment/requirements.in
 pyyaml>=6.0.2
-python-dotenv==1.0.1
+python-dotenv==1.2.2
 google-adk[eval]

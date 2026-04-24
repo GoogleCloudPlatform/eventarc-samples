@@ -605,7 +605,7 @@ python-dateutil==2.9.0.post0
     #   google-adk
     #   google-cloud-bigquery
     #   pandas
-python-dotenv==1.0.1
+python-dotenv==1.2.2
     # via
     #   -r requirements-dev.in
     #   google-adk
@@ -752,6 +752,7 @@ uuid-utils==0.14.1
     #   langsmith
 uvicorn==0.46.0
     # via
+    #   -r services/agents/adk_a2a_agent/requirements.in
     #   -r services/agents/adk_mcp_agent/requirements.in
     #   -r services/agents/langchain_mcp_agent/requirements.in
     #   -r services/store/requirements.in

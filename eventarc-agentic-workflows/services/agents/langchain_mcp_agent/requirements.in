@@ -1,0 +1,7 @@
+langchain==1.2.15
+langchain-google-vertexai
+mcp
+fastapi
+uvicorn
+google-cloud-eventarc-publishing
+langgraph

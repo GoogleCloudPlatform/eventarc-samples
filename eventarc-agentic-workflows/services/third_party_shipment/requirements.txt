@@ -1,1 +1,83 @@
-google-cloud-eventarc-publishing
+annotated-doc==0.0.4
+    # via fastapi
+annotated-types==0.7.0
+    # via pydantic
+anyio==4.13.0
+    # via starlette
+certifi==2026.4.22
+    # via requests
+cffi==2.0.0
+    # via cryptography
+charset-normalizer==3.4.7
+    # via requests
+click==8.3.3
+    # via uvicorn
+cryptography==46.0.7
+    # via google-auth
+fastapi==0.136.1
+    # via -r requirements.in
+google-api-core[grpc]==2.30.3
+    # via google-cloud-eventarc-publishing
+google-auth==2.49.2
+    # via
+    #   google-api-core
+    #   google-cloud-eventarc-publishing
+google-cloud-eventarc-publishing==0.10.0
+    # via -r requirements.in
+googleapis-common-protos==1.74.0
+    # via
+    #   google-api-core
+    #   grpcio-status
+grpcio==1.80.0
+    # via
+    #   google-api-core
+    #   google-cloud-eventarc-publishing
+    #   grpcio-status
+grpcio-status==1.80.0
+    # via google-api-core
+h11==0.16.0
+    # via uvicorn
+idna==3.13
+    # via
+    #   anyio
+    #   requests
+proto-plus==1.27.2
+    # via
+    #   google-api-core
+    #   google-cloud-eventarc-publishing
+protobuf==6.33.6
+    # via
+    #   google-api-core
+    #   google-cloud-eventarc-publishing
+    #   googleapis-common-protos
+    #   grpcio-status
+    #   proto-plus
+pyasn1==0.6.3
+    # via pyasn1-modules
+pyasn1-modules==0.4.2
+    # via google-auth
+pycparser==3.0
+    # via cffi
+pydantic==2.13.3
+    # via fastapi
+pydantic-core==2.46.3
+    # via pydantic
+requests==2.33.1
+    # via google-api-core
+starlette==1.0.0
+    # via fastapi
+typing-extensions==4.15.0
+    # via
+    #   fastapi
+    #   grpcio
+    #   pydantic
+    #   pydantic-core
+    #   typing-inspection
+typing-inspection==0.4.2
+    # via
+    #   fastapi
+    #   pydantic
+urllib3==2.6.3
+    # via requests
+uvicorn==0.46.0
+    # via -r requirements.in

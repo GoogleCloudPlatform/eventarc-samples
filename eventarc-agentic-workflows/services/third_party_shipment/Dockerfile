@@ -9,7 +9,7 @@ WORKDIR /app
 
 # Cache the dependency layer
 COPY requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir fastapi uvicorn -r /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Copy shared_tools from additional context
 COPY --from=shared_tools . /app/shared_tools/

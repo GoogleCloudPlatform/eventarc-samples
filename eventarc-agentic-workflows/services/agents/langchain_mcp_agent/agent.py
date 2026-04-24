@@ -3,10 +3,9 @@ import json
 import logging
 import os
 from fastapi import FastAPI
-from langchain.agents import AgentExecutor, create_tool_calling_agent
-from langchain.tools import tool
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.tools import tool
 from langchain_google_vertexai import ChatVertexAI
+from langgraph.prebuilt import create_react_agent
 from mcp.server.fastmcp import FastMCP
 from shared_tools.eventarc import publish_to_eventarc
 from shared_tools.logging_middleware import RequestLoggingASGIMiddleware
@@ -76,17 +75,12 @@ def emit_business_event(type: str, data: dict, attributes: dict = None) -> str:
 
 
 # 3. Initialize LangChain Agent using Vertex AI
-llm = ChatVertexAI(model_name="gemini-2.5-flash")
+llm = ChatVertexAI(
+    model_name="gemini-2.5-flash",
+    model_kwargs={"system_instruction": full_instruction},
+)
 tools = [emit_business_event]
-
-prompt = ChatPromptTemplate.from_messages([
-    ("system", full_instruction),
-    ("human", "{input}"),
-    ("placeholder", "{agent_scratchpad}"),
-])
-
-agent = create_tool_calling_agent(llm, tools, prompt)
-agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+agent_executor = create_react_agent(llm, tools)
 
 # 4. FastMCP Server Implementation
 # Explicitly set host="0.0.0.0" to allow Cloud Run to route traffic to this container.
@@ -109,10 +103,8 @@ def run_agent(prompt: str) -> str:
   """
   logging.info(f"Received run_agent call with prompt: {prompt}")
   try:
-    result = agent_executor.invoke({"input": prompt})
-    return result.get(
-        "output", "Agent completed execution without text output."
-    )
+    result = agent_executor.invoke({"messages": [("user", prompt)]})
+    return result["messages"][-1].content
   except Exception as e:
     logging.error(f"Error running agent: {str(e)}")
     try:

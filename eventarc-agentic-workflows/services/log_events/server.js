@@ -1,5 +1,15 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
+
 const app = express();
+
+// Read files into memory on startup to avoid file system access on requests
+const indexHtml = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
+const simulationJs = fs.readFileSync(
+  path.join(__dirname, 'simulation.js'),
+  'utf8',
+);
 
 // Parse incoming JSON payloads from Eventarc
 app.use(express.json());
@@ -7,15 +17,18 @@ app.use(express.json());
 // Parse incoming text/plain payloads
 app.use(express.text());
 
-// Serve static files (like simulation.js)
-app.use(express.static(__dirname));
+// Serve simulation.js from memory
+app.get('/simulation.js', (req, res) => {
+  res.setHeader('Content-Type', 'application/javascript');
+  res.send(simulationJs);
+});
 
 // Store connected browser clients
 let clients = [];
 
-// 1. Serve the Unified UI Dashboard
+// 1. Serve the Unified UI Dashboard from memory
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.send(indexHtml);
 });
 
 // Expose configuration to the frontend

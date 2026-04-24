@@ -1,6 +1,7 @@
-langchain==0.1.20
+langchain>=0.3.0
 langchain-google-vertexai
 mcp
 fastapi
 uvicorn
 google-cloud-eventarc-publishing
+langgraph

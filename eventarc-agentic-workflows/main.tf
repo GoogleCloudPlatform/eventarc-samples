@@ -156,13 +156,7 @@ resource "terraform_data" "service_build_push" {
 
   provisioner "local-exec" {
     command     = <<EOT
-      # linux/amd64 platform is necessary for cross-platform builds to be compatible with Cloud Run.
-      if [ -f "${each.value.src_dir}/docker-compose.yaml" ]; then
-        (cd ${each.value.src_dir} && BUILDX_BAKE_ENTITLEMENTS_FS=0 docker buildx bake --set *.platform=linux/amd64 --set *.tags=${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${local.artifact_registry_repo_id}/${each.key}:${local.service_hashes[each.key]})
-      else
-        docker buildx build --platform linux/amd64 -t ${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${local.artifact_registry_repo_id}/${each.key}:${local.service_hashes[each.key]} ${each.value.src_dir}
-      fi
-      docker push ${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${local.artifact_registry_repo_id}/${each.key}:${local.service_hashes[each.key]}
+      gcloud builds submit --config cloudbuild.yaml --substitutions _TAG_SPECIFIC=${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${local.artifact_registry_repo_id}/${each.key}:${local.service_hashes[each.key]},_TAG_LATEST=${var.region}-docker.pkg.dev/${local.artifact_registry_project}/${local.artifact_registry_repo_id}/${each.key}:latest,_DOCKERFILE=${each.value.src_dir}/Dockerfile --project ${local.artifact_registry_project} .
     EOT
     interpreter = ["bash", "-c"]
   }

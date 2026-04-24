@@ -9,15 +9,14 @@ ENV GOOGLE_GENAI_USE_VERTEXAI=1
 WORKDIR /app
 
 # Cache the dependency layer
-COPY requirements.txt /app/requirements.txt
+COPY services/agents/langchain_mcp_agent/requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# Copy shared_tools from additional context
-COPY --from=shared_tools . /app/shared_tools/
+# Copy shared_tools
+COPY services/shared_tools /app/shared_tools/
 
-# Copy the agent code to /app/agents/langchain_mcp_agent
-WORKDIR /app/agents/langchain_mcp_agent
-COPY . .
+# Copy the agent code
+COPY services/agents/langchain_mcp_agent /app/agents/langchain_mcp_agent
 
 # Tell Python to look in /app
 ENV PYTHONPATH=/app

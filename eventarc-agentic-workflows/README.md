@@ -26,13 +26,6 @@ To deploy this sample (on Linux/macOS), you need:
 *   **Terraform**: Follow the official
     [Terraform installation instructions](https://developer.hashicorp.com/terraform/install).
 
-*   **Docker**: Follow the
-    [official Docker installation instructions](https://docs.docker.com/get-docker/).
-    A modern version of Docker supporting **Docker Buildx** is required.
-
-*   **Python**: Ensure [Python >=3.12](https://www.python.org/downloads/) is
-    installed.
-
 ### Windows Compatibility
 
 The deployment scripts and commands in this repository are written for Bash and
@@ -87,8 +80,8 @@ and create resources in the Main Project `$PROJECT_ID`. Broadly, **Project
 Owner** or **Project Editor** combined with **Project IAM Admin** is required to
 allow Terraform to:
 
--   Enable required APIs (Eventarc, Cloud Run, Agent Platform/Vertex AI,
-    Artifact Registry).
+-   Enable required APIs (Eventarc, Cloud Run, Cloud Build, Agent
+    Platform/Vertex AI, Artifact Registry).
 -   Create Service Accounts for agents and invokers.
 -   Grant IAM permissions (e.g., Eventarc Message Bus User, Vertex AI User,
     Cloud Run Invoker).
@@ -131,15 +124,6 @@ house the state file.
 
 ```bash
 gcloud storage buckets create gs://$TFSTATE_BUCKET --project=$PROJECT_ID --location=$REGION
-```
-
-### Docker Authentication
-
-To pull and push images to Google Artifact Registry during deployment, configure
-Docker to authorize with the Artifact Registry:
-
-```bash
-gcloud auth configure-docker $REGION-docker.pkg.dev --project=$PROJECT_ID
 ```
 
 ## 3. Configuration
@@ -187,7 +171,8 @@ demo stack using a single command:
 
 > [!NOTE]
 >
-> Visit the [Troubleshooting](#troubleshooting) section in case you run into issues.
+> Visit the [Troubleshooting](#troubleshooting) section in case you run into
+> issues.
 
 <details>
 
@@ -293,36 +278,24 @@ directory. To add a new service:
     `services/my_custom_service`).
 2.  Add a `Dockerfile` in that directory that describes how to build your
     service.
-3.  If your service needs access to shared tools or other directories outside
-    its own folder during build, you can add a `docker-compose.yaml` file in the
-    service directory to define additional build contexts.
-4.  Update `demo.yaml` in the config directory to define the new service and
+
+    > [!IMPORTANT]
+    >
+    > The build system (both Cloud Build for production and `run_local.py` for
+    > local testing) runs from the **repository root**. Your `Dockerfile` must
+    > assume the build context is the root directory and use paths relative to
+    > the root (e.g., `COPY services/shared_tools /app/shared_tools/`).
+
+3.  Update `demo.yaml` in the config directory to define the new service and
     point `src_dir` to your new directory (e.g., `services/my_custom_service`).
 
-Example `docker-compose.yaml` (optional):
+## Adding a New Agent
 
-```yaml
-services:
-  agent:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      additional_contexts:
-        shared_tools: ../shared_tools
-```
-
-The build system will automatically use `docker buildx bake` if a
-`docker-compose.yaml` file is present in the service's `src_dir`, or fall back
-to `docker buildx build` if only a `Dockerfile` is present.
-
-## Adding a New ADK Agent
-
-To add a new ADK agent:
+To add a new agent:
 
 1.  Create a directory under `services/agents/` (or use
     `services/agents/adk_a2a_agent` as a template).
-2.  Ensure it has a `Dockerfile` and optionally a `docker-compose.yaml` as
-    described above.
+2.  Ensure it has a `Dockerfile` as described above.
 3.  Update `demo.yaml` in the config directory to define the new service and
     point `src_dir` to your new directory (e.g.,
     `services/agents/my_new_agent`).
@@ -338,6 +311,16 @@ running the commands below.
 <details>
 
 <summary><b>Local Development Setup</b></summary>
+
+## Prerequisites
+
+*   **Docker**: Follow the
+    [official Docker installation instructions](https://docs.docker.com/get-docker/).
+
+*   **Python**: Ensure [Python >=3.12](https://www.python.org/downloads/) is
+    installed.
+
+## Virtual Environment
 
 Run the following commands in the root of the repository to set up the
 development environment:

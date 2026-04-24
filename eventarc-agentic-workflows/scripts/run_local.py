@@ -142,14 +142,12 @@ def main():
 
   else:
     print(f"🔨 Building Docker image for {agent_name}...")
-    if os.path.exists(os.path.join(config["src_dir"], "docker-compose.yaml")):
-      build_cmd = (
-          "BUILDX_BAKE_ENTITLEMENTS_FS=0 docker buildx bake --set"
-          f" *.tags=local-{agent_name}"
-      )
-    else:
-      build_cmd = f"docker buildx build -t local-{agent_name} ."
-    subprocess.run(build_cmd, shell=True, check=True, cwd=config["src_dir"])
+    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    build_cmd = (
+        f"docker build -t local-{agent_name} -f"
+        f" {config['src_dir']}/Dockerfile ."
+    )
+    subprocess.run(build_cmd, shell=True, check=True, cwd=repo_root)
 
     print(f"🚀 Starting {agent_name} locally on port 8081...")
     print("👉 Listening for requests on: http://localhost:8081")

@@ -81,6 +81,11 @@ resource "google_project_service" "aiplatform_api" {
   disable_on_destroy = false
 }
 
+resource "google_project_service" "cloud_build_api" {
+  service            = "cloudbuild.googleapis.com"
+  disable_on_destroy = false
+}
+
 resource "google_artifact_registry_repository" "demo_repo" {
   location      = var.region
   repository_id = local.artifact_registry_repo_id

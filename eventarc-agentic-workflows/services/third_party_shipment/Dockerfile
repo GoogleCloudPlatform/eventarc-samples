@@ -8,15 +8,14 @@ ENV PORT=8080
 WORKDIR /app
 
 # Cache the dependency layer
-COPY requirements.txt /app/requirements.txt
+COPY services/third_party_shipment/requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir fastapi uvicorn -r /app/requirements.txt
 
-# Copy shared_tools from additional context
-COPY --from=shared_tools . /app/shared_tools/
+# Copy shared_tools
+COPY services/shared_tools /app/shared_tools/
 
 # Copy the service code
-WORKDIR /app/services/third_party_shipment
-COPY . .
+COPY services/third_party_shipment /app/services/third_party_shipment
 
 # Tell Python to look in /app
 ENV PYTHONPATH=/app

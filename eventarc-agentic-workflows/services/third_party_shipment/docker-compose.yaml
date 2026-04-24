@@ -1,7 +1,0 @@
-services:
-  third-party-shipment:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      additional_contexts:
-        shared_tools: ../shared_tools

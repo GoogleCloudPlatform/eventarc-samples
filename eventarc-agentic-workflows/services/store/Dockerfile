@@ -8,15 +8,14 @@ ENV PORT=8080
 WORKDIR /app
 
 # Cache the dependency layer
-COPY requirements.txt /app/requirements.txt
+COPY services/store/requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# Copy shared_tools from additional context
-COPY --from=shared_tools . /app/shared_tools/
+# Copy shared_tools
+COPY services/shared_tools /app/shared_tools/
 
 # Copy the service code
-WORKDIR /app/services/store
-COPY . .
+COPY services/store /app/services/store
 
 # Tell Python to look in /app
 ENV PYTHONPATH=/app

@@ -10,15 +10,14 @@ ENV STARTUP_MODE="a2a"
 WORKDIR /app
 
 # Cache the dependency layer
-COPY requirements.txt /app/requirements.txt
+COPY services/agents/adk_a2a_agent/requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir uvicorn -r /app/requirements.txt
 
-# Copy shared_tools from additional context
-COPY --from=shared_tools . /app/shared_tools/
+# Copy shared_tools
+COPY services/shared_tools /app/shared_tools/
 
-# Copy the agent code to /app/agents/adk_a2a_agent
-WORKDIR /app/agents/adk_a2a_agent
-COPY . .
+# Copy the agent code
+COPY services/agents/adk_a2a_agent /app/agents/adk_a2a_agent
 
 # Tell Python to look in /app
 ENV PYTHONPATH=/app
